@@ -5,7 +5,7 @@ compatibility_date = "2022-09-10"
 account_id = "29b1e5c03dadc6a8a6a30dc730b6ae05"
 routes = [
 	{ pattern = "mediathek.community", custom_domain = true }
-]
+] 
 [site]
 bucket = ".output/public"
 
