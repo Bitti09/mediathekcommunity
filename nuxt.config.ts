@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     css: ['vuetify/lib/styles/main.sass',
     ],
 
-    modules: ['nuxt-directus'],
+    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics'
+    ],
     build: {
         transpile: ['vuetify'],
     },
@@ -20,4 +21,8 @@ export default defineNuxtConfig({
         url: 'https://api.mediathek.community/',
         token: 'Oxq-DfaVvPcWI4tNjwlMNeHUZT0q_SZE',
     },
+    cloudflareAnalytics: {
+        // See below for more options
+        token: 'f0c80b668b0e43239ca441d5ea90cab5', // Example 1a2b3v4a5er6ac7r8afd
+    }
 });
