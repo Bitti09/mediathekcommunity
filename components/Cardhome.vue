@@ -11,7 +11,7 @@
         {{ posts.subtitle }}
       </v-card-subtitle>
       <v-card-actions>
-        <v-btn color="orange-lighten-2" variant="text" :href="posts.detailslink" to="_blank">
+        <v-btn color="orange-lighten-2" variant="text" :href="posts.detailslink" target="_blank">
           Explore
         </v-btn>
         <v-chip class="ma-2" color="primary">{{ posts.quality }} </v-chip>
