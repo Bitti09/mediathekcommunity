@@ -15,11 +15,13 @@
     "@nuxtjs/tailwindcss": "^6.7.2",
     "@types/node": "^18.16.18",
     "nuxt": "^3.5.3",
-    "nuxt-directus": "^5.4.4"
+    "nuxt-directus": "^5.4.4",
+    "nuxt-icon": "^0.4.1"
   },
   "dependencies": {
     "nuxt-cloudflare-analytics": "^1.0.8",
     "sass": "^1.63.4",
+    "swiper": "^9.4.1",
     "vuetify": "^3.3.3"
   }
 }
