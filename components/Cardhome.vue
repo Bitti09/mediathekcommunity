@@ -12,10 +12,13 @@
       </v-card-subtitle>
       <v-card-actions>
         <v-btn color="orange-lighten-2" variant="text" :href="posts.detailslink" target="_blank">
-          Explore
+          Details
         </v-btn>
+        <v-btn v-if="posts.directlink" color="orange-lighten-2" variant="text" :href="posts.directlink" target="_blank">
+          <Icon name="mdi:play-circle-outline" size="36"/>
+        </v-btn>
+        <Icon :name="channels[posts.channel].icon" size="36"  :color="channels[posts.channel].color"/>
         <v-chip class="ma-2" color="primary">{{ posts.quality }} </v-chip>
-        <v-chip class="ma-2" color="primary">{{ posts.channel }} </v-chip>
 
         <v-spacer></v-spacer>
         <v-btn @click="show = !show">
@@ -48,6 +51,12 @@ export default {
   ],
   data: () => ({
     show: false,
+    channels: {
+      svt: { icon: "arcticons:svtplay", color: "green" },
+      ard: { icon: "arcticons:daserste", color: "blue" },
+      zdf: { icon: "simple-icons:zdf", color: "orange" }
+
+    },
   }),
 }
 </script>

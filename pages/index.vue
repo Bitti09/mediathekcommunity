@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-row>
+         <v-row>
         <v-col v-for="post in posts" :key="post.id" dense>
                  <Cardhome :posts="post"></Cardhome>
          </v-col>
