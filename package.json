@@ -18,8 +18,6 @@
     "nuxt-directus": "^5.4.4"
   },
   "dependencies": {
-    "@mdi/font": "^7.2.96",
-    "flowbite": "^1.6.6",
     "sass": "^1.63.4",
     "vuetify": "^3.3.3"
   }
