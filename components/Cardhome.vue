@@ -15,11 +15,14 @@
           Details
         </v-btn>
         <v-btn v-if="posts.directlink" color="orange-lighten-2" variant="text" :href="posts.directlink" target="_blank">
-          <Icon name="mdi:play-circle-outline" size="36"/>
+          <Icon name="mdi:play-circle-outline" size="36" />
         </v-btn>
-        <Icon :name="channels[posts.channel].icon" size="36"  :color="channels[posts.channel].color"/>
-        <v-chip class="ma-2" color="primary">{{ posts.quality }} </v-chip>
+        <v-spacer></v-spacer>
 
+        <Icon :name="channels[posts.channel].icon" size="36" :color="channels[posts.channel].color" />
+        <v-spacer></v-spacer>
+
+        <Icon :name="quality[posts.quality].icon" size="36" :color="quality[posts.quality].color" />
         <v-spacer></v-spacer>
         <v-btn @click="show = !show">
           <v-icon :icon="mdiChevronUp" v-if="show" />
@@ -55,8 +58,14 @@ export default {
       svt: { icon: "arcticons:svtplay", color: "green" },
       ard: { icon: "arcticons:daserste", color: "blue" },
       zdf: { icon: "simple-icons:zdf", color: "orange" }
-
     },
+    quality: {
+      uhd: { icon: "material-symbols:4k-outline", color: "red" },
+      fhd: { icon: "material-symbols:hd-outline", color: "green" },
+      hd: { icon: "ic:outline-high-quality", color: "green" },
+      sd: { icon: "mdi:quality-low", color: "yellow" },
+      lq: { icon: "mdi:quality-low", color: "yellow" }
+    }
   }),
 }
 </script>
