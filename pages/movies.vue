@@ -4,17 +4,15 @@
       <swiper-container :slides-per-view="4" :loop="true">
         <template v-for="(post, i) in posts" :key="post.id">
           <swiper-slide>
-            Index: {{ i }}
             <Cardhome :posts="post" :showtype="true"></Cardhome>
           </swiper-slide>
         </template>
       </swiper-container>
     </v-card>
-    <v-card title="Deutsche Mediatheken" variant="outlined">
+    <v-card title="Deutsche Mediatheken" variant="outlined" v-show="grouped.includes('de')">
       <swiper-container slides-per-view="4" loop="true">
         <template v-for="(post, i) in posts" :key="post.id">
           <swiper-slide v-if="post.country == 'de'">
-            Country from api: {{ post.country }}
             <Cardhome :posts="post" :showtype="true"></Cardhome>
           </swiper-slide>
         </template>
@@ -24,7 +22,6 @@
       <swiper-container slides-per-view="4" loop="true">
         <template v-for="(post, i) in posts" :key="post.id">
           <swiper-slide v-if="post.country == 'sw'">
-            Country from api: {{ post.country }}
             <Cardhome :posts="post" :showtype="true"></Cardhome>
           </swiper-slide>
         </template>
