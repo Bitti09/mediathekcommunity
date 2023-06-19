@@ -1,8 +1,7 @@
 <template>
     <v-container fluid>
         <v-card title="Zuletzt hinzugefügt" variant="outlined">
-            {{ height1 }} - {{ name }}
-            <Swiper :slides-per-view="0" :space-between="0" :loop="false" :breakpoints="breaks">
+             <Swiper :slides-per-view="0" :space-between="0" :loop="false" :breakpoints="breaks">
                 <template v-for="(post, i) in posts" :key="post.id">
                     <SwiperSlide>
                         <Cardhome :posts="post" :showtype="true" :width1="width1" :height1="height1"></Cardhome>

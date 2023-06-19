@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card  :width="width2" class="mx-auto">
+    <v-card :width="width2" class="mx-auto">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
