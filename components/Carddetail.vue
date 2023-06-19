@@ -254,18 +254,18 @@ export default {
   },
   methods: {
     closevideo() {
-      console.log(this.$refs.player1)
+      //console.log(this.$refs.player1)
       this.$refs.player1.pause()
       this.showvideo = false
       this.videolink = ''
-      currentTime = 0
+      this.currentTime = 0
     },
     showvideo1(link) {
-      console.log(link)
+      //console.log(link)
       this.showvideo = true
       this.videolink = link
       this.currentTime = 0
-      console.log(link + '-' + videolink + '-' + showvideo)
+//      console.log(link + '-' + videolink + '-' + showvideo)
     }
   },
 }
