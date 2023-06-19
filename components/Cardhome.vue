@@ -22,14 +22,29 @@
 </template>
 <script setup>
 import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
+import { useDisplay } from 'vuetify'
+const { name } = useDisplay()
+const width1 = computed(() => {
+    // name is reactive and
+    // must use .value
+    switch (name.value) {
+        case 'xs': return 300
+        case 'sm': return 600
+        case 'md': return 700
+        case 'lg': return 900
+        case 'xl': return 1200
+        case 'xxl': return 1200
+    }
+
+    return undefined
+})
 </script>
-<script>
+<script> 
 export default {
   props: [
     'posts',
     'showtype',
-    'width1',
-    'height1'
+     'height1'
   ],
   data: () => ({
     dialog: false,
