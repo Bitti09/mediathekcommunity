@@ -195,7 +195,7 @@ let player = ref()
 let currentTime = ref(0)
 let showvideo = ref(false)
 function closevideo() {
-  this.player.pause()
+  player.pause()
   showvideo.value = false
   videolink.value = ''
   currentTime.value = 0
