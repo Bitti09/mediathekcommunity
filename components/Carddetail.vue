@@ -169,7 +169,7 @@
               <v-col cols="4" class="d-flex justify-start">
                 Direktlink
               </v-col>
-              <v-col  class="d-flex justify-center">
+              <v-col class="d-flex justify-center">
                 <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
                   @click="showvideo1(posts.directlink)">
                   <Icon name="mdi:play" size="24" color="white" /> Play
@@ -186,7 +186,6 @@
   </div>
 </template>
 <script setup>
-import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
 import { Player, Video, DefaultUi } from '@vime/vue-next';
 
 // Default theme.
