@@ -20,11 +20,14 @@
     "nuxt-lodash": "^2.4.1"
   },
   "dependencies": {
+    "@vime/core": "^5.4.0",
+    "@vime/vue-next": "^5.4.0",
     "lodash-es": "^4.17.21",
     "nuxt-cloudflare-analytics": "^1.0.8",
     "nuxt-swiper": "^1.1.0",
     "sass": "^1.63.4",
     "swiper": "^9.4.1",
+    "v-clappr": "^3.2.0",
     "vuetify": "^3.3.3"
   }
 }
