@@ -83,7 +83,6 @@ register();
  watch(posts, (newValue, oldValue) => {
     if (newValue.length != 0) {
         grouped.value = keys(countBy(newValue, function (newValue) { return newValue.country; }))
-        refresh()
     }
 }, { immediate: true })
 </script>
