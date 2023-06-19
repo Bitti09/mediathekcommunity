@@ -17,7 +17,7 @@
         <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" max-height="450px"></v-img>
       </v-template>
       <v-template v-show="showvideo == true">
-        <Player ref="player" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
+        <Player ref="player1" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
           <Video>
             <source :data-src="videolink" type="video/mp4" />
           </Video>
@@ -191,11 +191,12 @@ import { Player, Video, DefaultUi } from '@vime/vue-next';
 // Default theme.
 import '@vime/core/themes/default.css';
 let videolink = ref('')
-let player = ref()
+let player1 = ref(null)
 let currentTime = ref(0)
 let showvideo = ref(false)
 function closevideo() {
-  player.pause()
+  console.log( this.player1)
+  this.player1.pause()
   showvideo.value = false
   videolink.value = ''
   currentTime.value = 0
@@ -217,8 +218,8 @@ export default {
     'width2'
   ],
   computed: {
-    player1() {
-      return this.$refs.player;
+    player11() {
+      return this.$refs.player1;
     },
   },
   data: () => ({
