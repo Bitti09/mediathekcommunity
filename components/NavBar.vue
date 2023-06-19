@@ -17,7 +17,7 @@
       <v-icon :icon="mdiTelevisionClassic" />
     </v-btn>
 
-    <v-btn icon exact href="https://forum.mediathek.community" active-class="btnselected">
+    <v-btn icon exact active-class="btnselected">
       <v-icon :icon="mdiChatOutline" />
     </v-btn>
   </template>
