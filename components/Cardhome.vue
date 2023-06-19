@@ -14,8 +14,8 @@
         </template>
       </v-card-subtitle>
       <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
-        <v-dialog v-model="dialog" activator="parent" width="auto">
-          <Carddetail :posts="posts" :showtype="showtype" />
+        <v-dialog v-model="dialog" activator="parent" width="calc(100% - 48px)%">
+          <Carddetail :posts="posts" :showtype="showtype" :width2="width1" />
         </v-dialog></v-img>
     </v-card>
   </div>
@@ -27,7 +27,9 @@ import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
 export default {
   props: [
     'posts',
-    'showtype'
+    'showtype',
+    'width1',
+    'height1'
   ],
   data: () => ({
     dialog: false,
