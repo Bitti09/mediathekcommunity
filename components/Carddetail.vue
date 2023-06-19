@@ -5,7 +5,7 @@
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
         </template>
-        {{ posts.title }} - {{ width2 }}
+        {{ posts.title }}
       </v-card-title>
       <v-card-subtitle>
         {{ posts.subtitle }}
@@ -13,7 +13,22 @@
           - {{ posts.episodes }} Episode(n)
         </template>
       </v-card-subtitle>
-      <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" max-height="450px"></v-img>
+      <v-template v-show="showvideo == false">
+        <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" max-height="450px"></v-img>
+      </v-template>
+      <v-template v-show="showvideo == true">
+        <Player ref="player" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
+          <Video>
+            <source :data-src="videolink" type="video/mp4" />
+          </Video>
+
+          <DefaultUi>
+            <!-- Custom UI component. -->
+            <TapSidesToSeek />
+          </DefaultUi>
+        </Player>
+        <v-clappr :source="videolink" />
+      </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
         <v-tab v-if="posts.type == 'series'" value="two">Episoden</v-tab>
@@ -67,15 +82,23 @@
                 </v-expansion-panel-title>
                 <v-expansion-panel-text>
                   <v-row no-gutters>
-                    <v-col cols="10" class="d-flex justify-start">
-                      <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.link">
-                        Senderseite
-                      </v-btn>
-                    </v-col>
                     <v-col>
-                      <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.directlink">
-                        Play
-                      </v-btn>
+                      <v-sheet class="pa-2 ma-2">
+                        <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.link">
+                          Senderseite
+                        </v-btn> </v-sheet>
+                    </v-col>
+                    <v-spacer></v-spacer>
+                    <v-col>
+                      <v-sheet class="pa-2 ma-2">
+                        <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
+                          @click="showvideo1(i.directlink)">
+                          Play
+                        </v-btn>
+                        <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
+                          Close Video
+                        </v-btn>
+                      </v-sheet>
                     </v-col>
                   </v-row>
                   <v-template v-if="i.description">
@@ -104,15 +127,23 @@
                 </v-expansion-panel-title>
                 <v-expansion-panel-text>
                   <v-row no-gutters>
-                    <v-col cols="10" class="d-flex justify-start">
-                      <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.link">
-                        Senderseite
-                      </v-btn>
-                    </v-col>
                     <v-col>
-                      <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.directlink">
-                        Play
-                      </v-btn>
+                      <v-sheet class="pa-2 ma-2">
+                        <v-btn color="orange-lighten-2" variant="text" target="_blank" :href="i.link">
+                          Senderseite
+                        </v-btn> </v-sheet>
+                    </v-col>
+                    <v-spacer></v-spacer>
+                    <v-col v-show="i.directlink">
+                      <v-sheet class="pa-2 ma-2">
+                        <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
+                          @click="showvideo1(i.directlink)">
+                          <Icon name="mdi:play" size="24" color="white" /> Play
+                        </v-btn>
+                        <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
+                          <Icon name="mdi:stop" size="24" color="white" /> Stop
+                        </v-btn>
+                      </v-sheet>
                     </v-col>
                   </v-row>
                   <v-template v-if="i.description">
@@ -126,7 +157,7 @@
               </v-expansion-panel>
             </v-expansion-panels> </v-window-item>
           <v-window-item value="four">
-            <v-row>
+            <v-row no-gutters>
               <v-col cols="4" class="d-flex justify-start">
                 Senderseite
               </v-col>
@@ -138,8 +169,14 @@
               <v-col cols="4" class="d-flex justify-start">
                 Direktlink
               </v-col>
-              <v-col cols="8" class="d-flex justify-center">
-                <a :href="posts.detailslink" target="_blank">Play</a>
+              <v-col  class="d-flex justify-center">
+                <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
+                  @click="showvideo1(posts.directlink)">
+                  <Icon name="mdi:play" size="24" color="white" /> Play
+                </v-btn>
+                <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
+                  <Icon name="mdi:stop" size="24" color="white" /> Stop
+                </v-btn>
               </v-col>
             </v-row>
           </v-window-item>
@@ -150,6 +187,28 @@
 </template>
 <script setup>
 import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
+import { Player, Video, DefaultUi } from '@vime/vue-next';
+
+// Default theme.
+import '@vime/core/themes/default.css';
+let videolink = ref('')
+let player = ref()
+let currentTime = ref(0)
+let showvideo = ref(false)
+function closevideo() {
+  this.player.pause()
+  showvideo.value = false
+  videolink.value = ''
+  currentTime.value = 0
+}
+function showvideo1(link) {
+  console.log(link)
+  showvideo.value = true
+  videolink.value = link
+  currentTime.value = 0
+  console.log(link + '-' + videolink + '-' + showvideo)
+
+}
 </script>
 <script>
 export default {
@@ -158,6 +217,11 @@ export default {
     'showtype',
     'width2'
   ],
+  computed: {
+    player1() {
+      return this.$refs.player;
+    },
+  },
   data: () => ({
     dialog: false,
     show: false,
