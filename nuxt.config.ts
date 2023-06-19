@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     },
     css: ['vuetify/lib/styles/main.sass',
     ],
-    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash'
+    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash', 'nuxt-swiper'
     ],
     build: {
         transpile: ['vuetify'],
