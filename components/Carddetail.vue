@@ -190,13 +190,14 @@ import { Player, Video, DefaultUi } from '@vime/vue-next';
 
 // Default theme.
 import '@vime/core/themes/default.css';
+/*
 let videolink = ref('')
 let player1 = ref(null)
 let currentTime = ref(0)
 let showvideo = ref(false)
 function closevideo() {
-  console.log( this.player1)
-  this.player1.pause()
+  console.log(this.$refs.player1)
+  this.$refs.player1.pause()
   showvideo.value = false
   videolink.value = ''
   currentTime.value = 0
@@ -208,7 +209,7 @@ function showvideo1(link) {
   currentTime.value = 0
   console.log(link + '-' + videolink + '-' + showvideo)
 
-}
+}*/
 </script>
 <script>
 export default {
@@ -222,29 +223,51 @@ export default {
       return this.$refs.player1;
     },
   },
-  data: () => ({
-    dialog: false,
-    show: false,
-    tab: '',
-    channels: {
-      svt: { icon: "arcticons:svtplay", color: "green" },
-      ard: { icon: "arcticons:daserste", color: "blue" },
-      zdf: { icon: "simple-icons:zdf", color: "orange" },
-      arte: { icon: "arcticons:arte", color: "red" },
+  data() {
+    return {
+      dialog: false,
+      show: false,
+      tab: '',
+      videolink:'',
+      player1: null,
+      currentTime: 0,
+      showvideo: false,
+      channels: {
+        svt: { icon: "arcticons:svtplay", color: "green" },
+        ard: { icon: "arcticons:daserste", color: "blue" },
+        zdf: { icon: "simple-icons:zdf", color: "orange" },
+        arte: { icon: "arcticons:arte", color: "red" },
+      },
+      quality: {
+        uhd: { icon: "material-symbols:4k-outline", color: "red" },
+        fhd: { icon: "material-symbols:hd-outline", color: "green" },
+        hd: { icon: "ic:outline-high-quality", color: "green" },
+        sd: { icon: "mdi:quality-low", color: "yellow" },
+        lq: { icon: "mdi:quality-low", color: "yellow" }
+      },
+      type: {
+        movie: { icon: "mdi:movie-open-outline", color: "white" },
+        series: { icon: "mdi:television", color: "white" },
+        others: { icon: "material-symbols:tv-gen-outline", color: "red" },
+      },
+    }
+  },
+  methods: {
+    closevideo() {
+      console.log(this.$refs.player1)
+      this.$refs.player1.pause()
+      this.showvideo = false
+      this.videolink = ''
+      currentTime = 0
     },
-    quality: {
-      uhd: { icon: "material-symbols:4k-outline", color: "red" },
-      fhd: { icon: "material-symbols:hd-outline", color: "green" },
-      hd: { icon: "ic:outline-high-quality", color: "green" },
-      sd: { icon: "mdi:quality-low", color: "yellow" },
-      lq: { icon: "mdi:quality-low", color: "yellow" }
-    },
-    type: {
-      movie: { icon: "mdi:movie-open-outline", color: "white" },
-      series: { icon: "mdi:television", color: "white" },
-      others: { icon: "material-symbols:tv-gen-outline", color: "red" },
-    },
-  }),
+    showvideo1(link) {
+      console.log(link)
+      this.showvideo = true
+      this.videolink = link
+      this.currentTime = 0
+      console.log(link + '-' + videolink + '-' + showvideo)
+    }
+  },
 }
 </script>
 
