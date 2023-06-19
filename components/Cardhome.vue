@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="400">
+    <v-card width="400">
       <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" height="200px" contain></v-img>
 
       <v-card-title>
