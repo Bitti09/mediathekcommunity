@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-card  max-width="800" width="400">
+    <v-card  :width="width2" class="mx-auto">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
         </template>
-        {{ posts.title }}
+        {{ posts.title }} - {{ width2 }}
       </v-card-title>
       <v-card-subtitle>
         {{ posts.subtitle }}
@@ -155,7 +155,8 @@ import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
 export default {
   props: [
     'posts',
-    'showtype'
+    'showtype',
+    'width2'
   ],
   data: () => ({
     dialog: false,
