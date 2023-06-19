@@ -37,6 +37,4 @@ export default defineNuxtConfig({
             isCustomElement: tag => ['swiper-container', 'swiper-slide'].includes(tag),
         },
     },
-
-    plugins: ['/c:/Users/bitti/Documents/mediathek.-nuxt/nuxt-app/plugins/vuetify.js'],
 });
