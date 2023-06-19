@@ -5,8 +5,7 @@ export default defineNuxtConfig({
     },
     css: ['vuetify/lib/styles/main.sass',
     ],
-
-    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon'
+    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash'
     ],
     build: {
         transpile: ['vuetify'],
@@ -24,5 +23,10 @@ export default defineNuxtConfig({
     cloudflareAnalytics: {
         // See below for more options
         token: 'f0c80b668b0e43239ca441d5ea90cab5', // Example 1a2b3v4a5er6ac7r8afd
-    }
+    },
+    vue: {
+        compilerOptions: {
+            isCustomElement: tag => ['swiper-container', 'swiper-slide'].includes(tag),
+        },
+    },
 });
