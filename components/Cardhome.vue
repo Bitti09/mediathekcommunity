@@ -1,46 +1,22 @@
 <template>
   <div>
-    <v-card width="400">
-      <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" height="200px" contain></v-img>
-
+    <v-card width="400" height="280">
       <v-card-title>
+        <template v-if="showtype">
+          <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
+        </template>
         {{ posts.title }}
       </v-card-title>
-
       <v-card-subtitle>
         {{ posts.subtitle }}
+        <template v-show="posts.type == 'series'">
+          - {{ posts.episodes }} Episode(n)
+        </template>
       </v-card-subtitle>
-      <v-card-actions>
-        <v-btn color="orange-lighten-2" variant="text" :href="posts.detailslink" target="_blank">
-          Details
-        </v-btn>
-        <v-btn v-if="posts.directlink" color="orange-lighten-2" variant="text" :href="posts.directlink" target="_blank">
-          <Icon name="mdi:play-circle-outline" size="36" />
-        </v-btn>
-        <v-spacer></v-spacer>
-
-        <Icon :name="channels[posts.channel].icon" size="36" :color="channels[posts.channel].color" />
-        <v-spacer></v-spacer>
-
-        <Icon :name="quality[posts.quality].icon" size="36" :color="quality[posts.quality].color" />
-        <v-spacer></v-spacer>
-        <v-btn @click="show = !show">
-          <v-icon :icon="mdiChevronUp" v-if="show" />
-          <v-icon :icon="mdiChevronDown" v-else />
-        </v-btn>
-      </v-card-actions>
-
-      <v-expand-transition>
-        <div v-show="show">
-          <v-divider></v-divider>
-          <v-card-text>
-            {{ posts.description }}
-          </v-card-text>
-          <v-card-text>
-            {{ posts }}
-          </v-card-text>
-        </div>
-      </v-expand-transition>
+      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
+        <v-dialog v-model="dialog" activator="parent" width="auto">
+          <Carddetail :posts="posts" :showtype="showtype" />
+        </v-dialog></v-img>
     </v-card>
   </div>
 </template>
@@ -50,14 +26,17 @@ import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
 <script>
 export default {
   props: [
-    'posts'
+    'posts',
+    'showtype'
   ],
   data: () => ({
+    dialog: false,
     show: false,
     channels: {
       svt: { icon: "arcticons:svtplay", color: "green" },
       ard: { icon: "arcticons:daserste", color: "blue" },
-      zdf: { icon: "simple-icons:zdf", color: "orange" }
+      zdf: { icon: "simple-icons:zdf", color: "orange" },
+      arte: { icon: "arcticons:arte", color: "red" },
     },
     quality: {
       uhd: { icon: "material-symbols:4k-outline", color: "red" },
@@ -65,7 +44,12 @@ export default {
       hd: { icon: "ic:outline-high-quality", color: "green" },
       sd: { icon: "mdi:quality-low", color: "yellow" },
       lq: { icon: "mdi:quality-low", color: "yellow" }
-    }
+    },
+    type: {
+      movie: { icon: "mdi:movie-open-outline", color: "white" },
+      series: { icon: "mdi:television", color: "white" },
+      others: { icon: "material-symbols:tv-gen-outline", color: "red" },
+    },
   }),
 }
 </script>

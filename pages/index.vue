@@ -3,29 +3,26 @@
         <v-card title="Zuletzt hinzugefügt" variant="outlined">
             <swiper-container :slides-per-view="4" :loop="true">
                 <template v-for="(post, i) in posts" :key="post.id">
-                    <swiper-slide >
-                        Index: {{ i }}
-                        <Cardhome :posts="post"></Cardhome>
+                    <swiper-slide>
+                        <Cardhome :posts="post" :showtype="true"></Cardhome>
                     </swiper-slide>
                 </template>
             </swiper-container>
         </v-card>
-        <v-card title="Deutsche Mediatheken" variant="outlined">
+        <v-card title="Deutsche Mediatheken" variant="outlined" v-show="grouped.includes('de')">
             <swiper-container slides-per-view="4" loop="true">
                 <template v-for="(post, i) in posts" :key="post.id">
                     <swiper-slide v-if="post.country == 'de'">
-                        Country from api: {{ post.country }}
-                        <Cardhome :posts="post"></Cardhome>
+                        <Cardhome :posts="post" :showtype="true"></Cardhome>
                     </swiper-slide>
                 </template>
             </swiper-container>
         </v-card>
-        <v-card title="Schwedische Mediatheken" variant="outlined">
+        <v-card title="Schwedische Mediatheken" variant="outlined" v-show="grouped.includes('sw')">
             <swiper-container slides-per-view="4" loop="true">
                 <template v-for="(post, i) in posts" :key="post.id">
                     <swiper-slide v-if="post.country == 'sw'">
-                        Country from api: {{ post.country }}
-                        <Cardhome :posts="post"></Cardhome>
+                        <Cardhome :posts="post" :showtype="true"></Cardhome>
                     </swiper-slide>
                 </template>
             </swiper-container>
@@ -35,21 +32,29 @@
 <script setup>
 import { onMounted } from 'vue'
 import { register } from 'swiper/element/bundle';
-
+import { countBy, keys } from 'lodash-es';
+let grouped = ref()
 const router = useRouter();
+let posts = ref()
 const { getItems } = useDirectusItems();
-const posts = await getItems({ collection: "mediathek", params: { fields: ['*,coverimage.id,heroimage.id'] } });
-const { data: info } = await useFetch('/api/info')
+posts.value = await getItems({ collection: "mediathek", params: { fields: ['*,coverimage.id,heroimage.id,listepisodes.*.*'], sort: "-date_created" } });
 // import function to register Swiper custom elements
 // register Swiper custom elements
 register();
+watch(posts, (newValue, oldValue) => {
+    if (newValue.length != 0) {
+        grouped.value = keys(countBy(newValue, function (newValue) { return newValue.country; }))
+    }
+}, { immediate: true })
 </script>
 <script>
 export default {
     data: () => ({
         show: false,
-    }),
+        dialog: false,
+    })
 }
+
 </script>
 <style scoped>
 .v-card--variant-outlined {
