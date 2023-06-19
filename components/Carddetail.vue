@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card max-width="800">
+    <v-card  max-width="800" width="400">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
@@ -50,7 +50,7 @@
                 </tr>
               </tbody>
             </v-table>
-           </v-window-item>
+          </v-window-item>
 
           <v-window-item value="two" v-if="posts.type == 'series'">
             <v-expansion-panels variant="accordion">
@@ -126,7 +126,22 @@
               </v-expansion-panel>
             </v-expansion-panels> </v-window-item>
           <v-window-item value="four">
-            {{ posts.links }}
+            <v-row>
+              <v-col cols="4" class="d-flex justify-start">
+                Senderseite
+              </v-col>
+              <v-col cols="8" class="d-flex justify-center">
+                <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
+              </v-col>
+            </v-row>
+            <v-row v-show="posts.directlink">
+              <v-col cols="4" class="d-flex justify-start">
+                Direktlink
+              </v-col>
+              <v-col cols="8" class="d-flex justify-center">
+                <a :href="posts.detailslink" target="_blank">Play</a>
+              </v-col>
+            </v-row>
           </v-window-item>
         </v-window>
       </v-card-text>

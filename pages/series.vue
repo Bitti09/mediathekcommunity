@@ -1,31 +1,92 @@
 <template>
   <v-container fluid>
     <v-card title="Zuletzt hinzugefügt" variant="outlined">
-      <swiper-container :slides-per-view="4" :loop="true">
-        <template v-for="(post, i) in posts" :key="post.id">
-          <swiper-slide>
+      <Swiper :slides-per-view="auto" :space-between="0" :loop="false" :breakpoints="{
+        400: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+        },
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 0,
+        }
+      }"> <template v-for="(post, i) in posts" :key="post.id">
+          <SwiperSlide>
             <Cardhome :posts="post" :showtype="true"></Cardhome>
-          </swiper-slide>
+          </SwiperSlide>
         </template>
-      </swiper-container>
+      </Swiper>
     </v-card>
     <v-card title="Deutsche Mediatheken" variant="outlined">
-      <swiper-container slides-per-view="4" loop="true">
+      <Swiper :slides-per-view="auto" :space-between="0" :loop="false" :breakpoints="{
+        400: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+        },
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 0,
+        }
+      }">
         <template v-for="(post, i) in posts" :key="post.id">
-          <swiper-slide v-if="post.country == 'de'">
+          <SwiperSlide v-if="post.country == 'de'">
             <Cardhome :posts="post" :showtype="true"></Cardhome>
-          </swiper-slide>
+          </SwiperSlide>
         </template>
-      </swiper-container>
+      </Swiper>
     </v-card>
     <v-card title="Schwedische Mediatheken" variant="outlined" v-show="grouped.includes('sw')">
-      <swiper-container slides-per-view="4" loop="true">
-        <template v-for="(post, i) in posts" :key="post.id">
-          <swiper-slide v-if="post.country == 'sw'">
+      <Swiper :slides-per-view="auto" :space-between="0" :loop="false" :breakpoints="{
+        400: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+        },
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 0,
+        }
+      }"> <template v-for="(post, i) in posts" :key="post.id">
+          <SwiperSlide v-if="post.country == 'sw'">
             <Cardhome :posts="post" :showtype="true"></Cardhome>
-          </swiper-slide>
+          </SwiperSlide>
         </template>
-      </swiper-container>
+      </Swiper>
     </v-card>
   </v-container>
 </template>

@@ -22,6 +22,7 @@
   "dependencies": {
     "lodash-es": "^4.17.21",
     "nuxt-cloudflare-analytics": "^1.0.8",
+    "nuxt-swiper": "^1.1.0",
     "sass": "^1.63.4",
     "swiper": "^9.4.1",
     "vuetify": "^3.3.3"
