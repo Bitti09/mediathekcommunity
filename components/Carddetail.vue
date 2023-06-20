@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card :width="width2" class="mx-auto">
+    <v-card width="100%" class="ma-0">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
@@ -17,23 +17,14 @@
         <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" max-height="450px"></v-img>
       </v-template>
       <v-template v-show="showvideo == true">
-        <Player ref="player1" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
-          <Video>
-            <source :data-src="videolink" type="video/mp4" />
-          </Video>
-
-          <DefaultUi>
-            <!-- Custom UI component. -->
-            <TapSidesToSeek />
-          </DefaultUi>
-        </Player>
-        <v-clappr :source="videolink" />
+        <Videoplayer :videolink="videolink" ref="player1" :showvideo="showvideo" :videoid="posts.heroimage.id"
+          :vidtitle="nuevoOptions" :videotitl1="videotitle" :alldate="alldate" />
       </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
         <v-tab v-if="posts.type == 'series'" value="two">Episoden</v-tab>
         <v-tab v-if="posts.type == 'series'" value="three">Episoden - OMU</v-tab>
-        <v-tab v-if="posts.type == 'movie'" value="four">Links</v-tab>
+        <v-tab v-if="posts.type != 'series'" value="four">Links</v-tab>
       </v-tabs>
       <v-card-text>
 
@@ -92,7 +83,7 @@
                     <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                          @click="showvideo1(i.directlink)">
+                          @click="showvideo1(i.directlink, i.Title, i)">
                           Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -134,10 +125,10 @@
                         </v-btn> </v-sheet>
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col v-show="i.directlink">
+                    <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                          @click="showvideo1(i.directlink)">
+                          @click="showvideo1(i.directlink, i.Title, i)">
                           <Icon name="mdi:play" size="24" color="white" /> Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -157,28 +148,26 @@
               </v-expansion-panel>
             </v-expansion-panels> </v-window-item>
           <v-window-item value="four">
-            <v-row no-gutters>
-              <v-col cols="4" class="d-flex justify-start">
-                Senderseite
-              </v-col>
-              <v-col cols="8" class="d-flex justify-center">
-                <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
-              </v-col>
-            </v-row>
-            <v-row v-show="posts.directlink">
-              <v-col cols="4" class="d-flex justify-start">
-                Direktlink
-              </v-col>
-              <v-col class="d-flex justify-center">
-                <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                  @click="showvideo1(posts.directlink)">
-                  <Icon name="mdi:play" size="24" color="white" /> Play
-                </v-btn>
-                <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
-                  <Icon name="mdi:stop" size="24" color="white" /> Stop
-                </v-btn>
-              </v-col>
-            </v-row>
+            <v-table>
+              <tbody>
+                <tr>
+                  <td> Senderseite</td>
+                  <td> <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
+                  </td>
+                </tr>
+                <tr v-show="posts.country == 'de'">
+                  <td>Direktlink</td>
+                  <td><v-btn v-show="showvideo == false" color="orange-lighten-2" text tile position="static"
+                      style="width: 6rem !important" @click="showvideo1(posts.directlink, posts.title, posts)">
+                      <Icon name="mdi:play" size="24" color="white" /> Play
+                    </v-btn>
+                    <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
+                      <Icon name="mdi:stop" size="24" color="white" /> Stop
+                    </v-btn>
+                  </td>
+                </tr>
+              </tbody>
+            </v-table>
           </v-window-item>
         </v-window>
       </v-card-text>
@@ -187,39 +176,19 @@
 </template>
 <script setup>
 import { Player, Video, DefaultUi } from '@vime/vue-next';
-
+import Videoplayer from '@/components/Videoplayer.vue';
 // Default theme.
 import '@vime/core/themes/default.css';
-/*
-let videolink = ref('')
-let player1 = ref(null)
-let currentTime = ref(0)
-let showvideo = ref(false)
-function closevideo() {
-  console.log(this.$refs.player1)
-  this.$refs.player1.pause()
-  showvideo.value = false
-  videolink.value = ''
-  currentTime.value = 0
-}
-function showvideo1(link) {
-  console.log(link)
-  showvideo.value = true
-  videolink.value = link
-  currentTime.value = 0
-  console.log(link + '-' + videolink + '-' + showvideo)
-
-}*/
 </script>
 <script>
 export default {
   props: [
-    'posts',
-    'showtype',
-    'width2'
+    "posts",
+    "showtype",
+    "width2"
   ],
   computed: {
-    player11() {
+    player1() {
       return this.$refs.player1;
     },
   },
@@ -227,8 +196,12 @@ export default {
     return {
       dialog: false,
       show: false,
-      tab: '',
-      videolink:'',
+      tab: "",
+      alldate: null,
+      videolink: "",
+      videotitle: "",
+      title: "",
+      nuevoOptions: {},
       player1: null,
       currentTime: 0,
       showvideo: false,
@@ -250,26 +223,41 @@ export default {
         series: { icon: "mdi:television", color: "white" },
         others: { icon: "material-symbols:tv-gen-outline", color: "red" },
       },
-    }
+    };
   },
   methods: {
     closevideo() {
       //console.log(this.$refs.player1)
-      this.$refs.player1.pause()
-      this.showvideo = false
-      this.videolink = ''
-      this.currentTime = 0
+      //this.$refs.player1.pause();
+      this.showvideo = false;
+      this.videolink = "";
+      this.currentTime = 0;
     },
-    showvideo1(link) {
-      //console.log(link)
-      this.showvideo = true
-      this.videolink = link
-      this.currentTime = 0
-//      console.log(link + '-' + videolink + '-' + showvideo)
+    showvideo1(link, title1, info) {
+      console.log(title1)
+      this.showvideo = true;
+      this.videolink = link;
+      this.videotitle = title1;
+      this.currentTime = 0;
+      this.alldate = info;
+      this.nuevoOptions = {
+        videoInfo: true,
+        contextMenu: true,
+        resume: false
+      };
     }
   },
+  components: { Videoplayer }
 }
 </script>
 
 
-<style></style>
+<style>
+.v-card-text {
+  padding: 0px !important;
+}
+
+.v-card--variant-outlined {
+  border: transparent !important;
+}
+</style>

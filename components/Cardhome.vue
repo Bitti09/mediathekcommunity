@@ -1,21 +1,19 @@
 <template>
   <div>
-    <v-card max-width="400" min-width="300" height="280">
+    <v-card max-width="400" min-width="300" height="250">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
         </template>
         {{ posts.title }}
       </v-card-title>
-      <v-card-subtitle>
-        {{ posts.subtitle }}
-        <template v-show="posts.type == 'series'">
-          - {{ posts.episodes }} Episode(n)
-        </template>
-      </v-card-subtitle>
       <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
-        <v-dialog v-model="dialog" activator="parent" width="calc(100% - 48px)%">
-          <Carddetail :posts="posts" :showtype="showtype" :width2="width1" />
+        <v-dialog activator="parent" scrollable width="100%" max-width="100%" max-height="100vw">
+          <v-card :width="width1" class="mx-auto">
+            <v-card-text style="height: auto;">
+              <Carddetail :posts="posts" :showtype="showtype" class="mx-auto" />
+            </v-card-text>
+          </v-card>
         </v-dialog></v-img>
     </v-card>
   </div>
@@ -27,7 +25,7 @@ const width1 = computed(() => {
   // name is reactive and
   // must use .value
   switch (name.value) {
-    case 'xs': return 300
+    case 'xs': return 350
     case 'sm': return 600
     case 'md': return 700
     case 'lg': return 900
