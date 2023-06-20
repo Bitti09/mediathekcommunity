@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card :width="width2" class="mx-auto">
+    <v-card width="100%" class="ma-0" variant="outlined">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
@@ -18,7 +18,7 @@
       </v-template>
       <v-template v-show="showvideo == true">
         <Videoplayer :videolink="videolink" ref="player1" :showvideo="showvideo" :videoid="posts.heroimage.id"
-          :vidtitle="nuevoOptions" :videotitl1="videotitle" :alldate="alldate"/>
+          :vidtitle="nuevoOptions" :videotitl1="videotitle" :alldate="alldate" />
       </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
@@ -83,7 +83,7 @@
                     <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                        @click="showvideo1(i.directlink, i.Title,i)">
+                          @click="showvideo1(i.directlink, i.Title, i)">
                           Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -128,7 +128,7 @@
                     <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                          @click="showvideo1(i.directlink, i.Title,i)">
+                          @click="showvideo1(i.directlink, i.Title, i)">
                           <Icon name="mdi:play" size="24" color="white" /> Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -162,7 +162,7 @@
               </v-col>
               <v-col class="d-flex justify-center">
                 <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                  @click="showvideo1(posts.directlink,posts.title,posts)">
+                  @click="showvideo1(posts.directlink, posts.title, posts)">
                   <Icon name="mdi:play" size="24" color="white" /> Play
                 </v-btn>
                 <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -235,7 +235,7 @@ export default {
       this.videolink = "";
       this.currentTime = 0;
     },
-    showvideo1(link, title1,info) {
+    showvideo1(link, title1, info) {
       console.log(title1)
       this.showvideo = true;
       this.videolink = link;
@@ -254,4 +254,12 @@ export default {
 </script>
 
 
-<style></style>
+<style scoped>
+.v-card-text {
+  padding: 0px !important;
+}
+
+.v-card--variant-outlined {
+  border: transparent !important;
+}
+</style>

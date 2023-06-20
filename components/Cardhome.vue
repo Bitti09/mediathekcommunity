@@ -14,10 +14,10 @@
         </template>
       </v-card-subtitle>
       <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
-        <v-dialog activator="parent" scrollable width="calc(100% - 0px)%">
-          <v-card width="calc(100% - 0px)%" class="mx-auto">
-            <v-card-text style="height: calc(100% - 48px)%;">
-          <Carddetail :posts="posts" :showtype="showtype" :width2="width1" />
+        <v-dialog activator="parent" scrollable width="100%" max-width="100%">
+          <v-card :width="width1" class="mx-auto">
+            <v-card-text style="height: calc(100% - 0)%;"  variant="outlined">
+          <Carddetail :posts="posts" :showtype="showtype"   class="mx-auto" />
               </v-card-text>
            </v-card> 
         </v-dialog></v-img>
@@ -31,7 +31,7 @@ const width1 = computed(() => {
   // name is reactive and
   // must use .value
   switch (name.value) {
-    case 'xs': return 300
+    case 'xs': return 350
     case 'sm': return 600
     case 'md': return 700
     case 'lg': return 900

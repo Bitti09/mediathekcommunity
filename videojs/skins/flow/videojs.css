@@ -621,7 +621,7 @@
 	border: solid 1px #DADCE0;
 	position: absolute;
 	white-space:nowrap;
-	z-Index:99;
+	z-index:99;
 	-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.75);
 	box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.75);
 }
@@ -1452,7 +1452,7 @@ body.vjs-full-window {
 	content: "\f112";
 }
 .video-js .vjs-mute-control.vjs-vol-0:after{
-	content: '×';
+	content: 'ï¿½';
     font-weight: normal;
     font-size: 20px;
 	position: absolute;
