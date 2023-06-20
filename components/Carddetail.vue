@@ -19,8 +19,8 @@
       <v-template v-show="showvideo == true">
         <Player ref="player1" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
           <Video>
-            <source :data-src="videolink" type="video/mp4" quality="720"/>
-            <source :data-src="videolink" type="video/mp4" quality="1080"/>
+            <source :data-src="videolink" type="video/mp4" quality="720p"/>
+            <source :data-src="videolink" type="video/mp4" quality="1080p"/>
           </Video>
 
           <DefaultUi>
