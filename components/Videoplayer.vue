@@ -26,7 +26,7 @@ export default {
     const videojsOptions = {
       controls: true,
       preload: 'auto',
-      playsinline: 'false',
+      playsinline: 'true',
     }
 
     // nuevo plugin options

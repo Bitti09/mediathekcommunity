@@ -24,7 +24,7 @@
         <v-tab value="one">Details</v-tab>
         <v-tab v-if="posts.type == 'series'" value="two">Episoden</v-tab>
         <v-tab v-if="posts.type == 'series'" value="three">Episoden - OMU</v-tab>
-        <v-tab v-if="posts.type == 'movie'" value="four">Links</v-tab>
+        <v-tab v-if="posts.type != 'series'" value="four">Links</v-tab>
       </v-tabs>
       <v-card-text>
 
@@ -148,28 +148,26 @@
               </v-expansion-panel>
             </v-expansion-panels> </v-window-item>
           <v-window-item value="four">
-            <v-row no-gutters>
-              <v-col cols="4" class="d-flex justify-start">
-                Senderseite
-              </v-col>
-              <v-col cols="8" class="d-flex justify-center">
-                <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
-              </v-col>
-            </v-row>
-            <v-row v-show="posts.directlink">
-              <v-col cols="4" class="d-flex justify-start">
-                Direktlink
-              </v-col>
-              <v-col class="d-flex justify-center">
-                <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                  @click="showvideo1(posts.directlink, posts.title, posts)">
-                  <Icon name="mdi:play" size="24" color="white" /> Play
-                </v-btn>
-                <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
-                  <Icon name="mdi:stop" size="24" color="white" /> Stop
-                </v-btn>
-              </v-col>
-            </v-row>
+            <v-table>
+              <tbody>
+                <tr>
+                  <td> Senderseite</td>
+                  <td> <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Direktlink</td>
+                  <td><v-btn v-show="showvideo == false" color="orange-lighten-2" text tile position="static"
+                      style="width: 6rem !important" @click="showvideo1(posts.directlink, posts.title, posts)">
+                      <Icon name="mdi:play" size="24" color="white" /> Play
+                    </v-btn>
+                    <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
+                      <Icon name="mdi:stop" size="24" color="white" /> Stop
+                    </v-btn>
+                  </td>
+                </tr>
+              </tbody>
+            </v-table>
           </v-window-item>
         </v-window>
       </v-card-text>
@@ -254,7 +252,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .v-card-text {
   padding: 0px !important;
 }
