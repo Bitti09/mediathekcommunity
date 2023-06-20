@@ -70,7 +70,6 @@ const breaks = {
   },
 }
 posts.value = await getItems({ collection: "mediathek", params: { fields: ['*,coverimage.id,heroimage.id'], filter: filters, sort: "-date_created" } });
-const { data: info } = await useFetch('/api/info')
 // import function to register Swiper custom elements
 // register Swiper custom elements
 register();

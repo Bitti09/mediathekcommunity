@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-card title="Zuletzt hinzugefügt" variant="outlined">
-             <Swiper :slides-per-view="0" :space-between="0" :loop="false" :breakpoints="breaks">
+            <Swiper :slides-per-view="0" :space-between="0" :loop="false" :breakpoints="breaks">
                 <template v-for="(post, i) in posts" :key="post.id">
                     <SwiperSlide>
                         <Cardhome :posts="post" :showtype="true" :width1="width1" :height1="height1"></Cardhome>
@@ -43,6 +43,9 @@ import { onMounted } from 'vue'
 import { countBy, keys } from 'lodash-es';
 import { useDisplay } from 'vuetify'
 const { name } = useDisplay()
+const router = useRouter();
+let posts = ref()
+let grouped = ref()
 const height1 = computed(() => {
     // name is reactive and
     // must use .value
@@ -71,9 +74,7 @@ const width1 = computed(() => {
 
     return undefined
 })
-const router = useRouter();
-let posts = ref()
-let grouped = ref()
+
 const breaks = {
     0: {
         slidesPerView: 1,
@@ -107,8 +108,9 @@ posts.value = await getItems({ collection: "mediathek", params: { fields: ['*,co
 watch(posts, (newValue, oldValue) => {
     if (newValue.length != 0) {
         grouped.value = keys(countBy(newValue, function (newValue) { return newValue.country; }))
-    }/**/
-}, { immediate: true })
+    }
+},
+    { immediate: true })
 </script>
 <script>
 export default {
