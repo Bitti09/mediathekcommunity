@@ -11,9 +11,9 @@
         <v-dialog activator="parent" scrollable width="100%" max-width="100%" max-height="100vw">
           <v-card :width="width1" class="mx-auto">
             <v-card-text style="height: auto;">
-          <Carddetail :posts="posts" :showtype="showtype"   class="mx-auto" />
-              </v-card-text>
-           </v-card> 
+              <Carddetail :posts="posts" :showtype="showtype" class="mx-auto" />
+            </v-card-text>
+          </v-card>
         </v-dialog></v-img>
     </v-card>
   </div>

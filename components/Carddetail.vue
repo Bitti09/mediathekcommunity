@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card width="100%" class="ma-0" variant="outlined">
+    <v-card width="100%" class="ma-0">
       <v-card-title>
         <template v-if="showtype">
           <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
@@ -155,7 +155,7 @@
                   <td> <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
                   </td>
                 </tr>
-                <tr>
+                <tr v-show="posts.country == 'de'">
                   <td>Direktlink</td>
                   <td><v-btn v-show="showvideo == false" color="orange-lighten-2" text tile position="static"
                       style="width: 6rem !important" @click="showvideo1(posts.directlink, posts.title, posts)">
