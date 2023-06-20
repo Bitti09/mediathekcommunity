@@ -19,19 +19,6 @@
       <v-template v-show="showvideo == true">
         <Videoplayer :videolink="videolink" ref="player1" :showvideo="showvideo" :videoid="posts.heroimage.id"
           :vidtitle="nuevoOptions" :videotitl1="videotitle" :alldate="alldate"/>
-        <!-- 
-        <Player ref="player1" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
-          <Video>
-            <source :data-src="videolink" type="video/mp4" quality="720p"/>
-            <source :data-src="videolink" type="video/mp4" quality="1080p"/>
-          </Video>
-
-          <DefaultUi>
-            Custom UI component.  
-            <TapSidesToSeek />
-          </DefaultUi>
-        </Player>
-      -->
       </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
@@ -175,7 +162,7 @@
               </v-col>
               <v-col class="d-flex justify-center">
                 <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                  @click="showvideo1(posts.directlink, i.Title)">
+                  @click="showvideo1(posts.directlink,posts.title,posts)">
                   <Icon name="mdi:play" size="24" color="white" /> Play
                 </v-btn>
                 <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
