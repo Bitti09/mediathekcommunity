@@ -178,7 +178,7 @@
 </template>
 <script setup>
 import { Player, Video, DefaultUi } from '@vime/vue-next';
-import Videoplayer from './videoplayer.vue';
+import Videoplayer from '@/components/videoplayer.vue';
 // Default theme.
 import '@vime/core/themes/default.css';
 </script>
