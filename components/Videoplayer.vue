@@ -19,8 +19,7 @@ export default {
   data: () => ({
   }),
   mounted() {
-
-    console.log('Component mounted.' + this.showvideo + ' - ' + this.videoid + ' - ' + this.vidtitle)
+    //console.log('Component mounted.' + this.showvideo + ' - ' + this.videoid + ' - ' + this.vidtitle)
     // Prepare 2 videos with details
     // videojs options
     const videojsOptions = {
@@ -28,7 +27,6 @@ export default {
       preload: 'auto',
       playsinline: 'true',
     }
-
     // nuevo plugin options
     let nuevoOptions = {
       videoInfo: true,
@@ -37,10 +35,8 @@ export default {
       pipButton: false,
       relatedMenu: false,
       shareMenu: false
-    };/**/
-
+    };
     // initialize videojs player
-
     this.player = videojs(
       this.$refs.videoPlayer,
       videojsOptions,
@@ -49,17 +45,8 @@ export default {
 
       }
     )
-
-
-    //console.log("ready" + video_1);
-    console.log("source set");
-    //initialize nuevo plugin
-    console.log('nuevoOptions')
     this.player.nuevo(nuevoOptions)
     this.player.currentTime(0)
-    //initialize VTT thumbnails plugin (optionally)
-    // set video 1 source when nuevo plugin is ready 
-
     this.player.on("ready", function () {
       this.player.currentTime(0)
       //console.log("ready" + video_1);
@@ -69,15 +56,12 @@ export default {
 
   watch: {
     // whenever question changes, this function will run
-    alldate(newQuestion, oldQuestion) {
-      console.log('alldate changed to ' + newQuestion)
-    },
     showvideo(showvideo1, oldQuestion) {
       if (oldQuestion == false) {
         if (this.player) {
           let video_1 = {}
           video_1.sources = []
-          console.log('showvideo changed to ' + this.videotitl1)
+          //console.log('showvideo changed to ' + this.videotitl1)
           video_1.infoTitle = this.videotitl1
           video_1.title = this.videotitl1
           if (this.alldate.directlink) {
@@ -90,14 +74,14 @@ export default {
           if (this.alldate.directlinkfhd) {
             let x = {
               src: this.alldate.directlinkfhd, type: "video/mp4",
-              res: "1080", label: "1080",default: true
+              res: "1080", label: "1080", default: true
             }
             video_1.sources.push(x)
           }
           if (this.alldate.directlinkhd) {
             let x = {
               src: this.alldate.directlinkhd, type: "video/mp4",
-              res: "720", label: "720",default: true
+              res: "720", label: "720", default: true
             }
             video_1.sources.push(x)
           }
@@ -115,34 +99,19 @@ export default {
             }
             video_1.sources.push(x)
           }
-          console.log('video_1 changed to ' + JSON.stringify(video_1.sources))
-
+          //console.log('video_1 changed to ' + JSON.stringify(video_1.sources))
           this.player.setSource(video_1)
-          console.log(this.alldate)
+          //console.log(this.alldate)
           this.player.pause()
           this.player.currentTime(0)
         }
       } else {
         if (this.player) {
-
           this.player.pause()
           this.player.currentTime(0)
         }
       }
     }
   },
-
-
 }
 </script>
-<!-- 
-  < style >
-  .mediacontainer {
-  with: 100 %;
-  max - width: 800px;
-  margin: 10px auto;
-}
-  .p {
-  text - align: center;
-}
-  </style >*/-->

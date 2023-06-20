@@ -27,7 +27,6 @@
         <v-tab v-if="posts.type != 'series'" value="four">Links</v-tab>
       </v-tabs>
       <v-card-text>
-
         <v-window v-model="tab">
           <v-window-item value="one">
             <v-table>
@@ -57,7 +56,6 @@
               </tbody>
             </v-table>
           </v-window-item>
-
           <v-window-item value="two" v-if="posts.type == 'series'">
             <v-expansion-panels variant="accordion">
               <v-expansion-panel v-for="(i, index) in posts.listepisodes" :key="index" v-show="!i.omu">
