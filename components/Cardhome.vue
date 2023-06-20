@@ -15,7 +15,11 @@
       </v-card-subtitle>
       <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
         <v-dialog activator="parent" scrollable width="calc(100% - 48px)%">
+          <v-card>
+            <v-card-text style="height: calc(100% - 48px)%;">
           <Carddetail :posts="posts" :showtype="showtype" :width2="width1" />
+              </v-card-text>
+           </v-card> 
         </v-dialog></v-img>
     </v-card>
   </div>
