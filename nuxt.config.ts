@@ -4,7 +4,7 @@ export default defineNuxtConfig({
         enabled: true
     },
 
-    css: ['vuetify/lib/styles/main.sass', '@vime/core/themes/default.css'
+    css: ['vuetify/lib/styles/main.sass', '@vime/core/themes/default.css','~/videojs/skins/treso/videojs.css'
 
     ],
 

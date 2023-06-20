@@ -17,6 +17,9 @@
         <v-img :src="'https://api.mediathek.community/assets/' + posts.heroimage.id" max-height="450px"></v-img>
       </v-template>
       <v-template v-show="showvideo == true">
+        <Videoplayer :videolink="videolink" ref="player1" :showvideo="showvideo" :videoid="posts.heroimage.id"
+          :vidtitle="nuevoOptions" :videotitl1="videotitle" :alldate="alldate"/>
+        <!-- 
         <Player ref="player1" @vPlaybackReady="onPlaybackReady" :currentTime="currentTime">
           <Video>
             <source :data-src="videolink" type="video/mp4" quality="720p"/>
@@ -24,11 +27,11 @@
           </Video>
 
           <DefaultUi>
-            <!-- Custom UI component. -->
+            Custom UI component.  
             <TapSidesToSeek />
           </DefaultUi>
         </Player>
-        <v-clappr :source="videolink" />
+      -->
       </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
@@ -93,7 +96,7 @@
                     <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                          @click="showvideo1(i.directlink)">
+                        @click="showvideo1(i.directlink, i.Title,i)">
                           Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -135,10 +138,10 @@
                         </v-btn> </v-sheet>
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col v-show="i.directlink">
+                    <v-col>
                       <v-sheet class="pa-2 ma-2">
                         <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                          @click="showvideo1(i.directlink)">
+                          @click="showvideo1(i.directlink, i.Title,i)">
                           <Icon name="mdi:play" size="24" color="white" /> Play
                         </v-btn>
                         <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -172,7 +175,7 @@
               </v-col>
               <v-col class="d-flex justify-center">
                 <v-btn v-show="showvideo == false" color="orange-lighten-2" variant="text"
-                  @click="showvideo1(posts.directlink)">
+                  @click="showvideo1(posts.directlink, i.Title)">
                   <Icon name="mdi:play" size="24" color="white" /> Play
                 </v-btn>
                 <v-btn v-show="showvideo == true" color="orange-lighten-2" variant="text" @click="closevideo()">
@@ -188,39 +191,19 @@
 </template>
 <script setup>
 import { Player, Video, DefaultUi } from '@vime/vue-next';
-
+import Videoplayer from './videoplayer.vue';
 // Default theme.
 import '@vime/core/themes/default.css';
-/*
-let videolink = ref('')
-let player1 = ref(null)
-let currentTime = ref(0)
-let showvideo = ref(false)
-function closevideo() {
-  console.log(this.$refs.player1)
-  this.$refs.player1.pause()
-  showvideo.value = false
-  videolink.value = ''
-  currentTime.value = 0
-}
-function showvideo1(link) {
-  console.log(link)
-  showvideo.value = true
-  videolink.value = link
-  currentTime.value = 0
-  console.log(link + '-' + videolink + '-' + showvideo)
-
-}*/
 </script>
 <script>
 export default {
   props: [
-    'posts',
-    'showtype',
-    'width2'
+    "posts",
+    "showtype",
+    "width2"
   ],
   computed: {
-    player11() {
+    player1() {
       return this.$refs.player1;
     },
   },
@@ -228,8 +211,12 @@ export default {
     return {
       dialog: false,
       show: false,
-      tab: '',
-      videolink:'',
+      tab: "",
+      alldate: null,
+      videolink: "",
+      videotitle: "",
+      title: "",
+      nuevoOptions: {},
       player1: null,
       currentTime: 0,
       showvideo: false,
@@ -251,24 +238,31 @@ export default {
         series: { icon: "mdi:television", color: "white" },
         others: { icon: "material-symbols:tv-gen-outline", color: "red" },
       },
-    }
+    };
   },
   methods: {
     closevideo() {
       //console.log(this.$refs.player1)
-      this.$refs.player1.pause()
-      this.showvideo = false
-      this.videolink = ''
-      this.currentTime = 0
+      //this.$refs.player1.pause();
+      this.showvideo = false;
+      this.videolink = "";
+      this.currentTime = 0;
     },
-    showvideo1(link) {
-      //console.log(link)
-      this.showvideo = true
-      this.videolink = link
-      this.currentTime = 0
-//      console.log(link + '-' + videolink + '-' + showvideo)
+    showvideo1(link, title1,info) {
+      console.log(title1)
+      this.showvideo = true;
+      this.videolink = link;
+      this.videotitle = title1;
+      this.currentTime = 0;
+      this.alldate = info;
+      this.nuevoOptions = {
+        videoInfo: true,
+        contextMenu: true,
+        resume: false
+      };
     }
   },
+  components: { Videoplayer }
 }
 </script>
 
