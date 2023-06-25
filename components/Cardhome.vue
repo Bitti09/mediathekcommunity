@@ -1,13 +1,14 @@
 <template>
   <div>
-    <v-card max-width="400" min-width="300" height="250">
-      <v-card-title>
-        <template v-if="showtype">
-          <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
-        </template>
-        {{ posts.title }}
-      </v-card-title>
-      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="200px" contain>
+    <v-card max-width="400" min-width="300" height="220">
+      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="220px" contain>
+        <v-card-title class="cardimage">
+
+          <template v-if="showtype">
+            <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
+          </template>
+          {{ posts.title }}
+        </v-card-title>
         <v-dialog activator="parent" scrollable width="100%" max-width="100%" max-height="100vw">
           <v-card :width="width1" class="mx-auto">
             <v-card-text style="height: auto;">
@@ -67,3 +68,13 @@ export default {
   }),
 }
 </script>
+<style scoped>
+.cardimage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.47);
+
+}
+</style>

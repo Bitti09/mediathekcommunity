@@ -1,8 +1,6 @@
 <template>
-  <div id='app'>
-    <div class="mediacontainer">
-      <video ref="videoPlayer" class="video-js vjs-fluid"></video>
-    </div>
+  <div class="mediacontainer">
+    <video ref="videoPlayer" class="video-js vjs-fluid"></video>
   </div>
 </template>
   
@@ -17,11 +15,9 @@ export default {
   props: ['showvideo', 'videoid', 'vidtitle', 'videotitl1', 'alldate'],
   name: 'App',
   data: () => ({
+    coverimage: '',
   }),
   mounted() {
-    //console.log('Component mounted.' + this.showvideo + ' - ' + this.videoid + ' - ' + this.vidtitle)
-    // Prepare 2 videos with details
-    // videojs options
     const videojsOptions = {
       controls: true,
       preload: 'auto',
@@ -36,34 +32,34 @@ export default {
       relatedMenu: false,
       shareMenu: false
     };
-    // initialize videojs player
-    this.player = videojs(
-      this.$refs.videoPlayer,
-      videojsOptions,
-      function onPlayerReady() {
-        console.log('onPlayerReady')
-
-      }
-    )
-    this.player.nuevo(nuevoOptions)
-    this.player.currentTime(0)
-    this.player.on("ready", function () {
-      this.player.currentTime(0)
-      //console.log("ready" + video_1);
-      console.log("source set");
-    });
-  },
+   },
 
   watch: {
     // whenever question changes, this function will run
     showvideo(showvideo1, oldQuestion) {
       if (oldQuestion == false) {
-        if (this.player) {
-          let video_1 = {}
-          video_1.sources = []
-          //console.log('showvideo changed to ' + this.videotitl1)
-          video_1.infoTitle = this.videotitl1
-          video_1.title = this.videotitl1
+        if (this.alldate.mid) {
+          this.coverimage = this.alldate.mid.coverimage.id
+        } else {
+          this.coverimage = this.alldate.coverimage.id
+        }
+        let video_1 = {}
+        video_1.sources = []
+        //console.log('showvideo changed to ' + this.videotitl1)
+        video_1.infoTitle = this.videotitl1
+        video_1.title = this.videotitl1
+        if (this.alldate.format == 'application/dash+xml') {
+          let x = {
+            src: this.alldate.directlink, type: "application/dash+xml",
+          }
+          video_1.sources.push(x)
+        }
+        else if (this.alldate.format == 'application/x-mpegURL') {
+          let x = {
+            src: this.alldate.directlink, type: "application/x-mpegURL"
+          }
+          video_1.sources.push(x)
+        } else {
           if (this.alldate.directlink) {
             let x = {
               src: this.alldate.directlink, type: "video/mp4",
@@ -99,12 +95,17 @@ export default {
             }
             video_1.sources.push(x)
           }
-          //console.log('video_1 changed to ' + JSON.stringify(video_1.sources))
-          this.player.setSource(video_1)
-          //console.log(this.alldate)
-          this.player.pause()
-          this.player.currentTime(0)
         }
+        this.player = videojs(
+          this.$refs.videoPlayer,
+          this.videojsOptions,
+          function onPlayerReady() {
+          }),
+          this.player.nuevo(this.nuevoOptions)
+        this.player.poster('https://api.mediathek.community/assets/' + this.coverimage)
+        this.player.setSource(video_1)
+        this.player.pause()
+        this.player.currentTime(0)
       } else {
         if (this.player) {
           this.player.pause()

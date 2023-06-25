@@ -153,7 +153,7 @@
                   <td> <a :href="posts.detailslink" target="_blank">{{ posts.channel }}</a>
                   </td>
                 </tr>
-                <tr v-show="posts.country == 'de'">
+                <tr>
                   <td>Direktlink</td>
                   <td><v-btn v-show="showvideo == false" color="orange-lighten-2" text tile position="static"
                       style="width: 6rem !important" @click="showvideo1(posts.directlink, posts.title, posts)">
@@ -173,11 +173,8 @@
   </div>
 </template>
 <script setup>
-import { Player, Video, DefaultUi } from '@vime/vue-next';
-import Videoplayer from '@/components/Videoplayer.vue';
-// Default theme.
-import '@vime/core/themes/default.css';
-</script>
+ import Videoplayer from '@/components/Videoplayer.vue';
+  </script>
 <script>
 export default {
   props: [
@@ -248,8 +245,6 @@ export default {
   components: { Videoplayer }
 }
 </script>
-
-
 <style>
 .v-card-text {
   padding: 0px !important;
