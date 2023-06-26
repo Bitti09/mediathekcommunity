@@ -173,8 +173,8 @@
   </div>
 </template>
 <script setup>
- import Videoplayer from '@/components/Videoplayer.vue';
-  </script>
+import Videoplayer from '@/components/Videoplayer.vue';
+</script>
 <script>
 export default {
   props: [
@@ -217,6 +217,7 @@ export default {
         movie: { icon: "mdi:movie-open-outline", color: "white" },
         series: { icon: "mdi:television", color: "white" },
         others: { icon: "material-symbols:tv-gen-outline", color: "red" },
+        music: { icon: "mdi:music", color: "white" },
       },
     };
   },

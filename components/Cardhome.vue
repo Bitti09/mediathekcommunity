@@ -64,6 +64,7 @@ export default {
       movie: { icon: "mdi:movie-open-outline", color: "white" },
       series: { icon: "mdi:television", color: "white" },
       others: { icon: "material-symbols:tv-gen-outline", color: "red" },
+      music: { icon: "mdi:music", color: "white" },
     },
   }),
 }

@@ -1,14 +1,15 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// https://nuxt.com/docs/api/configuration/nuxt-
+// @ts-ignore
 export default defineNuxtConfig({
     devtools: {
-        enabled: false
+        enabled: true
     },
 
-    css: ['vuetify/lib/styles/main.sass','~/videojs/skins/treso/videojs.css'
+    css: ['vuetify/lib/styles/main.sass', '~/videojs/skins/treso/videojs.css'
 
     ],
 
-    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash', 'nuxt-swiper'
+    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash', 'nuxt-swiper', '@nuxtjs/i18n'
     ],
 
     build: {
@@ -37,4 +38,22 @@ export default defineNuxtConfig({
             isCustomElement: tag => ['swiper-container', 'swiper-slide'].includes(tag),
         },
     },
+    i18n: {
+        locales: [
+          {
+            code: 'en',
+            file: 'en_US.json',
+          },
+          {
+            code: 'de',
+            file: 'de_DE.json',
+          },
+        ],
+        strategy: 'no_prefix',
+        detectBrowserLanguage: true,
+        lazy: true,
+        langDir: 'translates',
+        defaultLocale: 'en',
+        vueI18n: './nuxt-i18n.js' // custom path example
+      },
 });

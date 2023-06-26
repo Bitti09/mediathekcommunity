@@ -15,6 +15,9 @@
       <v-btn icon exact to="/series" active-class="btnselected">
         <v-icon :icon="mdiTelevisionClassic" />
       </v-btn>
+      <v-btn icon exact to="/music" active-class="btnselected">
+        <v-icon :icon="mdiMusic" />
+      </v-btn>
       <v-btn icon exact active-class="btnselected">
         <v-icon :icon="mdiChatOutline" />
       </v-btn>
@@ -23,7 +26,7 @@
 </template>
 
 <script setup>
-import { mdiTelevisionClassic, mdiMovieOpenOutline, mdiChatOutline, mdiHomeVariantOutline } from '@mdi/js'
+import { mdiTelevisionClassic, mdiMovieOpenOutline, mdiChatOutline, mdiHomeVariantOutline, mdiMusic } from '@mdi/js'
 </script>
 <style scoped lang="scss">
 .btnselected {
