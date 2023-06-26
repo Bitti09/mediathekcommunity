@@ -9,7 +9,7 @@
                 </template>
             </Swiper>
         </v-card>
-        <v-card :title="$t('section.array')" variant="outlined" v-show="grouped.includes('de')">
+        <v-card title="Deutsche Mediatheken" variant="outlined" v-show="grouped.includes('de')">
             <Swiper :slides-per-view="0" :space-between="0" :loop="false" :breakpoints="breaks">
                 <template v-for="(post, i) in posts" :key="post.id">
                     <SwiperSlide v-if="post.country == 'de'">
