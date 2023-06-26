@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
     ],
 
-    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash', 'nuxt-swiper', '@nuxtjs/i18n'
+    modules: ['nuxt-directus', 'nuxt-cloudflare-analytics', 'nuxt-icon', 'nuxt-lodash', 'nuxt-swiper'
     ],
 
     build: {
@@ -37,22 +37,5 @@ export default defineNuxtConfig({
         compilerOptions: {
             isCustomElement: tag => ['swiper-container', 'swiper-slide'].includes(tag),
         },
-    },
-    i18n: {
-        locales: [
-          {
-            code: 'en',
-            file: 'en_US.json',
-          },
-          {
-            code: 'de',
-            file: 'de_DE.json',
-          },
-        ],
-        strategy: 'no_prefix',
-        detectBrowserLanguage: true,
-        lazy: true,
-        langDir: 'translates',
-        defaultLocale: 'en',
-      },
+    }
 });
