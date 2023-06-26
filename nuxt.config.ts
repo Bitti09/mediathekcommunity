@@ -54,6 +54,6 @@ export default defineNuxtConfig({
         lazy: true,
         langDir: 'translates',
         defaultLocale: 'en',
-        vueI18n: './nuxt-i18n.js' // custom path example
+        vueI18n: './nuxt-i18n.config.js' // custom path example
       },
 });
