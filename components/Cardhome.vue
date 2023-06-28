@@ -5,7 +5,7 @@
         <v-card-title class="cardimage">
 
           <template v-if="showtype">
-            <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
+            <Icon :name="type[posts.category].icon" size="24" :color="type[posts.category].color" />
           </template>
           {{ posts.title }}
         </v-card-title>

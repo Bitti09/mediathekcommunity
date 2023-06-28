@@ -3,13 +3,13 @@
     <v-card width="100%" class="ma-0">
       <v-card-title>
         <template v-if="showtype">
-          <Icon :name="type[posts.type].icon" size="24" :color="type[posts.type].color" />
+          <Icon :name="type[posts.category].icon" size="24" :color="type[posts.category].color" />
         </template>
         {{ posts.title }}
       </v-card-title>
       <v-card-subtitle>
         {{ posts.subtitle }}
-        <template v-show="posts.type == 'series'">
+        <template v-show="posts.category == 'series'">
           - {{ posts.episodes }} Episode(n)
         </template>
       </v-card-subtitle>
@@ -22,16 +22,16 @@
       </v-template>
       <v-tabs v-model="tab" bg-color="primary">
         <v-tab value="one">Details</v-tab>
-        <v-tab v-if="posts.type == 'series'" value="two">Episoden</v-tab>
-        <v-tab v-if="posts.type == 'series'" value="three">Episoden - OMU</v-tab>
-        <v-tab v-if="posts.type != 'series'" value="four">Links</v-tab>
+        <v-tab v-if="posts.category == 'series'" value="two">Episoden</v-tab>
+        <v-tab v-if="posts.category == 'series'" value="three">Episoden - OMU</v-tab>
+        <v-tab v-if="posts.category != 'series'" value="four">Links</v-tab>
       </v-tabs>
       <v-card-text>
         <v-window v-model="tab">
           <v-window-item value="one">
             <v-table>
               <tbody>
-                <tr v-if="posts.type == 'series'">
+                <tr v-if="posts.category == 'series'">
                   <td> Episodes</td>
                   <td> {{ posts.episodes }} </td>
                 </tr>
@@ -56,7 +56,7 @@
               </tbody>
             </v-table>
           </v-window-item>
-          <v-window-item value="two" v-if="posts.type == 'series'">
+          <v-window-item value="two" v-if="posts.category == 'series'">
             <v-expansion-panels variant="accordion">
               <v-expansion-panel v-for="(i, index) in posts.listepisodes" :key="index" v-show="!i.omu">
                 <v-expansion-panel-title>
