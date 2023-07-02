@@ -46,7 +46,7 @@ let grouped = ref()
 let posts = ref()
 const router = useRouter();
 const { getItems } = useDirectusItems();
-const filters = { type: "series" };
+const filters = { category: "series" };
 const breaks = {
   490: {
     slidesPerView: 2,
