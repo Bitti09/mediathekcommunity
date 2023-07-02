@@ -11,13 +11,13 @@
   "devDependencies": {
     "@invictus.codes/nuxt-vuetify": "^0.2.20",
     "@mdi/js": "^7.2.96",
-    "@nuxt/devtools": "^0.6.4",
+    "@nuxt/devtools": "^0.6.6",
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^20.3.2",
+    "@types/node": "^20.3.3",
     "nuxt": "^3.6.1",
     "nuxt-directus": "^5.4.4",
-    "nuxt-icon": "^0.4.1",
+    "nuxt-icon": "^0.4.2",
     "nuxt-lodash": "^2.5.0"
   },
   "dependencies": {
