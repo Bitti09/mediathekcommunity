@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     directus: {
         autoFetch: true,
         url: 'https://api.mediathek.community/',
-        token: 'Oxq-DfaVvPcWI4tNjwlMNeHUZT0q_SZE',
+        token: 'fnzDPNZGV481krf-X7F1lt6rXAs646PW',
     },
 
     cloudflareAnalytics: {
