@@ -9,7 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@invictus.codes/nuxt-vuetify": "^0.2.20",
+    "@invictus.codes/nuxt-vuetify": "^0.2.23",
     "@mdi/js": "^7.2.96",
     "@nuxt/devtools": "^0.6.6",
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
