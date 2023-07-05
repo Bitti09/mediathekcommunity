@@ -11,11 +11,11 @@
   "devDependencies": {
     "@invictus.codes/nuxt-vuetify": "^0.2.23",
     "@mdi/js": "^7.2.96",
-    "@nuxt/devtools": "^0.6.6",
+    "@nuxt/devtools": "^0.6.7",
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^20.3.3",
-    "nuxt": "^3.6.1",
+    "@types/node": "^20.4.0",
+    "nuxt": "^3.6.2",
     "nuxt-directus": "^5.4.4",
     "nuxt-icon": "^0.4.2",
     "nuxt-lodash": "^2.5.0"
@@ -25,8 +25,8 @@
     "nuxt-cloudflare-analytics": "^1.0.8",
     "nuxt-swiper": "^1.1.1",
     "sass": "^1.63.6",
-    "swiper": "^10.0.0",
+    "swiper": "^10.0.3",
     "video.js": "^8.3.0",
-    "vuetify": "^3.3.6"
+    "vuetify": "^3.3.7"
   }
 }

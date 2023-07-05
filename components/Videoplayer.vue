@@ -32,15 +32,19 @@ export default {
       relatedMenu: false,
       shareMenu: false
     };
-   },
+  },
 
   watch: {
     // whenever question changes, this function will run
     showvideo(showvideo1, oldQuestion) {
       if (oldQuestion == false) {
         if (this.alldate.mid) {
-          this.coverimage = this.alldate.mid.coverimage.id
+          console.log('showvideo changed to mid ' + JSON.stringify(this.alldate.mid))
+
+          this.coverimage = this.alldate.mid.coverimage
         } else {
+          console.log('showvideo changed to ' + JSON.stringify(this.alldate.coverimage))
+
           this.coverimage = this.alldate.coverimage.id
         }
         let video_1 = {}
