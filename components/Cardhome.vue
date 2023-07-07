@@ -1,21 +1,14 @@
 <template>
   <div>
-    <v-card max-width="400" min-width="400" height="230">
-      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="230px" contain>
+    <v-card max-width="400" min-width="400" height="230" :href="'/details/' + posts.id">
+      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage" height="230px" contain>
         <v-card-title class="cardimage">
-
           <template v-if="showtype">
             <Icon :name="type[posts.category].icon" size="24" :color="type[posts.category].color" />
           </template>
           {{ posts.title }}
         </v-card-title>
-        <v-dialog activator="parent" scrollable width="100%" max-width="100%" max-height="100vw">
-          <v-card :width="width1" class="mx-auto">
-            <v-card-text style="height: auto;">
-              <Carddetail :posts="posts" :showtype="showtype" class="mx-auto" />
-            </v-card-text>
-          </v-card>
-        </v-dialog></v-img>
+      </v-img>
     </v-card>
   </div>
 </template>
@@ -75,7 +68,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0,0,0,.47);
+  background: rgba(0, 0, 0, .47);
 
 }
 </style>
