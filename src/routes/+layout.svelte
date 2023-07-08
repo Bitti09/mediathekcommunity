@@ -6,24 +6,39 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 
-	import { AppShell } from '@skeletonlabs/skeleton';
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell, Modal,AppBar } from '@skeletonlabs/skeleton';
+	import { modalStore } from '@skeletonlabs/skeleton';
+
+	import ModalComponentOne from '$lib/components/ModalComponentOne.svelte';
+	const modalComponentRegistry = {
+		// Custom Modal 1
+		modalComponentOne: {
+			// Pass a reference to your custom component
+			ref: ModalComponentOne
+		}
+	};
 </script>
+<Modal components={modalComponentRegistry} />
 
 <AppShell>
 	<!-- (header) -->
 	<svelte:fragment slot="sidebarLeft">
-	<Navbar />
+		<Navbar />
 	</svelte:fragment>
 	<!-- (sidebarRight) -->
 	<svelte:fragment slot="header">
-		<AppBar>(title)</AppBar>
+		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+			<svelte:fragment slot="lead">&nbsp;</svelte:fragment>
+			Mediathek Community v0.0.6
+			<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
+		</AppBar>
 	</svelte:fragment>
 	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter">
+	<svelte:fragment slot="footer">
 		<AppBar>
 			<ul class="list">
 				<li>
@@ -32,7 +47,8 @@
 					</span>
 				</li>
 				<li>
-					<span>Data provided by  
+					<span
+						>Data provided by
 						<a
 							target="_blank"
 							href="https://www.themoviedb.org/"
