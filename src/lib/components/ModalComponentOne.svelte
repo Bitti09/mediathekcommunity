@@ -117,16 +117,36 @@
 								<table class="table table-hover">
 									<tbody>
 										<tr>
-											<td colspan="3">row.position</td>
-											<td>row.name</td>
+											<td colspan="3">Sender</td>
+											<td>{$modalProps.channel} </td>
+										</tr>
+										{#if ($modalProps.category == 'series')}
+											<tr>
+												<td colspan="3">Staffeln</td>
+												<td>{$modalProps.episodes} </td>
+											</tr>
+                                            <tr>
+												<td colspan="3">Folgen</td>
+												<td>{$modalProps.listepisodes.length} </td>
+											</tr>
+										{/if}
+										<tr>
+											<td colspan="3">Quality</td>
+											<td>{$modalProps.quality} </td>
+										</tr>
+										<tr>
+											<td colspan="3">publishdate </td>
+											<td>{$modalProps.publishdate} </td>
+										</tr>
+										<tr>
+											<td colspan="3">Online until</td>
+											<td>{$modalProps.delistdate} </td>
+										</tr>
+										<tr>
+											<td colspan="3">description</td>
+											<td>{$modalProps.description} </td>
 										</tr>
 									</tbody>
-									<tfoot>
-										<tr>
-											<th colspan="3">Calculated Total Weight</th>
-											<td>totalWeight</td>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						{:else if tabSet === 1}
