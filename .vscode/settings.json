@@ -102,5 +102,6 @@
 		"track",
 		"width",
 		"zIndex"
-	]
+	],
+	"tailwindCSS.experimental.classRegex": ["[cC]lass=['\"](.*)['|\"]"]
 }
