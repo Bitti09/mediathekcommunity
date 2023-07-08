@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card max-width="400" min-width="400" height="230" :href="'/details/' + posts.id">
-      <v-img :src="'https://api.mediathek.community/assets/' + posts.coverimage.id" height="230px" contain>
+      <v-img :src="'https://api.mediathek.community/assets/' + posts['coverimage'].id" height="230px" contain>
         <v-card-title class="cardimage">
           <template v-if="showtype">
             <Icon :name="type[posts.category].icon" size="24" :color="type[posts.category].color" />
