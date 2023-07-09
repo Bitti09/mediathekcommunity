@@ -29,7 +29,7 @@
 	{:else}
 		<img
 			class="rounded-lg h-64 mx-auto"
-			src="https://api.mediathek.community/assets/{carddata.coverimage}"
+			src="https://img2.mediathek.community/assets/{carddata.coverimage}"
 			alt="description"
 		/>{/if}
 </div>
