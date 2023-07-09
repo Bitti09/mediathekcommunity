@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@directus/sdk": "^11.0.0-beta.3",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@sveltejs/adapter-cloudflare": "^2.3.0",
 		"hls.js": "^1.4.8",
 		"node-gyp": "^9.4.0",
 		"svelte-fa": "^3.0.4",
