@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	export let data;
-	let langdata = {};
+ 	let langdata = {};
 	$: langdata['de'] = data.article.filter((e) => e.country === 'de');
 	$: langdata['se'] = data.article.filter((e) => e.country === 'se');
 	$: langdata['it'] = data.article.filter((e) => e.country === 'it');

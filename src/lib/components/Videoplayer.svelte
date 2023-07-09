@@ -1,113 +1,88 @@
+<!--
 <script>
-	import Hls from 'hls.js';
-	// vidstack imports
 	import 'vidstack/styles/defaults.css';
 	import 'vidstack/styles/community-skin/video.css';
-	import { defineCustomElements } from 'vidstack/elements';
-	import { onDestroy, onMount } from 'svelte';
+	// @ts-ignore
 	import { modalvideo, modalProps } from '$lib/modalPropsStore';
+	import Hls from 'hls.js';
+	// @ts-ignore
+	import { onMount, onDestroy } from 'svelte';
+
+	import { defineCustomElements } from 'vidstack/elements';
+	// @ts-ignore
+	let vidposter;
+	// @ts-ignore
 	let player;
-	let videoEle;
-	import { MediaRemoteControl } from 'vidstack';
-	const remote = new MediaRemoteControl();
+	console.log($modalvideo);
+	defineCustomElements();
 
-	const initPlayer = async () => {
-		await defineCustomElements();
-
-		player.logLevel = 'warn';
-
-		const res = player.querySelector('media-time-slider:first-of-type');
-		// set custom seek duration
-		if (res) {
-			res.step = 2;
-			res.keyStep = 5;
-		}
-
-		player.addEventListener('provider-change', (event) => {
-			console.log('provider change', event);
-
-			const provider = event.detail;
-			if (provider?.type === 'hls') {
-				// Static import
-				provider.library = Hls;
-
-				const cfg = {
-					// your own HLS.js config
-				};
-				provider.config = cfg;
-
-				console.log('HLS library set');
-			}
-		});
-	};
-
-	onMount(async () => {
-		await initPlayer();
-
-		// do with player whatever you want here, e.g. load some HLS stream:
-		player.src = { src: $modalvideo.src, type: $modalvideo.format };
-		player.title = $modalvideo.title;
-		player.poster = $modalvideo.poster;
-	});
-	$: $modalvideo, run();
-
-	function run() {
-		console.log('changes' + $modalvideo);
-		if (videoEle != undefined) {
-			console.log('changes' + $modalvideo);
-			remote.setTarget(videoEle);
-			remote.togglePaused();
-
-			videoEle.poster = $modalvideo.poster;
-			videoEle.title = $modalvideo.title;
-			videoEle.src = { src: $modalvideo.src, type: $modalvideo.format };
-		}
-	}
-	onDestroy(() => {
-		//player.destroy();
-	});
-	let loaded = false;
-
-	function playerAttached(e) {
-		videoEle = player;
-		player.subscribe(({ volume }) => {
-			if (loaded) {
-				console.log('volume changed', player);
-			}
-		});
-		loaded = true;
-	}
 </script>
 
-<media-player aspect-ratio="16/9" crossorigin bind:this={player} on:attached|once={playerAttached}>
-	<media-outlet />
-	<media-poster />
-
-	<media-community-skin />
-</media-player>
-
-<!-- svelte-ignore a11y-media-has-caption
-<media-player title={$modalvideo.title} poster={poster1} aspect-ratio="16/9">
+<media-player
+ 	title={$modalvideo.title}
+	poster={$modalvideo.poster}
+	aspect-ratio="16/9"
+	crossorigin
+>
 	<media-outlet>
 		<media-poster alt="Girl walks into sprite gnomes around her friend on a campfire in danger!" />
-		<source src={$modalvideo.src} type={$modalvideo.format} />
+		<source src={$modalvideo.src} type={$modalvideo.type} />
 	</media-outlet>
 	<media-community-skin />
-</media-player>
- 
-<template>
-	<div class="mediacontainer">
-		<video bind:this={videoEle} class="video-js vjs-fluid" />
-	</div>
-</template>
+</media-player> 
 -->
 
+<script>
+	// @ts-nocheck
+
+	import { onDestroy, onMount } from 'svelte';
+	import videojs from 'video.js';
+	import '../videojs/components/nuevo';
+    import '../videojs/skins/treso/videojs.css'
+
+    import { modalvideo, modalProps } from '$lib/modalPropsStore';
+	let videoPlayer;
+	let player;
+	const videojsOptions = {
+		controls: true,
+		preload: 'auto',
+		playsinline: 'false',
+		responsive: false
+	};
+	// nuevo plugin options
+	let nuevoOptions = {};
+	onMount(async () => {
+		let videoPlayer1 = document.getElementById('video1');
+		//console.log(document.getElementById('media1'));
+		if (videoPlayer != undefined) {
+			//.log('changes' + videoPlayer);
+			player = videojs('my-video', videojsOptions);
+			//console.log('Player ready');
+			player.src({
+				src: $modalvideo.src,
+				type: $modalvideo.type
+			}); 
+ 			player.poster($modalvideo.poster);
+            player.nuevo({shareMenu:false,qualityMenu:true});
+			player.play();
+		}
+	});
+	onDestroy(() => {
+		if (player) {
+			//.log('destroy');
+			player.dispose();
+		}
+	});
+</script>
+
+<video id="my-video" bind:this={videoPlayer} class="video-js cam_video" />
+
 <style>
-	/* Disable overlay when player is focused */
-	media-player {
-		--video-scrim-bg: transparent;
+	.video-container {
+		position: relative;
 	}
-	media-pip-button {
-		display: none !important;
+	.cam_video {
+		object-fit: fill;
+		width: 100%;
 	}
 </style>
