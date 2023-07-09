@@ -20,6 +20,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.26.0",
+		"flowbite-svelte-icons": "^0.2.3",
 		"postcss": "^8.4.25",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
@@ -32,7 +33,9 @@
 	"type": "module",
 	"dependencies": {
 		"@directus/sdk": "^11.0.0-beta.3",
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"hls.js": "^1.4.8",
+		"svelte-fa": "^3.0.4",
 		"swiper": "^10.0.4",
 		"video.js": "^8.3.0",
 		"vidstack": "^0.6.13"
