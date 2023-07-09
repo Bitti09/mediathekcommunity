@@ -33,7 +33,7 @@
 			}}
 		>
 			<svelte:fragment slot="lead"><i class="fa-solid fa-video" /></svelte:fragment>
-			<span>Tile 1</span>
+			<span>Movies</span>
 		</AppRailAnchor>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">
@@ -45,7 +45,7 @@
 			}}
 		>
 			<svelte:fragment slot="lead"><i class="fa-solid fa-tv" /></svelte:fragment>
-			<span>Tile 2</span>
+			<span>Serien</span>
 		</AppRailAnchor>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-3" value={3} title="tile-3">
@@ -57,7 +57,7 @@
 			}}
 		>
 			<svelte:fragment slot="lead"><i class="fa-solid fa-music" /></svelte:fragment>
-			<span>Tile 3</span>
+			<span>Musik</span>
 		</AppRailAnchor>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-4" value={4} title="tile-4">
@@ -69,7 +69,7 @@
 			}}
 		>
 			<svelte:fragment slot="lead"><i class="fa-solid fa-music" /></svelte:fragment>
-			<span>others</span>
+			<span>Sonstige</span>
 		</AppRailAnchor>
 	</AppRailTile>
 </AppRail>

@@ -91,21 +91,8 @@
 		{/each}
 	</div>
 {:else}
-	404
+<h1 class="h1">
+	<span class="bg-gradient-to-br from-pink-100 to-red-900 bg-clip-text text-transparent box-decoration-clone">No Item(s) found for category:</span>
+	{data.param}
+</h1>
 {/if}
-<!-- <script>
-	// @ts-nocheck
-
-	export let data;
-	import { register } from 'swiper/element/bundle';
-	register();
-
-	import Card from '$lib/components/Card.svelte';
-
-	const spaceBetween = 10;
-</script>
-
-YOU CAN DELETE EVERYTHING IN THIS PAGE 
-
-
--->
