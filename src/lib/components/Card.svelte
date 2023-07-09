@@ -16,6 +16,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	class="card {currentVariant} flex justify-center items-center"
 	on:click={() => modalComponentEmbed()}

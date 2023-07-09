@@ -1,5 +1,5 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
@@ -10,12 +10,12 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 
-	import { AppShell, Modal,AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell, Modal, AppBar } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { drawerStore } from '@skeletonlabs/skeleton';
 
-		// Drawer Handler
-		function drawerOpen() {
+	// Drawer Handler
+	function drawerOpen() {
 		const s = { id: 'med-sidenav' };
 		drawerStore.open(s);
 	}
@@ -29,12 +29,13 @@
 		}
 	};
 </script>
+
 <Modal components={modalComponentRegistry} />
-<Drawer/>
- <AppShell>
+<Drawer />
+<AppShell>
 	<!-- (header) -->
 	<svelte:fragment slot="sidebarLeft">
-		<div class="hidden lg:block"> <Navbar class="hidden lg:block"/></div>
+		<div class="hidden lg:block"><Navbar class="hidden lg:block" /></div>
 	</svelte:fragment>
 	<!-- (sidebarRight) -->
 	<svelte:fragment slot="header">
@@ -44,8 +45,7 @@
 					<i class="fa-solid fa-bars text-xl" />
 				</button>
 			</svelte:fragment>
-			<svelte:fragment slot="default">Mediathek Community v0.0.6
-			</svelte:fragment>
+			<svelte:fragment slot="default">Mediathek Community v0.0.6</svelte:fragment>
 			<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

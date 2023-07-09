@@ -11,8 +11,8 @@ export async function load({ params }) {
     let article;
     article = await directus.request(
         readItems('mediathek', {
-            fields: ['*','listepisodes.*'],
-            filter:{
+            fields: ['*', 'listepisodes.*'],
+            filter: {
                 'category': params.id
             },
             sort: ['-date_created'],

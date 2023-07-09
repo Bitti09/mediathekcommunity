@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	// Modals Utils
+	import { onMount } from 'svelte';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	export let data;
 	let langdata = {};
@@ -10,18 +11,54 @@
 	langdata['uk'] = data.article.filter((e) => e.country === 'uk');
 	const languages = ['de', 'se', 'it', 'uk'];
 	import Card from '$lib/components/Card.svelte';
-
-		// Demo ---
-
-		function modalComponentEmbed() {
+	function modalComponentEmbed() {
 		const modal = {
 			type: 'component',
 			component: 'exampleEmbed'
 		};
 		modalStore.trigger(modal);
 	}
+	onMount(async () => {
+		const swiperParams = {
+			breakpoints: {
+				0: {
+					slidesPerView: 1,
+					spaceBetween: 1
+				},
+				490: {
+					slidesPerView: 2,
+					spaceBetween: 1
+				},
+				960: {
+					slidesPerView: 3,
+					spaceBetween: 1
+				},
+				1280: {
+					slidesPerView: 4,
+					spaceBetween: 1
+				},
+				1900: {
+					slidesPerView: 5,
+					spaceBetween: 1
+				},
+				2300: {
+					slidesPerView: 6,
+					spaceBetween: 1
+				}
+			},
+			on: {
+				init() {
+					// ...
+				}
+			}
+		};
 
-
+		const swiperEl = document.querySelectorAll('swiper-container');
+		for (let i = 0; i < swiperEl.length; i++) {
+			Object.assign(swiperEl[i], swiperParams);
+			swiperEl[i].initialize();
+		}
+	});
 </script>
 
 <div>
@@ -31,7 +68,7 @@
 			>Zuletzt hinzugefügt.</span
 		>
 	</h1>
-	<swiper-container slides-per-view={5} loop={false}>
+	<swiper-container init="false" class="mySwiper2">
 		{#each data.article as name, index}
 			<swiper-slide><Card carddata={name} /></swiper-slide>
 		{/each}
@@ -44,7 +81,7 @@
 					>{lang} Mediathek</span
 				>
 			</h1>
-			<swiper-container slides-per-view={5} loop={false}>
+			<swiper-container init="false" class="'mySwiper2'{index}">
 				{#each langdata[lang] as name, index}
 					<swiper-slide><Card carddata={name} /></swiper-slide>
 				{/each}
@@ -52,20 +89,3 @@
 		{/if}
 	{/each}
 </div>
-
-<!-- <script>
-	// @ts-nocheck
-
-	export let data;
-	import { register } from 'swiper/element/bundle';
-	register();
-
-	import Card from '$lib/components/Card.svelte';
-
-	const spaceBetween = 10;
-</script>
-
-YOU CAN DELETE EVERYTHING IN THIS PAGE 
-
-
--->
