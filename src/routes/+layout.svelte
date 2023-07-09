@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -10,8 +12,15 @@
 
 	import { AppShell, Modal,AppBar } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
+	import { drawerStore } from '@skeletonlabs/skeleton';
 
+		// Drawer Handler
+		function drawerOpen() {
+		const s = { id: 'med-sidenav' };
+		drawerStore.open(s);
+	}
 	import ModalComponentOne from '$lib/components/ModalComponentOne.svelte';
+	import Drawer from '$lib/components/Drawer.svelte';
 	const modalComponentRegistry = {
 		// Custom Modal 1
 		modalComponentOne: {
@@ -21,17 +30,22 @@
 	};
 </script>
 <Modal components={modalComponentRegistry} />
-
-<AppShell>
+<Drawer/>
+ <AppShell>
 	<!-- (header) -->
 	<svelte:fragment slot="sidebarLeft">
-		<Navbar />
+		<div class="hidden lg:block"> <Navbar class="hidden lg:block"/></div>
 	</svelte:fragment>
 	<!-- (sidebarRight) -->
 	<svelte:fragment slot="header">
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-			<svelte:fragment slot="lead">&nbsp;</svelte:fragment>
-			Mediathek Community v0.0.6
+			<svelte:fragment slot="lead">
+				<button on:click={drawerOpen} class="btn-icon btn-icon-sm lg:!hidden">
+					<i class="fa-solid fa-bars text-xl" />
+				</button>
+			</svelte:fragment>
+			<svelte:fragment slot="default">Mediathek Community v0.0.6
+			</svelte:fragment>
 			<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
