@@ -11,7 +11,9 @@
 		AccordionItem
 	} from '@skeletonlabs/skeleton';
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { modalProps, modalvideo } from '$lib/modalPropsStore';
+	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	let myPlaylist = [];
+	let myPlaylistomu = [];
 
 	let showvideo = false;
 	export let data;
@@ -19,6 +21,7 @@
 
 	let tabSet = 0;
 	function playvideo() {
+		seriestype.set('');
 		//console.log(data1);
 		let poster1;
 		if (data1.backdrop) {
@@ -44,40 +47,72 @@
 			});
 		}
 	}
-	function playepisode(quality, alldata) {
+	function playepisode(alldata, type) {
+		myPlaylist = [];
+		myPlaylistomu = [];
+		seriestype.set(type);
+
+		for (let i = 0; i < data1.listepisodes.length; i++) {
+			if (data1.listepisodes[i].omu == false) {
+				myPlaylist.push({
+					title: data1.listepisodes[i].Title,
+					infoTitle: data1.listepisodes[i].Title,
+					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
+					sources: [
+						{
+							src: data1.listepisodes[i].directlinkhd,
+							type: data1.listepisodes[i].format,
+							res: '720',
+							label: '720p',
+							default: true
+						},
+						{
+							src: data1.listepisodes[i].directlinkmd,
+							type: data1.listepisodes[i].format,
+							res: '480',
+							label: '480p'
+						},
+						{
+							src: data1.listepisodes[i].directlinksd,
+							type: data1.listepisodes[i].format,
+							res: '360',
+							label: '360p'
+						}
+					]
+				});
+			} else {
+				myPlaylistomu.push({
+					title: 'omu' + data1.listepisodes[i].Title,
+					infoTitle: data1.listepisodes[i].Title,
+					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
+					sources: [
+						{
+							src: data1.listepisodes[i].directlinkhd,
+							type: data1.listepisodes[i].format,
+							res: '720',
+							label: '720p',
+							default: true
+						},
+						{
+							src: data1.listepisodes[i].directlinkmd,
+							type: data1.listepisodes[i].format,
+							res: '480',
+							label: '480p'
+						},
+						{
+							src: data1.listepisodes[i].directlinksd,
+							type: data1.listepisodes[i].format,
+							res: '360',
+							label: '360p'
+						}
+					]
+				});
+			}
+		}
+		noomulist.set(myPlaylist);
+		omulist.set(myPlaylistomu);
 		showvideo = true;
 		//tabSet = 0;
-		switch (quality) {
-			case 'hd':
-				modalvideo.set({
-					src: alldata.directlinkhd,
-					type: data1.format,
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					title: alldata.Title
-				});
-
-			case 'md':
-				modalvideo.set({
-					src: alldata.directlinkmd,
-					type: alldata.format,
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					title: alldata.Title
-				});
-			case 'sd':
-				modalvideo.set({
-					src: alldata.directlinksd,
-					type: alldata.format,
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					title: alldata.Title
-				});
-			default:
-				modalvideo.set({
-					src: alldata.directlinkhd,
-					type: alldata.format,
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					title: alldata.Title
-				});
-		}
 	}
 </script>
 
@@ -188,38 +223,17 @@
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
 								<svelte:fragment slot="content">
-									<div class="table-container p-0 mt-0">
-										<!-- Native Table Element -->
-										<table class="table table-hover">
-											<tbody>
-												<tr> {episode.description}</tr>
-												<tr>
-													{#if episode.directlinkhd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('hd', episode)}>play HD</button
-														>
-													{/if}
-													{#if episode.directlinkmd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('md', episode)}>play MD</button
-														>
-													{/if}
-													{#if episode.directlinksd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('sd', episode)}>play SD</button
-														>
-													{/if}
-												</tr>
-											</tbody>
-										</table>
-									</div></svelte:fragment
-								>
+									<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+										<div class="col-span-3">{episode.description}</div>
+										<div class="col-span-1 justify-center items-center flex">
+											<button
+												type="button"
+												class="btn variant-filled"
+												on:click={playepisode(episode, 'noomu')}>Play</button
+											>
+										</div>
+									</div>
+								</svelte:fragment>
 							</AccordionItem>
 						{/if}
 					{/each}
@@ -231,38 +245,17 @@
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
 								<svelte:fragment slot="content">
-									<div class="table-container p-0 mt-0">
-										<!-- Native Table Element -->
-										<table class="table table-hover">
-											<tbody>
-												<tr> {episode.description}</tr>
-												<tr>
-													{#if episode.directlinkhd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('hd', episode)}>play HD</button
-														>
-													{/if}
-													{#if episode.directlinkmd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('md', episode)}>play MD</button
-														>
-													{/if}
-													{#if episode.directlinksd != ''}
-														<button
-															type="button"
-															class="btn variant-filled"
-															on:click={playepisode('sd', episode)}>play SD</button
-														>
-													{/if}
-												</tr>
-											</tbody>
-										</table>
-									</div></svelte:fragment
-								>
+									<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+										<div class="col-span-3">{episode.description}</div>
+										<div class="col-span-1 justify-center items-center flex">
+											<button
+												type="button"
+												class="btn variant-filled"
+												on:click={playepisode(episode, 'noomu')}>Play</button
+											>
+										</div>
+									</div>
+								</svelte:fragment>
 							</AccordionItem>
 						{/if}
 					{/each}

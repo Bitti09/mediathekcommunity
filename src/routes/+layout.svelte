@@ -28,7 +28,7 @@
     <!-- (header) -->
     <svelte:fragment slot="sidebarLeft">
         <div class="hidden lg:block h-full">
-            <Navbar class="hidden lg:block"/>
+            <Navbar/>
         </div>
     </svelte:fragment>
     <!-- (sidebarRight) -->
