@@ -132,8 +132,8 @@
 					alt="description"
 				/>{/if}
 		{:else}
-			<div>
-				<div class=" "><svelte:component this={Videoplayer} /></div>
+			<div class="max-h-fit">
+				<svelte:component this={Videoplayer} />
 			</div>
 		{/if}
 	</div>

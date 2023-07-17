@@ -62,6 +62,18 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-4" value={4} title="tile-4">
 		<AppRailAnchor
+			href="/culture"
+			selected={$page.url.pathname === '/culture'}
+			on:click={() => {
+				onClickAnchor();
+			}}
+		>
+			<svelte:fragment slot="lead"><i class="fa-solid fa-masks-theater" /></svelte:fragment>
+			<span>Kultur</span>
+		</AppRailAnchor>
+	</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-5" value={5} title="tile-5">
+		<AppRailAnchor
 			href="/others"
 			selected={$page.url.pathname === '/others'}
 			on:click={() => {

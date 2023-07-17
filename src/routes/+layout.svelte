@@ -38,7 +38,7 @@
 					<i class="fa-solid fa-bars text-xl" />
 				</button>
 			</svelte:fragment>
-			<svelte:fragment slot="default">Mediathek Community v0.0.6</svelte:fragment>
+			<svelte:fragment slot="default">Mediathek Community v0.0.8</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<LightSwitch />
 			</svelte:fragment>
