@@ -9,6 +9,7 @@ export async function load({ params }) {
     // do authenticated requests
     let article;
     let param = params.id;
+    if(params.id != "") {
     article = await directus.request(
         readItems('mediathek', {
             fields: ['*', 'listepisodes.*'],
@@ -17,7 +18,14 @@ export async function load({ params }) {
             },
             sort: ['-date_created'],
         })
-    );
+    );} else {
+        article = await directus.request(
+            readItems('mediathek', {
+                fields: ['*', 'listepisodes.*'],
+                sort: ['-date_created'],
+            })
+        );
+    }
     return {
         article: article,
         param: param

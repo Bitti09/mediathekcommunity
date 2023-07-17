@@ -14,6 +14,7 @@
 	<!-- --- -->
 	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/"
 			selected={$page.url.pathname === '/'}
 			on:click={() => {
@@ -26,6 +27,7 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/movie"
 			selected={$page.url.pathname === '/movie'}
 			on:click={() => {
@@ -38,6 +40,7 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/series"
 			selected={$page.url.pathname === '/series'}
 			on:click={() => {
@@ -50,6 +53,7 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-3" value={3} title="tile-3">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/music"
 			selected={$page.url.pathname === '/music'}
 			on:click={() => {
@@ -62,6 +66,7 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-4" value={4} title="tile-4">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/culture"
 			selected={$page.url.pathname === '/culture'}
 			on:click={() => {
@@ -74,6 +79,7 @@
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-5" value={5} title="tile-5">
 		<AppRailAnchor
+			data-sveltekit-reload
 			href="/others"
 			selected={$page.url.pathname === '/others'}
 			on:click={() => {
