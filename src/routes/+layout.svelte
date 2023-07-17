@@ -52,12 +52,8 @@
 			<ul class="list">
 				<li>
 					<span class="flex-auto">
-						This project uses the TMDB API but is not endorsed or certified by TMDB.<br />
-					</span>
-				</li>
-				<li>
-					<span
-						>Data provided by
+						This project uses the TMDB API but is not endorsed or certified by TMDB. - Data provided
+						by
 						<a
 							target="_blank"
 							href="https://www.themoviedb.org/"

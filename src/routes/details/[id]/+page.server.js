@@ -1,11 +1,11 @@
 // @ts-nocheck
-import { useDirectus } from '@directus/sdk';
+import { createDirectus } from '@directus/sdk';
 import { rest, readItems } from '@directus/sdk/rest';
 import { staticToken } from '@directus/sdk/auth';
 import { env } from '$env/dynamic/private';
 
 export async function load({ params }) {
-    const directus = useDirectus(env.DIRECTUS_URL).use(rest()).use(staticToken(env.DIRECTUS_TOKEN));
+    const directus = createDirectus(env.DIRECTUS_URL).with(rest()).with(staticToken(env.DIRECTUS_TOKEN));
 
     // do authenticated requests
     let article;
