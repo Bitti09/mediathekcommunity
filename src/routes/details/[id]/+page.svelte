@@ -22,14 +22,12 @@
 	let tabSet = 0;
 	function playvideo() {
 		seriestype.set('');
-		//console.log(data1);
 		let poster1;
 		if (data1.backdrop) {
 			poster1 = 'https://img.mediathek.community/t/p/original/' + data1.backdrop;
 		} else {
 			poster1 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
 		}
-		//console.log(data1);
 		showvideo = true;
 		if (data1.directlink) {
 			modalvideo.set({
@@ -51,7 +49,6 @@
 		myPlaylist = [];
 		myPlaylistomu = [];
 		seriestype.set(type);
-
 		for (let i = 0; i < data1.listepisodes.length; i++) {
 			if (data1.listepisodes[i].omu == false) {
 				myPlaylist.push({
@@ -70,8 +67,7 @@
 							src: data1.listepisodes[i].directlinkhd,
 							type: data1.listepisodes[i].format,
 							res: '720',
-							label: '720p',
-							default: true
+							label: '720p'
 						},
 						{
 							src: data1.listepisodes[i].directlinkmd,
@@ -80,7 +76,7 @@
 							label: '480p'
 						},
 						{
-							src: data1.listepisodes[i].directlinksd,
+							src: data1.listepisodes[i].directlinklq,
 							type: data1.listepisodes[i].format,
 							res: '360',
 							label: '360p'
@@ -94,11 +90,17 @@
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: [
 						{
+							src: data1.listepisodes[i].directlinkfhd,
+							type: data1.listepisodes[i].format,
+							res: '1080',
+							label: '1080p',
+							default: true
+						},
+						{
 							src: data1.listepisodes[i].directlinkhd,
 							type: data1.listepisodes[i].format,
 							res: '720',
-							label: '720p',
-							default: true
+							label: '720p'
 						},
 						{
 							src: data1.listepisodes[i].directlinkmd,
@@ -107,7 +109,7 @@
 							label: '480p'
 						},
 						{
-							src: data1.listepisodes[i].directlinksd,
+							src: data1.listepisodes[i].directlinklq,
 							type: data1.listepisodes[i].format,
 							res: '360',
 							label: '360p'

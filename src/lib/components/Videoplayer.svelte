@@ -17,8 +17,8 @@
 		fill: true
 	};
 	function changevideo(video, type) {
-		console.log(video);
-		console.log(type);
+		//console.log(video);
+		//console.log(type);
 		//console.log(video);
 		if (player != undefined) {
 			if (type == 'noomu') {
@@ -61,8 +61,8 @@
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
 			};
-			console.log($omulist.length);
-			console.log(player.nuevo);
+			//console.log($omulist.length);
+			//console.log(player.nuevo);
 			player.nuevo({
 				playlistUI: true,
 				playlistShow: false,
@@ -76,7 +76,7 @@
 				rateMenu: false,
 				settingsButton: false
 			});
-			console.log(player);
+			//console.log(player);
 			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);
 				//player.playList($noomulist);
@@ -95,7 +95,7 @@
 				}
 			});
 			player.on('fullscreenchange', (evt, mode) => {
-				console.log('wowo, fullscreen', evt, mode);
+				//console.log('wowo, fullscreen', evt, mode);
 			});
 		}
 	});
