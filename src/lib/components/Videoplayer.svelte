@@ -95,7 +95,7 @@
 				}
 			});
 			player.on('fullscreenchange', (evt, mode) => {
-				console.log('wowo, fullscreen', evt , mode);
+				console.log('wowo, fullscreen', evt, mode);
 			});
 		}
 	});

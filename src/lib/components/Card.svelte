@@ -18,9 +18,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="card {currentVariant} flex justify-center items-center">
-	<a
-		href="details/{carddata.id}"
-	>
+	<a href="details/{carddata.id}">
 		{#if carddata.poster != 'poster'}
 			<img
 				class="rounded-lg h-64 mx-auto"
