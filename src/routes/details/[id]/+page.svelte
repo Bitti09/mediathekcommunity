@@ -60,6 +60,13 @@
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: [
 						{
+							src: data1.listepisodes[i].directlinkfhd,
+							type: data1.listepisodes[i].format,
+							res: '1080',
+							label: '1080p',
+							default: true
+						},
+						{
 							src: data1.listepisodes[i].directlinkhd,
 							type: data1.listepisodes[i].format,
 							res: '720',
