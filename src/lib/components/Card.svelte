@@ -4,7 +4,7 @@
 	import { modalProps } from '$lib/modalPropsStore';
 
 	export let carddata;
-	console.log(carddata);
+	//console.log(carddata);
 	let currentVariant = 'bg-initial';
 	const modal = {
 		type: 'component',
@@ -18,7 +18,7 @@
 	function inFuture(date) {
 		var now = new Date();
 		var then = new Date(date);
-		console.log(then > now);
+		//console.log(then > now);
 		if (then > now) {
 			return true;
 		} else {
