@@ -24,4 +24,5 @@ export async function load({ params }) {
 		article: article,
 		param: param
 	};
+	
 }

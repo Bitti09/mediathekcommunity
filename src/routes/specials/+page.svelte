@@ -24,7 +24,7 @@
     let d1
 	d1 = data.article;
 	let  grouped = groupBy(d1, car => car.specials.Name);
-	console.log(data);
+	//console.log(data);
 	$: d2 = Object.keys(grouped);
 
 	onMount(async () => {
