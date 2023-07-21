@@ -14,14 +14,14 @@ export async function load({ params }) {
 	let param = params.id;
 	article = await directus.request(
 		readItems('mediathek', {
-			fields: ['*', 'listepisodes.*'],
+			fields: ['*.*', 'listepisodes.*','specials.*'],
 			filter: {
-				id: params.id
+				special: true
 			}
 		})
 	);
 	return {
-		article: article[0],
+		article: article,
 		param: param
 	};
 }

@@ -24,13 +24,13 @@
 
 <Drawer />
 <AppShell>
-	<!-- (header) -->
+	<!-- (sidebarLeft) -->
 	<svelte:fragment slot="sidebarLeft">
 		<div class="hidden lg:block h-full">
 			<Navbar />
 		</div>
 	</svelte:fragment>
-	<!-- (sidebarRight) -->
+	<!-- (header) -->
 	<svelte:fragment slot="header">
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 			<svelte:fragment slot="lead">

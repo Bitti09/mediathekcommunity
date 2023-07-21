@@ -80,6 +80,19 @@
 	<AppRailTile bind:group={currentTile} name="tile-5" value={5} title="tile-5">
 		<AppRailAnchor
 			data-sveltekit-reload
+			href="/specials"
+			selected={$page.url.pathname === '/specials'}
+			on:click={() => {
+				onClickAnchor();
+			}}
+		>
+			<svelte:fragment slot="lead"><i class="fa-solid fa-clock" /></svelte:fragment>
+			<span>Specials</span>
+		</AppRailAnchor>
+	</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-6" value={6} title="tile-6">
+		<AppRailAnchor
+			data-sveltekit-reload
 			href="/others"
 			selected={$page.url.pathname === '/others'}
 			on:click={() => {
