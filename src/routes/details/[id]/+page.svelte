@@ -28,12 +28,47 @@
 				title: data1.title
 			});
 		} else {
+			let sources = [];
+			if (data1.directlinkfhd) {
+				sources.push({
+					src: data1.directlinkfhd,
+					type: data1.format,
+					res: '1080',
+					label: '1080p',
+					default: true
+				});
+			}
+			if (data1.directlinkhd) {
+				sources.push({
+					src: data1.directlinkhd,
+					type: data1.format,
+					res: '720',
+					label: '720p'
+				});
+			}
+			if (data1.directlinkmd) {
+				sources.push({
+					src: data1.directlinkmd,
+					type: data1.format,
+					res: '480',
+					label: '480p'
+				});
+			}
+			if (data1.directlinklq) {
+				sources.push({
+					src: data1.directlinklq,
+					type: data1.format,
+					res: '360',
+					label: '360p'
+				});
+			}
 			modalvideo.set({
-				src: data1.directlinkhd,
+				source: sources,
 				type: data1.format,
 				poster: poster1,
 				title: data1.title
 			});
+			//console.log($modalvideo);
 		}
 	}
 	function playepisode(alldata, type) {

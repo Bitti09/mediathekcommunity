@@ -33,10 +33,11 @@
 				player.pause();
 			} else {
 				let video_1 = {
-					sources: [{ src: $modalvideo.src, type: $modalvideo.type }],
+					sources: $modalvideo.source,
 					poster: $modalvideo.poster,
 					title: $modalvideo.title
 				};
+				//console.log(video_1);
 				player.pause();
 				player.poster(video.poster);
 				player.currentTime(0);
@@ -55,11 +56,12 @@
 			player = videojs('my-video', videojsOptions);
 			//console.log('Player ready');
 			let video_1 = {
-				sources: [{ src: $modalvideo.src, type: $modalvideo.type }],
+				sources: $modalvideo.source,
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
 			};
+			//console.log(video_1);
 			//console.log($omulist.length);
 			//console.log(player.nuevo);
 			player.nuevo({
