@@ -20,9 +20,10 @@
 			poster1 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
 		}
 		showvideo = true;
+		console.log(data1);
 		if (data1.directlink) {
 			modalvideo.set({
-				src: data1.directlink,
+				source: [{ src: data1.directlink, type:  data1.format }] ,
 				type: data1.format,
 				poster: poster1,
 				title: data1.title
@@ -68,7 +69,7 @@
 				poster: poster1,
 				title: data1.title
 			});
-			//console.log($modalvideo);
+			console.log($modalvideo);
 		}
 	}
 	function playepisode(alldata, type) {

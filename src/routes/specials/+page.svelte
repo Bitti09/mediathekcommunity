@@ -12,6 +12,8 @@
 	let grouped;
 	let grouped2;
     function group(data) {
+		if (data.length > 0){
+			console.log(data);
 		grouped = keys(
 			countBy(data, function (data) {
 				return data.specials.Name;
@@ -19,7 +21,7 @@
 		);
 		grouped2 = groupBy(data, (item) => item.specials.Name);
         console.log(grouped2);
-        console.log(grouped);
+        console.log(grouped);}
 	}
 	$: group(data.article);
 	onMount(async () => {
