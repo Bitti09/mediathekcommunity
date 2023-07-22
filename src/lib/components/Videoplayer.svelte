@@ -7,7 +7,7 @@
 	import '../videojs/components/playlist';
 	import '../videojs/skins/nuevo/videojs.css';
 
-	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;
 	const videojsOptions = {
@@ -47,9 +47,8 @@
 	}
 	$: changevideo($modalvideo, $seriestype);
 	// nuevo plugin options
-	let nuevoOptions = {};
 	onMount(async () => {
-		let videoPlayer1 = document.getElementById('video1');
+		//let videoPlayer1 = document.getElementById('video1');
 		//console.log(document.getElementById('media1'));
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
@@ -93,9 +92,6 @@
 				} else if (mode == 'normal') {
 					document.querySelector('#left_column').style.width = '70%';
 				}
-			});
-			player.on('fullscreenchange', (evt, mode) => {
-				//console.log('wowo, fullscreen', evt, mode);
 			});
 		}
 	});

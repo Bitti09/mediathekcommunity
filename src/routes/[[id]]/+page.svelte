@@ -74,11 +74,11 @@
 			>
 		</h1>
 		<swiper-container init="false" class="'mySwiper2">
-			{#each data.article as name, index}
+			{#each data.article as name}
 				<swiper-slide><Card carddata={name} /></swiper-slide>
 			{/each}
 		</swiper-container>
-		{#each grouped as lang, index}
+		{#each grouped as lang}
 			<h1 class="h1 pb-3">
 				<span
 					class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
@@ -86,7 +86,7 @@
 				>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
-				{#each grouped2[lang] as name, index}
+				{#each grouped2[lang] as name}
 					<swiper-slide><Card carddata={name} /></swiper-slide>
 				{/each}
 			</swiper-container>

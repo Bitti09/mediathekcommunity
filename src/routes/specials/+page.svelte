@@ -67,7 +67,7 @@
 
 {#if data.article.length > 0}
 	<div>
-		{#each grouped as lang, index}
+		{#each grouped as lang}
 			{#if lang.length > 0}
 				<h1 class="h1 pb-3">
 					<span
@@ -76,7 +76,7 @@
 					>
 				</h1>
 				<swiper-container init="false" class="mySwiper2">
-					{#each grouped2[lang] as name, index}
+					{#each grouped2[lang] as name}
 						<swiper-slide><Card carddata={name} /></swiper-slide>
 					{/each}
 				</swiper-container>

@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-    export let carddata;
+	export let carddata;
 	//console.log(carddata);
 	let currentVariant = 'bg-initial';
 	function inFuture(date) {

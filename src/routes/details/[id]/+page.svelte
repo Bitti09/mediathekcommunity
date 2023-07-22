@@ -234,7 +234,7 @@
 				<button type="button" class="btn variant-filled mt-0" on:click={playvideo}>play</button>
 			{:else if tabSet === 2}
 				<Accordion>
-					{#each data1.listepisodes as episode, index}
+					{#each data1.listepisodes as episode}
 						{#if episode.omu == false}
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
@@ -256,7 +256,7 @@
 				</Accordion>
 			{:else if tabSet === 3}
 				<Accordion>
-					{#each data1.listepisodes as episode, index}
+					{#each data1.listepisodes as episode}
 						{#if episode.omu == true}
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>

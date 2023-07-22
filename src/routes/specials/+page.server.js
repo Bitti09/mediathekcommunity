@@ -14,7 +14,7 @@ export async function load({ params }) {
 	let param = params.id;
 	article = await directus.request(
 		readItems('mediathek', {
-			fields: ['*.*', 'listepisodes.*','specials.*'],
+			fields: ['*.*', 'listepisodes.*', 'specials.*'],
 			filter: {
 				special: true
 			}
@@ -24,5 +24,4 @@ export async function load({ params }) {
 		article: article,
 		param: param
 	};
-	
 }
