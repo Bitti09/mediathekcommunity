@@ -2277,8 +2277,8 @@ body.vjs-full-window {
 	pointer-events: none;
 }
 .vjs-thumbnail-holder {
-	-webkit-transfrom-origin: 50% 100%;
-	transfrom-origin: 50% 100%;
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
 	border: 2px solid #fff;
 	bottom: 44px;
 	opacity: 0;
