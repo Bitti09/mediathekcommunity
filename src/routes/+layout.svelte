@@ -32,7 +32,7 @@
 					<BarsSolid />
 				</button>
 			</svelte:fragment>
-			<svelte:fragment slot="default">Mediathek Community v0.0.9</svelte:fragment>
+			<svelte:fragment slot="default">Mediathek Community v0.1.0</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<LightSwitch />
 			</svelte:fragment>
