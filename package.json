@@ -40,6 +40,6 @@
 		"@directus/sdk": "^11.0.0-beta.6",
 		"lodash-es": "^4.17.21",
 		"swiper": "^10.0.4",
-		"video.js": "^8.3.0"
+		"video.js": "^8.5.0"
 	}
 }
