@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@directus/sdk':
-    specifier: 11.0.0-beta.6
-    version: 11.0.0-beta.6
+    specifier: 11.0.0
+    version: 11.0.0
   swiper:
     specifier: ^10.0.4
     version: 10.0.4
@@ -101,12 +101,12 @@ packages:
       regenerator-runtime: 0.13.11
     dev: false
 
-  /@cloudflare/workers-types@4.20230717.1:
-    resolution: {integrity: sha512-JmtYqsn/rc0gq83rlgItGsh/aJsTQh6ebJTDbq794kGOH7ym6MlpLtbCJj/Qz+hCPgdqoHDOLTlQQguARLi78A==}
+  /@cloudflare/workers-types@4.20230724.0:
+    resolution: {integrity: sha512-WuFlsai21oJhRMBHdkM0saIuK1Faitp/GXWj31Zlbe3cCtPNlwYtX5WkojDNWWAxX47LMHBF9wv7wrytNLabYA==}
     dev: true
 
-  /@directus/sdk@11.0.0-beta.6:
-    resolution: {integrity: sha512-NprC21J62tU/j6HxPP8zPn/+SEbMoEjzo1GnOSq8ahhIHxMys5ZRT16WEAQFd53CLitZ6erj3jfzc/j3A1UdGw==}
+  /@directus/sdk@11.0.0:
+    resolution: {integrity: sha512-cYqvidmPi9PjxeANW1sgzjE1P4mWqy9QZ90LIO+I6hS9dKH6558YExD/Ylopn46yWuoDn/rAUKGHuh04WXEqvg==}
     engines: {node: '>=18.0.0'}
     dev: false
 
@@ -447,7 +447,7 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@cloudflare/workers-types': 4.20230717.1
+      '@cloudflare/workers-types': 4.20230724.0
       '@sveltejs/kit': 1.22.3(svelte@4.1.1)(vite@4.4.7)
       esbuild: 0.18.16
       worktop: 0.8.0-next.15
@@ -696,7 +696,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001517
-      electron-to-chromium: 1.4.469
+      electron-to-chromium: 1.4.471
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -861,8 +861,8 @@ packages:
     resolution: {integrity: sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==}
     dev: false
 
-  /electron-to-chromium@1.4.469:
-    resolution: {integrity: sha512-HRN9XQjElxJBrdDky5iiUUr3eDwXGTg6Cp4IV8MuNc8VqMkYSneSnIe6poFKx9PsNzkudCgaWCBVxwDqirwQWQ==}
+  /electron-to-chromium@1.4.471:
+    resolution: {integrity: sha512-GpmGRC1vTl60w/k6YpQ18pSiqnmr0j3un//5TV1idPi6aheNfkT1Ye71tMEabWyNDO6sBMgAR+95Eb0eUUr1tA==}
     dev: true
 
   /es6-promise@3.3.1:
