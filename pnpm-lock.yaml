@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^4.1.1
     version: 4.1.1
   svelte-awesome-icons:
-    specifier: ^0.4.14
-    version: 0.4.14(svelte@4.1.1)
+    specifier: ^0.5.0
+    version: 0.5.1(svelte@4.1.1)
   svelte-check:
     specifier: ^3.4.6
     version: 3.4.6(postcss-load-config@4.0.1)(postcss@8.4.27)(svelte@4.1.1)
@@ -1944,8 +1944,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-awesome-icons@0.4.14(svelte@4.1.1):
-    resolution: {integrity: sha512-eM1/GotjqUaFt3+Eir92Qw2SO9Jnwvxti5URefnTe3n1ySaSAZ5+T3EpNU9sYlsYkhS3QDo9/RbgxOb4+ohXgA==}
+  /svelte-awesome-icons@0.5.1(svelte@4.1.1):
+    resolution: {integrity: sha512-3qmYYAIulO9Ef4qlifNfv16gJAlyo9l+g+ayMoXL+VqJETyGueNFfuIi0SLi4KD32f+ZqgZojg6q6W0BvglnvA==}
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0
     dependencies:
