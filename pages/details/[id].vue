@@ -1,8 +1,105 @@
 <template>
-    <VContainer>
-        Details {{ $route.params.id }}
-        info: {{ items2 }}
-    </VContainer>
+    Details {{ $route.params.id }}
+    info: {{ items2 }}
+    <Swiper :slides-per-view="1" :loop="true" :breakpoints="{
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 1
+        },
+        490: {
+            slidesPerView: 2,
+            spaceBetween: 1
+        },
+        960: {
+            slidesPerView: 3,
+            spaceBetween: 1
+        },
+        1280: {
+            slidesPerView: 4,
+            spaceBetween: 1
+        },
+        1900: {
+            slidesPerView: 5,
+            spaceBetween: 1
+        },
+        2300: {
+            slidesPerView: 6,
+            spaceBetween: 1
+        }
+    }">
+        <SwiperSlide v-for="slide in 10" :key="slide">
+            <v-card class="mx-auto" max-width="344">
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" cover></v-img>
+                <strong>{{ slide }}</strong>
+            </v-card>
+        </SwiperSlide>
+    </Swiper>
+    <Swiper :slides-per-view="1" :loop="true" :breakpoints="{
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 1
+        },
+        490: {
+            slidesPerView: 2,
+            spaceBetween: 1
+        },
+        960: {
+            slidesPerView: 3,
+            spaceBetween: 1
+        },
+        1280: {
+            slidesPerView: 4,
+            spaceBetween: 1
+        },
+        1900: {
+            slidesPerView: 5,
+            spaceBetween: 1
+        },
+        2300: {
+            slidesPerView: 6,
+            spaceBetween: 1
+        }
+    }">
+        <SwiperSlide v-for="slide in 10" :key="slide">
+            <v-card class="mx-auto" max-width="344">
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" cover></v-img>
+                <strong>{{ slide }}</strong>
+            </v-card>
+        </SwiperSlide>
+    </Swiper>
+    <Swiper :slides-per-view="1" :loop="true" :breakpoints="{
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 1
+        },
+        490: {
+            slidesPerView: 2,
+            spaceBetween: 1
+        },
+        960: {
+            slidesPerView: 3,
+            spaceBetween: 1
+        },
+        1280: {
+            slidesPerView: 4,
+            spaceBetween: 1
+        },
+        1900: {
+            slidesPerView: 5,
+            spaceBetween: 1
+        },
+        2300: {
+            slidesPerView: 4,
+            spaceBetween: 1
+        }
+    }">
+        <SwiperSlide v-for="slide in 20" :key="slide">
+            <v-card class="mx-auto" max-width="344">
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" cover></v-img>
+                <strong>{{ slide }}</strong>
+            </v-card>
+        </SwiperSlide>
+    </Swiper>
 </template>
 
 <script setup lang="ts">

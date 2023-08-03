@@ -1,11 +1,21 @@
 <template>
-    <v-app>
-        <AppTopBar />
-        <v-main class="mx-2" :class="{ 'reduced-content-width': !isMobile }">
-            <slot />
-        </v-main>
-        <TheFooter />
-    </v-app>
+    <VApp>
+        <VAppBar app clipped-left color="secondary" dark elevate-on-scroll comfortable>
+            <template v-slot:prepend>
+                <VAppBarNavIcon @click.stop="app.drawer = !app.drawer" />
+            </template>
+            <VAppBarTitle>My App</VAppBarTitle>
+        </VAppBar>
+        <VNavigationDrawer v-model="app.drawer" temporary>aa</VNavigationDrawer>
+        <VMain>
+            <VResponsive>
+                <VAlert>aaa</VAlert>
+                <slot />
+            </VResponsive>
+        </VMain>
+        <VFooter clipped-left app>eee</VFooter>
+
+    </VApp>
 </template>
 <script setup>
 import { useStore } from "@nanostores/vue";

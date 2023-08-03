@@ -7,8 +7,9 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
     "nuxt-directus",
+    "nuxt-swiper",
   ],
-  ssr: false,
+  ssr: true,
   colorMode: {
     preference: "dark",
     fallback: "dark",
@@ -20,5 +21,5 @@ export default defineNuxtConfig({
   directus: {
     url: "https://api.mediathek.community",
     token: "fnzDPNZGV481krf-X7F1lt6rXAs646PW",
-  }
+  },
 });
