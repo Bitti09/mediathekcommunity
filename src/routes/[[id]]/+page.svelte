@@ -68,24 +68,26 @@
 		<h1 class="h1 pb-1">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
-				>Zuletzt hinzugefügt.</span
 			>
+				Zuletzt hinzugefügt.
+			</span>
 		</h1>
 		<swiper-container init="false" class="'mySwiper2">
 			{#each data.article as name}
-				<swiper-slide><Card carddata={name} /></swiper-slide>
+				<swiper-slide><Card carddata="{name}" /></swiper-slide>
 			{/each}
 		</swiper-container>
 		{#each keyz as lang}
 			<h1 class="h1 pb-1">
 				<span
 					class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
-					>{lang}</span
 				>
+					{lang}
+				</span>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
 				{#each grouped[lang] as name}
-					<swiper-slide><Card carddata={name} /></swiper-slide>
+					<swiper-slide><Card carddata="{name}" /></swiper-slide>
 				{/each}
 			</swiper-container>
 		{/each}
@@ -94,8 +96,9 @@
 	<h1 class="h1">
 		<span
 			class="bg-gradient-to-br from-pink-100 to-red-900 bg-clip-text text-transparent box-decoration-clone"
-			>No Item(s) found for category:</span
 		>
+			No Item(s) found for category:
+		</span>
 		{data.param}
 	</h1>
 {/if}

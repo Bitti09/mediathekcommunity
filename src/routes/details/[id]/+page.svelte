@@ -185,7 +185,7 @@
 				/>{/if}
 		{:else}
 			<div class="max-h-fit grid place-items-center">
-				<svelte:component this={Videoplayer} />
+				<svelte:component this="{Videoplayer}" />
 			</div>
 		{/if}
 	</div>
@@ -270,9 +270,9 @@
 									Direktlink
 								</th>
 								<td class="px-4 py-2">
-									<button type="button" class="btn variant-filled mt-0" on:click={playvideo}
-										>play</button
-									>
+									<button type="button" class="btn variant-filled mt-0" on:click="{playvideo}">
+										play
+									</button>
 								</td>
 							</tr>
 							{#if data1.detailslink}
@@ -284,7 +284,7 @@
 										Direktlink 2
 									</th>
 									<td class="px-4 py-2">
-										<a href={data1.detailslink} target="_blank">
+										<a href="{data1.detailslink}" target="_blank">
 											<button type="button" class="btn variant-filled mt-0">Detailseite</button>
 										</a>
 									</td>
@@ -308,8 +308,10 @@
 										<button
 											type="button"
 											class="btn variant-filled"
-											on:click={playepisode(episode, 'noomu')}>Play</button
+											on:click="{playepisode(episode, 'noomu')}"
 										>
+											Play
+										</button>
 									</div>
 								</div>
 							</AccordionItem>
@@ -330,8 +332,10 @@
 										<button
 											type="button"
 											class="btn variant-filled"
-											on:click={playepisode(episode, 'noomu')}>Play</button
+											on:click="{playepisode(episode, 'noomu')}"
 										>
+											Play
+										</button>
 									</div>
 								</div>
 							</AccordionItem>
@@ -378,8 +382,9 @@
 	<h1 class="h1">
 		<span
 			class="bg-gradient-to-br from-pink-100 to-red-900 bg-clip-text text-transparent box-decoration-clone"
-			>No Item(s) found for category:</span
 		>
+			No Item(s) found for category:
+		</span>
 		{data.param}
 	</h1>
 {/if}

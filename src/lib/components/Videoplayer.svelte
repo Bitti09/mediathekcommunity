@@ -110,9 +110,9 @@
 		id="my-video"
 		playsinline
 		webkit-playsinline
-		bind:this={videoPlayer}
+		bind:this="{videoPlayer}"
 		class="video-js vjs-16-9 overflow-hidden"
-	/>
+	></video>
 </div>
 
 <style>
