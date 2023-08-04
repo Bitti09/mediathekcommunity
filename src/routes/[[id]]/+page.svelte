@@ -74,7 +74,7 @@
 		</h1>
 		<swiper-container init="false" class="'mySwiper2">
 			{#each data.article as name}
-				<swiper-slide><Card carddata="{name}" /></swiper-slide>
+				<swiper-slide><Card carddata={name} /></swiper-slide>
 			{/each}
 		</swiper-container>
 		{#each keyz as lang}
@@ -87,7 +87,7 @@
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
 				{#each grouped[lang] as name}
-					<swiper-slide><Card carddata="{name}" /></swiper-slide>
+					<swiper-slide><Card carddata={name} /></swiper-slide>
 				{/each}
 			</swiper-container>
 		{/each}

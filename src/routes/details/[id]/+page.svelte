@@ -185,7 +185,7 @@
 				/>{/if}
 		{:else}
 			<div class="max-h-fit grid place-items-center">
-				<svelte:component this="{Videoplayer}" />
+				<svelte:component this={Videoplayer} />
 			</div>
 		{/if}
 	</div>
@@ -270,7 +270,7 @@
 									Direktlink
 								</th>
 								<td class="px-4 py-2">
-									<button type="button" class="btn variant-filled mt-0" on:click="{playvideo}">
+									<button type="button" class="btn variant-filled mt-0" on:click={playvideo}>
 										play
 									</button>
 								</td>
@@ -284,7 +284,7 @@
 										Direktlink 2
 									</th>
 									<td class="px-4 py-2">
-										<a href="{data1.detailslink}" target="_blank">
+										<a href={data1.detailslink} target="_blank">
 											<button type="button" class="btn variant-filled mt-0">Detailseite</button>
 										</a>
 									</td>
@@ -308,7 +308,7 @@
 										<button
 											type="button"
 											class="btn variant-filled"
-											on:click="{playepisode(episode, 'noomu')}"
+											on:click={playepisode(episode, 'noomu')}
 										>
 											Play
 										</button>
@@ -332,7 +332,7 @@
 										<button
 											type="button"
 											class="btn variant-filled"
-											on:click="{playepisode(episode, 'noomu')}"
+											on:click={playepisode(episode, 'noomu')}
 										>
 											Play
 										</button>

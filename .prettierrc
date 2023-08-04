@@ -6,6 +6,4 @@
 	"plugins": ["prettier-plugin-svelte"],
 	"htmlWhitespaceSensitivity": "ignore",
 	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
-	"svelteStrictMode": true,
-	"proseWrap": "always"
 }
