@@ -13,10 +13,11 @@
     "@iconify-json/mdi": "^1.1.53",
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.0",
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.2",
     "@unocss/nuxt": "^0.54.1",
     "nuxt": "^3.6.5",
     "nuxt-directus": "^5.5.0",
+    "nuxt-lodash": "^2.5.0",
     "vuetify-nuxt-module": "^0.5.6"
   },
   "dependencies": {

@@ -1,22 +1,38 @@
 <template>
-    <VApp>
-        <VAppBar app clipped-left color="secondary" dark elevate-on-scroll comfortable>
+    <VApp id="inspire">
+        <VAppBar scrollBehavior="elevate" scrollThreshold="0" floating location="top">
             <template v-slot:prepend>
                 <VAppBarNavIcon @click.stop="app.drawer = !app.drawer" />
             </template>
             <VAppBarTitle>My App</VAppBarTitle>
         </VAppBar>
-        <VNavigationDrawer v-model="app.drawer" temporary>aa</VNavigationDrawer>
+        <VNavigationDrawer v-model="app.drawer" temporary>
+            <v-list nav>
+                <v-list-item prepend-icon="mdi-home" title="Home" to="/"/>
+                <v-list-item prepend-icon="mdi-home" title="Movies" to="/movies"/>
+                <v-list-item prepend-icon="mdi-home" title="Series" to="/sereis"/>
+                <v-list-item prepend-icon="mdi-home" title="Culture" to="/culture"/>
+                <v-list-item prepend-icon="mdi-home" title="special" to="/special"/>
+                <v-list-item prepend-icon="mdi-home" title="Others" to="/others"/>
+            </v-list>
+        </VNavigationDrawer>
         <VMain>
-            <VResponsive>
-                <VAlert>aaa</VAlert>
                 <slot />
-            </VResponsive>
         </VMain>
-        <VFooter clipped-left app>eee</VFooter>
+        <VFooter app>
+            <span class="svg">
+                This project uses the TMDB API but is not endorsed or certified by TMDB.
+                <img src="/tmdb-logo2.svg" :height="20" class="svg" />
+            </span>
+        </VFooter>
 
     </VApp>
 </template>
+<style scoped>
+img {
+    vertical-align: text-bottom;
+}
+</style>
 <script setup>
 import { useStore } from "@nanostores/vue";
 const { lgAndUp, mdAndDown } = useDisplay()

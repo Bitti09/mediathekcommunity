@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-directus",
     "nuxt-swiper",
+    "nuxt-lodash"
   ],
   ssr: true,
   colorMode: {
