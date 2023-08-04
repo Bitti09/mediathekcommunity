@@ -1,6 +1,6 @@
 <script>
-	import { Card, Button, Toggle } from 'flowbite-svelte';
 	// @ts-nocheck
+	import { Card } from 'flowbite-svelte';
 	export let carddata;
 	//console.log(carddata);
 	let currentVariant = 'bg-initial';

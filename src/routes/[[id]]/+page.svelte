@@ -6,7 +6,6 @@
 	import { register } from 'swiper/element/bundle';
 	import { groupBy } from 'lodash-es';
 	import Card from '$lib/components/Card.svelte';
-
 	// register Swiper custom elements
 	register();
 	export let data;
@@ -65,7 +64,7 @@
 </script>
 
 {#if data.article.length > 0}
-	<div >
+	<div>
 		<h1 class="h1 pb-1">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"

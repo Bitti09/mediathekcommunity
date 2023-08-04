@@ -1,35 +1,21 @@
 <script>
 	import '../app.postcss';
 	import { DarkMode } from 'flowbite-svelte';
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
-	import { Icon } from 'svelte-awesome-icons';
-
 	import {
-		Footer,
-		FooterBrand,
-		FooterCopyright,
-		FooterIcon,
-		FooterLink,
-		FooterLinkGroup
-	} from 'flowbite-svelte';
-
-	import {
+		Navbar,
+		NavBrand,
+		NavHamburger,
 		Drawer,
-		Button,
-		CloseButton,
 		Sidebar,
-		SidebarBrand,
-		SidebarCta,
-		SidebarDropdownItem,
-		SidebarDropdownWrapper,
 		SidebarGroup,
 		SidebarItem,
-		SidebarWrapper
+		SidebarWrapper,
+		Footer
 	} from 'flowbite-svelte';
+	import { Icon } from 'svelte-awesome-icons';
 	import { page } from '$app/stores';
 
 	import { sineIn } from 'svelte/easing';
-	let spanClass = 'flex-1 ml-3 whitespace-nowrap';
 	let hidden1 = false;
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
@@ -127,7 +113,7 @@
 		<slot />
 	</main>
 	<Footer class="sticky bottom-0 left-0 z-20 w-full">
-		<span class="flex-auto text-gray-500 dark:text-gray-400  text-xs md:text-lg">
+		<span class="flex-auto text-gray-500 dark:text-gray-400 text-xs md:text-lg">
 			This project uses the TMDB API but is not endorsed or certified by TMDB. - Data & Images
 			provided by
 			<a

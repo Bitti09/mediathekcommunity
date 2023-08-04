@@ -2,9 +2,7 @@
 	// @ts-nocheck
 	// Modals Utils
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { Tabs, TabItem } from 'flowbite-svelte';
-	import { AccordionItem, Accordion } from 'flowbite-svelte';
-
+	import { Tabs, TabItem, AccordionItem, Accordion } from 'flowbite-svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
@@ -12,8 +10,7 @@
 	let showvideo = false;
 	export let data;
 	$: data1 = data.article;
-	let tabSet = 0;
-	console.log(data.article);
+	//console.log(data.article);
 	function playvideo() {
 		seriestype.set('');
 		let poster1;
@@ -194,9 +191,7 @@
 	</div>
 	<Tabs style="underline" class="px-2">
 		<TabItem open>
-			<div slot="title" class="flex items-center gap-2">
-				Details
-			</div>
+			<div slot="title" class="flex items-center gap-2">Details</div>
 			<div class=" shadow-md sm:rounded-lg">
 				<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 					<tbody>
@@ -263,9 +258,7 @@
 		</TabItem>
 		{#if data1.category != 'series'}
 			<TabItem>
-				<div slot="title" class="flex items-center gap-2">
-					Links
-				</div>
+				<div slot="title" class="flex items-center gap-2">Links</div>
 				<div class=" shadow-md sm:rounded-lg">
 					<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 						<tbody>
@@ -303,9 +296,7 @@
 			</TabItem>
 		{:else}
 			<TabItem>
-				<div slot="title" class="flex items-center gap-2">
-					Episoden
-				</div>
+				<div slot="title" class="flex items-center gap-2">Episoden</div>
 				<Accordion>
 					{#each data1.listepisodes as episode}
 						{#if episode.omu == false}
@@ -327,9 +318,7 @@
 				</Accordion>
 			</TabItem>
 			<TabItem>
-				<div slot="title" class="flex items-center gap-2">
-					Episoden-OmU
-				</div>
+				<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
 				<Accordion>
 					{#each data1.listepisodes as episode}
 						{#if episode.omu == true}
