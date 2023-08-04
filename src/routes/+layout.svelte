@@ -28,7 +28,7 @@
 		<Navbar let:hidden let:toggle fluid navDivClass="flex justify-between">
 			<NavBrand href="/">
 				<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-					Mediathek Community v0.2.0
+					Mediathek Community v0.2.1
 				</span>
 			</NavBrand>
 			<DarkMode {btnClass} />

@@ -104,7 +104,7 @@
 	});
 </script>
 
-<div id="left_column" style="width: 90%;" class=" max-h-fit mx-auto relative overflow-hidden">
+<div id="left_column" style="width: 70%;" class=" max-h-fit mx-auto relative overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video
 		id="my-video"
