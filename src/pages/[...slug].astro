@@ -1,0 +1,83 @@
+---
+const { slug } = Astro.params;
+
+const pages = [
+  {
+    slug: undefined,
+    title: "Astro Store",
+    filter: "",
+  },
+  {
+    slug: "movie",
+    title: "Astro products",
+    filter: {
+      category: "movie",
+    },
+  },
+  {
+    slug: "serie",
+    title: "Astro products1",
+    filter: {
+      category: "series",
+    },
+  },
+  {
+    slug: "culture",
+    title: "Astro products1",
+    filter: {
+      category: "culture",
+    },
+  },
+  {
+    slug: "other",
+    title: "Astro products1",
+    filter: {
+      category: "other",
+    },
+  },
+  {
+    slug: "special",
+    title: "Astro products1",
+    filter: {
+      special: true,
+    },
+  },
+];
+
+const page = pages.find((page) => page.slug === slug);
+if (!page) return Astro.redirect("/");
+const { title, text } = page;
+import Layout from "../layouts/Layout.astro";
+import { createDirectus } from "@directus/sdk";
+import { rest, readItems } from "@directus/sdk/rest";
+import { staticToken } from "@directus/sdk/auth";
+import Card from "../components/Card.astro";
+const directus = createDirectus(import.meta.env.DIRECTUS_URL)
+  .with(rest())
+  .with(staticToken(import.meta.env.DIRECTUS_TOKEN));
+console.log(page);
+// do authenticated requests
+let article_data;
+let article;
+let param = 30;
+article_data = await directus.request(
+  readItems("mediathek", {
+    fields: ["*", "listepisodes.*"],
+    filter: page.filter,
+    sort: ["-date_created"],
+  })
+);
+article = article_data;
+---
+
+<Layout title={title}>
+  <ol>
+    {
+      article.map((item) => (
+        <li>
+          <Card carddata={item} />
+        </li>
+      ))
+    }
+  </ol>
+</Layout>

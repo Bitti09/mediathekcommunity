@@ -1,0 +1,33 @@
+---
+export interface Props {
+  carddata: object;
+}
+let imgurl;
+const { carddata } = Astro.props;
+if (carddata.poster) {
+  imgurl = "https://img.mediathek.community/t/p/original" + carddata.poster;
+} else {
+  imgurl = "https://img2.mediathek.community/assets/" + carddata.coverimage;
+}
+---
+
+<div
+  class="justify-center items-center flex max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+>
+  <a href="#">
+    <img class="h-64 rounded-t-lg" src={imgurl} alt="" />
+  </a>
+</div>
+
+<style>
+  #text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 25px;
+    color: white;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.863);
+    -ms-transform: translate(-50%, -50%);
+  }
+</style>
