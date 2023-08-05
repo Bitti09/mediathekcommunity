@@ -1,0 +1,26 @@
+---
+const { id } = Astro.params;
+import Layout from "../../layouts/Layout.astro";
+import { createDirectus } from "@directus/sdk";
+import { rest, readItems } from "@directus/sdk/rest";
+import { staticToken } from "@directus/sdk/auth";
+let article_data;
+let article;
+const directus = createDirectus(import.meta.env.DIRECTUS_URL)
+  .with(rest())
+  .with(staticToken(import.meta.env.DIRECTUS_TOKEN));
+article_data = await directus.request(
+  readItems("mediathek", {
+    fields: ["*", "listepisodes.*"],
+    filter: {
+      id: id,
+    },
+  })
+);
+article = article_data[0];
+---
+
+<Layout title="title">
+  <h1>{id}</h1>
+  {JSON.stringify(article)}
+</Layout>

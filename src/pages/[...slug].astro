@@ -46,38 +46,46 @@ const pages = [
 
 const page = pages.find((page) => page.slug === slug);
 if (!page) return Astro.redirect("/");
-const { title, text } = page;
+const { title } = page;
+import { groupBy } from "lodash-es";
 import Layout from "../layouts/Layout.astro";
 import { createDirectus } from "@directus/sdk";
 import { rest, readItems } from "@directus/sdk/rest";
 import { staticToken } from "@directus/sdk/auth";
-import Card from "../components/Card.astro";
+import Slider from "../components/Slider.astro";
 const directus = createDirectus(import.meta.env.DIRECTUS_URL)
   .with(rest())
   .with(staticToken(import.meta.env.DIRECTUS_TOKEN));
-console.log(page);
-// do authenticated requests
 let article_data;
 let article;
-let param = 30;
+let keyz;
+let grouped;
 article_data = await directus.request(
   readItems("mediathek", {
-    fields: ["*", "listepisodes.*"],
+    fields: ["*", "listepisodes.*,specials.*"],
     filter: page.filter,
     sort: ["-date_created"],
   })
 );
+if (page.slug == "special") {
+  grouped = groupBy(article_data, (item) => item.specials.Name);
+  keyz = Object.keys(grouped);
+} else {
+  grouped = groupBy(article_data, (item) => item.country);
+  keyz = Object.keys(grouped);
+}
 article = article_data;
 ---
 
 <Layout title={title}>
-  <ol>
-    {
-      article.map((item) => (
-        <li>
-          <Card carddata={item} />
-        </li>
-      ))
-    }
-  </ol>
+  Latest
+  <Slider slidedata={article} />
+  {
+    keyz.map((item) => (
+      <>
+        <span>{item}</span>
+        <Slider slidedata={grouped[item]} />
+      </>
+    ))
+  }
 </Layout>

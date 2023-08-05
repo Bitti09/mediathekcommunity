@@ -1,0 +1,70 @@
+---
+import "swiper/element/css/autoplay";
+export interface Props {
+  slidedata: object[];
+}
+import Card from "../components/Card.astro";
+
+const { slidedata } = Astro.props;
+---
+
+<swiper-container loop="false" init="false">
+  {
+    slidedata.map((image, i) => (
+      <swiper-slide>
+        <Card carddata={image} />
+      </swiper-slide>
+    ))
+  }
+</swiper-container>
+
+<script>
+  import { register } from "swiper/element/bundle";
+  register();
+  const params = {
+    loop: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      490: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      960: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+      1280: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+      1900: {
+        slidesPerView: 5,
+        spaceBetween: 0,
+      },
+      2300: {
+        slidesPerView: 6,
+        spaceBetween: 0,
+      },
+    },
+  };
+  const swiperEl = document.querySelectorAll("swiper-container");
+  for (let i = 0; i < swiperEl.length; i++) {
+    Object.assign(swiperEl[i], params);
+    swiperEl[i].initialize();
+  }
+</script>
+
+<style>
+  swiper-container {
+    z-index: calc(var(--index-grain) + 10);
+    margin-inline: auto;
+    max-inline-size: 150rem;
+  }
+
+  swiper-slide {
+    width: min(50rem, 80%);
+  }
+</style>
