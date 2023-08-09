@@ -61,8 +61,16 @@
 			swiperEl[i].initialize();
 		}
 	});
+	import { Alert } from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 </script>
 
+<Alert color="red" rounded={false} class="border-t-4">
+	<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+	<span class="font-medium">Info</span>
+	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt!
+</Alert>
+<br />
 {#if data.article.length > 0}
 	<div>
 		<h1 class="h1 pb-1">

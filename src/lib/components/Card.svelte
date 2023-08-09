@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { Card, Img } from 'flowbite-svelte';
+	import {  A,Img } from 'flowbite-svelte';
 	export let carddata;
 	//console.log(carddata);
 	let currentVariant = 'bg-initial';
@@ -15,7 +15,6 @@
 			return false;
 		}
 	}
-	let hCard = false;
 	if (carddata.poster) {
 		imgurl = 'https://img.mediathek.community/t/p/original' + carddata.poster;
 	} else {
@@ -26,14 +25,15 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="card {currentVariant} flex justify-center items-center">
+	<A href="/details/{carddata.id}">
 	<Img
 		src={imgurl}
-		href="/details/{carddata.id}"
+		
  		size="max-w-xs"
  		figClass="relative max-w-sm  cursor-pointer filter bg-black"
 		captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
 		caption={carddata.title}
-	/>
+	/> </A>
 </div>
 
 <style>

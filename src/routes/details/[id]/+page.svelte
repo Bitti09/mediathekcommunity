@@ -6,6 +6,7 @@
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
+	import { A, Img } from 'flowbite-svelte';
 
 	let showvideo = false;
 	export let data;
@@ -171,18 +172,12 @@
 {#if data.article}
 	<div>
 		{#if showvideo != true}
-			{#if data1.backdrop != 'backdrop' && data1.backdrop}
-				<img
-					class="rounded-lg max-h-fit mx-auto relative"
-					src="https://img.mediathek.community/t/p/original{data1.backdrop}"
-					alt="description"
-				/>
-			{:else}
-				<img
-					class="rounded-lg max-h-fit mx-auto relative"
-					src="https://api.mediathek.community/assets/{data1.coverimage}"
-					alt="description"
-				/>{/if}
+			<div class="h-image1 mx-auto">
+				{#if data1.backdrop != 'backdrop' && data1.backdrop}
+					<Img src="https://img.mediathek.community/t/p/original{data1.backdrop}" />
+				{:else}
+					<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
+			</div>
 		{:else}
 			<div class="max-h-fit grid place-items-center">
 				<svelte:component this={Videoplayer} />
@@ -388,3 +383,9 @@
 		{data.param}
 	</h1>
 {/if}
+
+<style>
+	.h-image1 {
+		max-width: 54rem !important;
+	}
+</style>

@@ -2,21 +2,8 @@
 	import '../app.postcss';
 	import { DarkMode } from 'flowbite-svelte';
 	import Drawer from '$lib/components/Drawer.svelte';
-	import {
-		Navbar,
-		NavBrand,
-		NavHamburger,
-		Sidebar,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-		Footer
-	} from 'flowbite-svelte';
-	import { Icon } from 'svelte-awesome-icons';
-	import { page } from '$app/stores';
+	import { Navbar, NavBrand, NavHamburger, Footer } from 'flowbite-svelte';
 	import { drawer } from '$lib/modalPropsStore';
-	let hidden;
-	import { sineIn } from 'svelte/easing';
 	const hide = () => drawer.set(false);
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
@@ -88,9 +75,3 @@
 		</span>
 	</Footer>
 </div>
-
-<style>
-	z-top {
-		z-index: 1000;
-	}
-</style>
