@@ -1,91 +1,35 @@
 ---
-const { slug } = Astro.params;
-
-const pages = [
-  {
-    slug: undefined,
-    title: "Astro Store",
-    filter: "",
-  },
-  {
-    slug: "movie",
-    title: "Astro products",
-    filter: {
-      category: "movie",
-    },
-  },
-  {
-    slug: "serie",
-    title: "Astro products1",
-    filter: {
-      category: "series",
-    },
-  },
-  {
-    slug: "culture",
-    title: "Astro products1",
-    filter: {
-      category: "culture",
-    },
-  },
-  {
-    slug: "other",
-    title: "Astro products1",
-    filter: {
-      category: "other",
-    },
-  },
-  {
-    slug: "special",
-    title: "Astro products1",
-    filter: {
-      special: true,
-    },
-  },
-];
-
-const page = pages.find((page) => page.slug === slug);
-if (!page) return Astro.redirect("/");
-const { title } = page;
-import { groupBy } from "lodash-es";
 import Layout from "../layouts/Layout.astro";
-import { createDirectus } from "@directus/sdk";
-import { rest, readItems } from "@directus/sdk/rest";
-import { staticToken } from "@directus/sdk/auth";
-import Slider from "../components/Slider.astro";
-const directus = createDirectus(import.meta.env.DIRECTUS_URL)
-  .with(rest())
-  .with(staticToken(import.meta.env.DIRECTUS_TOKEN));
-let article_data;
-let article;
-let keyz;
-let grouped;
-article_data = await directus.request(
-  readItems("mediathek", {
-    fields: ["*", "listepisodes.*,specials.*"],
-    filter: page.filter,
-    sort: ["-date_created"],
-  })
-);
-if (page.slug == "special") {
-  grouped = groupBy(article_data, (item) => item.specials.Name);
-  keyz = Object.keys(grouped);
-} else {
-  grouped = groupBy(article_data, (item) => item.country);
-  keyz = Object.keys(grouped);
-}
-article = article_data;
+
 ---
 
-<Layout title={title}>
+<Layout title="title">
+  {{title}}
+  <!-- 
   Latest
-  <Slider slidedata={article} />
+  {article_data}
+  <Slider slidedata={article_data} />
   {
     keyz.map((item) => (
       <>
         <span>{item}</span>
-        <Slider slidedata={grouped[item]} />
+        <Slider transition:persist slidedata={grouped[item]} />
       </>
     ))
-  }
+  } -->
 </Layout>
+
+<script>
+  let slug
+
+   if  (!slug) {
+    console.log("special");
+  } else {
+    console.log("country111");
+  }
+  fetch("http://localhost:3000/" + slug + ".json")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("fetch"+data);
+    });
+</script>
