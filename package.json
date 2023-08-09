@@ -35,7 +35,7 @@
 		"@directus/sdk": "^11.0.1",
 		"@popperjs/core": "^2.11.8",
 		"flowbite": "^1.8.1",
-		"flowbite-svelte": "^0.40.2",
+		"flowbite-svelte": "^0.43.0",
 		"lodash-es": "^4.17.21",
 		"swiper": "^10.1.0",
 		"tailwind-merge": "^1.14.0",
