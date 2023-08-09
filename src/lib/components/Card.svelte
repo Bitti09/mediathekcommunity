@@ -1,9 +1,10 @@
 <script>
 	// @ts-nocheck
-	import { Card } from 'flowbite-svelte';
+	import { Card, Img } from 'flowbite-svelte';
 	export let carddata;
 	//console.log(carddata);
 	let currentVariant = 'bg-initial';
+	let imgurl;
 	function inFuture(date) {
 		var now = new Date();
 		var then = new Date(date);
@@ -15,49 +16,24 @@
 		}
 	}
 	let hCard = false;
+	if (carddata.poster) {
+		imgurl = 'https://img.mediathek.community/t/p/original' + carddata.poster;
+	} else {
+		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
+	}
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="card {currentVariant} flex justify-center items-center">
-	{#if inFuture(carddata.publishdate) == false}
-		{#if carddata.poster}
-			<Card href="/details/{carddata.id}" padding="none">
-				<h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-					{carddata.title}
-				</h5>
-				<img
-					class="rounded-lg h-64 mx-auto"
-					src="https://img.mediathek.community/t/p/original{carddata.poster}"
-					alt="description"
-				/>
-			</Card>
-		{:else}
-			<Card href="/details/{carddata.id}" padding="none">
-				<h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-					{carddata.title}
-				</h5>
-
-				<img
-					class="rounded-lg h-64 mx-auto"
-					src="https://img2.mediathek.community/assets/{carddata.coverimage}"
-					alt="description"
-				/>
-			</Card>
-		{/if}
-	{:else if carddata.poster != 'poster'}
-		<div id="text">Coming soon</div>
-		<img
-			class="rounded-lg h-64 mx-auto"
-			src="https://img.mediathek.community/t/p/original{carddata.poster}"
-			alt="description"
-		/>
-	{:else}
-		<img
-			class="rounded-lg h-64 mx-auto"
-			src="https://img2.mediathek.community/assets/{carddata.coverimage}"
-			alt="description"
-		/>{/if}
+	<Img
+		src={imgurl}
+		href="/details/{carddata.id}"
+ 		size="max-w-xs"
+ 		figClass="relative max-w-sm  cursor-pointer filter bg-black"
+		captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
+		caption={carddata.title}
+	/>
 </div>
 
 <style>
