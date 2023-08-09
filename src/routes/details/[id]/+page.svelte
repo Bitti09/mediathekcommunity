@@ -171,7 +171,7 @@
 	<div class="">
 		{#if showvideo != true}
 			<div class=" h-fit mx-auto grid place-items-center">
-				<Card href="/cards">
+				<Card>
 					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Info</h5>
 					<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
 						Press Play to start the video.
