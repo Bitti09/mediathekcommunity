@@ -1,35 +1,126 @@
 ---
+const { slug } = Astro.params;
+const pages = [
+  {
+    slug: undefined,
+    title: "Astro Store",
+    filter: "",
+  },
+  {
+    slug: "movie",
+    title: "Astro products",
+    filter: {
+      category: "movie",
+    },
+  },
+  {
+    slug: "serie",
+    title: "Astro products1",
+    filter: {
+      category: "series",
+    },
+  },
+  {
+    slug: "culture",
+    title: "Astro products1",
+    filter: {
+      category: "culture",
+    },
+  },
+  {
+    slug: "other",
+    title: "Astro products1",
+    filter: {
+      category: "other",
+    },
+  },
+  {
+    slug: "special",
+    title: "Astro products1",
+    filter: {
+      special: true,
+    },
+  },
+];
+const page = pages.find((page) => page.slug === slug);
+if (!page) return Astro.redirect("/");
+const { title } = page;
+import { groupBy } from "lodash-es";
 import Layout from "../layouts/Layout.astro";
+import { createDirectus } from "@directus/sdk";
+import { rest, readItems } from "@directus/sdk/rest";
+import { staticToken } from "@directus/sdk/auth";
+import Slider from "../components/Slider.astro";
+const directus = createDirectus(import.meta.env.DIRECTUS_URL)
+  .with(rest())
+  .with(staticToken(import.meta.env.DIRECTUS_TOKEN));
+let article_data;
+let article;
+let keyz;
+let grouped;
+article_data = await directus.request(
+  readItems("mediathek", {
+    fields: ["*", "listepisodes.*,specials.*"],
+    filter: page.filter,
+    sort: ["-date_created"],
+  })
+);
+const swiperParams = {
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 0,
+    },
+    490: {
+      slidesPerView: 2,
+      spaceBetween: 0,
+    },
+    960: {
+      slidesPerView: 3,
+      spaceBetween: 0,
+    },
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 0,
+    },
+    1900: {
+      slidesPerView: 5,
+      spaceBetween: 0,
+    },
+    2300: {
+      slidesPerView: 7,
+      spaceBetween: 0,
+    },
+  },
+};
 
+if (page.slug == "special") {
+  grouped = groupBy(article_data, (item) => item.specials.Name);
+  keyz = Object.keys(grouped);
+} else {
+  grouped = groupBy(article_data, (item) => item.country);
+  keyz = Object.keys(grouped);
+}
+article = article_data;
 ---
 
-<Layout title="title">
-  {{title}}
-  <!-- 
+<Layout title={title}>
   Latest
-  {article_data}
-  <Slider slidedata={article_data} />
+  <Slider slidedata={article} />
   {
     keyz.map((item) => (
       <>
         <span>{item}</span>
-        <Slider transition:persist slidedata={grouped[item]} />
+        <Slider init="false" slidedata={grouped[item]} />
       </>
     ))
-  } -->
+  }
 </Layout>
 
 <script>
-  let slug
-
-   if  (!slug) {
-    console.log("special");
-  } else {
-    console.log("country111");
+  const swiperEl = document.querySelectorAll("swiper-container");
+  for (let i = 0; i < swiperEl.length; i++) {
+    Object.assign(swiperEl[i], swiperParams);
+    swiperEl[i].initialize();
   }
-  fetch("http://localhost:3000/" + slug + ".json")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("fetch"+data);
-    });
 </script>
