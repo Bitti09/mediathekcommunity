@@ -15,7 +15,7 @@
 		<Navbar let:hidden let:toggle fluid navDivClass="flex justify-between">
 			<NavBrand href="/">
 				<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-					Mediathek Community v0.2.1
+					Mediathek Community v0.2.2
 				</span>
 			</NavBrand>
 			<DarkMode {btnClass} />
@@ -26,7 +26,7 @@
 	<main class="max-w-screen-xxl m-auto flex-grow w-full">
 		<slot />
 	</main>
-	<Footer class="sticky bottom-0 left-0 z-20 w-full">
+	<Footer class="bottom-0 left-0 z-20 w-full">
 		<span class="flex-auto text-gray-500 dark:text-gray-400 text-xs md:text-lg">
 			This project uses the TMDB API but is not endorsed or certified by TMDB. - Data & Images
 			provided by

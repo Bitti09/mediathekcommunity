@@ -1,13 +1,11 @@
 <script>
 	// @ts-nocheck
-	// Modals Utils
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { Tabs, TabItem, AccordionItem, Accordion } from 'flowbite-svelte';
+	import { Card, Tabs, TabItem, AccordionItem, Accordion } from 'flowbite-svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
 	import { A, Img } from 'flowbite-svelte';
-
 	let showvideo = false;
 	export let data;
 	$: data1 = data.article;
@@ -170,176 +168,188 @@
 </script>
 
 {#if data.article}
-	<div>
+	<div class="">
 		{#if showvideo != true}
-			<div class="h-image1 mx-auto">
-				{#if data1.backdrop != 'backdrop' && data1.backdrop}
-					<Img src="https://img.mediathek.community/t/p/original{data1.backdrop}" />
-				{:else}
-					<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
+			<div class=" h-fit mx-auto grid place-items-center">
+				<Card href="/cards">
+					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Info</h5>
+					<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
+						Press Play to start the video.
+					</p>
+				</Card>
 			</div>
 		{:else}
-			<div class="max-h-fit grid place-items-center">
+			<div class="h-image1 mx-auto grid place-items-center">
 				<svelte:component this={Videoplayer} />
 			</div>
 		{/if}
 	</div>
-	<Tabs style="underline" class="px-2">
-		<TabItem open>
-			<div slot="title" class="flex items-center gap-2">Details</div>
-			<div class=" shadow-md sm:rounded-lg">
-				<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-					<tbody>
-						<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-							<th
-								scope="row"
-								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-							>
-								Sender
-							</th>
-							<td class="px-6 py-4">
-								{data1.channel}
-							</td>
-						</tr>
-						{#if data1.category == 'series'}
-							<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-								<th
-									scope="row"
-									class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-								>
-									Staffeln
-								</th>
-								<td class="px-6 py-4">
-									{data1.episodes}
-								</td>
-							</tr>
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-								<th
-									scope="row"
-									class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-								>
-									Folgen
-								</th>
-								<td class="px-6 py-4">
-									{data1.listepisodes.length}
-								</td>
-							</tr>
-						{/if}
-						<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-							<th
-								scope="row"
-								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-							>
-								Quality
-							</th>
-							<td class="px-6 py-4">
-								{data1.quality}
-							</td>
-						</tr>
-						<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-							<th
-								scope="row"
-								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-							>
-								description
-							</th>
-							<td class="px-6 py-4">
-								{data1.description}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</TabItem>
-		{#if data1.category != 'series'}
-			<TabItem>
-				<div slot="title" class="flex items-center gap-2">Links</div>
-				<div class=" shadow-md sm:rounded-lg">
-					<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-						<tbody>
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-								<th
-									scope="row"
-									class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-								>
-									Direktlink
-								</th>
-								<td class="px-4 py-2">
-									<button type="button" class="btn variant-filled mt-0" on:click={playvideo}>
-										play
-									</button>
-								</td>
-							</tr>
-							{#if data1.detailslink}
+	<div class="grid grid-rows-2 grid-cols-4">
+		<div class="col-span-1 row-span-3 h-image1">
+			{#if data1.backdrop != 'backdrop' && data1.backdrop}
+				<Img src="https://img.mediathek.community/t/p/original{data1.backdrop}" />
+			{:else}
+				<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
+		</div>
+		<div class="col-span-3">
+			<Tabs style="underline" class="px-2">
+				<TabItem open>
+					<div slot="title" class="flex items-center gap-2">Details</div>
+					<div class=" shadow-md sm:rounded-lg">
+						<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+							<tbody>
 								<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
 									<th
 										scope="row"
 										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
 									>
-										Direktlink 2
+										Sender
 									</th>
-									<td class="px-4 py-2">
-										<a href={data1.detailslink} target="_blank">
-											<button type="button" class="btn variant-filled mt-0">Detailseite</button>
-										</a>
+									<td class="px-6 py-4">
+										{data1.channel}
 									</td>
 								</tr>
-							{/if}
-						</tbody>
-					</table>
-				</div>
-			</TabItem>
-		{:else}
-			<TabItem>
-				<div slot="title" class="flex items-center gap-2">Episoden</div>
-				<Accordion>
-					{#each data1.listepisodes as episode}
-						{#if episode.omu == false}
-							<AccordionItem>
-								<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-								<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-									<div class="col-span-3">{episode.description}</div>
-									<div class="col-span-1 justify-center items-center flex">
-										<button
-											type="button"
-											class="btn variant-filled"
-											on:click={playepisode(episode, 'noomu')}
+								{#if data1.category == 'series'}
+									<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+										<th
+											scope="row"
+											class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
 										>
-											Play
-										</button>
-									</div>
-								</div>
-							</AccordionItem>
-						{/if}
-					{/each}
-				</Accordion>
-			</TabItem>
-			<TabItem>
-				<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
-				<Accordion>
-					{#each data1.listepisodes as episode}
-						{#if episode.omu == true}
-							<AccordionItem>
-								<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-								<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-									<div class="col-span-3">{episode.description}</div>
-									<div class="col-span-1 justify-center items-center flex">
-										<button
-											type="button"
-											class="btn variant-filled"
-											on:click={playepisode(episode, 'noomu')}
+											Staffeln
+										</th>
+										<td class="px-6 py-4">
+											{data1.episodes}
+										</td>
+									</tr>
+									<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+										<th
+											scope="row"
+											class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
 										>
-											Play
-										</button>
-									</div>
-								</div>
-							</AccordionItem>
-						{/if}
-					{/each}
-				</Accordion>
-			</TabItem>
-		{/if}
-	</Tabs>
+											Folgen
+										</th>
+										<td class="px-6 py-4">
+											{data1.listepisodes.length}
+										</td>
+									</tr>
+								{/if}
+								<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+									<th
+										scope="row"
+										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+									>
+										Quality
+									</th>
+									<td class="px-6 py-4">
+										{data1.quality}
+									</td>
+								</tr>
+								<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+									<th
+										scope="row"
+										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+									>
+										description
+									</th>
+									<td class="px-6 py-4">
+										{data1.description}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</TabItem>
+				{#if data1.category != 'series'}
+					<TabItem>
+						<div slot="title" class="flex items-center gap-2">Links</div>
+						<div class=" shadow-md sm:rounded-lg">
+							<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+								<tbody>
+									<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+										<th
+											scope="row"
+											class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+										>
+											Direktlink
+										</th>
+										<td class="px-4 py-2">
+											<button type="button" class="btn variant-filled mt-0" on:click={playvideo}>
+												play
+											</button>
+										</td>
+									</tr>
+									{#if data1.detailslink}
+										<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+											<th
+												scope="row"
+												class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+											>
+												Direktlink 2
+											</th>
+											<td class="px-4 py-2">
+												<a href={data1.detailslink} target="_blank">
+													<button type="button" class="btn variant-filled mt-0">Detailseite</button>
+												</a>
+											</td>
+										</tr>
+									{/if}
+								</tbody>
+							</table>
+						</div>
+					</TabItem>
+				{:else}
+					<TabItem>
+						<div slot="title" class="flex items-center gap-2">Episoden</div>
+						<Accordion>
+							{#each data1.listepisodes as episode}
+								{#if episode.omu == false}
+									<AccordionItem>
+										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+											<div class="col-span-3">{episode.description}</div>
+											<div class="col-span-1 justify-center items-center flex">
+												<button
+													type="button"
+													class="btn variant-filled"
+													on:click={playepisode(episode, 'noomu')}
+												>
+													Play
+												</button>
+											</div>
+										</div>
+									</AccordionItem>
+								{/if}
+							{/each}
+						</Accordion>
+					</TabItem>
+					<TabItem>
+						<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
+						<Accordion>
+							{#each data1.listepisodes as episode}
+								{#if episode.omu == true}
+									<AccordionItem>
+										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+											<div class="col-span-3">{episode.description}</div>
+											<div class="col-span-1 justify-center items-center flex">
+												<button
+													type="button"
+													class="btn variant-filled"
+													on:click={playepisode(episode, 'noomu')}
+												>
+													Play
+												</button>
+											</div>
+										</div>
+									</AccordionItem>
+								{/if}
+							{/each}
+						</Accordion>
+					</TabItem>
+				{/if}
+			</Tabs>
+		</div>
+	</div>
 	<!-- 
 	<TabGroup justify="justify-center">
  
