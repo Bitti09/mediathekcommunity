@@ -7,6 +7,7 @@
 	let myPlaylistomu = [];
 	import { A, Img } from 'flowbite-svelte';
 	let showvideo = false;
+	let imgsrc1
 	export let data;
 	$: data1 = data.article;
 	//console.log(data.article);
@@ -165,6 +166,12 @@
 		omulist.set(myPlaylistomu);
 		showvideo = true;
 	}
+
+	if(data.article.backdrop != 'backdrop' && data.article.backdrop) {
+		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
+	} else {
+		imgsrc1 = 'https://img2.mediathek.community/assets/' + data.article.coverimage;
+	}
 </script>
 
 {#if data.article}
@@ -187,7 +194,7 @@
 	<div class="grid grid-rows-2 grid-cols-4">
 		<div class="col-span-1 row-span-3 h-image1">
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
-				<Img src="https://img.mediathek.community/t/p/original{data1.backdrop}" />
+				<Img src="{imgsrc1}" />
 			{:else}
 				<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
 		</div>
