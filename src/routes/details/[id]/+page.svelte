@@ -7,7 +7,7 @@
 	let myPlaylistomu = [];
 	import { A, Img } from 'flowbite-svelte';
 	let showvideo = false;
-	let imgsrc1
+	let imgsrc1;
 	export let data;
 	$: data1 = data.article;
 	//console.log(data.article);
@@ -167,7 +167,7 @@
 		showvideo = true;
 	}
 
-	if(data.article.backdrop != 'backdrop' && data.article.backdrop) {
+	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
 	} else {
 		imgsrc1 = 'https://img2.mediathek.community/assets/' + data.article.coverimage;
@@ -194,7 +194,7 @@
 	<div class="grid grid-rows-2 grid-cols-4">
 		<div class="col-span-1 row-span-3 h-image1">
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
-				<Img src="{imgsrc1}" />
+				<Img src={imgsrc1} />
 			{:else}
 				<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
 		</div>
@@ -308,7 +308,7 @@
 					<TabItem>
 						<div slot="title" class="flex items-center gap-2">Episoden</div>
 						<Accordion>
-							{#each data1.listepisodes as episode}
+							{#each data1.listepisodes as episode, i}
 								{#if episode.omu == false}
 									<AccordionItem>
 										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
@@ -320,7 +320,7 @@
 													class="btn variant-filled"
 													on:click={playepisode(episode, 'noomu')}
 												>
-													Play
+													Play E{i + 1}
 												</button>
 											</div>
 										</div>
@@ -332,7 +332,7 @@
 					<TabItem>
 						<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
 						<Accordion>
-							{#each data1.listepisodes as episode}
+							{#each data1.listepisodes as episode, i}
 								{#if episode.omu == true}
 									<AccordionItem>
 										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
@@ -344,7 +344,7 @@
 													class="btn variant-filled"
 													on:click={playepisode(episode, 'noomu')}
 												>
-													Play
+													Play E{i + 1} OmU
 												</button>
 											</div>
 										</div>
@@ -357,39 +357,6 @@
 			</Tabs>
 		</div>
 	</div>
-	<!-- 
-	<TabGroup justify="justify-center">
- 
-			<Tab bind:group={tabSet} name="tab4" value={3}>Episoden-OmU</Tab>
-		{/if}
- 		<svelte:fragment slot="panel">
- 
-			{:else if tabSet === 3}
-				<Accordion>
-					{#each data1.listepisodes as episode}
-						{#if episode.omu == true}
-							<AccordionItem>
-								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
-								<svelte:fragment slot="content">
-									<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-										<div class="col-span-3">{episode.description}</div>
-										<div class="col-span-1 justify-center items-center flex">
-											<button
-												type="button"
-												class="btn variant-filled"
-												on:click={playepisode(episode, 'noomu')}>Play</button
-											>
-										</div>
-									</div>
-								</svelte:fragment>
-							</AccordionItem>
-						{/if}
-					{/each}
-				</Accordion>
-			{/if}
-		</svelte:fragment>
-	</TabGroup>
--->
 {:else}
 	<h1 class="h1">
 		<span

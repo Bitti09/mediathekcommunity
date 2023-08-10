@@ -1,4 +1,5 @@
 <script>
+  import { t } from '$lib/translations';
 	import '../app.postcss';
 	import { DarkMode } from 'flowbite-svelte';
 	import Drawer from '$lib/components/Drawer.svelte';
@@ -15,11 +16,10 @@
 		<Navbar let:hidden let:toggle fluid navDivClass="flex justify-between">
 			<NavBrand href="/">
 				<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-					Mediathek Community v0.2.2
+					{$t('menu.title')}
 				</span>
 			</NavBrand>
 			<DarkMode {btnClass} />
-
 			<NavHamburger on:click={() => hide()} class="ml-3 md:block" />
 		</Navbar>
 	</header>
