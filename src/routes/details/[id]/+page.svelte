@@ -181,7 +181,7 @@
 		<Alert color="blue">
 			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
 			<span class="font-medium">Info!</span>
-			Select VO as audio language for Englisch audio
+			Select VO as audio language for English audio
 		</Alert>
 	{/if}
 	<div class="">
