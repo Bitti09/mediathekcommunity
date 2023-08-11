@@ -167,6 +167,8 @@
 		showvideo = true;
 	}
 
+	import { Alert } from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
 	} else {
@@ -175,11 +177,18 @@
 </script>
 
 {#if data.article}
+ 	{#if data.article.channel == 'rai'}
+		<Alert color="blue">
+			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+			<span class="font-medium">Info!</span>
+			Select VO as audio language for Englisch audio
+		</Alert>
+	{/if}
 	<div class="">
 		{#if showvideo != true}
 			<div class=" h-image1 mx-auto grid place-items-center">
- 					<Img src={imgsrc1} />
- 			</div>
+				<Img src={imgsrc1} />
+			</div>
 		{:else}
 			<div class="h-image1 mx-auto grid place-items-center">
 				<svelte:component this={Videoplayer} />
@@ -187,7 +196,6 @@
 		{/if}
 	</div>
 	<div class="grid grid-rows-2 grid-cols-4">
-
 		<div class="col-span-4">
 			<Tabs style="underline" class="px-2">
 				<TabItem open>
@@ -362,6 +370,5 @@
 	.h-image1 {
 		max-width: 54rem !important;
 		height: auto !important;
-
 	}
 </style>
