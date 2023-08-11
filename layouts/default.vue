@@ -18,6 +18,8 @@
     </VApp>
 </template>
 <script setup>
+const { locale, locales, t, setLocale } = useI18n()
+
 import { useCustomTheme } from '~/composables/useCustomTheme'
 const { isDark } = useCustomTheme()
 </script>

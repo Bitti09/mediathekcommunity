@@ -1,6 +1,14 @@
 {
   "xxx": "Favourit-de",
   "app": {
-    "title": "Mediathek Community -DE"
+    "title": "Mediathek Community - DE"
+  },
+  "nav": {
+    "home": "Home",
+    "movies": "Filme",
+    "series": "Serie",
+    "culture": "Kultur",
+    "special": "Specials",
+    "others": "Sonstige"
   }
 }

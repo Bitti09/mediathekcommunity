@@ -5,7 +5,7 @@
         <template v-slot:append>
 
             <v-btn @click="toggle()">
-                <v-icon class="i-mdi:home"></v-icon>
+                <v-icon :class="isDark ? 'i-mdi:weather-sunny' : 'i-mdi:moon-full'"></v-icon>
             </v-btn>
         </template>
     </VAppBar>

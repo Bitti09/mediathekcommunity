@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "nuxt-directus": "^5.5.0",
+    "nuxt-swiper": "^1.2.0",
     "pinia": "^2.1.6"
   }
 }
