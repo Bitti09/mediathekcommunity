@@ -1,7 +1,7 @@
 <template>
-    <VAppBar :elevation="2" rounded>
+    <VAppBar app :elevation="2" rounded>
         <VAppBarNavIcon @click.stop="app.drawer = !app.drawer" />
-        <VAppBarTitle>My App</VAppBarTitle>
+        <VAppBarTitle> {{ t('app.title') }}</VAppBarTitle>
         <template v-slot:append>
 
             <v-btn @click="toggle()">
@@ -14,6 +14,8 @@
 <script setup>
 import { useAppStore } from '@/stores/app'
 import { useCustomTheme } from '~/composables/useCustomTheme'
+const { locale, locales, t, setLocale } = useI18n()
+
 const app = useAppStore()
 const { isDark, toggle } = useCustomTheme()
 </script>
