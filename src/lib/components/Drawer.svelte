@@ -14,6 +14,7 @@
 	import { page } from '$app/stores';
 	import { sineIn } from 'svelte/easing';
     import { drawer } from '$lib/modalPropsStore';
+	import { i } from '@inlang/sdk-js';
  	$: activeUrl = $page.url.pathname;
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
@@ -41,7 +42,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label="Movies"
+					label={i('nav.movie')}
 					href="/movie"
 					active={activeUrl === '/movie'}
 				>
@@ -51,7 +52,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label="Serie"
+					label={i('nav.serie')}
 					href="/series"
 					active={activeUrl === '/series'}
 				>
@@ -61,7 +62,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label="Culture"
+					label={i('nav.culture')}
 					href="/culture"
 					active={activeUrl === '/culture'}
 				>
@@ -71,7 +72,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label="Special"
+					label={i('nav.special')}
 					href="/specials"
 					active={activeUrl === '/specials'}
 				>
@@ -81,7 +82,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label="Other"
+					label={i('nav.other')}
 					href="/other"
 					active={activeUrl === '/other'}
 				>

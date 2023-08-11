@@ -177,14 +177,9 @@
 {#if data.article}
 	<div class="">
 		{#if showvideo != true}
-			<div class=" h-fit mx-auto grid place-items-center">
-				<Card>
-					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Info</h5>
-					<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
-						Press Play to start the video.
-					</p>
-				</Card>
-			</div>
+			<div class=" h-image1 mx-auto grid place-items-center">
+ 					<Img src={imgsrc1} />
+ 			</div>
 		{:else}
 			<div class="h-image1 mx-auto grid place-items-center">
 				<svelte:component this={Videoplayer} />
@@ -192,13 +187,8 @@
 		{/if}
 	</div>
 	<div class="grid grid-rows-2 grid-cols-4">
-		<div class="col-span-1 row-span-3 h-image1">
-			{#if data1.backdrop != 'backdrop' && data1.backdrop}
-				<Img src={imgsrc1} />
-			{:else}
-				<Img src="https://api.mediathek.community/assets/{data1.coverimage}" />{/if}
-		</div>
-		<div class="col-span-3">
+
+		<div class="col-span-4">
 			<Tabs style="underline" class="px-2">
 				<TabItem open>
 					<div slot="title" class="flex items-center gap-2">Details</div>
@@ -371,5 +361,7 @@
 <style>
 	.h-image1 {
 		max-width: 54rem !important;
+		height: auto !important;
+
 	}
 </style>

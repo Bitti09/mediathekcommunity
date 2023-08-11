@@ -35,16 +35,3 @@
 		caption={carddata.title}
 	/> </A>
 </div>
-
-<style>
-	#text {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		font-size: 25px;
-		color: white;
-		transform: translate(-50%, -50%);
-		background-color: rgba(0, 0, 0, 0.863);
-		-ms-transform: translate(-50%, -50%);
-	}
-</style>

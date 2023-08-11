@@ -1,5 +1,4 @@
 <script>
-  import { t } from '$lib/translations';
 	import '../app.postcss';
 	import { DarkMode } from 'flowbite-svelte';
 	import Drawer from '$lib/components/Drawer.svelte';
@@ -8,6 +7,8 @@
 	const hide = () => drawer.set(false);
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
+	import { i, languages, language, switchLanguage } from '@inlang/sdk-js';
+
 </script>
 
 <Drawer />
@@ -16,7 +17,7 @@
 		<Navbar let:hidden let:toggle fluid navDivClass="flex justify-between">
 			<NavBrand href="/">
 				<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-					{$t('menu.title')}
+					{i('menutitle')}
 				</span>
 			</NavBrand>
 			<DarkMode {btnClass} />

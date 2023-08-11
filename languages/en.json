@@ -1,0 +1,11 @@
+{
+  "menutitle": "Mediathek Community - en",
+  "nav": {
+    "movie": "Movies",
+    "serie": "Series",
+    "culture": "Culture",
+    "special": "Special",
+    "other": "Other"
+  },
+  "header.switchLang": "switchLang"
+}

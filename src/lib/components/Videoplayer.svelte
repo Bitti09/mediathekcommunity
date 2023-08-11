@@ -104,14 +104,14 @@
 	});
 </script>
 
-<div id="left_column" style="width: 70%;" class=" max-h-fit mx-auto relative overflow-hidden">
+<div id="left_column" style="" class=" h-image1 mx-auto overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video
 		id="my-video"
 		playsinline
 		webkit-playsinline
 		bind:this={videoPlayer}
-		class="video-js vjs-16-9 overflow-hidden"
+		class="video-js vjs-fluid overflow-hidden"
 	></video>
 </div>
 
@@ -119,5 +119,10 @@
 	.overflow-hidden {
 		/* set it to not show scroll bars so 100% will work */
 		overflow: hidden !important;
+	}
+	.h-image1 {
+		max-width: 54rem !important;
+		height: auto !important;
+		width: 100% !important;
 	}
 </style>
