@@ -20,6 +20,7 @@
 	} else {
 		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 	}
+	let cption = carddata.title + " - "+ carddata.channel;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -32,6 +33,6 @@
  		size="max-w-xs"
  		figClass="relative max-w-sm  cursor-pointer filter bg-black"
 		captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
-		caption={carddata.title}
+		caption={cption}
 	/> </A>
 </div>

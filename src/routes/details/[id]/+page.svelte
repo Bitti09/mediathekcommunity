@@ -21,9 +21,9 @@
 		}
 		showvideo = true;
 		//console.log(data1);
-		if (data1.directlink) {
+		if (data1.medialink) {
 			modalvideo.set({
-				source: [{ src: data1.directlink, type: data1.format }],
+				source: [{ src: data1.medialink, type: data1.format }],
 				type: data1.format,
 				poster: poster1,
 				title: data1.title

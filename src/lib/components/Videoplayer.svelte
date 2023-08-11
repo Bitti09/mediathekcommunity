@@ -3,7 +3,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import videojs from 'video.js';
 	import '../videojs/components/nuevo';
-	import '../videojs/components/playlist';
+	import '../videojs/components/playlist?client';
 	import '../videojs/skins/nuevo/videojs.css';
 
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
@@ -76,8 +76,7 @@
 				rateMenu: false,
 				settingsButton: false
 			});
-			//console.log(player);
-			if ($seriestype == 'noomu') {
+ 			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);
 				//player.playList($noomulist);
 			} else if ($seriestype == 'omu') {
