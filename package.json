@@ -17,6 +17,7 @@
     "@vueuse/core": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
     "nuxt": "^3.6.5",
+    "nuxt-lodash": "^2.5.0",
     "vuetify-nuxt-module": "^0.5.7"
   },
   "dependencies": {

@@ -8,11 +8,8 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-swiper",
     "nuxt-directus",
+    "nuxt-lodash"
   ],
-  directus: {
-    url: "https://api.mediathek.community",
-    token: "fnzDPNZGV481krf-X7F1lt6rXAs646PW",
-  },
   i18n: {
     locales: [
       {
@@ -50,4 +47,11 @@ export default defineNuxtConfig({
     },
   },
   devtools: true,
+  runtimeConfig: {
+    directusUrl: "",
+    directusToken: "",
+    directus: {
+      token: "",
+    },
+  },
 });
