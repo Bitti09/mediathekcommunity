@@ -1,5 +1,7 @@
 ---
 const { slug } = Astro.params;
+import Card from "../components/Card.astro";
+
 const pages = [
   {
     slug: undefined,
@@ -65,35 +67,6 @@ article_data = await directus.request(
     sort: ["-date_created"],
   })
 );
-const swiperParams = {
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-      spaceBetween: 0,
-    },
-    490: {
-      slidesPerView: 2,
-      spaceBetween: 0,
-    },
-    960: {
-      slidesPerView: 3,
-      spaceBetween: 0,
-    },
-    1280: {
-      slidesPerView: 4,
-      spaceBetween: 0,
-    },
-    1900: {
-      slidesPerView: 5,
-      spaceBetween: 0,
-    },
-    2300: {
-      slidesPerView: 7,
-      spaceBetween: 0,
-    },
-  },
-};
-
 if (page.slug == "special") {
   grouped = groupBy(article_data, (item) => item.specials.Name);
   keyz = Object.keys(grouped);
@@ -106,21 +79,66 @@ article = article_data;
 
 <Layout title={title}>
   Latest
-  <Slider slidedata={article} />
+  <swiper-container loop="false" init="false">
+    {
+      article.map((image, i) => (
+        <swiper-slide>
+          <Card carddata={image} />
+        </swiper-slide>
+      ))
+    }
+  </swiper-container>
   {
     keyz.map((item) => (
       <>
         <span>{item}</span>
-        <Slider init="false" slidedata={grouped[item]} />
+        <swiper-container loop="false" init="false">
+          {grouped[item].map((image, i) => (
+            <swiper-slide>
+              <Card carddata={image} />
+            </swiper-slide>
+          ))}
+        </swiper-container>
       </>
     ))
   }
 </Layout>
 
 <script>
+  import { register } from "swiper/element/bundle";
+  register();
+  const params = {
+    loop: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      490: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      960: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+      1280: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+      1900: {
+        slidesPerView: 5,
+        spaceBetween: 0,
+      },
+      2300: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+    },
+  };
   const swiperEl = document.querySelectorAll("swiper-container");
   for (let i = 0; i < swiperEl.length; i++) {
-    Object.assign(swiperEl[i], swiperParams);
+    Object.assign(swiperEl[i], params);
     swiperEl[i].initialize();
   }
 </script>

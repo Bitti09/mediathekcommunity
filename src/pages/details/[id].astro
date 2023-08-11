@@ -29,9 +29,10 @@ if (article.poster) {
 <Layout title="title">
   <h1>{id}</h1>
   <img
-  class="rounded-lg max-h-fit mx-auto relative"
-  src={imgurl}
-  alt="description"
-/>
+    class="rounded-lg max-h-fit mx-auto relative"
+    src={imgurl}
+    alt="description"
+    transition:name="hero"
+  />
   {JSON.stringify(article)}
 </Layout>

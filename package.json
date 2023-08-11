@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
-    "@directus/sdk": "^11.0.1",
-    "astro": "^2.10.4",
+    "@directus/sdk": "^11.0.2",
+    "astro": "^2.10.5",
     "flowbite": "^1.8.1",
     "lodash-es": "^4.17.21",
     "nanostores": "^0.9.3",

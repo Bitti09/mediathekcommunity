@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@astrojs/tailwind':
     specifier: ^4.0.0
-    version: 4.0.0(astro@2.10.4)(tailwindcss@3.3.3)
+    version: 4.0.0(astro@2.10.5)(tailwindcss@3.3.3)
   '@directus/sdk':
-    specifier: ^11.0.1
-    version: 11.0.1
+    specifier: ^11.0.2
+    version: 11.0.2
   astro:
-    specifier: ^2.10.4
-    version: 2.10.4
+    specifier: ^2.10.5
+    version: 2.10.5
   flowbite:
     specifier: ^1.8.1
     version: 1.8.1
@@ -72,13 +72,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.10.4):
+  /@astrojs/markdown-remark@2.2.1(astro@2.10.5):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.4
+      astro: 2.10.5
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -102,13 +102,13 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/tailwind@4.0.0(astro@2.10.4)(tailwindcss@3.3.3):
+  /@astrojs/tailwind@4.0.0(astro@2.10.5)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-HmCAXFFes7MUBt5ihdfH1goa8QyGkHejIpz6Z4XBKK9VNYY9G2E3brCn8+pNn5zAOzcwl3FYcuH2AiOa/NGoMQ==}
     peerDependencies:
       astro: ^2.6.5
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 2.10.4
+      astro: 2.10.5
       autoprefixer: 10.4.14(postcss@8.4.27)
       postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)
@@ -366,15 +366,9 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@directus/sdk@11.0.1:
-    resolution: {integrity: sha512-3WTmYeFZD8uyCkSB7TL2qgFVL8x6D+Z2SdR33xXNEPpld4625ZoQzOTa3oYCC7AREkh7x6vdP9wXkY91oQ8x1g==}
+  /@directus/sdk@11.0.2:
+    resolution: {integrity: sha512-mZ+gTwEAjt9CJv5rbtx1ub2KchMcL7gzZ7cbTB1Rd+o0s71ipgBcvBKcApBdnhySTruWHHqIbNm+VnwebugaaQ==}
     engines: {node: '>=18.0.0'}
-    dependencies:
-      '@directus/types': 10.1.3
-    dev: false
-
-  /@directus/types@10.1.3:
-    resolution: {integrity: sha512-2n2VTfFVzHYWwTxznOTbEsQUbCy/XIlpmiYt2HU3tqZe2cQiu+z5Sw+7YsdfDTmVjW78J20MdoweSjyHheqp6A==}
     dev: false
 
   /@emmetio/abbreviation@2.3.3:
@@ -1026,8 +1020,8 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro@2.10.4:
-    resolution: {integrity: sha512-6MQ2E25tvHFNVgZ2uaNm33w2DKTyurlDLU0UUcdnAxVQwldDD8Qq8KDHm+nBx1CAWycjdbjJi9VQVvX2TOCMeQ==}
+  /astro@2.10.5:
+    resolution: {integrity: sha512-/GlDb0iHq9smACrCqVu/AaNi5+fqJuPOVTthm5fFNi+OBRprY0DW8juaov8o+M1X6SvIyIbOcd04+ZsYrIF0Sg==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1039,7 +1033,7 @@ packages:
       '@astrojs/compiler': 1.8.1
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.4)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.5)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.10
@@ -1192,7 +1186,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001519
-      electron-to-chromium: 1.4.489
+      electron-to-chromium: 1.4.490
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: false
@@ -1457,8 +1451,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /electron-to-chromium@1.4.489:
-    resolution: {integrity: sha512-QNx+cirm4ENixfdSk9rp/3HKpjlxHFsmDoHtU1IiXdkJcpkKrd/o20LT5h1f3Qz+yfTMb4Ji3YDT/IvJkNfEkA==}
+  /electron-to-chromium@1.4.490:
+    resolution: {integrity: sha512-6s7NVJz+sATdYnIwhdshx/N/9O6rvMxmhVoDSDFdj6iA45gHR8EQje70+RYsF4GeB+k0IeNSBnP7yG9ZXJFr7A==}
     dev: false
 
   /emmet@2.4.6:
