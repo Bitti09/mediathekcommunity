@@ -1,20 +1,18 @@
 <script>
 	import '../app.postcss';
-	import { DarkMode } from 'flowbite-svelte';
 	import Drawer from '$lib/components/Drawer.svelte';
-	import { Navbar, NavBrand, NavHamburger, Footer } from 'flowbite-svelte';
+	import { Navbar, NavBrand, NavHamburger, Footer, DarkMode } from 'flowbite-svelte';
 	import { drawer } from '$lib/modalPropsStore';
 	const hide = () => drawer.set(false);
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
-	import { i, languages, language, switchLanguage } from '@inlang/sdk-js';
-
+	import { i } from '@inlang/sdk-js';
 </script>
 
 <Drawer />
 <div class="flex flex-col h-screen">
 	<header class="sticky top-0 z-50 shadow-md">
-		<Navbar let:hidden let:toggle fluid navDivClass="flex justify-between">
+		<Navbar fluid navDivClass="flex justify-between">
 			<NavBrand href="/">
 				<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
 					{i('menutitle')}

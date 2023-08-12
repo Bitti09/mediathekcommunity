@@ -1,11 +1,11 @@
 <script>
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { Card, Tabs, TabItem, AccordionItem, Accordion } from 'flowbite-svelte';
+	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img  } from 'flowbite-svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { Icon } from 'flowbite-svelte-icons';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
-	import { A, Img } from 'flowbite-svelte';
 	let showvideo = false;
 	let imgsrc1;
 	export let data;
@@ -166,9 +166,6 @@
 		omulist.set(myPlaylistomu);
 		showvideo = true;
 	}
-
-	import { Alert } from 'flowbite-svelte';
-	import { Icon } from 'flowbite-svelte-icons';
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
 	} else {
@@ -177,7 +174,7 @@
 </script>
 
 {#if data.article}
- 	{#if data.article.channel == 'rai'}
+	{#if data.article.channel == 'rai'}
 		<Alert color="blue">
 			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
 			<span class="font-medium">Info!</span>

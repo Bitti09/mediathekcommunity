@@ -1,12 +1,11 @@
 <script>
 	// @ts-nocheck
-	// Modals Utils
+	import { Alert } from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
-	// import function to register Swiper custom elements
 	import { register } from 'swiper/element/bundle';
 	import { groupBy } from 'lodash-es';
 	import Card from '$lib/components/Card.svelte';
-	// register Swiper custom elements
 	register();
 	export let data;
 	let d1;
@@ -61,8 +60,6 @@
 			swiperEl[i].initialize();
 		}
 	});
-	import { Alert } from 'flowbite-svelte';
-	import { Icon } from 'flowbite-svelte-icons';
 </script>
 
 <Alert color="red" rounded={false} class="border-t-4">

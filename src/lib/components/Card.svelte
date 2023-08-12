@@ -1,9 +1,8 @@
 <script>
 	// @ts-nocheck
-	import {  A,Img } from 'flowbite-svelte';
+	import { A, Img } from 'flowbite-svelte';
 	export let carddata;
-	//console.log(carddata);
-	let currentVariant = 'bg-initial';
+ 	let currentVariant = 'bg-initial';
 	let imgurl;
 	function inFuture(date) {
 		var now = new Date();
@@ -20,19 +19,19 @@
 	} else {
 		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 	}
-	let cption = carddata.title + " - "+ carddata.channel;
+	let cption = carddata.title + ' - ' + carddata.channel;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="card {currentVariant} flex justify-center items-center">
 	<A href="/details/{carddata.id}">
-	<Img
-		src={imgurl}
-		
- 		size="max-w-xs"
- 		figClass="relative max-w-sm  cursor-pointer filter bg-black"
-		captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
-		caption={cption}
-	/> </A>
+		<Img
+			src={imgurl}
+			size="max-w-xs"
+			figClass="relative max-w-sm  cursor-pointer filter bg-black"
+			captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
+			caption={cption}
+		/>
+	</A>
 </div>

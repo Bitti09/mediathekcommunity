@@ -18,7 +18,7 @@ export async function defineConfig(env) {
 			sdkPlugin({ languageNegotiation: { strategies: [{ type: 'localStorage' }] } }),
 			jsonPlugin({
 				pathPattern: './languages/{language}.json',
-				variableReferencePattern: ["{", "}"],
+				variableReferencePattern: ['{', '}']
 			}),
 			standardLintRules()
 		]

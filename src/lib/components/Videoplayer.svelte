@@ -5,7 +5,6 @@
 	import '../videojs/components/nuevo';
 	import '../videojs/components/playlist?client';
 	import '../videojs/skins/nuevo/videojs.css';
-
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;

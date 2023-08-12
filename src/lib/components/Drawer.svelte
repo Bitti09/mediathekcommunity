@@ -1,23 +1,11 @@
 <script>
-	import {
-		Navbar,
-		NavBrand,
-		NavHamburger,
-		Drawer,
-		Sidebar,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-		Footer
-	} from 'flowbite-svelte';
+	import { Drawer, Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
 	import { Icon } from 'svelte-awesome-icons';
 	import { page } from '$app/stores';
 	import { sineIn } from 'svelte/easing';
-    import { drawer } from '$lib/modalPropsStore';
+	import { drawer } from '$lib/modalPropsStore';
 	import { i } from '@inlang/sdk-js';
- 	$: activeUrl = $page.url.pathname;
-	let btnClass =
-		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
+	$: activeUrl = $page.url.pathname;
 	let transitionParams = {
 		x: -320,
 		duration: 200,
