@@ -1,8 +1,80 @@
 <script>
 	// @ts-nocheck
-	import { A, Img } from 'flowbite-svelte';
+	import { Img } from 'flowbite-svelte';
+	import Icon from '@iconify/svelte';
+	import { Card } from 'flowbite-svelte';
 	export let carddata;
- 	let currentVariant = 'bg-initial';
+	export let showflag = false;
+	function getflag(country) {
+		switch (country) {
+			case 'de':
+				return 'twemoji:flag-germany';
+			case 'at':
+				return 'twemoji:flag-austria';
+			case 'ch':
+				return 'twemoji:flag-switzerland';
+			case 'it':
+				return 'twemoji:flag-italy';
+			case 'fr':
+				return 'twemoji:flag-france';
+			case 'es':
+				return 'twemoji:flag-spain';
+			case 'gb':
+				return 'twemoji:flag-united-kingdom';
+			case 'us':
+				return 'twemoji:flag-united-states';
+			case 'ru':
+				return 'twemoji:flag-russia';
+			case 'jp':
+				return 'twemoji:flag-japan';
+			case 'cn':
+				return 'twemoji:flag-china';
+			case 'kr':
+				return 'twemoji:flag-south-korea';
+			case 'tr':
+				return 'twemoji:flag-turkey';
+			case 'pl':
+				return 'twemoji:flag-poland';
+			case 'nl':
+				return 'twemoji:flag-netherlands';
+			case 'be':
+				return 'twemoji:flag-belgium';
+			case 'cz':
+				return 'twemoji:flag-czech-republic';
+			case 'dk':
+				return 'twemoji:flag-denmark';
+			case 'fi':
+				return 'twemoji:flag-finland';
+			case 'gr':
+				return 'twemoji:flag-greece';
+			case 'hu':
+				return 'twemoji:flag-hungary';
+			case 'ie':
+				return 'twemoji:flag-ireland';
+			case 'no':
+				return 'twemoji:flag-norway';
+			case 'pt':
+				return 'twemoji:flag-portugal';
+			case 'se':
+				return 'twemoji:flag-sweden';
+			case 'ar':
+				return 'twemoji:flag-argentina';
+			case 'br':
+				return 'twemoji:flag-brazil';
+			case 'ca':
+				return 'twemoji:flag-canada';
+			case 'co':
+				return 'twemoji:flag-colombia';
+			case 'mx':
+				return 'twemoji:flag-mexico';
+			case 'au':
+				return 'twemoji:flag-australia';
+			case 'nz':
+				return 'twemoji:flag-new-zealand';
+			case 'no':
+				return 'twemoji:flag-norway';
+		}
+	}
 	let imgurl;
 	function inFuture(date) {
 		var now = new Date();
@@ -19,19 +91,19 @@
 	} else {
 		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 	}
-	let cption = carddata.title + ' - ' + carddata.channel;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="card {currentVariant} flex justify-center items-center">
-	<A href="/details/{carddata.id}">
-		<Img
-			src={imgurl}
-			size="max-w-xs"
-			figClass="relative max-w-sm  cursor-pointer filter bg-black"
-			captionClass="absolute bottom-0 px-4 text-lg text-black bg-white w-full bg-opacity-20 backdrop-blur-lg drop-shadow-lg"
-			caption={cption}
-		/>
-	</A>
-</div>
+<Card class="sm:p-4 max-w-lg border-0">
+	<a href="/details/{carddata.id}">
+		<div class="flex justify-between w-full">
+			<div>
+				{#if showflag}<Icon icon={getflag(carddata.country)} style="font-size: 26px;" />
+				{/if}
+			</div>
+			<div>{carddata.channel}</div>
+		</div>
+		<Img src={imgurl} figClass="relative cursor-pointer filter bg-black" />
+	</a>
+</Card>

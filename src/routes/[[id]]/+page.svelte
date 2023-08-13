@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { Alert } from 'flowbite-svelte';
-	import { Icon } from 'flowbite-svelte-icons';
+	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 	import { groupBy } from 'lodash-es';
@@ -18,6 +18,76 @@
 	} else {
 		grouped = groupBy(d1, (item) => item.country);
 		keyz = Object.keys(grouped);
+	}
+	function getflag(country) {
+		switch (country) {
+			case 'de':
+				return 'twemoji:flag-germany';
+			case 'at':
+				return 'twemoji:flag-austria';
+			case 'ch':
+				return 'twemoji:flag-switzerland';
+			case 'it':
+				return 'twemoji:flag-italy';
+			case 'fr':
+				return 'twemoji:flag-france';
+			case 'es':
+				return 'twemoji:flag-spain';
+			case 'gb':
+				return 'twemoji:flag-united-kingdom';
+			case 'us':
+				return 'twemoji:flag-united-states';
+			case 'ru':
+				return 'twemoji:flag-russia';
+			case 'jp':
+				return 'twemoji:flag-japan';
+			case 'cn':
+				return 'twemoji:flag-china';
+			case 'kr':
+				return 'twemoji:flag-south-korea';
+			case 'tr':
+				return 'twemoji:flag-turkey';
+			case 'pl':
+				return 'twemoji:flag-poland';
+			case 'nl':
+				return 'twemoji:flag-netherlands';
+			case 'be':
+				return 'twemoji:flag-belgium';
+			case 'cz':
+				return 'twemoji:flag-czech-republic';
+			case 'dk':
+				return 'twemoji:flag-denmark';
+			case 'fi':
+				return 'twemoji:flag-finland';
+			case 'gr':
+				return 'twemoji:flag-greece';
+			case 'hu':
+				return 'twemoji:flag-hungary';
+			case 'ie':
+				return 'twemoji:flag-ireland';
+			case 'no':
+				return 'twemoji:flag-norway';
+			case 'pt':
+				return 'twemoji:flag-portugal';
+			case 'se':
+				return 'twemoji:flag-sweden';
+			case 'ar':
+				return 'twemoji:flag-argentina';
+			case 'br':
+				return 'twemoji:flag-brazil';
+			case 'ca':
+				return 'twemoji:flag-canada';
+			case 'co':
+				return 'twemoji:flag-colombia';
+			case 'mx':
+				return 'twemoji:flag-mexico';
+			case 'au':
+				return 'twemoji:flag-australia';
+			case 'nz':
+				return 'twemoji:flag-new-zealand';
+			case 'no':
+				return 'twemoji:flag-norway';
+		}
 	}
 	onMount(async () => {
 		const swiperParams = {
@@ -69,7 +139,7 @@
 </Alert>
 <br />
 {#if data.article.length > 0}
-	<div>
+	<div class="pl-2">
 		<h1 class="h1 pb-1">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
@@ -79,16 +149,16 @@
 		</h1>
 		<swiper-container init="false" class="'mySwiper2">
 			{#each data.article as name}
-				<swiper-slide><Card carddata={name} /></swiper-slide>
+				<swiper-slide><Card carddata={name} showflag /></swiper-slide>
 			{/each}
 		</swiper-container>
 		{#each keyz as lang}
 			<h1 class="h1 pb-1">
-				<span
-					class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
+				<div
+					class="flex items-center bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 				>
-					{lang}
-				</span>
+					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> Mediatheken
+				</div>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
 				{#each grouped[lang] as name}
