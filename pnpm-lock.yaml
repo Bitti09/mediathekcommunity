@@ -11,6 +11,9 @@ dependencies:
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
+  '@vercel/analytics':
+    specifier: ^1.0.2
+    version: 1.0.2
   flowbite:
     specifier: ^1.8.1
     version: 1.8.1
@@ -696,6 +699,10 @@ packages:
   /@types/pug@2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
     dev: true
+
+  /@vercel/analytics@1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+    dev: false
 
   /@vercel/nft@0.23.1:
     resolution: {integrity: sha512-NE0xSmGWVhgHF1OIoir71XAd0W0C1UE3nzFyhpFiMr3rVhetww7NvM1kc41trBsPG37Bh+dE5FYCTMzM/gBu0w==}
