@@ -11,7 +11,7 @@ export async function load({ params }) {
 	// do authenticated requests
 	let article;
 	let param = params.id;
-	if (params.id != '' && params.id != 'specials') {
+	if (params.id != '' && params.id != 'specials'&& params.id != 'uhd') {
 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*', 'listepisodes.*'],
@@ -21,7 +21,17 @@ export async function load({ params }) {
 				sort: ['-date_created']
 			})
 		);
-	} else if (params.id == 'specials') {
+	} else if (params.id == 'uhd') {
+		article = await directus.request(
+			readItems('mediathek', {
+				fields: ['*.*', 'listepisodes.*', 'specials.*'],
+				filter: {
+					quality: 'uhd'
+				}
+			})
+		);
+	}
+	else if (params.id == 'specials') {
 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*.*', 'listepisodes.*', 'specials.*'],
