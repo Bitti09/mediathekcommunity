@@ -100,7 +100,9 @@
 			player.dispose();
 		}
 	});
+	console.log($omulist)
 </script>
+
 
 <div id="left_column" style="" class=" h-image1 mx-auto overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->

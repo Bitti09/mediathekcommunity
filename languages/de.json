@@ -7,5 +7,6 @@
     "special": "Special",
     "other": "Other"
   },
-  "header.switchLang": "switchLang"
+  "header.switchLang": "switchLang",
+  "nav.uhd": "UHD"
 }

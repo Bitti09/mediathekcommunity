@@ -135,7 +135,7 @@
 <Alert color="red" rounded={false} class="border-t-4">
 	<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
 	<span class="font-medium">Info</span>
-	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt!
+	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! - Serienansicht wird aktuell  überarbeitet   
 </Alert>
 <br />
 {#if data.article.length > 0}

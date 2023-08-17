@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img  } from 'flowbite-svelte';
+	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	import { Icon } from 'flowbite-svelte-icons';
 	let myPlaylist = [];
@@ -79,6 +79,22 @@
 		for (let i = 0; i < data1.listepisodes.length; i++) {
 			if (data1.listepisodes[i].omu == false) {
 				let sources = [];
+				if (data1.listepisodes[i].directlink) {
+					sources.push({
+						src: data1.listepisodes[i].directlink,
+						type: data1.listepisodes[i].format,
+						title: data1.title,
+						default: true
+					});
+				}
+				if (data1.listepisodes[i].directlink2) {
+					sources.push({
+						src: data1.listepisodes[i].directlink2,
+						type: data1.listepisodes[i].format,
+						title: data1.title,
+						default: true
+					});
+				}
 				if (data1.listepisodes[i].directlinkfhd) {
 					sources.push({
 						src: data1.listepisodes[i].directlinkfhd,
@@ -121,6 +137,22 @@
 				});
 			} else {
 				let sources = [];
+				if (data1.listepisodes[i].directlink) {
+					sources.push({
+						src: data1.listepisodes[i].directlink,
+						type: data1.listepisodes[i].format,
+						title: data1.title,
+						default: true
+					});
+				}
+				if (data1.listepisodes[i].directlink2) {
+					sources.push({
+						src: data1.listepisodes[i].directlink2,
+						type: data1.listepisodes[i].format,
+						title: data1.title,
+						default: true
+					});
+				}
 				if (data1.listepisodes[i].directlinkfhd) {
 					sources.push({
 						src: data1.listepisodes[i].directlinkfhd,
@@ -155,7 +187,7 @@
 					});
 				}
 				myPlaylistomu.push({
-					title: 'omu' + data1.listepisodes[i].Title,
+					title: data1.listepisodes[i].Title + ' OmU',
 					infoTitle: data1.listepisodes[i].Title,
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: sources
@@ -165,6 +197,7 @@
 		noomulist.set(myPlaylist);
 		omulist.set(myPlaylistomu);
 		showvideo = true;
+		console.log(myPlaylistomu);
 	}
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
@@ -324,6 +357,7 @@
 							{/each}
 						</Accordion>
 					</TabItem>
+					{#if data1.omuseries}
 					<TabItem>
 						<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
 						<Accordion>
@@ -337,7 +371,7 @@
 												<button
 													type="button"
 													class="btn variant-filled"
-													on:click={playepisode(episode, 'noomu')}
+													on:click={playepisode(episode, 'omu')}
 												>
 													Play E{i + 1} OmU
 												</button>
@@ -348,6 +382,7 @@
 							{/each}
 						</Accordion>
 					</TabItem>
+					{/if}
 				{/if}
 			</Tabs>
 		</div>
