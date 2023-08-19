@@ -4,12 +4,42 @@
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	import { Icon } from 'flowbite-svelte-icons';
+	import { groupBy } from 'lodash-es';
+
 	let myPlaylist = [];
 	let myPlaylistomu = [];
 	let showvideo = false;
 	let imgsrc1;
+	let d1;
+	let keyzomu;
+	let keyznoomu;
+	let grouped;
+	let noomulist1;
+	let omulist1;
+
 	export let data;
+	d1 = data.article.listepisodes;
+
 	$: data1 = data.article;
+	if (data.article.category == 'series') {
+		grouped = groupBy(d1, (item) => item.omu);
+		if (grouped['true']) {
+			omulist1 = groupBy(grouped['true'], (item) => item.season);
+			keyzomu = Object.keys(omulist1);
+			console.log('test');
+			console.log(omulist1);
+		}
+		if (grouped['false']) {
+			noomulist1 = groupBy(grouped['false'], (item) => item.season);
+			keyznoomu = Object.keys(noomulist1);
+			console.log('test');
+			console.log(noomulist1);
+		}
+		/*
+		keyz = Object.keys(grouped);
+		*/
+		console.log(grouped);
+	}
 	//console.log(data.article);
 	function playvideo() {
 		seriestype.set('');
@@ -333,55 +363,67 @@
 						</div>
 					</TabItem>
 				{:else}
-					<TabItem>
-						<div slot="title" class="flex items-center gap-2">Episoden</div>
-						<Accordion>
-							{#each data1.listepisodes as episode, i}
-								{#if episode.omu == false}
-									<AccordionItem>
-										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-											<div class="col-span-3">{episode.description}</div>
-											<div class="col-span-1 justify-center items-center flex">
-												<button
-													type="button"
-													class="btn variant-filled"
-													on:click={playepisode(episode, 'noomu')}
-												>
-													Play E{i + 1}
-												</button>
+					{#if noomulist1}
+						<TabItem>
+							<div slot="title" class="flex items-center gap-2">Episoden</div>
+							{#if keyznoomu.length > 1}
+								<Tabs style="underline" class="px-2">
+									{#each keyznoomu as season}
+										<TabItem>
+											<div slot="title" class="flex items-center gap-2">Episoden-{season}</div>
+
+											<Accordion>
+												{#each noomulist1[season] as episode, i}
+													{#if episode.omu == false}
+														<AccordionItem>
+															<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+															<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+																<div class="col-span-3">{episode.description}</div>
+																<div class="col-span-1 justify-center items-center flex">
+																	<button
+																		type="button"
+																		class="btn variant-filled"
+																		on:click={playepisode(episode, 'noomu')}
+																	>
+																		Play Episode
+																	</button>
+																</div>
+															</div>
+														</AccordionItem>
+													{/if}
+												{/each}
+											</Accordion>
+										</TabItem>
+									{/each}
+								</Tabs>
+							{/if}
+						</TabItem>
+					{/if}
+					{#if omulist1}
+						<TabItem>
+							<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
+							<Accordion>
+								{#each data1.listepisodes as episode, i}
+									{#if episode.omu == true}
+										<AccordionItem>
+											<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+											<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+												<div class="col-span-3">{episode.description}</div>
+												<div class="col-span-1 justify-center items-center flex">
+													<button
+														type="button"
+														class="btn variant-filled"
+														on:click={playepisode(episode, 'omu')}
+													>
+														Play E{i + 1} OmU
+													</button>
+												</div>
 											</div>
-										</div>
-									</AccordionItem>
-								{/if}
-							{/each}
-						</Accordion>
-					</TabItem>
-					{#if data1.omuseries}
-					<TabItem>
-						<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
-						<Accordion>
-							{#each data1.listepisodes as episode, i}
-								{#if episode.omu == true}
-									<AccordionItem>
-										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-											<div class="col-span-3">{episode.description}</div>
-											<div class="col-span-1 justify-center items-center flex">
-												<button
-													type="button"
-													class="btn variant-filled"
-													on:click={playepisode(episode, 'omu')}
-												>
-													Play E{i + 1} OmU
-												</button>
-											</div>
-										</div>
-									</AccordionItem>
-								{/if}
-							{/each}
-						</Accordion>
-					</TabItem>
+										</AccordionItem>
+									{/if}
+								{/each}
+							</Accordion>
+						</TabItem>
 					{/if}
 				{/if}
 			</Tabs>
