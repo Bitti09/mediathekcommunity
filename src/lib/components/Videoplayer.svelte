@@ -16,8 +16,8 @@
 	};
 	function changevideo(video, type, ply) {
 		//console.log(video);
-		//console.log(type);
-		//console.log($playlists);
+		console.log(type);
+		console.log($playlists);
 		//console.log(video);
 		if (player != undefined) {
 			if (type == 'omu') {
