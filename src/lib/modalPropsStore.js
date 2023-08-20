@@ -6,3 +6,4 @@ export const omulist = writable({});
 export const noomulist = writable({});
 export const seriestype = writable({});
 export const drawer = writable(true);
+export const playlists = writable({});

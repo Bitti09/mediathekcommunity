@@ -5,7 +5,7 @@
 	import '../videojs/components/nuevo';
 	import '../videojs/components/playlist?client';
 	import '../videojs/skins/nuevo/videojs.css';
-	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, noomulist, playlists, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;
 	const videojsOptions = {
@@ -16,18 +16,13 @@
 	};
 	function changevideo(video, type) {
 		//console.log(video);
-		//console.log(type);
+		console.log(type);
 		//console.log(video);
 		if (player != undefined) {
-			if (type == 'noomu') {
+			if (type == 1) {
 				player.pause();
 				player.currentTime(0);
-				player.playlist.new($noomulist);
-				player.pause();
-			} else if (type == 'omu') {
-				player.pause();
-				player.currentTime(0);
-				player.playlist.new($omulist);
+				player.playlist.new($playlists);
 				player.pause();
 			} else {
 				let video_1 = {
@@ -75,7 +70,7 @@
 				rateMenu: false,
 				settingsButton: false
 			});
- 			if ($seriestype == 'noomu') {
+			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);
 				//player.playList($noomulist);
 			} else if ($seriestype == 'omu') {
@@ -100,9 +95,8 @@
 			player.dispose();
 		}
 	});
-	console.log($omulist)
+	console.log($omulist);
 </script>
-
 
 <div id="left_column" style="" class=" h-image1 mx-auto overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->
