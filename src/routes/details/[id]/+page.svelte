@@ -109,7 +109,7 @@
 		} else {
 			d2 = noomulist1[season];
 		}
-		myPlaylist = [];
+ 		myPlaylist = [];
 		myPlaylistomu = [];
 		seriestype.set("omu");
 		for (let i = 0; i < d2.length; i++) {

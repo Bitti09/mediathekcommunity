@@ -14,7 +14,7 @@
 		playsinline: 'false',
 		fill: true
 	};
-	function changevideo(video, type) {
+	function changevideo(video, type, ply) {
 		//console.log(video);
 		//console.log(type);
 		//console.log($playlists);
@@ -45,7 +45,7 @@
 			console.log('no player');
 		}
 	}
-	$: changevideo($modalvideo, $seriestype);
+	$: changevideo($modalvideo, $seriestype, $playlists);
 	// nuevo plugin options
 	onMount(async () => {
 		//let videoPlayer1 = document.getElementById('video1');
@@ -76,7 +76,7 @@
 				rateMenu: false,
 				settingsButton: false
 			});
-			if ($seriestype == 'noomu') {
+			if ($seriestype == 'noomu' || $seriestype == 'omu') {
 				player.playlist($playlists);
 			} else {
 				player.changeSource(video_1);
