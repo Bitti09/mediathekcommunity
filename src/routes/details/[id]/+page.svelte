@@ -102,72 +102,79 @@
 			//console.log($modalvideo);
 		}
 	}
-	function playepisode(alldata, type) {
+	function playepisode(type, season) {
+		let d2;
+		if (type == 'omu') {
+			d2 = omulist1[season];
+		} else {
+			d2 = noomulist1[season];
+		}
 		myPlaylist = [];
 		myPlaylistomu = [];
-
-		seriestype.set(1);
-		for (let i = 0; i < data1.listepisodes.length; i++) {
+		seriestype.set("omu");
+		for (let i = 0; i < d2.length; i++) {
+			console.log(d2[i]);
 			let sources = [];
-			if (data1.listepisodes[i].directlink) {
+			
+			if (d2[i].directlink) {
 				sources.push({
-					src: data1.listepisodes[i].directlink,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlink,
+					type: d2[i].format,
 					title: data1.title,
 					default: true
 				});
 			}
-			if (data1.listepisodes[i].directlink2) {
+			if (d2[i].directlink2) {
 				sources.push({
-					src: data1.listepisodes[i].directlink2,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlink2,
+					type: d2[i].format,
 					title: data1.title,
 					default: true
 				});
 			}
-			if (data1.listepisodes[i].directlinkfhd) {
+			if (d2[i].directlinkfhd) {
 				sources.push({
-					src: data1.listepisodes[i].directlinkfhd,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlinkfhd,
+					type: d2[i].format,
 					res: '1080',
 					label: '1080p',
 					default: true
 				});
 			}
-			if (data1.listepisodes[i].directlinkhd) {
+			if (d2[i].directlinkhd) {
 				sources.push({
-					src: data1.listepisodes[i].directlinkhd,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlinkhd,
+					type: d2[i].format,
 					res: '720',
 					label: '720p'
 				});
 			}
-			if (data1.listepisodes[i].directlinkmd) {
+			if (d2[i].directlinkmd) {
 				sources.push({
-					src: data1.listepisodes[i].directlinkmd,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlinkmd,
+					type: d2[i].format,
 					res: '480',
 					label: '480p'
 				});
 			}
-			if (data1.listepisodes[i].directlinklq) {
+			if (d2[i].directlinklq) {
 				sources.push({
-					src: data1.listepisodes[i].directlinklq,
-					type: data1.listepisodes[i].format,
+					src: d2[i].directlinklq,
+					type: d2[i].format,
 					res: '360',
 					label: '360p'
 				});
 			}
 			myPlaylist.push({
-				title: data1.listepisodes[i].Title,
-				infoTitle: data1.listepisodes[i].Title,
+				title: d2[i].Title,
+				infoTitle: d2[i].Title,
 				poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 				sources: sources
 			});
 		}
 		playlists.set(myPlaylist);
 		showvideo = true;
-		console.log(playlists);
+		//console.log($playlists);
 	}
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
@@ -310,7 +317,7 @@
 								<Tabs style="underline" class="px-2">
 									{#each keyznoomu as season}
 										<TabItem>
-											<div slot="title" class="flex items-center gap-2">Episoden-{season}</div>
+											<div slot="title" class="flex items-center gap-2">Season-{season}</div>
 
 											<Accordion>
 												{#each noomulist1[season] as episode, i}
@@ -323,7 +330,7 @@
 																	<button
 																		type="button"
 																		class="btn variant-filled"
-																		on:click={playepisode(episode, 'noomu')}
+																		on:click={playepisode('noomu', season)}
 																	>
 																		Play Episode
 																	</button>

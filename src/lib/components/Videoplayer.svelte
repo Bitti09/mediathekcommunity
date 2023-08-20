@@ -16,15 +16,19 @@
 	};
 	function changevideo(video, type) {
 		//console.log(video);
-		console.log(type);
+		//console.log(type);
+		//console.log($playlists);
 		//console.log(video);
 		if (player != undefined) {
-			if (type == 1) {
+			if (type == 'omu') {
+				console.log('change123	');
+				console.log($playlists);
 				player.pause();
 				player.currentTime(0);
 				player.playlist.new($playlists);
 				player.pause();
 			} else {
+				console.log('change');
 				let video_1 = {
 					sources: $modalvideo.source,
 					poster: $modalvideo.poster,
@@ -37,6 +41,8 @@
 				player.changeSource(video_1);
 			}
 			//player.play();
+		} else {
+			console.log('no player');
 		}
 	}
 	$: changevideo($modalvideo, $seriestype);
@@ -71,12 +77,7 @@
 				settingsButton: false
 			});
 			if ($seriestype == 'noomu') {
-				player.playlist($noomulist);
-				//player.playList($noomulist);
-			} else if ($seriestype == 'omu') {
-				player.playlist($omulist);
-
-				//player.playList($omulist);
+				player.playlist($playlists);
 			} else {
 				player.changeSource(video_1);
 			}
