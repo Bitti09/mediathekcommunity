@@ -4,7 +4,9 @@
 	import { page } from '$app/stores';
 	import { sineIn } from 'svelte/easing';
 	import { drawer } from '$lib/modalPropsStore';
-	import { i } from '@inlang/sdk-js';
+	import { T, getTranslate } from '@tolgee/svelte';
+
+	const { t } = getTranslate();
 	$: activeUrl = $page.url.pathname;
 	let transitionParams = {
 		x: -320,
@@ -30,7 +32,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.movie')}
+					label={$t('nav.movie')}
 					href="/movie"
 					active={activeUrl === '/movie'}
 				>
@@ -40,7 +42,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.serie')}
+					label={$t('nav.serie')}
 					href="/series"
 					active={activeUrl === '/series'}
 				>
@@ -50,7 +52,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.culture')}
+					label={$t('nav.culture')}
 					href="/culture"
 					active={activeUrl === '/culture'}
 				>
@@ -60,7 +62,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.special')}
+					label={$t('nav.special')}
 					href="/specials"
 					active={activeUrl === '/specials'}
 				>
@@ -70,7 +72,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.uhd')}
+					label={$t('nav.uhd')}
 					href="/uhd"
 					active={activeUrl === '/uhd'}
 				>
@@ -85,7 +87,7 @@
 				</SidebarItem>
 				<SidebarItem
 					data-sveltekit-reload
-					label={i('nav.other')}
+					label={$t('nav.other')}
 					href="/other"
 					active={activeUrl === '/other'}
 				>

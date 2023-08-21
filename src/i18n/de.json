@@ -1,0 +1,11 @@
+{
+  "nav" : {
+    "culture" : "Kultur",
+    "movie" : "Filme",
+    "other" : "Sonstige",
+    "serie" : "Serien",
+    "special" : "Spezial",
+    "title" : "Mediathek Community",
+    "uhd" : "UHD"
+  }
+}
