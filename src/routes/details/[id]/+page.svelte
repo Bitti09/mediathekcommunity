@@ -2,17 +2,47 @@
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
-	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, noomulist, seriestype, playlists } from '$lib/modalPropsStore';
 	import { Icon } from 'flowbite-svelte-icons';
+	import { groupBy } from 'lodash-es';
+
 	let myPlaylist = [];
 	let myPlaylistomu = [];
 	let showvideo = false;
 	let imgsrc1;
+	let d1;
+	let keyzomu;
+	let keyznoomu;
+	let grouped;
+	let noomulist1;
+	let omulist1;
+
 	export let data;
+	d1 = data.article.listepisodes;
+
 	$: data1 = data.article;
+	if (data.article.category == 'series') {
+		grouped = groupBy(d1, (item) => item.omu);
+		if (grouped['true']) {
+			omulist1 = groupBy(grouped['true'], (item) => item.season);
+			keyzomu = Object.keys(omulist1);
+			console.log('test');
+			console.log(omulist1);
+		}
+		if (grouped['false']) {
+			noomulist1 = groupBy(grouped['false'], (item) => item.season);
+			keyznoomu = Object.keys(noomulist1);
+			console.log('test');
+			console.log(noomulist1);
+		}
+		/*
+		keyz = Object.keys(grouped);
+		*/
+		console.log(omulist1);
+	}
 	//console.log(data.article);
 	function playvideo() {
-		seriestype.set('');
+		seriestype.set(0);
 		let poster1;
 		if (data1.backdrop) {
 			poster1 = 'https://img.mediathek.community/t/p/original/' + data1.backdrop;
@@ -72,132 +102,87 @@
 			//console.log($modalvideo);
 		}
 	}
-	function playepisode(alldata, type) {
+	function playepisode(type, season) {
+		let d2;
+		if (type == 'omu') {
+			d2 = omulist1[season];
+		} else {
+			d2 = noomulist1[season];
+		}
 		myPlaylist = [];
 		myPlaylistomu = [];
-		seriestype.set(type);
-		for (let i = 0; i < data1.listepisodes.length; i++) {
-			if (data1.listepisodes[i].omu == false) {
-				let sources = [];
-				if (data1.listepisodes[i].directlink) {
-					sources.push({
-						src: data1.listepisodes[i].directlink,
-						type: data1.listepisodes[i].format,
-						title: data1.title,
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlink2) {
-					sources.push({
-						src: data1.listepisodes[i].directlink2,
-						type: data1.listepisodes[i].format,
-						title: data1.title,
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlinkfhd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkfhd,
-						type: data1.listepisodes[i].format,
-						res: '1080',
-						label: '1080p',
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlinkhd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkhd,
-						type: data1.listepisodes[i].format,
-						res: '720',
-						label: '720p'
-					});
-				}
-				if (data1.listepisodes[i].directlinkmd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkmd,
-						type: data1.listepisodes[i].format,
-						res: '480',
-						label: '480p'
-					});
-				}
-				if (data1.listepisodes[i].directlinklq) {
-					sources.push({
-						src: data1.listepisodes[i].directlinklq,
-						type: data1.listepisodes[i].format,
-						res: '360',
-						label: '360p'
-					});
-				}
-
+		seriestype.set('omu');
+		for (let i = 0; i < d2.length; i++) {
+			console.log(d2[i]);
+			let sources = [];
+			if (d2[i].directlink) {
+				sources.push({
+					src: d2[i].directlink,
+					type: d2[i].format,
+					title: data1.title,
+					default: true
+				});
+			}
+			if (d2[i].directlink2) {
+				sources.push({
+					src: d2[i].directlink2,
+					type: d2[i].format,
+					title: data1.title,
+					default: true
+				});
+			}
+			if (d2[i].directlinkfhd) {
+				sources.push({
+					src: d2[i].directlinkfhd,
+					type: d2[i].format,
+					res: '1080',
+					label: '1080p',
+					default: true
+				});
+			}
+			if (d2[i].directlinkhd) {
+				sources.push({
+					src: d2[i].directlinkhd,
+					type: d2[i].format,
+					res: '720',
+					label: '720p'
+				});
+			}
+			if (d2[i].directlinkmd) {
+				sources.push({
+					src: d2[i].directlinkmd,
+					type: d2[i].format,
+					res: '480',
+					label: '480p'
+				});
+			}
+			if (d2[i].directlinklq) {
+				sources.push({
+					src: d2[i].directlinklq,
+					type: d2[i].format,
+					res: '360',
+					label: '360p'
+				});
+			}
+			if (type == 'omu') {
 				myPlaylist.push({
-					title: data1.listepisodes[i].Title,
-					infoTitle: data1.listepisodes[i].Title,
+					title: d2[i].Title + 'OmU',
+					infoTitle: d2[i].Title + 'OmU',
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: sources
 				});
 			} else {
-				let sources = [];
-				if (data1.listepisodes[i].directlink) {
-					sources.push({
-						src: data1.listepisodes[i].directlink,
-						type: data1.listepisodes[i].format,
-						title: data1.title,
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlink2) {
-					sources.push({
-						src: data1.listepisodes[i].directlink2,
-						type: data1.listepisodes[i].format,
-						title: data1.title,
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlinkfhd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkfhd,
-						type: data1.listepisodes[i].format,
-						res: '1080',
-						label: '1080p',
-						default: true
-					});
-				}
-				if (data1.listepisodes[i].directlinkhd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkhd,
-						type: data1.listepisodes[i].format,
-						res: '720',
-						label: '720p'
-					});
-				}
-				if (data1.listepisodes[i].directlinkmd) {
-					sources.push({
-						src: data1.listepisodes[i].directlinkmd,
-						type: data1.listepisodes[i].format,
-						res: '480',
-						label: '480p'
-					});
-				}
-				if (data1.listepisodes[i].directlinklq) {
-					sources.push({
-						src: data1.listepisodes[i].directlinklq,
-						type: data1.listepisodes[i].format,
-						res: '360',
-						label: '360p'
-					});
-				}
-				myPlaylistomu.push({
-					title: data1.listepisodes[i].Title + ' OmU',
-					infoTitle: data1.listepisodes[i].Title,
+				myPlaylist.push({
+					title: d2[i].Title,
+					infoTitle: d2[i].Title,
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: sources
 				});
 			}
 		}
-		noomulist.set(myPlaylist);
-		omulist.set(myPlaylistomu);
+		playlists.set(myPlaylist);
 		showvideo = true;
-		console.log(myPlaylistomu);
+		console.log($playlists);
 	}
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
 		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
@@ -333,55 +318,96 @@
 						</div>
 					</TabItem>
 				{:else}
-					<TabItem>
-						<div slot="title" class="flex items-center gap-2">Episoden</div>
-						<Accordion>
-							{#each data1.listepisodes as episode, i}
-								{#if episode.omu == false}
-									<AccordionItem>
-										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-											<div class="col-span-3">{episode.description}</div>
-											<div class="col-span-1 justify-center items-center flex">
-												<button
-													type="button"
-													class="btn variant-filled"
-													on:click={playepisode(episode, 'noomu')}
-												>
-													Play E{i + 1}
-												</button>
-											</div>
-										</div>
-									</AccordionItem>
-								{/if}
-							{/each}
-						</Accordion>
-					</TabItem>
-					{#if data1.omuseries}
-					<TabItem>
-						<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
-						<Accordion>
-							{#each data1.listepisodes as episode, i}
-								{#if episode.omu == true}
-									<AccordionItem>
-										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-										<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-											<div class="col-span-3">{episode.description}</div>
-											<div class="col-span-1 justify-center items-center flex">
-												<button
-													type="button"
-													class="btn variant-filled"
-													on:click={playepisode(episode, 'omu')}
-												>
-													Play E{i + 1} OmU
-												</button>
-											</div>
-										</div>
-									</AccordionItem>
-								{/if}
-							{/each}
-						</Accordion>
-					</TabItem>
+					{#if noomulist1}
+						<TabItem>
+							<div slot="title" class="flex items-center gap-2">Episoden</div>
+							{#if keyznoomu.length > 1}
+								<Tabs style="underline" class="px-2">
+									{#each keyznoomu as season}
+										<TabItem>
+											<div slot="title" class="flex items-center gap-2">Season-{season}</div>
+											<Accordion>
+												{#each noomulist1[season] as episode, i}
+													{#if episode.omu == false}
+														<AccordionItem>
+															<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+															<div class="grid grid-cols-5 grid-rows-1 gap-0 flex">
+																{#if omulist1 != undefined}
+																	<div class="col-span-3 col-end-auto">{episode.description}</div>
+																	<div class="col-span-1 justify-center items-center flex">
+																		<button
+																			type="button"
+																			class="btn variant-filled"
+																			on:click={playepisode('noomu', season)}
+																		>
+																			Play Episode {i + 1}
+																		</button>
+																	</div>
+																	<div class="col-span-1 justify-center items-center flex">
+																		<button
+																			type="button"
+																			class="btn variant-filled"
+																			on:click={playepisode('omu', season)}
+																		>
+																			Play Episode {i + 1} - OmU
+																		</button>
+																	</div>
+																{:else}
+																	<div class="col-span-4 col-end-auto">{episode.description}</div>
+																	<div class="col-span-1 justify-center items-center flex">
+																		<button
+																			type="button"
+																			class="btn variant-filled"
+																			on:click={playepisode('noomu', season)}
+																		>
+																			Play Episode {i + 1}
+																		</button>
+																	</div>
+																{/if}
+															</div>
+														</AccordionItem>
+													{/if}
+												{/each}
+											</Accordion>
+										</TabItem>
+									{/each}
+								</Tabs>
+							{/if}
+						</TabItem>
+					{/if}
+					{#if omulist1}
+						<TabItem>
+							<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
+							{#if keyzomu.length > 1}
+								<Tabs style="underline" class="px-2">
+									{#each keyzomu as season}
+										<TabItem>
+											<div slot="title" class="flex items-center gap-2">Season-{season}</div>
+
+											<Accordion>
+												{#each omulist1[season] as episode, i}
+													<AccordionItem>
+														<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+														<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+															<div class="col-span-3">{episode.description}</div>
+															<div class="col-span-1 justify-center items-center flex">
+																<button
+																	type="button"
+																	class="btn variant-filled"
+																	on:click={playepisode('omu', season)}
+																>
+																	Play Episode {i + 1} OmU
+																</button>
+															</div>
+														</div>
+													</AccordionItem>
+												{/each}
+											</Accordion>
+										</TabItem>
+									{/each}
+								</Tabs>
+							{/if}
+						</TabItem>
 					{/if}
 				{/if}
 			</Tabs>

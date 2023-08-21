@@ -5,7 +5,7 @@
 	import '../videojs/components/nuevo';
 	import '../videojs/components/playlist?client';
 	import '../videojs/skins/nuevo/videojs.css';
-	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, noomulist, playlists, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;
 	const videojsOptions = {
@@ -14,22 +14,21 @@
 		playsinline: 'false',
 		fill: true
 	};
-	function changevideo(video, type) {
+	function changevideo(video, type, ply) {
 		//console.log(video);
-		//console.log(type);
+		console.log(type);
+		console.log($playlists);
 		//console.log(video);
 		if (player != undefined) {
-			if (type == 'noomu') {
+			if (type == 'omu') {
+				console.log('change123	');
+				console.log($playlists);
 				player.pause();
 				player.currentTime(0);
-				player.playlist.new($noomulist);
-				player.pause();
-			} else if (type == 'omu') {
-				player.pause();
-				player.currentTime(0);
-				player.playlist.new($omulist);
+				player.playlist.new($playlists);
 				player.pause();
 			} else {
+				console.log('change');
 				let video_1 = {
 					sources: $modalvideo.source,
 					poster: $modalvideo.poster,
@@ -42,9 +41,11 @@
 				player.changeSource(video_1);
 			}
 			//player.play();
+		} else {
+			console.log('no player');
 		}
 	}
-	$: changevideo($modalvideo, $seriestype);
+	$: changevideo($modalvideo, $seriestype, $playlists);
 	// nuevo plugin options
 	onMount(async () => {
 		//let videoPlayer1 = document.getElementById('video1');
@@ -75,13 +76,8 @@
 				rateMenu: false,
 				settingsButton: false
 			});
- 			if ($seriestype == 'noomu') {
-				player.playlist($noomulist);
-				//player.playList($noomulist);
-			} else if ($seriestype == 'omu') {
-				player.playlist($omulist);
-
-				//player.playList($omulist);
+			if ($seriestype == 'noomu' || $seriestype == 'omu') {
+				player.playlist($playlists);
 			} else {
 				player.changeSource(video_1);
 			}
@@ -100,9 +96,8 @@
 			player.dispose();
 		}
 	});
-	console.log($omulist)
+	console.log($omulist);
 </script>
-
 
 <div id="left_column" style="" class=" h-image1 mx-auto overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->
