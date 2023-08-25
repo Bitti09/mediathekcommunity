@@ -39,8 +39,6 @@
 				return 'twemoji:flag-portugal';
 			case 'se':
 				return 'twemoji:flag-sweden';
-			case 'no':
-				return 'twemoji:flag-norway';
 		}
 	}
 	let imgurl;
