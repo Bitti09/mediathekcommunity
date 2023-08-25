@@ -73,6 +73,8 @@
 				return 'twemoji:flag-new-zealand';
 			case 'no':
 				return 'twemoji:flag-norway';
+			case 'uk':
+				return 'twemoji:flag-united-kingdom';
 		}
 	}
 	let imgurl;
