@@ -33,36 +33,18 @@
 				return 'twemoji:flag-france';
 			case 'es':
 				return 'twemoji:flag-spain';
-			case 'gb':
+			case 'uk':
 				return 'twemoji:flag-united-kingdom';
-			case 'us':
-				return 'twemoji:flag-united-states';
-			case 'ru':
-				return 'twemoji:flag-russia';
-			case 'jp':
-				return 'twemoji:flag-japan';
-			case 'cn':
-				return 'twemoji:flag-china';
-			case 'kr':
-				return 'twemoji:flag-south-korea';
-			case 'tr':
-				return 'twemoji:flag-turkey';
 			case 'pl':
 				return 'twemoji:flag-poland';
 			case 'nl':
 				return 'twemoji:flag-netherlands';
 			case 'be':
 				return 'twemoji:flag-belgium';
-			case 'cz':
-				return 'twemoji:flag-czech-republic';
 			case 'dk':
 				return 'twemoji:flag-denmark';
 			case 'fi':
 				return 'twemoji:flag-finland';
-			case 'gr':
-				return 'twemoji:flag-greece';
-			case 'hu':
-				return 'twemoji:flag-hungary';
 			case 'ie':
 				return 'twemoji:flag-ireland';
 			case 'no':
@@ -70,24 +52,7 @@
 			case 'pt':
 				return 'twemoji:flag-portugal';
 			case 'se':
-				return 'twemoji:flag-sweden';
-			case 'ar':
-				return 'twemoji:flag-argentina';
-			case 'br':
-				return 'twemoji:flag-brazil';
-			case 'ca':
-				return 'twemoji:flag-canada';
-			case 'co':
-				return 'twemoji:flag-colombia';
-			case 'mx':
-				return 'twemoji:flag-mexico';
-			case 'au':
-				return 'twemoji:flag-australia';
-			case 'nz':
-				return 'twemoji:flag-new-zealand';
-			case 'no':
-				return 'twemoji:flag-norway';
-		}
+				return 'twemoji:flag-sweden';}
 	}
 	onMount(async () => {
 		const swiperParams = {
@@ -157,7 +122,7 @@
 				<div
 					class="flex items-center bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 				>
-					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> Mediatheken
+					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" />  Mediatheken
 				</div>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
