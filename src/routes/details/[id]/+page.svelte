@@ -2,45 +2,25 @@
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
-	import { modalvideo, omulist, noomulist, seriestype, playlists } from '$lib/modalPropsStore';
+	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
 	import { Icon } from 'flowbite-svelte-icons';
 	import { groupBy } from 'lodash-es';
-
 	let myPlaylist = [];
-	let myPlaylistomu = [];
 	let showvideo = false;
 	let imgsrc1;
 	let d1;
-	let keyzomu;
-	let keyznoomu;
-	let grouped;
-	let noomulist1;
+	let keyz;
 	let omulist1;
-
+	let episodelist;
 	export let data;
 	d1 = data.article.listepisodes;
-
 	$: data1 = data.article;
 	if (data.article.category == 'series') {
-		grouped = groupBy(d1, (item) => item.omu);
-		if (grouped['true']) {
-			omulist1 = groupBy(grouped['true'], (item) => item.season);
-			keyzomu = Object.keys(omulist1);
-			console.log('test');
-			console.log(omulist1);
-		}
-		if (grouped['false']) {
-			noomulist1 = groupBy(grouped['false'], (item) => item.season);
-			keyznoomu = Object.keys(noomulist1);
-			console.log('test');
-			console.log(noomulist1);
-		}
-		/*
-		keyz = Object.keys(grouped);
-		*/
-		console.log(omulist1);
+		episodelist = d1;
+		omulist1 = groupBy(episodelist, (item) => item.season);
+		keyz = Object.keys(omulist1);
+		console.log(episodelist);
 	}
-	//console.log(data.article);
 	function playvideo() {
 		seriestype.set(0);
 		let poster1;
@@ -104,20 +84,15 @@
 	}
 	function playepisode(type, season) {
 		let d2;
-		if (type == 'omu') {
-			d2 = omulist1[season];
-		} else {
-			d2 = noomulist1[season];
-		}
+		d2 = omulist1[season];
 		myPlaylist = [];
-		myPlaylistomu = [];
 		seriestype.set('omu');
 		for (let i = 0; i < d2.length; i++) {
 			console.log(d2[i]);
 			let sources = [];
 			if (d2[i].directlink) {
 				sources.push({
-					src: d2[i].directlink,
+					src: type != 'omu' ? d2[i].directlink : d2[i].directlink_omu,
 					type: d2[i].format,
 					title: data1.title,
 					default: true
@@ -125,7 +100,7 @@
 			}
 			if (d2[i].directlink2) {
 				sources.push({
-					src: d2[i].directlink2,
+					src: type != 'omu' ? d2[i].directlink2 : d2[i].directlink2_omu,
 					type: d2[i].format,
 					title: data1.title,
 					default: true
@@ -133,7 +108,7 @@
 			}
 			if (d2[i].directlinkfhd) {
 				sources.push({
-					src: d2[i].directlinkfhd,
+					src: type != 'omu' ? d2[i].directlinkfhd : d2[i].directlinkfhd_omu,
 					type: d2[i].format,
 					res: '1080',
 					label: '1080p',
@@ -142,7 +117,7 @@
 			}
 			if (d2[i].directlinkhd) {
 				sources.push({
-					src: d2[i].directlinkhd,
+					src: type != 'omu' ? d2[i].directlinkhd : d2[i].directlinkhd_omu,
 					type: d2[i].format,
 					res: '720',
 					label: '720p'
@@ -150,7 +125,7 @@
 			}
 			if (d2[i].directlinkmd) {
 				sources.push({
-					src: d2[i].directlinkmd,
+					src: type != 'omu' ? d2[i].directlinkmd : d2[i].directlinkmd_omu,
 					type: d2[i].format,
 					res: '480',
 					label: '480p'
@@ -158,29 +133,21 @@
 			}
 			if (d2[i].directlinklq) {
 				sources.push({
-					src: d2[i].directlinklq,
+					src: type != 'omu' ? d2[i].directlinkl : d2[i].directlinklq_omu,
 					type: d2[i].format,
 					res: '360',
 					label: '360p'
 				});
 			}
-			if (type == 'omu') {
-				myPlaylist.push({
-					title: d2[i].Title + 'OmU',
-					infoTitle: d2[i].Title + 'OmU',
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					sources: sources
-				});
-			} else {
-				myPlaylist.push({
-					title: d2[i].Title,
-					infoTitle: d2[i].Title,
-					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
-					sources: sources
-				});
-			}
+			myPlaylist.push({
+				title: type == 'omu' ? d2[i].Title + ' OmU' : d2[i].Title,
+				infoTitle: type == 'omu' ? d2[i].Title + ' OmU' : d2[i].Title,
+				poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
+				sources: sources
+			});
 		}
 		playlists.set(myPlaylist);
+		console.log(myPlaylist);
 		showvideo = true;
 		console.log($playlists);
 	}
@@ -198,6 +165,12 @@
 			<span class="font-medium">Info!</span>
 			Select VO as audio language for English audio
 		</Alert>
+	{/if}
+	{#if data1.category == 'series'}
+	<Alert color="red" rounded={false} class="border-t-4">
+		<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+ 		Die Serienansicht wird aktuell  überarbeitet   
+	</Alert>
 	{/if}
 	<div class="">
 		{#if showvideo != true}
@@ -317,98 +290,53 @@
 							</table>
 						</div>
 					</TabItem>
-				{:else}
-					{#if noomulist1}
+				{:else if keyz.length > 1}
+					{#each keyz as season}
 						<TabItem>
-							<div slot="title" class="flex items-center gap-2">Episoden</div>
-							{#if keyznoomu.length > 1}
-								<Tabs style="underline" class="px-2">
-									{#each keyznoomu as season}
-										<TabItem>
-											<div slot="title" class="flex items-center gap-2">Season-{season}</div>
-											<Accordion>
-												{#each noomulist1[season] as episode, i}
-													{#if episode.omu == false}
-														<AccordionItem>
-															<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-															<div class="grid grid-cols-5 grid-rows-1 gap-0 flex">
-																{#if omulist1 != undefined}
-																	<div class="col-span-3 col-end-auto">{episode.description}</div>
-																	<div class="col-span-1 justify-center items-center flex">
-																		<button
-																			type="button"
-																			class="btn variant-filled"
-																			on:click={playepisode('noomu', season)}
-																		>
-																			Play Episode {i + 1}
-																		</button>
-																	</div>
-																	<div class="col-span-1 justify-center items-center flex">
-																		<button
-																			type="button"
-																			class="btn variant-filled"
-																			on:click={playepisode('omu', season)}
-																		>
-																			Play Episode {i + 1} - OmU
-																		</button>
-																	</div>
-																{:else}
-																	<div class="col-span-4 col-end-auto">{episode.description}</div>
-																	<div class="col-span-1 justify-center items-center flex">
-																		<button
-																			type="button"
-																			class="btn variant-filled"
-																			on:click={playepisode('noomu', season)}
-																		>
-																			Play Episode {i + 1}
-																		</button>
-																	</div>
-																{/if}
-															</div>
-														</AccordionItem>
-													{/if}
-												{/each}
-											</Accordion>
-										</TabItem>
-									{/each}
-								</Tabs>
-							{/if}
+							<div slot="title" class="flex items-center gap-2">Season {season}</div>
+							<Accordion>
+								{#each omulist1[season] as episode, i}
+									<AccordionItem>
+										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
+										<div class="grid grid-cols-5 grid-rows-1 gap-0 flex">
+											{#if omulist1 != undefined}
+												<div class="col-span-3 col-end-auto">{episode.description}</div>
+												<div class="col-span-1 justify-center items-center flex">
+													<button
+														type="button"
+														class="btn variant-filled"
+														on:click={playepisode('noomu', season)}
+													>
+														Play Episode {i + 1}
+													</button>
+												</div>
+												<div class="col-span-1 justify-center items-center flex">
+													<button
+														type="button"
+														class="btn variant-filled"
+														on:click={playepisode('omu', season)}
+													>
+														Play Episode {i + 1} - OmU
+													</button>
+												</div>
+											{:else}
+												<div class="col-span-4 col-end-auto">{episode.description}</div>
+												<div class="col-span-1 justify-center items-center flex">
+													<button
+														type="button"
+														class="btn variant-filled"
+														on:click={playepisode('noomu', season)}
+													>
+														Play Episode {i + 1}
+													</button>
+												</div>
+											{/if}
+										</div>
+									</AccordionItem>
+								{/each}
+							</Accordion>
 						</TabItem>
-					{/if}
-					{#if omulist1}
-						<TabItem>
-							<div slot="title" class="flex items-center gap-2">Episoden-OmU</div>
-							{#if keyzomu.length > 1}
-								<Tabs style="underline" class="px-2">
-									{#each keyzomu as season}
-										<TabItem>
-											<div slot="title" class="flex items-center gap-2">Season-{season}</div>
-
-											<Accordion>
-												{#each omulist1[season] as episode, i}
-													<AccordionItem>
-														<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
-														<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
-															<div class="col-span-3">{episode.description}</div>
-															<div class="col-span-1 justify-center items-center flex">
-																<button
-																	type="button"
-																	class="btn variant-filled"
-																	on:click={playepisode('omu', season)}
-																>
-																	Play Episode {i + 1} OmU
-																</button>
-															</div>
-														</div>
-													</AccordionItem>
-												{/each}
-											</Accordion>
-										</TabItem>
-									{/each}
-								</Tabs>
-							{/if}
-						</TabItem>
-					{/if}
+					{/each}
 				{/if}
 			</Tabs>
 		</div>
