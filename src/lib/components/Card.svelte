@@ -21,8 +21,6 @@
 				return 'twemoji:flag-spain';
 			case 'uk':
 				return 'twemoji:flag-united-kingdom';
-			case 'pl':
-				return 'twemoji:flag-poland';
 			case 'nl':
 				return 'twemoji:flag-netherlands';
 			case 'be':
@@ -35,10 +33,10 @@
 				return 'twemoji:flag-ireland';
 			case 'no':
 				return 'twemoji:flag-norway';
-			case 'pt':
-				return 'twemoji:flag-portugal';
 			case 'se':
 				return 'twemoji:flag-sweden';
+			case 'ch':
+				return 'twemoji:flag-switzerland';
 		}
 	}
 	let imgurl;
