@@ -2,11 +2,11 @@
 import { createDirectus } from '@directus/sdk';
 import { rest, readItems } from '@directus/sdk/rest';
 import { staticToken } from '@directus/sdk/auth';
-import { env } from '$env/dynamic/private';
+import { env, DIRECTUS_URL,DIRECTUS_TOKEN } from '$env/dynamic/private';
 export async function load({ params }) {
-	const directus = createDirectus(env.DIRECTUS_URL)
+	const directus = createDirectus(env ? env.DIRECTUS_URL : DIRECTUS_URL)
 		.with(rest())
-		.with(staticToken(env.DIRECTUS_TOKEN));
+		.with(staticToken(env ? env.DIRECTUS_TOKEN : DIRECTUS_TOKEN));
 
 	// do authenticated requests
 	let article;
