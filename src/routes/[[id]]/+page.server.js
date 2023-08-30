@@ -2,16 +2,14 @@
 import { createDirectus } from '@directus/sdk';
 import { rest, readItems } from '@directus/sdk/rest';
 import { staticToken } from '@directus/sdk/auth';
-import { env, DIRECTUS_URL,DIRECTUS_TOKEN } from '$env/dynamic/private';
+import { DIRECTUS_URL, DIRECTUS_TOKEN } from '$env/static/private';
 export async function load({ params }) {
-	const directus = createDirectus(env ? env.DIRECTUS_URL : DIRECTUS_URL)
-		.with(rest())
-		.with(staticToken(env ? env.DIRECTUS_TOKEN : DIRECTUS_TOKEN));
+	const directus = createDirectus(DIRECTUS_URL).with(rest()).with(staticToken(DIRECTUS_TOKEN));
 
 	// do authenticated requests
 	let article;
 	let param = params.id;
-	if (params.id != '' && params.id != 'specials'&& params.id != 'uhd') {
+	if (params.id != '' && params.id != 'specials' && params.id != 'uhd') {
 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*', 'listepisodes.*'],
@@ -30,8 +28,7 @@ export async function load({ params }) {
 				}
 			})
 		);
-	}
-	else if (params.id == 'specials') {
+	} else if (params.id == 'specials') {
 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*.*', 'listepisodes.*', 'specials.*'],
