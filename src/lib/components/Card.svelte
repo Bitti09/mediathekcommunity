@@ -1,6 +1,8 @@
 <script>
 	// @ts-nocheck
 	import { Img } from 'flowbite-svelte';
+	import Image from '$lib/components/Image.svelte';
+
 	import Icon from '@iconify/svelte';
 	import { Card } from 'flowbite-svelte';
 	export let carddata;
@@ -35,8 +37,6 @@
 				return 'twemoji:flag-norway';
 			case 'se':
 				return 'twemoji:flag-sweden';
-			case 'ch':
-				return 'twemoji:flag-switzerland';
 		}
 	}
 	let imgurl;
@@ -51,9 +51,9 @@
 		}
 	}
 	if (carddata.poster) {
-		imgurl = 'https://img.mediathek.community/t/p/original' + carddata.poster;
+		imgurl = 'https://image.tmdb.org/t/p/original' + carddata.poster;
 	} else {
-		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
+		imgurl = 'https://api.mediathek.community/assets/' + carddata.coverimage;
 	}
 </script>
 
@@ -68,6 +68,12 @@
 			</div>
 			<div>{carddata.channel}</div>
 		</div>
-		<Img src={imgurl} figClass="relative cursor-pointer filter bg-black" />
+		<Image
+			image={{
+				sourceUrl: imgurl
+			}}
+			width={190}
+			height={127}
+		/>
 	</a>
 </Card>

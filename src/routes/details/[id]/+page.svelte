@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
+	import Image from '$lib/components/Image.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
 	import { Icon } from 'flowbite-svelte-icons';
@@ -25,9 +26,9 @@
 		seriestype.set(0);
 		let poster1;
 		if (data1.backdrop) {
-			poster1 = 'https://img.mediathek.community/t/p/original/' + data1.backdrop;
+			poster1 = 'https://image.tmdb.org/t/p/original' + data1.backdrop;
 		} else {
-			poster1 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
+			poster1 = 'https://api.mediathek.community/assets/' + data1.heroimage;
 		}
 		showvideo = true;
 		//console.log(data1);
@@ -152,9 +153,9 @@
 		console.log($playlists);
 	}
 	if (data.article.backdrop != 'backdrop' && data.article.backdrop) {
-		imgsrc1 = 'https://img.mediathek.community/t/p/original/' + data.article.backdrop;
+		imgsrc1 = 'https://image.tmdb.org/t/p/original' + data.article.backdrop;
 	} else {
-		imgsrc1 = 'https://img2.mediathek.community/assets/' + data.article.coverimage;
+		imgsrc1 = 'https://api.mediathek.community/assets/' + data.article.coverimage;
 	}
 </script>
 
@@ -167,15 +168,19 @@
 		</Alert>
 	{/if}
 	{#if data1.category == 'series'}
-	<Alert color="red" rounded={false} class="border-t-4">
-		<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
- 		Die Serienansicht wird aktuell  überarbeitet   
-	</Alert>
+		<Alert color="red" rounded={false} class="border-t-4">
+			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+			Die Serienansicht wird aktuell überarbeitet
+		</Alert>
 	{/if}
 	<div class="">
 		{#if showvideo != true}
 			<div class=" h-image1 mx-auto grid place-items-center">
-				<Img src={imgsrc1} />
+				<Image
+					image={{
+						sourceUrl: imgsrc1
+					}}
+				/>
 			</div>
 		{:else}
 			<div class="h-image1 mx-auto grid place-items-center">
