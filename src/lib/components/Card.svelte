@@ -72,8 +72,6 @@
 			image={{
 				sourceUrl: imgurl
 			}}
-			width={190}
-			height={127}
 		/>
 	</a>
 </Card>

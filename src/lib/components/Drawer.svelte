@@ -1,6 +1,6 @@
 <script>
 	import { Drawer, Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
-	import { Icon } from 'svelte-awesome-icons';
+	import { HouseChimneySolid, TvSolid, VideoSolid, MasksTheaterSolid,StarSolid,CirclePlaySolid } from 'svelte-awesome-icons';
 	import { page } from '$app/stores';
 	import { sineIn } from 'svelte/easing';
 	import { drawer } from '$lib/modalPropsStore';
@@ -27,7 +27,7 @@
 			<SidebarGroup>
 				<SidebarItem data-sveltekit-reload label="Home" href="/" active={activeUrl === '/'}>
 					<svelte:fragment slot="icon">
-						<Icon name="house-chimney-solid" />
+						<HouseChimneySolid />
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -37,7 +37,7 @@
 					active={activeUrl === '/movie'}
 				>
 					<svelte:fragment slot="icon">
-						<Icon name="video-solid" />
+						<VideoSolid />
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -47,7 +47,7 @@
 					active={activeUrl === '/series'}
 				>
 					<svelte:fragment slot="icon">
-						<Icon name="tv-solid" />
+						<TvSolid />
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -57,7 +57,7 @@
 					active={activeUrl === '/culture'}
 				>
 					<svelte:fragment slot="icon">
-						<Icon name="masks-theater-solid" />
+						<MasksTheaterSolid/>
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -67,7 +67,7 @@
 					active={activeUrl === '/specials'}
 				>
 					<svelte:fragment slot="icon">
-						<Icon name="star-solid" />
+						<StarSolid/>
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -92,7 +92,7 @@
 					active={activeUrl === '/other'}
 				>
 					<svelte:fragment slot="icon">
-						<Icon name="circle-play-solid" />
+						<CirclePlaySolid/>
 					</svelte:fragment>
 				</SidebarItem>
 			</SidebarGroup>

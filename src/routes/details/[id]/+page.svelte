@@ -4,7 +4,7 @@
 	import Image from '$lib/components/Image.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
-	import { Icon } from 'flowbite-svelte-icons';
+	import * as Icon from 'flowbite-svelte-icons';
 	import { groupBy } from 'lodash-es';
 	let myPlaylist = [];
 	let showvideo = false;
