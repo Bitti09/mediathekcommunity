@@ -4,7 +4,7 @@
 	import Image from '$lib/components/Image.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
-	import * as Icon from 'flowbite-svelte-icons';
+	import {InfoCircleSolid }  from 'flowbite-svelte-icons';
 	import { groupBy } from 'lodash-es';
 	let myPlaylist = [];
 	let showvideo = false;
@@ -162,14 +162,14 @@
 {#if data.article}
 	{#if data.article.channel == 'rai'}
 		<Alert color="blue">
-			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+			<InfoCircleSolid slot="icon" class="w-4 h-4" />
 			<span class="font-medium">Info!</span>
 			Select VO as audio language for English audio
 		</Alert>
 	{/if}
 	{#if data1.category == 'series'}
 		<Alert color="red" rounded={false} class="border-t-4">
-			<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
+			<InfoCircleSolid slot="icon" class="w-4 h-4" />
 			Die Serienansicht wird aktuell überarbeitet
 		</Alert>
 	{/if}
