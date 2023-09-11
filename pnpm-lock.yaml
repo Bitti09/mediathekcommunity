@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.11.8
     version: 2.11.8
   '@tolgee/svelte':
-    specifier: ^5.11.4
-    version: 5.11.4(svelte@4.2.0)
+    specifier: ^5.12.0
+    version: 5.12.0(svelte@4.2.0)
   '@vercel/analytics':
     specifier: ^1.0.2
     version: 1.0.2
@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.49.0)
   eslint-plugin-svelte:
-    specifier: ^2.33.0
-    version: 2.33.0(eslint@8.49.0)(svelte@4.2.0)
+    specifier: ^2.33.1
+    version: 2.33.1(eslint@8.49.0)(svelte@4.2.0)
   flowbite-svelte-icons:
     specifier: ^0.4.3
     version: 0.4.3(svelte@4.2.0)(tailwind-merge@1.14.0)(tailwindcss@3.3.3)
@@ -836,23 +836,23 @@ packages:
     resolution: {integrity: sha512-/gtzLlqm/sox7EoPKD56BxGZktK/syGc79EbJAPWY5KVitQD9SM0TP8yJCqDxTVPk7Lk0WJhrBGUE2Nn0f5M1w==}
     dev: false
 
-  /@tolgee/core@5.11.4:
-    resolution: {integrity: sha512-Rjm8mIUB9RfNxIq4DIw1wWBF0GgZbQPw8no8EBwJyT0Crjnqap+VczguMT0NE6x43nwb2Ki/gdzgzT6/oNCP6A==}
+  /@tolgee/core@5.12.0:
+    resolution: {integrity: sha512-vVLHT6MpQQIRDDvqfPIV0MsRrhZuczCnxUPvmwImUFMVm6txQvV+e8/bC3iKXqT2j5TzQj6Oxt//xK+sHt0igg==}
     dev: false
 
-  /@tolgee/svelte@5.11.4(svelte@4.2.0):
-    resolution: {integrity: sha512-HeNlIePDcRvJdfwmTy+a8WPLfD+1/YjsGHaBesEMRa5l77CuWiDybYagAEtB2u+SoWj/g1R/CYB1GPhGQSMONQ==}
+  /@tolgee/svelte@5.12.0(svelte@4.2.0):
+    resolution: {integrity: sha512-GZ8mvruhsPzFX5ptc2K3B95uzgBC+fi5yh5jTlfpxtPuBfmgsPg5MPkkdf057tp1NSPStV3mg0POJbae1pj6Ug==}
     peerDependencies:
       svelte: ^3.29.0 || ^4.0.0
     dependencies:
-      '@tolgee/web': 5.11.4
+      '@tolgee/web': 5.12.0
       svelte: 4.2.0
     dev: false
 
-  /@tolgee/web@5.11.4:
-    resolution: {integrity: sha512-sKHsHCiKOW2ts6ME6mcR4JqrUrdon5SBKGuK2XA6tOCPN8gxqcghFjxCyYcIhK169bnKbCky1vHxvYJ5uEg7YA==}
+  /@tolgee/web@5.12.0:
+    resolution: {integrity: sha512-SzCZqnG8W2/kTy5ArGCpvbM/fxBn90lZJV/Pchlv/VYorAOFUtUyWUoNDP++LgRKDri02+QorT22wWuV8cyY7A==}
     dependencies:
-      '@tolgee/core': 5.11.4
+      '@tolgee/core': 5.12.0
     dev: false
 
   /@types/cookie@0.5.1:
@@ -1445,8 +1445,8 @@ packages:
       eslint: 8.49.0
     dev: true
 
-  /eslint-plugin-svelte@2.33.0(eslint@8.49.0)(svelte@4.2.0):
-    resolution: {integrity: sha512-kk7Z4BfxVjFYJseFcOpS8kiKNio7KnAnhFagmM89h1wNSKlM7tIn+uguNQppKM9leYW+S+Us0Rjg2Qg3zsEcvg==}
+  /eslint-plugin-svelte@2.33.1(eslint@8.49.0)(svelte@4.2.0):
+    resolution: {integrity: sha512-veYmyjsbt8ikXdaa6pLsgytdlzJpZZKw9vRaQlRBNKaLNmrbsdJulwiWfcDZ7tYJdaVpRB4iDFn/fuPeebxUVg==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0-0
