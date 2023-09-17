@@ -12,6 +12,7 @@
 	let d1;
 	let keyz;
 	let omulist1;
+	let omulist2;
 	let episodelist;
 	export let data;
 	d1 = data.article.listepisodes;
@@ -19,8 +20,11 @@
 	if (data.article.category == 'series') {
 		episodelist = d1;
 		omulist1 = groupBy(episodelist, (item) => item.season);
+		omulist2 = groupBy(episodelist, (item) => item.omu);
+
 		keyz = Object.keys(omulist1);
 		console.log(episodelist);
+		console.log(omulist2)
 	}
 	function playvideo() {
 		seriestype.set(0);
@@ -295,7 +299,7 @@
 							</table>
 						</div>
 					</TabItem>
-				{:else if keyz.length > 1}
+				{:else if keyz.length > 0}
 					{#each keyz as season}
 						<TabItem>
 							<div slot="title" class="flex items-center gap-2">Season {season}</div>
@@ -304,7 +308,7 @@
 									<AccordionItem>
 										<svelte:fragment slot="header">{episode.Title}</svelte:fragment>
 										<div class="grid grid-cols-5 grid-rows-1 gap-0 flex">
-											{#if omulist1 != undefined}
+											{#if episode.omu}
 												<div class="col-span-3 col-end-auto">{episode.description}</div>
 												<div class="col-span-1 justify-center items-center flex">
 													<button
