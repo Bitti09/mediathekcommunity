@@ -2,67 +2,65 @@
 	// @ts-nocheck
 	import { onDestroy, onMount } from 'svelte';
 	import videojs from 'video.js';
+	import '../videojs/components/hlsjs';
 	import '../videojs/components/nuevo';
 	import '../videojs/components/playlist?client';
 	import '../videojs/skins/nuevo/videojs.css';
-	import { modalvideo, omulist, noomulist, playlists, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, playlists, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;
 	const videojsOptions = {
 		controls: true,
-		preload: 'auto',
+		preload: 'false',
 		playsinline: 'false',
-		fill: true
+		fill: true,
+		html5: {
+			hls: {
+				bandwidth: 30000000
+			},
+			hlsjsConfig: {
+				debug: true,
+				enableWorker: true,
+				lowLatencyMode: true,
+				backBufferLength: 90,
+				smoothQualityChange: true,
+				capLevelToPlayerSize: false
+			}
+		}
 	};
 	function changevideo(video, type, ply) {
-		//console.log(video);
-		console.log(type);
-		console.log($playlists);
-		//console.log(video);
 		if (player != undefined) {
 			if (type == 'omu') {
-				console.log('change123	');
-				console.log($playlists);
 				player.pause();
 				player.currentTime(0);
 				player.playlist.new($playlists);
 				player.pause();
 			} else {
-				console.log('change');
-				let video_1 = {
+ 				let video_1 = {
 					sources: $modalvideo.source,
 					poster: $modalvideo.poster,
 					title: $modalvideo.title
 				};
-				//console.log(video_1);
-				player.pause();
+ 				player.pause();
 				player.poster(video.poster);
 				player.currentTime(0);
 				player.changeSource(video_1);
 			}
 			//player.play();
-		} else {
-			console.log('no player');
 		}
 	}
 	$: changevideo($modalvideo, $seriestype, $playlists);
 	// nuevo plugin options
 	onMount(async () => {
-		//let videoPlayer1 = document.getElementById('video1');
-		//console.log(document.getElementById('media1'));
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
 			player = videojs('my-video', videojsOptions);
-			//console.log('Player ready');
-			let video_1 = {
+  			let video_1 = {
 				sources: $modalvideo.source,
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
 			};
-			//console.log(video_1);
-			//console.log($omulist.length);
-			//console.log(player.nuevo);
 			player.nuevo({
 				playlistUI: true,
 				playlistShow: false,
@@ -92,11 +90,9 @@
 	});
 	onDestroy(() => {
 		if (player) {
-			//.log('destroy');
 			player.dispose();
 		}
 	});
-	console.log($omulist);
 </script>
 
 <div id="left_column" style="" class=" h-image1 mx-auto overflow-hidden">

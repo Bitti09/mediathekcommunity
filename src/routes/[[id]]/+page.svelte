@@ -52,7 +52,8 @@
 			case 'pt':
 				return 'twemoji:flag-portugal';
 			case 'se':
-				return 'twemoji:flag-sweden';}
+				return 'twemoji:flag-sweden';
+		}
 	}
 	onMount(async () => {
 		const swiperParams = {
@@ -100,7 +101,8 @@
 <Alert color="red" rounded={false} class="border-t-4">
 	<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
 	<span class="font-medium">Info</span>
-	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! - Serienansicht wird aktuell  überarbeitet   
+	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! - Serienansicht
+	wird aktuell überarbeitet
 </Alert>
 <br />
 {#if data.article.length > 0}
@@ -122,7 +124,7 @@
 				<div
 					class="flex items-center bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 				>
-					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" />  Mediatheken
+					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> Mediatheken
 				</div>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">

@@ -1,8 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { Img } from 'flowbite-svelte';
 	import Image from '$lib/components/Image.svelte';
-
 	import Icon from '@iconify/svelte';
 	import { Card } from 'flowbite-svelte';
 	export let carddata;
@@ -40,16 +38,6 @@
 		}
 	}
 	let imgurl;
-	function inFuture(date) {
-		var now = new Date();
-		var then = new Date(date);
-		//console.log(then > now);
-		if (then > now) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	if (carddata.poster) {
 		imgurl = 'https://image.tmdb.org/t/p/original' + carddata.poster;
 	} else {

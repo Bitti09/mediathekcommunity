@@ -1,0 +1,4 @@
+{
+    "svelte.plugin.svelte.format.config.singleQuote": true,
+    "svelte.plugin.svelte.format.config.svelteStrictMode": true
+}

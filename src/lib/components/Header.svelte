@@ -1,8 +1,6 @@
 <script>
 	import { Navbar, NavBrand, NavHamburger, Footer, DarkMode } from 'flowbite-svelte';
 	import { drawer } from '$lib/modalPropsStore';
-	import { writable } from 'svelte/store';
-	import { Select } from 'flowbite-svelte';
 	import { lang } from '$lib/modalPropsStore';
 
 	let btnClass =
@@ -10,16 +8,6 @@
 	import { getTolgee, getTranslate } from '@tolgee/svelte';
 	const hide = () => drawer.set(false);
 	const tolgee = getTolgee(['language']);
-	const languages = [
-		{
-			value: 'en',
-			name: 'English'
-		},
-		{
-			value: 'de',
-			name: 'Deutsch'
-		}
-	];
 	const { t } = getTranslate();
 	lang.subscribe((l) => {
 		$tolgee.changeLanguage(l);

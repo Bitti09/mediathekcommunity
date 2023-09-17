@@ -1,10 +1,17 @@
 <script>
 	import { Drawer, Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
-	import { HouseChimneySolid, TvSolid, VideoSolid, MasksTheaterSolid,StarSolid,CirclePlaySolid } from 'svelte-awesome-icons';
+	import {
+		HouseChimneySolid,
+		TvSolid,
+		VideoSolid,
+		MasksTheaterSolid,
+		StarSolid,
+		CirclePlaySolid
+	} from 'svelte-awesome-icons';
 	import { page } from '$app/stores';
 	import { sineIn } from 'svelte/easing';
 	import { drawer } from '$lib/modalPropsStore';
-	import { T, getTranslate } from '@tolgee/svelte';
+	import { getTranslate } from '@tolgee/svelte';
 
 	const { t } = getTranslate();
 	$: activeUrl = $page.url.pathname;
@@ -57,7 +64,7 @@
 					active={activeUrl === '/culture'}
 				>
 					<svelte:fragment slot="icon">
-						<MasksTheaterSolid/>
+						<MasksTheaterSolid />
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -67,7 +74,7 @@
 					active={activeUrl === '/specials'}
 				>
 					<svelte:fragment slot="icon">
-						<StarSolid/>
+						<StarSolid />
 					</svelte:fragment>
 				</SidebarItem>
 				<SidebarItem
@@ -92,7 +99,7 @@
 					active={activeUrl === '/other'}
 				>
 					<svelte:fragment slot="icon">
-						<CirclePlaySolid/>
+						<CirclePlaySolid />
 					</svelte:fragment>
 				</SidebarItem>
 			</SidebarGroup>

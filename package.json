@@ -39,13 +39,20 @@
 		"@popperjs/core": "^2.11.8",
 		"@tolgee/svelte": "^5.12.0",
 		"@vercel/analytics": "^1.0.2",
+		"@videojs/http-streaming": "^3.5.3",
 		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.44.15",
+		"hls.js": "^1.4.12",
 		"lodash-es": "^4.17.21",
 		"svelte-i18n": "^3.7.4",
 		"sveltekit-i18n": "^2.4.2",
 		"swiper": "^10.2.0",
 		"tailwind-merge": "^1.14.0",
-		"video.js": "^8.5.2"
+		"video.js": "^8.5.2",
+		"videojs-contrib-quality-levels": "^4.0.0",
+		"videojs-hls-quality-selector": "^1.1.4",
+		"videojs-playlist": "^5.1.0",
+		"videojs-playlist-ui": "^5.0.0",
+		"videojs-quality-selector-hls": "^1.1.1"
 	}
 }

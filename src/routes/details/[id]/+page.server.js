@@ -6,8 +6,6 @@ import { DIRECTUS_URL, DIRECTUS_TOKEN } from '$env/static/private';
 
 export async function load({ params }) {
 	const directus = createDirectus(DIRECTUS_URL).with(rest()).with(staticToken(DIRECTUS_TOKEN));
-
-
 	// do authenticated requests
 	let article;
 	let param = params.id;

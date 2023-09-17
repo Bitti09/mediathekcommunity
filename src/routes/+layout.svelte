@@ -3,8 +3,8 @@
 
 	import '../app.postcss';
 	import Drawer from '$lib/components/Drawer.svelte';
-	import { Navbar, NavBrand, NavHamburger, Footer, DarkMode } from 'flowbite-svelte';
-	import { TolgeeProvider, Tolgee, DevTools, FormatSimple, T, getTranslate } from '@tolgee/svelte';
+	import { Footer } from 'flowbite-svelte';
+	import { TolgeeProvider, Tolgee, DevTools, FormatSimple } from '@tolgee/svelte';
 	import Header from '$lib/components/Header.svelte';
 	const tolgee = Tolgee()
 		.use(DevTools())
