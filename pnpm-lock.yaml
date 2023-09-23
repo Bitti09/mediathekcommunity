@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@directus/sdk':
-    specifier: ^11.0.3
-    version: 11.0.3
+    specifier: ^12.0.0
+    version: 12.0.0
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
@@ -155,8 +155,8 @@ packages:
     resolution: {integrity: sha512-OVeN4lFVu1O0PJGZ2d0FwpK8lelFcr33qYOgCh77ErEYmEBO4adwnIxcIsdQbFbhF0ffN6joiVcljD4zakdaeQ==}
     dev: true
 
-  /@directus/sdk@11.0.3:
-    resolution: {integrity: sha512-fHvHFcDhl8AY5quRP4cgLMHTU6F4c4ynmMpXRsi8dnSd38mIvciFyYmOVOh34Wp2N+a1YNYpXPU+NsHkfIheHw==}
+  /@directus/sdk@12.0.0:
+    resolution: {integrity: sha512-LDOsfjP0YmPgpnZXDIBzy8H9qiE9AeORZbzPkV+r/w1pWR3QBaz1xQDR1SrnX9BZ+q6HykjS3OJ2MTnXoQlW1Q==}
     engines: {node: '>=18.0.0'}
     dev: false
 
