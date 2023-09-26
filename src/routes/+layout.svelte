@@ -6,6 +6,9 @@
 	import { Footer } from 'flowbite-svelte';
 	import { TolgeeProvider, Tolgee, DevTools, FormatSimple } from '@tolgee/svelte';
 	import Header from '$lib/components/Header.svelte';
+	import { setupViewTransition } from 'sveltekit-view-transition';
+
+	setupViewTransition();
 	const tolgee = Tolgee()
 		.use(DevTools())
 		.use(FormatSimple())

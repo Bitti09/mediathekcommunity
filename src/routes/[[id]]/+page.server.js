@@ -5,12 +5,11 @@ import { staticToken } from '@directus/sdk/auth';
 import { DIRECTUS_URL, DIRECTUS_TOKEN } from '$env/static/private';
 export async function load({ params }) {
 	const directus = createDirectus(DIRECTUS_URL).with(rest()).with(staticToken(DIRECTUS_TOKEN));
-
 	// do authenticated requests
 	let article;
 	let param = params.id;
-	if (params.id != '' && params.id != 'specials' && params.id != 'uhd') {
-		article = await directus.request(
+ 	if (!params.id ||  params.id != 'specials' || params.id != 'uhd') {
+ 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*', 'listepisodes.*'],
 				filter: {
@@ -19,7 +18,7 @@ export async function load({ params }) {
 				sort: ['-date_created']
 			})
 		);
-	} else if (params.id == 'uhd') {
+ 	} else if (params.id == 'uhd') {
 		article = await directus.request(
 			readItems('mediathek', {
 				fields: ['*.*', 'listepisodes.*', 'specials.*'],
