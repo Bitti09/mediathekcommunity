@@ -261,7 +261,7 @@
 						</table>
 					</div>
 				</TabItem>
-				{#if data1.category != 'series'}
+				{#if data1.category == 'movie'}
 					<TabItem>
 						<div slot="title" class="flex items-center gap-2">Links</div>
 						<div class=" shadow-md sm:rounded-lg">
