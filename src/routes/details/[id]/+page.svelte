@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import Image from '$lib/components/Image.svelte';
 	import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
 	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
 	import { InfoCircleSolid } from 'flowbite-svelte-icons';
@@ -180,11 +179,7 @@
 	<div class="">
 		{#if showvideo != true}
 			<div class=" h-image1 mx-auto grid place-items-center">
-				<Image
-					image={{
-						sourceUrl: imgsrc1
-					}}
-				/>
+				<Img src={imgsrc1} />
 			</div>
 		{:else}
 			<div class="h-image1 mx-auto grid place-items-center">

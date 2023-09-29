@@ -1,8 +1,7 @@
 <script>
 	// @ts-nocheck
-	import Image from '$lib/components/Image.svelte';
-	import Icon from '@iconify/svelte';
-	import { Card } from 'flowbite-svelte';
+ 	import Icon from '@iconify/svelte';
+	import { Card,Img } from 'flowbite-svelte';
 	export let carddata;
 	export let showflag = false;
 	function getflag(country) {
@@ -39,9 +38,9 @@
 	}
 	let imgurl;
 	if (carddata.poster) {
-		imgurl = 'https://image.tmdb.org/t/p/original' + carddata.poster;
+		imgurl = 'https://img.mediathek.community/t/p/original/' + carddata.poster;
 	} else {
-		imgurl = 'https://api.mediathek.community/assets/' + carddata.coverimage;
+		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 	}
 </script>
 
@@ -56,10 +55,6 @@
 			</div>
 			<div>{carddata.channel}</div>
 		</div>
-		<Image
-			image={{
-				sourceUrl: imgurl
-			}}
-		/>
+		<Img src={imgurl} figClass="relative cursor-pointer filter bg-black" />
 	</a>
 </Card>
