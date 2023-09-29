@@ -30,9 +30,9 @@
 		seriestype.set(0);
 		let poster1;
 		if (data1.backdrop) {
-			poster1 = 'https://image.tmdb.org/t/p/original' + data1.backdrop;
+			poster1 = 'https://img.mediathek.community/t/p/original/' + data1.backdrop;
 		} else {
-			poster1 = 'https://api.mediathek.community/assets/' + data1.heroimage;
+			poster1 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
 		}
 		showvideo = true;
 		//console.log(data1);
