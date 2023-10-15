@@ -19,8 +19,8 @@
 				bandwidth: 30000000
 			},
 			hlsjsConfig: {
-				debug: true,
-				enableWorker: true,
+				debug: false,
+				enableWorker: false,
 				lowLatencyMode: true,
 				backBufferLength: 90,
 				smoothQualityChange: true,
@@ -75,6 +75,7 @@
 				settingsButton: false
 			});
 			if ($seriestype == 'noomu' || $seriestype == 'omu') {
+                console.log('omu');
 				player.playlist($playlists);
 			} else {
 				player.pause();
@@ -91,7 +92,7 @@
 			});
 		}
 	});
-	onDestroy(() => {
+	onDestroy(() => { 
 		if (player) {
 			player.dispose();
 		}

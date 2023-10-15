@@ -1,29 +1,32 @@
 <script>
-	import { Navbar, NavBrand, NavHamburger, Footer, DarkMode } from 'flowbite-svelte';
-	import { drawer } from '$lib/modalPropsStore';
-	import { lang } from '$lib/modalPropsStore';
+	// @ts-nocheck
+	import { AppBar, LightSwitch, getDrawerStore } from '@skeletonlabs/skeleton';
+	const drawerStore = getDrawerStore();
 
-	let btnClass =
-		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
-	import { getTolgee, getTranslate } from '@tolgee/svelte';
-	const hide = () => drawer.set(false);
-	const tolgee = getTolgee(['language']);
-	const { t } = getTranslate();
-	lang.subscribe((l) => {
-		$tolgee.changeLanguage(l);
-		localStorage.setItem('language', l);
-	});
+	const toggleDrawer = () => {
+		const s = {
+			id: 'demo',
+			// Property Overrides
+			position: 'left',
+			width: 'w-[90px]',
+			padding: 'p-0',
+			// Metadata
+			meta: 'Styled Drawer'
+		};
+		drawerStore.open(s);
+	};
 </script>
 
-<header class="sticky top-0 z-50 shadow-md">
-	<Navbar fluid navDivClass="flex justify-between">
-		<NavBrand href="/">
-			<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-				{$t('nav.title')}
-			</span>
-		</NavBrand>
-		<DarkMode {btnClass} />
-		<!-- <Select class="mt-2 w-40" placeholder="Sprachauswahl" items={languages} bind:value={$lang} />-->
-		<NavHamburger on:click={() => hide()} class="ml-3 md:block" />
-	</Navbar>
-</header>
+<AppBar gridColumns="grid-cols-2" slotDefault="place-self-begin" slotTrail="place-content-end">
+	<a href="/">Mediathek Community v0.3.1</a>
+	<svelte:fragment slot="trail">
+		<LightSwitch />
+		<button
+			on:click={() => {
+				toggleDrawer();
+			}}
+		>
+			Menu
+		</button>
+	</svelte:fragment>
+</AppBar>

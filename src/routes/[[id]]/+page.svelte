@@ -1,13 +1,14 @@
 <script>
 	// @ts-nocheck
-	import { Alert } from 'flowbite-svelte';
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 	import { groupBy } from 'lodash-es';
 	import Card from '$lib/components/Card.svelte';
-	register();
+
 	export let data;
+	register();
+	console.log("data");
 	let d1;
 	let keyz;
 	let grouped;
@@ -98,16 +99,23 @@
 	});
 </script>
 
-<Alert color="red" rounded={false} class="border-t-4">
-	<Icon name="info-circle-solid" slot="icon" class="w-4 h-4" />
-	<span class="font-medium">Info</span>
-	Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! - Serienansicht
-	wird aktuell überarbeitet
-</Alert>
+<aside class="alert variant-ghost">
+	<!-- Icon -->
+	<div><Icon name="info-circle-solid" slot="icon" class="w-4 h-4" /></div>
+	<!-- Message -->
+	<div class="alert-message">
+		<h3 class="h3">Info</h3>
+		<p>
+			Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! -
+			Serienansicht wird aktuell überarbeitet
+		</p>
+	</div>
+</aside>
 <br />
 {#if data.article.length > 0}
 	<div class="pl-2">
-		<h1 class="h1 pb-1">
+		{#if data.param != 'specials'}
+		<h1 class="h1 pb-2">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 			>
@@ -119,12 +127,17 @@
 				<swiper-slide><Card carddata={name} showflag /></swiper-slide>
 			{/each}
 		</swiper-container>
+		{/if}
 		{#each keyz as lang}
 			<h1 class="h1 pb-1">
 				<div
 					class="flex items-center bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 				>
-					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> Mediatheken
+				{#if data.param == 'specials'}
+					{lang}
+				{:else}
+				<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> 	{lang} Mediathek
+				{/if}
 				</div>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
