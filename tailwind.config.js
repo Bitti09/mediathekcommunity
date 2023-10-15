@@ -1,5 +1,4 @@
 import { join } from 'path'
-
 import { skeleton } from '@skeletonlabs/tw-plugin'
 /** @type {import('tailwindcss').Config} */
 export default {

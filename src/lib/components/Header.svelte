@@ -1,9 +1,6 @@
 <script>
-// @ts-nocheck
-
-import { AppBar } from '@skeletonlabs/skeleton';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
-	import { getDrawerStore, Drawer } from '@skeletonlabs/skeleton';
+	// @ts-nocheck
+	import { AppBar, LightSwitch, getDrawerStore } from '@skeletonlabs/skeleton';
 	const drawerStore = getDrawerStore();
 
 	const toggleDrawer = () => {
@@ -19,6 +16,7 @@ import { AppBar } from '@skeletonlabs/skeleton';
 		drawerStore.open(s);
 	};
 </script>
+
 <AppBar gridColumns="grid-cols-2" slotDefault="place-self-begin" slotTrail="place-content-end">
 	<a href="/">Mediathek Community v0.3.0</a>
 	<svelte:fragment slot="trail">
@@ -30,5 +28,5 @@ import { AppBar } from '@skeletonlabs/skeleton';
 		>
 			Menu
 		</button>
- 	</svelte:fragment>
+	</svelte:fragment>
 </AppBar>

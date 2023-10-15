@@ -1,9 +1,6 @@
 <script>
-	import { getDrawerStore, Drawer } from '@skeletonlabs/skeleton';
-	const drawerStore = getDrawerStore();
-	$: classesDrawer = $drawerStore.id === 'demo' ? 'top-14' : 'top-14';
+	import { AppRail, AppRailAnchor, getDrawerStore, Drawer } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import {
 		HouseChimneySolid,
 		TvSolid,
@@ -12,6 +9,8 @@
 		StarSolid,
 		CirclePlaySolid
 	} from 'svelte-awesome-icons';
+	const drawerStore = getDrawerStore();
+	$: classesDrawer = $drawerStore.id === 'demo' ? 'top-14' : 'top-14';
 </script>
 
 <Drawer class={classesDrawer}>
@@ -56,7 +55,7 @@
 			uhd
 		</AppRailAnchor>
 		<AppRailAnchor href="/other" selected={$page.url.pathname === '/other'} data-sveltekit-reload>
-			<svelte:fragment slot="lead"><CirclePlaySolid  /></svelte:fragment>
+			<svelte:fragment slot="lead"><CirclePlaySolid /></svelte:fragment>
 			other
 		</AppRailAnchor>
 	</AppRail>

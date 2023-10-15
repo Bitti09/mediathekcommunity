@@ -1,19 +1,15 @@
 <script>
 	// @ts-nocheck
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	//import { Tabs, TabItem, AccordionItem, Accordion, Alert, Img } from 'flowbite-svelte';
-	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-
+	import { TabGroup, Tab, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import { writable } from 'svelte/store';
+	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
+	import Icon from '@iconify/svelte';
+	import { groupBy } from 'lodash-es';
+	export let data;
+	
 	const tabSet = writable(0);
 	const tabSetSeason = writable(0);
-
-	import { modalvideo, seriestype, playlists } from '$lib/modalPropsStore';
-	import { InfoCircleSolid } from 'flowbite-svelte-icons';
-	import Icon from '@iconify/svelte';
-
-	import { groupBy } from 'lodash-es';
 	let myPlaylist = [];
 	let showvideo = false;
 	let imgsrc1;
@@ -22,7 +18,6 @@
 	let omulist1;
 	let omulist2;
 	let episodelist;
-	export let data;
 	d1 = data.article.listepisodes;
 	$: data1 = data.article;
 	if (data.article.category == 'series') {
@@ -101,7 +96,7 @@
 		myPlaylist = [];
 		seriestype.set('omu');
 		for (let i = 0; i < d2.length; i++) {
- 			let sources = [];
+			let sources = [];
 			if (d2[i].directlink) {
 				sources.push({
 					src: type != 'omu' ? d2[i].directlink : d2[i].directlink_omu,
@@ -321,7 +316,7 @@
 						<TabGroup justify="justify-center">
 							{#each keyz as season, i}
 								<Tab bind:group={$tabSetSeason} name="tab1" value={i}>
-									Season {season} 
+									Season {season}
 								</Tab>
 							{/each}
 							<svelte:fragment slot="panel">

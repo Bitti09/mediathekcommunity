@@ -5,8 +5,10 @@
 	import { register } from 'swiper/element/bundle';
 	import { groupBy } from 'lodash-es';
 	import Card from '$lib/components/Card.svelte';
-	register();
+
 	export let data;
+	register();
+
 	let d1;
 	let keyz;
 	let grouped;
