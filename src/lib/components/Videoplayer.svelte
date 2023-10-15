@@ -44,7 +44,7 @@
  				player.pause();
 				player.poster(video.poster);
 				player.currentTime(0);
-				player.changeSource(video_1);
+				player.src(video_1);
 			}
 			//player.play();
 		}
@@ -77,7 +77,10 @@
 			if ($seriestype == 'noomu' || $seriestype == 'omu') {
 				player.playlist($playlists);
 			} else {
-				player.changeSource(video_1);
+				player.pause();
+				player.poster(video_1.poster);
+ 				player.currentTime(0);
+ 				player.src(video_1.sources);
 			}
 			player.on('mode', function (event, mode) {
 				if (mode == 'large') {
