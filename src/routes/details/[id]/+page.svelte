@@ -177,6 +177,17 @@
 			</div>
 		</aside>
 	{/if}
+	{#if data.article.channel == 'svt'}
+	<aside class="alert variant-ghost">
+		<!-- Icon -->
+		<div><Icon name="info-circle-solid" slot="icon" class="w-4 h-4" /></div>
+		<!-- Message -->
+		<div class="alert-message">
+			<h3 class="h3">Info</h3>
+			<p>Select "Tydligare tal" as audio language for English audio</p>
+		</div>
+	</aside>
+{/if}
 	{#if data1.quality == 'uhd'}
 		<aside class="alert variant-ghost">
 			<!-- Icon -->
