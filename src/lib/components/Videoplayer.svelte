@@ -75,6 +75,7 @@
 				settingsButton: false
 			});
 			if ($seriestype == 'noomu' || $seriestype == 'omu') {
+                console.log('omu');
 				player.playlist($playlists);
 			} else {
 				player.pause();
@@ -91,7 +92,7 @@
 			});
 		}
 	});
-	onDestroy(() => {
+	onDestroy(() => { 
 		if (player) {
 			player.dispose();
 		}

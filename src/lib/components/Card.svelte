@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
 	import Icon from '@iconify/svelte';
-	import { Card, Img } from 'flowbite-svelte';
 	export let carddata;
 	export let showflag = false;
 	function getflag(country) {
@@ -46,7 +45,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<Card class="sm:p-4 max-w-lg border-0">
+<div class="card sm:p-1 max-w-md border-0">
 	<a href="/details/{carddata.id}">
 		<div class="flex justify-between w-full">
 			<div>{carddata.channel}</div>
@@ -55,7 +54,7 @@
 				{/if}
 			</div>
 		</div>
-		<Img src={imgurl} figClass="relative cursor-pointer filter bg-black" />
+		<img src={imgurl} figClass="relative cursor-pointer filter bg-black" alt={carddata.title}/>
 		{#if carddata.audiolang}
 			<div class="flex justify-between w-full">
 				<div>Audio:</div>
@@ -67,4 +66,4 @@
 			</div>
 		{/if}
 	</a>
-</Card>
+</div>

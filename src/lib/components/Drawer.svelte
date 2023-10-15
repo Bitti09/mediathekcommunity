@@ -1,5 +1,9 @@
 <script>
-	import { Drawer, Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
+	import { getDrawerStore, Drawer } from '@skeletonlabs/skeleton';
+	const drawerStore = getDrawerStore();
+	$: classesDrawer = $drawerStore.id === 'demo' ? 'top-14' : 'top-14';
+	import { page } from '$app/stores';
+	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import {
 		HouseChimneySolid,
 		TvSolid,
@@ -8,101 +12,52 @@
 		StarSolid,
 		CirclePlaySolid
 	} from 'svelte-awesome-icons';
-	import { page } from '$app/stores';
-	import { sineIn } from 'svelte/easing';
-	import { drawer } from '$lib/modalPropsStore';
-	import { getTranslate } from '@tolgee/svelte';
-
-	const { t } = getTranslate();
-	$: activeUrl = $page.url.pathname;
-	let transitionParams = {
-		x: -320,
-		duration: 200,
-		easing: sineIn
-	};
 </script>
 
-<Drawer
-	transitionType="fly"
-	{transitionParams}
-	bind:hidden={$drawer}
-	id="sidebar1"
-	leftOffset="z-top top-14 h-screen left-0"
->
-	<Sidebar>
-		<SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
-			<SidebarGroup>
-				<SidebarItem data-sveltekit-reload label="Home" href="/" active={activeUrl === '/'}>
-					<svelte:fragment slot="icon">
-						<HouseChimneySolid />
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.movie')}
-					href="/movie"
-					active={activeUrl === '/movie'}
-				>
-					<svelte:fragment slot="icon">
-						<VideoSolid />
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.serie')}
-					href="/series"
-					active={activeUrl === '/series'}
-				>
-					<svelte:fragment slot="icon">
-						<TvSolid />
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.culture')}
-					href="/culture"
-					active={activeUrl === '/culture'}
-				>
-					<svelte:fragment slot="icon">
-						<MasksTheaterSolid />
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.special')}
-					href="/specials"
-					active={activeUrl === '/specials'}
-				>
-					<svelte:fragment slot="icon">
-						<StarSolid />
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.uhd')}
-					href="/uhd"
-					active={activeUrl === '/uhd'}
-				>
-					<svelte:fragment slot="icon">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-							<path
-								fill="currentColor"
-								d="M9 7h2v4h2V7h2v10h-2v-4h-2v4H9V7m8 0h3a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-3V7m3 8a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1v6h1M7 14a3 3 0 0 1-3 3a3 3 0 0 1-3-3V7h2v7a1 1 0 0 0 1 1a1 1 0 0 0 1-1V7h2v7Z"
-							/>
-						</svg>
-					</svelte:fragment>
-				</SidebarItem>
-				<SidebarItem
-					data-sveltekit-reload
-					label={$t('nav.other')}
-					href="/other"
-					active={activeUrl === '/other'}
-				>
-					<svelte:fragment slot="icon">
-						<CirclePlaySolid />
-					</svelte:fragment>
-				</SidebarItem>
-			</SidebarGroup>
-		</SidebarWrapper>
-	</Sidebar>
+<Drawer class={classesDrawer}>
+	<AppRail>
+		<AppRailAnchor href="/" selected={$page.url.pathname === '/'} data-sveltekit-reload>
+			<svelte:fragment slot="lead"><HouseChimneySolid /></svelte:fragment>
+			Home
+		</AppRailAnchor>
+		<AppRailAnchor href="/movie" selected={$page.url.pathname === '/movie'} data-sveltekit-reload>
+			<svelte:fragment slot="lead"><VideoSolid /></svelte:fragment>
+			movie
+		</AppRailAnchor>
+		<AppRailAnchor href="/series" selected={$page.url.pathname === '/series'} data-sveltekit-reload>
+			<svelte:fragment slot="lead"><TvSolid /></svelte:fragment>
+			series
+		</AppRailAnchor>
+		<AppRailAnchor
+			href="/culture"
+			selected={$page.url.pathname === '/culture'}
+			data-sveltekit-reload
+		>
+			<svelte:fragment slot="lead"><MasksTheaterSolid /></svelte:fragment>
+			culture
+		</AppRailAnchor>
+		<AppRailAnchor
+			href="/specials"
+			selected={$page.url.pathname === '/specials'}
+			data-sveltekit-reload
+		>
+			<svelte:fragment slot="lead"><StarSolid /></svelte:fragment>
+			specials
+		</AppRailAnchor>
+		<AppRailAnchor href="/uhd" selected={$page.url.pathname === '/uhd'} data-sveltekit-reload>
+			<svelte:fragment slot="lead">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+					<path
+						fill="currentColor"
+						d="M9 7h2v4h2V7h2v10h-2v-4h-2v4H9V7m8 0h3a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-3V7m3 8a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1v6h1M7 14a3 3 0 0 1-3 3a3 3 0 0 1-3-3V7h2v7a1 1 0 0 0 1 1a1 1 0 0 0 1-1V7h2v7Z"
+					/>
+				</svg>
+			</svelte:fragment>
+			uhd
+		</AppRailAnchor>
+		<AppRailAnchor href="/other" selected={$page.url.pathname === '/other'} data-sveltekit-reload>
+			<svelte:fragment slot="lead"><CirclePlaySolid  /></svelte:fragment>
+			other
+		</AppRailAnchor>
+	</AppRail>
 </Drawer>
