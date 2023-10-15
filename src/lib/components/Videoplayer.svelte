@@ -19,8 +19,8 @@
 				bandwidth: 30000000
 			},
 			hlsjsConfig: {
-				debug: true,
-				enableWorker: true,
+				debug: false,
+				enableWorker: false,
 				lowLatencyMode: true,
 				backBufferLength: 90,
 				smoothQualityChange: true,

@@ -8,7 +8,7 @@
 
 	export let data;
 	register();
-
+	console.log("data");
 	let d1;
 	let keyz;
 	let grouped;
@@ -114,6 +114,7 @@
 <br />
 {#if data.article.length > 0}
 	<div class="pl-2">
+		{#if data.param != 'specials'}
 		<h1 class="h1 pb-2">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
@@ -126,12 +127,17 @@
 				<swiper-slide><Card carddata={name} showflag /></swiper-slide>
 			{/each}
 		</swiper-container>
+		{/if}
 		{#each keyz as lang}
 			<h1 class="h1 pb-1">
 				<div
 					class="flex items-center bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
 				>
-					<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> Mediatheken
+				{#if data.param == 'specials'}
+					{lang}
+				{:else}
+				<Icon icon={getflag(lang)} inline style="font-size: 26px;" class="pr-1" /> 	{lang} Mediathek
+				{/if}
 				</div>
 			</h1>
 			<swiper-container init="false" class="mySwiper2">
