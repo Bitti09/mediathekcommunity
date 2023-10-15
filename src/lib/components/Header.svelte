@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
 
-	import { AppBar } from '@skeletonlabs/skeleton';
+import { AppBar } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { getDrawerStore, Drawer } from '@skeletonlabs/skeleton';
 	const drawerStore = getDrawerStore();
@@ -19,7 +19,6 @@
 		drawerStore.open(s);
 	};
 </script>
-
 <AppBar gridColumns="grid-cols-2" slotDefault="place-self-begin" slotTrail="place-content-end">
 	<a href="/">Mediathek Community v0.3.0</a>
 	<svelte:fragment slot="trail">

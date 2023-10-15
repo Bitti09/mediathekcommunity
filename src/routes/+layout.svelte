@@ -1,20 +1,23 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import '../app.postcss';
 	import { initializeStores } from '@skeletonlabs/skeleton';
 	initializeStores();
+	import { AppShell } from '@skeletonlabs/skeleton';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import Drawer from '$lib/components/Drawer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 </script>
-<Drawer />
-<div class="flex flex-col h-screen">
 
-<Header />
-<main class="max-w-screen-xxl m-auto flex-grow w-full">
+<Drawer />
+<AppShell regionPage="relative" slotHeader="sticky top-0 z-10">
+	<svelte:fragment slot="header"><Header /></svelte:fragment>
+	<!-- (sidebarRight) -->
+	<!-- (pageHeader) -->
+	<!-- Router Slot -->
 	<slot />
-</main>
-<Footer />
-</div>
+	<!-- ---- / ---- -->
+	<svelte:fragment slot="pageFooter"><Footer /></svelte:fragment>
+</AppShell>
