@@ -18,7 +18,7 @@
 </script>
 
 <AppBar gridColumns="grid-cols-2" slotDefault="place-self-begin" slotTrail="place-content-end">
-	<a href="/">Mediathek Community v0.3.0</a>
+	<a href="/">Mediathek Community v0.3.1</a>
 	<svelte:fragment slot="trail">
 		<LightSwitch />
 		<button
