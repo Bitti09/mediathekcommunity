@@ -1,11 +1,11 @@
 {
-  "nav" : {
-    "culture" : "Kultur",
-    "movie" : "Filme",
-    "other" : "Sonstige",
-    "serie" : "Serien",
-    "special" : "Spezial",
-    "title" : "Mediathek Community v0.2",
-    "uhd" : "UHD"
+  "nav": {
+    "culture": "Kultur",
+    "movie": "Filme",
+    "other": "Sonstige",
+    "serie": "Serien",
+    "special": "Spezial",
+    "title": "Mediathek Community v0.2.1",
+    "uhd": "UHD"
   }
 }
