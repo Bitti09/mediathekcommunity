@@ -13,45 +13,9 @@ export default {
 			themes: {
 				preset: [
 					{
-						name: 'skeleton',
-						enhancements: true,
-					},
-					{
 						name: 'wintry',
 						enhancements: true,
-					},
-					{
-						name: 'modern',
-						enhancements: true,
-					},
-					{
-						name: 'hamlindigo',
-						enhancements: true,
-					},
-					{
-						name: 'rocket',
-						enhancements: true,
-					},
-					{
-						name: 'sahara',
-						enhancements: true,
-					},
-					{
-						name: 'gold-nouveau',
-						enhancements: true,
-					},
-					{
-						name: 'vintage',
-						enhancements: true,
-					},
-					{
-						name: 'seafoam',
-						enhancements: true,
-					},
-					{
-						name: 'crimson',
-						enhancements: true,
-					},
+					}
 				],
 			},
 		}),
