@@ -1,19 +1,16 @@
+
 <script>
-	// @ts-nocheck
 	import { AppBar, LightSwitch, getDrawerStore } from '@skeletonlabs/skeleton';
 	const drawerStore = getDrawerStore();
 
 	const toggleDrawer = () => {
-		const s = {
+		drawerStore.open({
 			id: 'demo',
-			// Property Overrides
 			position: 'left',
 			width: 'w-[90px]',
 			padding: 'p-0',
-			// Metadata
 			meta: 'Styled Drawer'
-		};
-		drawerStore.open(s);
+		});
 	};
 </script>
 
@@ -21,11 +18,7 @@
 	<a href="/">Mediathek Community v0.3.1</a>
 	<svelte:fragment slot="trail">
 		<LightSwitch />
-		<button
-			on:click={() => {
-				toggleDrawer();
-			}}
-		>
+		<button on:click={toggleDrawer}>
 			Menu
 		</button>
 	</svelte:fragment>

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import Icon from '@iconify/svelte';
 	export let carddata;
 	export let showflag = false;
@@ -21,16 +20,9 @@
 		pt: 'twemoji:flag-portugal',
 		se: 'twemoji:flag-sweden'
 	};
-	let imgurl;
-	if (carddata.poster) {
-		imgurl = 'https://img.mediathek.community/t/p/original/' + carddata.poster;
-	} else {
-		imgurl = 'https://img2.mediathek.community/assets/' + carddata.coverimage;
-	}
+	const imgurl = carddata.poster ? 'https://img.mediathek.community/t/p/original/' + carddata.poster : 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="card sm:p-1 max-w-md border-0">
 	<a href="/details/{carddata.id}">
 		<div class="flex justify-between w-full">
