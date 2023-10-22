@@ -7,7 +7,7 @@
 	import Icon from '@iconify/svelte';
 	import { groupBy } from 'lodash-es';
 	export let data;
-	
+
 	const tabSet = writable(0);
 	const tabSetSeason = writable(0);
 	let myPlaylist = [];
@@ -178,16 +178,16 @@
 		</aside>
 	{/if}
 	{#if data.article.channel == 'svt'}
-	<aside class="alert variant-ghost">
-		<!-- Icon -->
-		<div><Icon name="info-circle-solid" slot="icon" class="w-4 h-4" /></div>
-		<!-- Message -->
-		<div class="alert-message">
-			<h3 class="h3">Info</h3>
-			<p>Select "Tydligare tal" as audio language for English audio</p>
-		</div>
-	</aside>
-{/if}
+		<aside class="alert variant-ghost">
+			<!-- Icon -->
+			<div><Icon name="info-circle-solid" slot="icon" class="w-4 h-4" /></div>
+			<!-- Message -->
+			<div class="alert-message">
+				<h3 class="h3">Info</h3>
+				<p>Select "Tydligare tal" as audio language for English audio</p>
+			</div>
+		</aside>
+	{/if}
 	{#if data1.quality == 'uhd'}
 		<aside class="alert variant-ghost">
 			<!-- Icon -->
@@ -202,7 +202,7 @@
 	<div class="">
 		{#if showvideo != true}
 			<div class=" h-image1 mx-auto grid place-items-center">
-				<img src={imgsrc1} />
+				<img src={imgsrc1} alt={data1.title}/>
 			</div>
 		{:else}
 			<div class="h-image1 mx-auto grid place-items-center">

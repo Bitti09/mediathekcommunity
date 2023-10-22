@@ -36,12 +36,12 @@
 				player.playlist.new($playlists);
 				player.pause();
 			} else {
- 				let video_1 = {
+				let video_1 = {
 					sources: $modalvideo.source,
 					poster: $modalvideo.poster,
 					title: $modalvideo.title
 				};
- 				player.pause();
+				player.pause();
 				player.poster(video.poster);
 				player.currentTime(0);
 				player.src(video_1);
@@ -55,7 +55,7 @@
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
 			player = videojs('my-video', videojsOptions);
-  			let video_1 = {
+			let video_1 = {
 				sources: $modalvideo.source,
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
@@ -75,13 +75,13 @@
 				settingsButton: false
 			});
 			if ($seriestype == 'noomu' || $seriestype == 'omu') {
-                console.log('omu');
+				console.log('omu');
 				player.playlist($playlists);
 			} else {
 				player.pause();
 				player.poster(video_1.poster);
- 				player.currentTime(0);
- 				player.src(video_1.sources);
+				player.currentTime(0);
+				player.src(video_1.sources);
 			}
 			player.on('mode', function (event, mode) {
 				if (mode == 'large') {
@@ -92,7 +92,7 @@
 			});
 		}
 	});
-	onDestroy(() => { 
+	onDestroy(() => {
 		if (player) {
 			player.dispose();
 		}
@@ -107,7 +107,7 @@
 		webkit-playsinline
 		bind:this={videoPlayer}
 		class="video-js vjs-fluid overflow-hidden"
-	></video>
+	/>
 </div>
 
 <style>

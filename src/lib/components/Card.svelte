@@ -3,38 +3,24 @@
 	import Icon from '@iconify/svelte';
 	export let carddata;
 	export let showflag = false;
-	function getflag(country) {
-		switch (country) {
-			case 'de':
-				return 'twemoji:flag-germany';
-			case 'at':
-				return 'twemoji:flag-austria';
-			case 'ch':
-				return 'twemoji:flag-switzerland';
-			case 'it':
-				return 'twemoji:flag-italy';
-			case 'fr':
-				return 'twemoji:flag-france';
-			case 'es':
-				return 'twemoji:flag-spain';
-			case 'uk':
-				return 'twemoji:flag-united-kingdom';
-			case 'nl':
-				return 'twemoji:flag-netherlands';
-			case 'be':
-				return 'twemoji:flag-belgium';
-			case 'dk':
-				return 'twemoji:flag-denmark';
-			case 'fi':
-				return 'twemoji:flag-finland';
-			case 'ie':
-				return 'twemoji:flag-ireland';
-			case 'no':
-				return 'twemoji:flag-norway';
-			case 'se':
-				return 'twemoji:flag-sweden';
-		}
-	}
+	const flags = {
+		de: 'twemoji:flag-germany',
+		at: 'twemoji:flag-austria',
+		ch: 'twemoji:flag-switzerland',
+		it: 'twemoji:flag-italy',
+		fr: 'twemoji:flag-france',
+		es: 'twemoji:flag-spain',
+		uk: 'twenoji:flag-united-kingdom',
+		pl: 'twemoji:flag-poland',
+		nl: 'twemoji:flag-netherlands',
+		be: 'twemoji:flag-belgium',
+		dk: 'twemoji:flag-denmark',
+		fi: 'twemoji:flag-finland',
+		ie: 'twemoji:flag-ireland',
+		no: 'twemoji:flag-norway',
+		pt: 'twemoji:flag-portugal',
+		se: 'twemoji:flag-sweden'
+	};
 	let imgurl;
 	if (carddata.poster) {
 		imgurl = 'https://img.mediathek.community/t/p/original/' + carddata.poster;
@@ -50,17 +36,17 @@
 		<div class="flex justify-between w-full">
 			<div>{carddata.channel}</div>
 			<div>
-				{#if showflag}<Icon icon={getflag(carddata.country)} style="font-size: 26px;" />
+				{#if showflag}<Icon icon={flags[carddata.country]} style="font-size: 26px;" />
 				{/if}
 			</div>
 		</div>
-		<img src={imgurl} figClass="relative cursor-pointer filter bg-black" alt={carddata.title}/>
+		<img src={imgurl} figClass="relative cursor-pointer filter bg-black" alt={carddata.title} />
 		{#if carddata.audiolang}
 			<div class="flex justify-between w-full">
 				<div>Audio:</div>
 				<div class="flex">
 					{#each carddata.audiolang as lang}
-						<Icon icon={getflag(lang)} style="font-size: 26px;" class="flex" />
+						<Icon icon={flags[lang]} style="font-size: 26px;" class="flex" />
 					{/each}
 				</div>
 			</div>
