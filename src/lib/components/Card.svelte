@@ -10,7 +10,7 @@
 		it: 'twemoji:flag-italy',
 		fr: 'twemoji:flag-france',
 		es: 'twemoji:flag-spain',
-		uk: 'twenoji:flag-united-kingdom',
+		uk: 'twemoji:flag-united-kingdom',
 		pl: 'twemoji:flag-poland',
 		nl: 'twemoji:flag-netherlands',
 		be: 'twemoji:flag-belgium',
