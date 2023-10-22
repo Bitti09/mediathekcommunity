@@ -27,11 +27,8 @@ const flags: { [key: string]: string } = {
 const imgurl = carddata.poster ? 'https://img.mediathek.community/t/p/original/' + carddata.poster : 'https://img2.mediathek.community/assets/' + carddata.coverimage;
 </script>
 
-// This is the basic card component that is used in the home page and search results.
-// It is also used in the details page to show similar shows.
 <div class="card sm:p-1 max-w-md border-0">
 	<a href="/details/{carddata.id}">
-		// Show the channel name and country flag (if available)
 		<div class="flex justify-between w-full">
 			<div>{carddata.channel}</div>
 			<div>
@@ -39,9 +36,7 @@ const imgurl = carddata.poster ? 'https://img.mediathek.community/t/p/original/'
 				{/if}
 			</div>
 		</div>
-		// Show the image, which is a link to the details page
 		<img src={imgurl} figClass="relative cursor-pointer filter bg-black" alt={carddata.title} />
-		// Show the audio languages
 		{#if carddata.audiolang}
 			<div class="flex justify-between w-full">
 				<div>Audio:</div>
