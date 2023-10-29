@@ -42,7 +42,7 @@ const imgurl = carddata.poster ? 'https://img.mediathek.community/t/p/original/'
 				<div>Audio:</div>
 				<div class="flex">
 					{#each carddata.audiolang as lang}
-						<Icon icon={flags[lang]} style="font-size: 26px;" class="flex" />
+						<Icon icon={flags[lang]} style="font-size: 26px;" class="flex mx-1" />
 					{/each}
 				</div>
 			</div>

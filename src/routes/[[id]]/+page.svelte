@@ -86,8 +86,8 @@
 	<div class="alert-message">
 		<h3 class="h3">Info</h3>
 		<p>
-			Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! -
-			Serienansicht wird aktuell überarbeitet
+			Die Seite ist immer noch im Aufbau und wird daher unregelmäßig mit neuen Inhalten befüllt! -<br />
+			Datenbank Basis  wird aktuell überarbeitet daher kann es zeitweise etwas leer sein auf der Seite.
 		</p>
 	</div>
 </aside>
@@ -116,8 +116,8 @@
 					{#if data.param == 'specials'}
 						{lang}
 					{:else}
-						<Icon icon={flags[lang]} inline style="font-size: 26px;" class="pr-1" />
-						{lang} Mediathek
+						<Icon icon={flags[lang]} inline style="font-size: 40px;" class="pr-1 pt-2" />
+						Mediathek
 					{/if}
 				</div>
 			</h1>
