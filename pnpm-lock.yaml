@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@directus/sdk':
-    specifier: ^12.1.0
-    version: 12.1.0
+    specifier: ^13.0.1
+    version: 13.0.1
   '@iconify/svelte':
     specifier: ^3.1.4
     version: 3.1.4(svelte@4.2.3)
@@ -18,8 +18,8 @@ dependencies:
     specifier: ^4.17.21
     version: 4.17.21
   swiper:
-    specifier: ^10.3.1
-    version: 10.3.1
+    specifier: ^11.0.4
+    version: 11.0.4
   video.js:
     specifier: ^8.6.1
     version: 8.6.1
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^8.53.0
     version: 8.53.0
   eslint-config-prettier:
-    specifier: ^8.10.0
-    version: 8.10.0(eslint@8.53.0)
+    specifier: ^9.0.0
+    version: 9.0.0(eslint@8.53.0)
   eslint-plugin-svelte:
     specifier: ^2.35.0
     version: 2.35.0(eslint@8.53.0)(svelte@4.2.3)
@@ -68,11 +68,11 @@ devDependencies:
     specifier: 8.4.31
     version: 8.4.31
   prettier:
-    specifier: ^2.8.8
-    version: 2.8.8
+    specifier: ^3.1.0
+    version: 3.1.0
   prettier-plugin-svelte:
-    specifier: ^2.10.1
-    version: 2.10.1(prettier@2.8.8)(svelte@4.2.3)
+    specifier: ^3.1.0
+    version: 3.1.0(prettier@3.1.0)(svelte@4.2.3)
   svelte:
     specifier: ^4.2.3
     version: 4.2.3
@@ -124,8 +124,8 @@ packages:
     resolution: {integrity: sha512-TkcZkntUTOcvJ4vgmwpNfLTclpMbmbClZCe62B25/VTukmyv91joRa4eKzSjzCZUXTbFHNmVdOpmGaaJU2U3+A==}
     dev: true
 
-  /@directus/sdk@12.1.0:
-    resolution: {integrity: sha512-WSEYrNFKWGeDD+6BG4xuflNqaZAsEOF+eoqC6JBTodKqidmgYglRTUc16+wemwqHXzrW7y8UgA89HWZtR+lW3A==}
+  /@directus/sdk@13.0.1:
+    resolution: {integrity: sha512-zKus2H2AC6NkYwYH1OTfTePHrCt4HxWC41JvQYiAT8j227bmE1adMQ/aAPqLwTIDeaDpR+BDJNNOFfq+3btVSg==}
     engines: {node: '>=18.0.0'}
     dev: false
 
@@ -977,8 +977,8 @@ packages:
       eslint: 8.53.0
     dev: true
 
-  /eslint-config-prettier@8.10.0(eslint@8.53.0):
-    resolution: {integrity: sha512-SM8AMJdeQqRYT9O9zguiruQZaN7+z+E4eAP9oiLNGKMtomwaB1E9dcgUD6ZAn/eQAb52USbvezbiljfZUhbJcg==}
+  /eslint-config-prettier@9.0.0(eslint@8.53.0):
+    resolution: {integrity: sha512-IcJsTkJae2S35pRsRAwoCE+925rJJStOdkKnLVgtE+tEpqU0EVVM7OqrwxqgptKdX29NUwC82I5pXsGFIgSevw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -1898,19 +1898,19 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-svelte@2.10.1(prettier@2.8.8)(svelte@4.2.3):
-    resolution: {integrity: sha512-Wlq7Z5v2ueCubWo0TZzKc9XHcm7TDxqcuzRuGd0gcENfzfT4JZ9yDlCbEgxWgiPmLHkBjfOtpAWkcT28MCDpUQ==}
+  /prettier-plugin-svelte@3.1.0(prettier@3.1.0)(svelte@4.2.3):
+    resolution: {integrity: sha512-96+AZxs2ESqIFA9j+o+DHqY+BsUglezfl553LQd6VOtTyJq5GPuBEb3ElxF2cerFzKlYKttlH/VcVmRNj5oc3A==}
     peerDependencies:
-      prettier: ^1.16.4 || ^2.0.0
-      svelte: ^3.2.0 || ^4.0.0-next.0
+      prettier: ^3.0.0
+      svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
     dependencies:
-      prettier: 2.8.8
+      prettier: 3.1.0
       svelte: 4.2.3
     dev: true
 
-  /prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
@@ -2252,8 +2252,8 @@ packages:
       magic-string: 0.30.5
       periscopic: 3.1.0
 
-  /swiper@10.3.1:
-    resolution: {integrity: sha512-24Wk3YUdZHxjc9faID97GTu6xnLNia+adMt6qMTZG/HgdSUt4fS0REsGUXJOgpTED0Amh/j+gRGQxsLayJUlBQ==}
+  /swiper@11.0.4:
+    resolution: {integrity: sha512-qtUxILrD4aD++rpKzGrkz3IAWL92f9uTrDwjb6HaNLmPvJhZCE/83DL+9w4kIgDDJeF6QKalV47rMBN77UOVYQ==}
     engines: {node: '>= 4.7.0'}
     dev: false
 
