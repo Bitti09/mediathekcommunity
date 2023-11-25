@@ -1,5 +1,5 @@
 import { createDirectus, rest, readItems, staticToken } from "@directus/sdk";
-import groupBy from "lodash/groupBy";
+import groupBy from "lodash-es";
 
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
