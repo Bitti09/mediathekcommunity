@@ -1,4 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }
-})
+  extends: ["@nuxt/ui-pro"],
+  modules: ["@nuxt/ui","nuxt-lodash"],
+  ui: {
+    icons: ["heroicons", "simple-icons"],
+  },
+  runtimeConfig: {
+    directusToken: '',
+    directusUrl: '',
+  },
+  // Devtools / Typescript
+  devtools: { enabled: true },
+  typescript: { strict: false },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith("swiper-"),
+    },
+  },
+});
