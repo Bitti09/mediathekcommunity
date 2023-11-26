@@ -1,11 +1,10 @@
 import { createDirectus, rest, readItems, staticToken } from "@directus/sdk";
-import groupBy from "lodash-es";
+import groupBy from "lodash-es/groupBy";
 
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
   const config = useRuntimeConfig(event);
-  console.log(config);
-  const directus = createDirectus(config.directusUrl)
+   const directus = createDirectus(config.directusUrl)
     .with(rest())
     .with(staticToken(config.directusToken));
   let filter = {};
@@ -15,7 +14,7 @@ export default defineEventHandler(async (event) => {
   let keyz = undefined;
 
   console.log(id);
-  if (id !='index') {
+  if (id != "index") {
     if (id == "uhd") {
       filter.quality = "uhd";
       fields.push("specials.*");
@@ -35,13 +34,13 @@ export default defineEventHandler(async (event) => {
   } else {
     all = await directus.request(
       readItems("mediathek", {
-         sort: ["-date_created"],
+        sort: ["-date_created"],
       })
     );
+    grouped = groupBy(all, (item) => item.country);
+    keyz = Object.keys(grouped);
   }
 
-  grouped = groupBy(all, (item) => item.country);
-  keyz = Object.keys(grouped);
   return {
     all,
     grouped,
