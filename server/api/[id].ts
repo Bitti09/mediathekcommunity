@@ -35,8 +35,7 @@ export default defineEventHandler(async (event) => {
   } else {
     all = await directus.request(
       readItems("mediathek", {
-        fields: fields,
-        sort: ["-date_created"],
+         sort: ["-date_created"],
       })
     );
   }
