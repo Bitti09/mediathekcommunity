@@ -5,7 +5,7 @@
   <UHeader>
     <template #logo>
       Mediathek Community
-      <UBadge label="v 0.0.3" variant="subtle" class="mb-0.5" />
+      <UBadge label="v 0.4.0" variant="subtle" class="mb-0.5" />
     </template>
 
     <template #right>
