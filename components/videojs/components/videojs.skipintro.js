@@ -1,0 +1,6 @@
+/**
+ * @license
+ * Copyright (c) 2023 The Nuevodevel Team. All rights reserved.
+ * SkipIntro Plugin for Video.js v8
+ */
+/*eslint no-inner-declarations: "off"*/import videojs from"video.js";const defaults={skipStart:0,skipDuration:0,skipTarget:0,skipText:"Skip Intro"};window.skipintro={version:"1.0"};const onPlayerReady=(i,t)=>{t=videojs.obj.merge(defaults,t||{});var e,r=!1;if(t.skipStart>0&&t.skipDuration>0&&t.skipTarget>0){(e=document.createElement("div")).className="vast-skip-button vjs-hidden";e.innerHTML='<p class="vast-skip-button-text">'+t.skipText+"</p>";e.style.cursor="pointer";i.el().appendChild(e);if(t.skipStart+t.skipDuration>t.skipTarget)t.skipDuration=t.skipTarget-t.skipStart;i.on("timeupdate",function(){if(i.currentTime()>t.skipTarget){r=!0;i.el().removeChild(e)}if(!0!==r){if(i.currentTime()>t.skipStart&&i.currentTime()<t.skipStart+t.skipDuration){videojs.dom.removeClass(e,"vjs-hidden");e.onclick=function(){r=!0;i.currentTime(t.skipTarget);i.el().removeChild(e)}}if(i.currentTime()>t.skipStart+t.skipDuration){r=!0;i.el().removeChild(e)}}})}return this},skipintro=function(i){this.ready(function(){onPlayerReady(this,i)})},registerPlugin=videojs.registerPlugin||videojs.plugin;registerPlugin("skipintro",skipintro);skipintro.VERSION="1.0";export default skipintro;

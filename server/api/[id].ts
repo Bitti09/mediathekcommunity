@@ -4,7 +4,7 @@ import groupBy from "lodash-es/groupBy";
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
   const config = useRuntimeConfig(event);
-   const directus = createDirectus(config.directusUrl)
+  const directus = createDirectus(config.directusUrl)
     .with(rest())
     .with(staticToken(config.directusToken));
   let filter = {};
@@ -31,6 +31,9 @@ export default defineEventHandler(async (event) => {
         sort: ["-date_created"],
       })
     );
+
+    grouped = groupBy(all, (item) => item.country);
+    keyz = Object.keys(grouped);
   } else {
     all = await directus.request(
       readItems("mediathek", {
