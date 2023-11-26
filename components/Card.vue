@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         showflag1(carddata) {
-            return carddata.poster ? 'https://img.mediathek.community/t/p/original/' + carddata.poster : 'https://img2.mediathek.community/assets/' + carddata.coverimage.id
+            return carddata.poster ? 'https://img.mediathek.community/t/p/original/' + carddata.poster : 'https://img2.mediathek.community/assets/' + carddata.coverimage
         }
     }
 }
