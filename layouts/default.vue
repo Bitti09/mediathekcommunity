@@ -19,9 +19,25 @@ const links = [{
     to: '/',
     tooltip: {
         text: 'Home',
-        shortcuts: ['G', 'H']
     }
-}]
+}, {
+    id: 'movie',
+    label: 'Movies',
+    icon: 'i-heroicons-home',
+    to: '/movie',
+    tooltip: {
+        text: 'Movies',
+    }
+}, {
+    id: 'tv',
+    label: 'TV',
+    icon: 'i-heroicons-home',
+    to: '/tv',
+    tooltip: {
+        text: 'TV',
+    },
+}
+]
 </script>
 <template>
     <UDashboardLayout>
