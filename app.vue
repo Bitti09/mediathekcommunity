@@ -13,6 +13,5 @@
 
 <script setup lang="ts">
 const colorMode = useColorMode()
-console.log(process.env)
-const color = computed(() => colorMode.value === 'dark' ? '#111827' : 'white')
+ const color = computed(() => colorMode.value === 'dark' ? '#111827' : 'white')
 </script>
