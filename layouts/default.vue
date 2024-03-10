@@ -46,6 +46,7 @@ const links = [{
                 <template #left>
                     Mediathek Community
                 </template>
+               
             </UDashboardNavbar>
 
             <UDashboardSidebar>
@@ -67,6 +68,7 @@ const links = [{
                     <UserDropdown />
                 </template>
             </UDashboardSidebar>
+
         </UDashboardPanel>
 
         <slot />
