@@ -1,18 +1,10 @@
 <template>
-    <UDashboardPage>
-        <UDashboardPanel grow>
-            <UDashboardNavbar title="Home">
-                <template #right>
-                    <UColorModeSelect class="w-28" />
-
-                </template>
-            </UDashboardNavbar>
-            {{ data }}
-            <NuxtImg provider="bunny" :src="data[0].poster" height="250" width="200" :quality="90" />
-            {{ grouped2 }}
-            {{ grouped }}
-        </UDashboardPanel>
-    </UDashboardPage>
+    <div>
+        {{ data }}
+        <NuxtImg provider="bunny" :src="data[0].poster" height="250" width="200" :quality="90" />
+        {{ grouped2 }}
+        {{ grouped }}
+    </div>
 </template>
 <script setup>
 const { getItems } = useDirectusItems();
