@@ -20,7 +20,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@bg-dev/nuxt-directus": "^2.2.1",
+    "@bg-dev/nuxt-directus": "^2.2.3",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "nuxt-lodash": "^2.5.3"
