@@ -1,21 +1,13 @@
 <template>
     <div>
-        <UAlert
-    icon="i-heroicons-exclamation-triangle"
-    color="red"
-    variant="soft"
-    title="Site under construction"
-   />
         <Splide :options="{ perPage: 1, perMove: 1, type: 'loop' }" aria-labelledby="My Favorite Videos">
             <SplideSlide v-for="(slide, idx) in slides" :key="idx" height="250">
-
                 <ULandingHero :title="data[0].name" :description="data[0].overview" orientation="horizontal">
                     <template #default>
                         <NuxtImg provider="bunny" :src="data[0].poster" height="450" :quality="90" />
                     </template>
                 </ULandingHero>
             </SplideSlide>
-
         </Splide>
         <Splide :options="{ perPage: 6, perMove: 4, type: 'slide', rewind: true }" aria-labelledby="My Favorite Videos">
             <SplideSlide v-for="(slide, index) in slides" :key="index" height="250">
@@ -33,7 +25,6 @@
                 </a>
             </SplideSlide>
         </Splide>
-
     </div>
 </template>
 <script setup>

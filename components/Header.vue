@@ -1,5 +1,5 @@
 <script setup lang="ts">
- 
+
 const links = [{
   label: 'Home',
   icon: 'i-heroicons-book-open',
@@ -22,8 +22,9 @@ const links = [{
     </template>
 
     <template #right>
-      <UButton to="https://github.com/Bitti09/mediathekcommunity" target="_blank" icon="i-simple-icons-github" color="gray" variant="ghost" />
+      <UButton to="https://github.com/Bitti09/mediathekcommunity" target="_blank" icon="i-simple-icons-github"
+        color="gray" variant="ghost" />
     </template>
- 
+
   </UHeader>
 </template>
