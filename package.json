@@ -17,6 +17,7 @@
     "nuxt": "^3.10.3",
     "nuxt-directus": "^5.6.0",
     "nuxt-swiper": "2.0.0-0",
+    "swiper": "^11.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

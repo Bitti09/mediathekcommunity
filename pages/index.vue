@@ -22,11 +22,12 @@
     </div>
 </template>
 <script setup>
+import { register } from 'swiper/element/bundle';
+
+register();
+
 const containerRef = ref(null)
 const slides = ref(Array.from({ length: 12 }))
-
-const swiper = useSwiper(containerRef)
-
 onMounted(() => {
     // Access Swiper instance
     // Read more about Swiper instance: https://swiperjs.com/swiper-api#methods--properties
