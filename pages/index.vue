@@ -1,5 +1,11 @@
 <template>
     <div>
+        <UAlert
+    icon="i-heroicons-exclamation-triangle"
+    color="red"
+    variant="soft"
+    title="Site under construction"
+   />
         <Splide :options="{ perPage: 1, perMove: 1, type: 'loop' }" aria-labelledby="My Favorite Videos">
             <SplideSlide v-for="(slide, idx) in slides" :key="idx" height="250">
 
