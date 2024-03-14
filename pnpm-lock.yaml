@@ -23,9 +23,6 @@ dependencies:
   nuxt-directus:
     specifier: ^5.6.0
     version: 5.6.0
-  nuxt-swiper:
-    specifier: 2.0.0-0
-    version: 2.0.0-0
   vue:
     specifier: ^3.4.21
     version: 3.4.21
@@ -5186,16 +5183,6 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-swiper@2.0.0-0:
-    resolution: {integrity: sha512-VNP3HU4fFTLsUjvX5DawBTMxfpBWmHqvKVk7Sr28z2fq8uQO2fcGvNywPoDUUdk2t7HrbBD0R8K+8X17wKSngA==}
-    dependencies:
-      '@nuxt/kit': 3.10.3
-      swiper: 11.0.7
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: false
-
   /nuxt@3.10.3(vite@5.1.6):
     resolution: {integrity: sha512-NchGNiiz9g/ErJAb462W/lpX2NqcXYb9hugySKWvLXNdrjeAPiJ2/7mhgwUSiZA9MpjuQg3saiEajr1zlRIOCg==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -6609,11 +6596,6 @@ packages:
       css-what: 6.1.0
       csso: 5.0.5
       picocolors: 1.0.0
-
-  /swiper@11.0.7:
-    resolution: {integrity: sha512-cDfglW1B6uSmB6eB6pNmzDTNLmZtu5bWWa1vak0RU7fOI9qHjMzl7gVBvYSl34b0RU2N11HxxETJqQ5LeqI1cA==}
-    engines: {node: '>= 4.7.0'}
-    dev: false
 
   /symbol-observable@4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}
