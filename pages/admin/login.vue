@@ -5,7 +5,7 @@ function afterLogin() {
 </script>
 <template>
   <div class="grid h-screen place-items-center">
-    <hanko-auth @onAuthFlowCompleted="afterLogin()" class="dark" />
+    <hanko-auth @onAuthFlowCompleted="afterLogin()"/>
   </div>
 </template>
 <style>

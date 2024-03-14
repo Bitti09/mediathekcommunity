@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       home: "/",
       followRedirect: true,
     },
-    // registerComponents: true,
-    // augmentContext: true,
+    registerComponents: true,
+    augmentContext: true,
   },
 });
