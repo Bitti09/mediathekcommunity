@@ -6,12 +6,12 @@ const hanko = useHanko()
 function logout() {
   hanko!.user.logout()
 }
- </script>
+</script>
 
 <template>
   <hanko-profile />
   <button @click="logout">
-      Log me out
+    Log me out
   </button>
-  
-  </template>
+
+</template>
