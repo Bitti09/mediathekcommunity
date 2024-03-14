@@ -1,10 +1,11 @@
 <script setup lang="ts">
 function afterLogin() {
- navigateTo("/admin/profile");
+ navigateTo("/admin ");
 }
 </script>
 <template>
-  <hanko-auth  @onAuthFlowCompleted="afterLogin()" class="dark" />
+  <div class="grid h-screen place-items-center"> 
+  <hanko-auth  @onAuthFlowCompleted="afterLogin()" class="dark" /></div>
 </template>
 <style>
 :root {

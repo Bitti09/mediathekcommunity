@@ -1,10 +1,9 @@
- <template>
+<template>
     <div>
         <Header />
         <UMain>
             <slot />
         </UMain>
-
-<Footer />
+        <Footer />
     </div>
 </template>
