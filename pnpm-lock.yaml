@@ -26,9 +26,6 @@ dependencies:
   nuxt-swiper:
     specifier: 2.0.0-0
     version: 2.0.0-0
-  swiper:
-    specifier: ^11.0.7
-    version: 11.0.7
   vue:
     specifier: ^3.4.21
     version: 3.4.21
@@ -52,6 +49,9 @@ devDependencies:
   nuxt-lodash:
     specifier: ^2.5.3
     version: 2.5.3
+  nuxt-splide:
+    specifier: ^1.1.0
+    version: 1.1.0
 
 packages:
 
@@ -1960,6 +1960,16 @@ packages:
   /@sindresorhus/merge-streams@2.3.0:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
+
+  /@splidejs/splide@4.1.4:
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
+    dev: true
+
+  /@splidejs/vue-splide@0.6.12:
+    resolution: {integrity: sha512-eQb8pnGMN8Tr0FVaQo1PUMZlMHl8fSqHNXPTx79eeE2dkZqbsvq6jRzXoT9ZF7hFkxdOEmB6qYNp93SUwV684g==}
+    dependencies:
+      '@splidejs/splide': 4.1.4
+    dev: true
 
   /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.1):
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
@@ -5160,6 +5170,17 @@ packages:
       '@nuxt/kit': 3.10.3
       '@types/lodash-es': 4.17.12
       lodash-es: 4.17.21
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /nuxt-splide@1.1.0:
+    resolution: {integrity: sha512-uBrztrbdASrxqh23hZocZPcC2eWtuMS9HwYXojGGInTHKOw6lDhmpQi7Dp+WgWlBFeaw3TnJ0zKW9Qjl1a59tw==}
+    dependencies:
+      '@nuxt/kit': 3.10.3
+      '@splidejs/vue-splide': 0.6.12
+      defu: 6.1.4
     transitivePeerDependencies:
       - rollup
       - supports-color

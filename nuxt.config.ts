@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-lodash",
     "@nuxtjs/hanko",
-    "nuxt-swiper",
+    "nuxt-splide",
   ],
   devtools: { enabled: true },
   ui: {
@@ -40,12 +40,12 @@ export default defineNuxtConfig({
   },
   vue: {
     compilerOptions: {
-      isCustomElement: (tag) => tag.startsWith('swiper-'),
+      isCustomElement: (tag) => tag.startsWith("swiper-"),
     },
   },
   nitro: {
     prerender: {
-      autoSubfolderIndex: false
-    }
-  }
+      autoSubfolderIndex: false,
+    },
+  },
 });

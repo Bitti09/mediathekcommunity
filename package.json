@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",  
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -17,7 +17,6 @@
     "nuxt": "^3.10.3",
     "nuxt-directus": "^5.6.0",
     "nuxt-swiper": "2.0.0-0",
-    "swiper": "^11.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
@@ -26,6 +25,7 @@
     "@nuxtjs/hanko": "^0.5.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
-    "nuxt-lodash": "^2.5.3"
+    "nuxt-lodash": "^2.5.3",
+    "nuxt-splide": "^1.1.0"
   }
 }
