@@ -43,4 +43,9 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag.startsWith('swiper-'),
     },
   },
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  }
 });
