@@ -22,14 +22,12 @@
 			poster1 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
 		}
 		showvideo = true;
-
+		data1.directlink = true;
 		data1.format = 'application/x-mpegURL';
 		console.log(data1);
 		if (data1.directlink) {
 			modalvideo.set({
-				src:
-					'https://mdrgeohls-vh.akamaihd.net/i/mp4dyn2/5/FCMS-565074dd-f085-44b7-9573-00a85566fe7d-,41dd60577440,730aae549c28,be7c2950aac6,70dc5e5f2727,1af20647950e,_56.mp4.csmil/master.m3u8' ||
-					data1.directlink,
+				src: 'https://mdrgeohls-vh.akamaihd.net/i/mp4dyn2/5/FCMS-565074dd-f085-44b7-9573-00a85566fe7d-,41dd60577440,730aae549c28,be7c2950aac6,70dc5e5f2727,1af20647950e,_56.mp4.csmil/master.m3u8',
 				type: data1.format,
 				poster: poster1,
 				title: data1.title
