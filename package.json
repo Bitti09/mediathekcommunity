@@ -9,21 +9,27 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate": "drizzle-kit generate:sqlite --schema=./src/db/schema.ts --out=./migrations",
+    "migrate": "wrangler d1 migrations apply DB1 --remote",
+    "migrate:local": "wrangler d1 migrations apply DB --local --remote",
+    "seed": "wrangler d1 execute DB1 --file=./seed/seed.sql --remote"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "2.9.0",
     "@skeletonlabs/tw-plugin": "0.3.1",
     "@sveltejs/adapter-auto": "^3.2.0",
-    "@sveltejs/adapter-cloudflare": "^4.2.1",
+    "@sveltejs/adapter-cloudflare": "^4.3.0",
     "@sveltejs/kit": "^2.5.5",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@tailwindcss/typography": "0.5.10",
-    "@types/eslint": "^8.56.7",
+    "@types/eslint": "^8.56.8",
     "autoprefixer": "10.4.18",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.20.14",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-svelte": "^2.36.0",
+    "eslint-plugin-svelte": "^2.37.0",
     "postcss": "8.4.35",
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.2",
@@ -37,6 +43,12 @@
   "type": "module",
   "dependencies": {
     "@directus/sdk": "^15.1.0",
-    "video.js": "^8.10.0"
+    "@prisma/adapter-d1": "^5.12.1",
+    "@prisma/client": "^5.12.1",
+    "better-sqlite3": "^9.5.0",
+    "drizzle-orm": "^0.30.8",
+    "prisma": "^5.12.1",
+    "video.js": "^8.10.0",
+    "wrangler": "^3.50.0"
   }
 }
