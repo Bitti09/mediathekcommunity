@@ -2,10 +2,11 @@
 	// @ts-nocheck
 
 	import { onDestroy, onMount } from 'svelte';
-	import "../videojs/skins/treso/videojs.min.css";
+	import '../videojs/skins/treso/videojs.min.css';
 	import videojs from 'video.js';
 	import Hls from 'hls.js';
 	import '../videojs/plugins/es/nuevo';
+
 	import '../videojs/plugins/es/hlsjs.js';
 	import '../videojs/plugins/es/playlist.js';
 	import '../videojs/plugins/es/videojs.thumbnails.js';
@@ -20,9 +21,9 @@
 		fill: true
 	};
 	function changevideo(video, type) {
-		//console.log(video);
-		//console.log(type);
-		//console.log(video);
+		console.log(video);
+		console.log(type);
+		console.log(video);
 		if (player != undefined) {
 			if (type == 'noomu') {
 				player.pause();
@@ -57,13 +58,13 @@
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
 			player = videojs('my-video', videojsOptions);
- 			//console.log('Player ready');
+			//console.log('Player ready');
 			let video_1 = {
-				sources: [{ src: $modalvideo.src, type: $modalvideo.type }],
+				sources: { src: $modalvideo.src, type: $modalvideo.type },
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
-			};	
+			};
 			//console.log($omulist.length);
 			//console.log(player.nuevo);
 			player.nuevo({

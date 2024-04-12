@@ -7,16 +7,25 @@ export async function load({ params }) {
 	// do authenticated requests
 	let article;
 	let param = params.id;
-	article = await directus.request(
-		readItems('mediathek', {
-			fields: ['*', 'listepisodes.*'],
-			filter: {
-				id: params.id
-			}
-		})
-	);
-	return {
-		article: article[0],
-		param: param
-	};
+	if (params.id != 'styles.css.map') {
+		article = await directus.request(
+			readItems('mediathek', {
+				fields: ['*', 'episode_list.*'],
+				filter: {
+					id: params.id
+				},
+				deep: ['*.*']
+			})
+		);
+
+		return {
+			article: article[0],
+			param: param
+		};
+	} else {
+		return {
+			article: 'article',
+			param: param
+		};
+	}
 }

@@ -22,7 +22,7 @@
 <div class="card {currentVariant} flex justify-center items-center">
 	{#if inFuture(carddata.publishdate) == false}
 		<a href="details/{carddata.id}">
-			{#if carddata.poster != 'poster'}
+			{#if carddata.poster}
 				<img
 					class="rounded-lg h-64 mx-auto"
 					src="https://img.mediathek.community/t/p/original{carddata.poster}"
@@ -30,7 +30,7 @@
 				/>
 			{:else}
 				<img
-					class="rounded-lg h-64 mx-auto"
+					class="rounded-lg h-64 object-scale-down"
 					src="https://img2.mediathek.community/assets/{carddata.coverimage}"
 					alt="description"
 				/>{/if}

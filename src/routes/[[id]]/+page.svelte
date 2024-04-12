@@ -78,7 +78,7 @@
 				<h1 class="h1 pb-3">
 					<span
 						class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
-						>{lang} Mediatheken</span
+						> EU Mediatheken</span
 					>
 				</h1>
 				<swiper-container init="false" class="mySwiper2">

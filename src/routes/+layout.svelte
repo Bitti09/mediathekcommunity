@@ -9,7 +9,7 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl">Mediathek Community</strong>
+				<a href="/"><strong class="text-xl">Mediathek Community</strong></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail"></svelte:fragment>
 		</AppBar>
