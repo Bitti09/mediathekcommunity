@@ -177,7 +177,7 @@
 		<Tab bind:group={tabSet} name="tab1" value={0}>
 			<span>Details</span>
 		</Tab>
-		{#if data1.category == 'movies'}
+		{#if data1.category == 'movie'}
 			<Tab bind:group={tabSet} name="tab2" value={1}>Links</Tab>
 		{:else}
 			<Tab bind:group={tabSet} name="tab3" value={2}>Episoden</Tab>
