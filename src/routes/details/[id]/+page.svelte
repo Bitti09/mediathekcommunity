@@ -153,7 +153,7 @@
 					alt="description"
 				/>{/if}
 		{:else}
-			<div class="max-h-fit">
+			<div class="flex justify-center">
 				<svelte:component this={Videoplayer} />
 			</div>
 		{/if}

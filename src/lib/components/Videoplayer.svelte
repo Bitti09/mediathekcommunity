@@ -2,10 +2,13 @@
 	// @ts-nocheck
 
 	import { onDestroy, onMount } from 'svelte';
+	import "../videojs/skins/treso/videojs.min.css";
 	import videojs from 'video.js';
-	import '../videojs/components/nuevo';
-	import '../videojs/components/playlist';
-	import '../videojs/skins/nuevo/videojs.css';
+	import Hls from 'hls.js';
+	import '../videojs/plugins/es/nuevo';
+	import '../videojs/plugins/es/hlsjs.js';
+	import '../videojs/plugins/es/playlist.js';
+	import '../videojs/plugins/es/videojs.thumbnails.js';
 
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
@@ -13,7 +16,7 @@
 	const videojsOptions = {
 		controls: true,
 		preload: 'auto',
-		playsinline: 'false',
+		playsinline: false,
 		fill: true
 	};
 	function changevideo(video, type) {
@@ -47,26 +50,27 @@
 	}
 	$: changevideo($modalvideo, $seriestype);
 	// nuevo plugin options
-	let nuevoOptions = {};
+	let nuevo_options = { contextMenu: false };
 	onMount(async () => {
 		let videoPlayer1 = document.getElementById('video1');
 		//console.log(document.getElementById('media1'));
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
 			player = videojs('my-video', videojsOptions);
-			//console.log('Player ready');
+ 			//console.log('Player ready');
 			let video_1 = {
 				sources: [{ src: $modalvideo.src, type: $modalvideo.type }],
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
-			};
+			};	
 			//console.log($omulist.length);
 			//console.log(player.nuevo);
 			player.nuevo({
 				playlistUI: true,
-				playlistShow: false,
+				playlistShow: true,
 				playlistNavigation: true,
+				qualityMenu: true,
 				shareMenu: false,
 				pipButton: false,
 				buttonForward: true,
@@ -74,7 +78,7 @@
 				zoomMenu: false,
 				theaterButton: false,
 				rateMenu: false,
-				settingsButton: false
+				settingsButton: true
 			});
 			//console.log(player);
 			if ($seriestype == 'noomu') {
@@ -108,7 +112,7 @@
 	});
 </script>
 
-<div id="left_column" style="width: 70%;" class="max-h-fit h-fit overflow-hidden">
+<div id="left_column" style="width: 70%;" class="max-h-fit h-fit overflow-hidden flex items-center">
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video
 		id="my-video"
