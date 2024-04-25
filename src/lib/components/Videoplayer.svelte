@@ -9,8 +9,7 @@
 
 	import '../videojs/plugins/es/hlsjs.js';
 	import '../videojs/plugins/es/playlist.js';
-	import '../videojs/plugins/es/videojs.thumbnails.js';
-
+ 
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let videoPlayer;
 	let player;
