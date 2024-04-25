@@ -4,12 +4,14 @@
 	import { onMount } from 'svelte';
 	export let data;
 	let langdata = {};
-	$: langdata['de'] = data.article.filter((e) => e.country === 'de');
-	$: langdata['se'] = data.article.filter((e) => e.country === 'se');
-	$: langdata['it'] = data.article.filter((e) => e.country === 'it');
-	$: langdata['uk'] = data.article.filter((e) => e.country === 'uk');
-	const languages = ['de', 'se', 'it', 'uk'];
+	import * as Flag from 'svelte-flag-icons';
+	$: langdata['De'] = data.article.filter((e) => e.country === 'de');
+	$: langdata['Se'] = data.article.filter((e) => e.country === 'se');
+	$: langdata['It'] = data.article.filter((e) => e.country === 'it');
+	$: langdata['Uk'] = data.article.filter((e) => e.country === 'uk');
+	const languages = ['De', 'Se', 'It', 'Uk'];
 	import Card from '$lib/components/Card.svelte';
+	import { stringify } from 'postcss';
 	function modalComponentEmbed() {
 		const modal = {
 			type: 'component',
@@ -76,10 +78,15 @@
 		{#each languages as lang, index}
 			{#if langdata[lang].length > 0}
 				<h1 class="h1 pb-3">
-					<span
-						class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
-						> EU Mediatheken</span
+					<div
+						class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone place-self-center flex items-center"
 					>
+						<svelte:component
+							this={Flag[lang]}
+							class="inline-flex place-self-center mr-1"
+							size="50"
+						/> Mediatheken
+					</div>
 				</h1>
 				<swiper-container init="false" class="mySwiper2">
 					{#each langdata[lang] as name, index}
