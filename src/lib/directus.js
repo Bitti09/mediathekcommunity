@@ -1,5 +1,4 @@
 import { createDirectus, rest, staticToken } from '@directus/sdk';
-import { readItems, readItem, updateItem, updateUser, createItem, deleteItem } from '@directus/sdk';
 import { DIRECTUS_URL, DIRECTUS_TOKEN } from '$env/static/private';
 
 function getDirectusInstance(fetch) {
