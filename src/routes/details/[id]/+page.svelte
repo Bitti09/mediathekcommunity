@@ -9,14 +9,14 @@
 	let myPlaylistomu = [];
 	function sortepisodes(data2) {
 		console.log(data2);
-		if (data2 !== undefined) {
-			data2.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
+		if (data2.episode_list) {
+			data2.episode_list.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
 		}
 	}
 	let showvideo = false;
 	export let data;
 	$: data1 = data.article;
-	$: sortepisodes(data1.episode_list)
+	$: sortepisodes(data1)
 	$: console.log(data.param);
 	let tabSet = 0;
 	function playvideo() {

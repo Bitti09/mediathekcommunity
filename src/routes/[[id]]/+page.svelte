@@ -11,7 +11,6 @@
 	$: langdata['Uk'] = data.article.filter((e) => e.country === 'uk');
 	const languages = ['De', 'Se', 'It', 'Uk'];
 	import Card from '$lib/components/Card.svelte';
-	import { stringify } from 'postcss';
 	function modalComponentEmbed() {
 		const modal = {
 			type: 'component',
@@ -66,7 +65,7 @@
 	<div>
 		<h1 class="h1 pb-3">
 			<span
-				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
+				class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"
 				>Zuletzt hinzugefügt.</span
 			>
 		</h1>
@@ -79,11 +78,11 @@
 			{#if langdata[lang].length > 0}
 				<h1 class="h1 pb-3">
 					<div
-						class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone place-self-center flex items-center"
+						class="flex items-center place-self-center bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"
 					>
 						<svelte:component
 							this={Flag[lang]}
-							class="inline-flex place-self-center mr-1"
+							class="mr-1 inline-flex place-self-center"
 							size="50"
 						/> Mediatheken
 					</div>
@@ -99,7 +98,7 @@
 {:else}
 	<h1 class="h1">
 		<span
-			class="bg-gradient-to-br from-pink-100 to-red-900 bg-clip-text text-transparent box-decoration-clone"
+			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
 			>No Item(s) found for category:</span
 		>
 		{data.param}
