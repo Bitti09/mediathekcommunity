@@ -42,6 +42,7 @@
     "@directus/sdk": "^16.0.0",
     "dashjs": "^4.7.4",
     "hls.js": "^1.5.8",
-    "video.js": "^8.13.0"
+    "video.js": "^8.13.0",
+    "vidstack": "^1.11.21"
   }
 }

@@ -7,11 +7,16 @@
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
-
+	function sortepisodes(data2) {
+		console.log(data2);
+		if (data2 !== undefined) {
+			data2.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
+		}
+	}
 	let showvideo = false;
 	export let data;
 	$: data1 = data.article;
-	$: data1.episode_list.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
+	$: sortepisodes(data1.episode_list)
 	$: console.log(data.param);
 	let tabSet = 0;
 	function playvideo() {
@@ -168,7 +173,7 @@
 				/>{/if}
 		{:else}
 			<div class="flex justify-center">
-				<svelte:component this={Videoplayer} />
+					<svelte:component this={Videoplayer} /> 
 			</div>
 		{/if}
 	</div>
@@ -283,7 +288,7 @@
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.name}</svelte:fragment>
 								<svelte:fragment slot="content">
-									<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+									<div class="grid grid-cols-4 grid-rows-1 gap-0">
 										<div class="col-span-3">{episode.description}</div>
 										<div class="col-span-1 justify-center items-center flex">
 											<button
@@ -305,7 +310,7 @@
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
 								<svelte:fragment slot="content">
-									<div class="grid grid-cols-4 grid-rows-1 gap-0 flex">
+									<div class="grid grid-cols-4 grid-rows-1 gap-0">
 										<div class="col-span-3">{episode.description}</div>
 										<div class="col-span-1 justify-center items-center flex">
 											<button

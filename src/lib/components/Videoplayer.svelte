@@ -4,13 +4,22 @@
 	import { onDestroy, onMount } from 'svelte';
 	import '../videojs/skins/treso/videojs.min.css';
 	import videojs from 'video.js';
-	import Hls from 'hls.js';
 	import '../videojs/plugins/es/nuevo';
-
 	import '../videojs/plugins/es/hlsjs.js';
 	import '../videojs/plugins/es/playlist.js';
- 
+
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	console.log('modalProps');
+	console.log($modalProps);
+	console.log('modalvideo');
+	console.log($modalvideo);
+	console.log('omulist');
+	console.log($omulist);
+	console.log('noomulist');
+	console.log($noomulist);
+	console.log('seriestype');
+	console.log($seriestype);
+
 	let videoPlayer;
 	let player;
 	const videojsOptions = {
@@ -20,9 +29,6 @@
 		fill: true
 	};
 	function changevideo(video, type) {
-		console.log(video);
-		console.log(type);
-		console.log(video);
 		if (player != undefined) {
 			if (type == 'noomu') {
 				player.pause();
@@ -53,19 +59,15 @@
 	let nuevo_options = { contextMenu: false };
 	onMount(async () => {
 		let videoPlayer1 = document.getElementById('video1');
-		//console.log(document.getElementById('media1'));
 		if (videoPlayer != undefined) {
 			//.log('changes' + videoPlayer);
 			player = videojs('my-video', videojsOptions);
-			//console.log('Player ready');
 			let video_1 = {
 				sources: { src: $modalvideo.src, type: $modalvideo.type },
 				poster: $modalvideo.poster,
 				title: $modalvideo.title,
 				infoTitle: $modalvideo.title
 			};
-			//console.log($omulist.length);
-			//console.log(player.nuevo);
 			player.nuevo({
 				playlistUI: true,
 				playlistShow: true,
@@ -80,16 +82,14 @@
 				rateMenu: false,
 				settingsButton: true
 			});
-			//console.log(player);
 			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);
-				//player.playList($noomulist);
+				//player.playList($noomulwwwist); 
 			} else if ($seriestype == 'omu') {
 				player.playlist($omulist);
 
 				//player.playList($omulist);
 			} else {
-				console.log(video_1);
 				player.src(video_1.sources);
 			}
 			player.on('mode', function (event, mode) {
@@ -99,14 +99,11 @@
 					document.querySelector('#left_column').style.width = '70%';
 				}
 			});
-			player.on('fullscreenchange', (evt, mode) => {
-				//console.log('wowo, fullscreen', evt, mode);
-			});
+			player.on('fullscreenchange', (evt, mode) => {});
 		}
 	});
 	onDestroy(() => {
 		if (player) {
-			//.log('destroy');
 			player.dispose();
 		}
 	});
