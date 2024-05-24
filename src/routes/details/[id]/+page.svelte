@@ -222,12 +222,13 @@
 									scope="row"
 									class="w-full px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white lg:w-1/4"
 								>
-									Quality
+									Qualität
 								</th>
 								<td class="px-6 py-4">
 									{data1.quality}
 								</td>
 							</tr>
+							<!-- 
 							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
 								<th
 									scope="row"
@@ -239,7 +240,8 @@
 									{data1.lang}
 								</td>
 							</tr>
-							{#if data1.category == 'series'}
+							-->
+							{#if data1.episode_list}
 								<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
 									<th
 										scope="row"
@@ -248,7 +250,7 @@
 										Staffeln
 									</th>
 									<td class="px-6 py-4">
-										{data1.episodes}
+										{data1.episodes || 1}
 									</td>
 								</tr>
 								<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
@@ -268,10 +270,10 @@
 									scope="row"
 									class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
 								>
-									description
+									Description
 								</th>
 								<td class="px-6 py-4">
-									{data1.overview}
+									{data1.overview || data1.episode_list[0].description}
 								</td>
 							</tr>
 						</tbody>
