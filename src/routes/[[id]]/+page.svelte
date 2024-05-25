@@ -11,13 +11,6 @@
 	$: langdata['Uk'] = data.article.filter((e) => e.country === 'uk');
 	const languages = ['De', 'Se', 'It', 'Uk'];
 	import Card from '$lib/components/Card.svelte';
-	function modalComponentEmbed() {
-		const modal = {
-			type: 'component',
-			component: 'exampleEmbed'
-		};
-		modalStore.trigger(modal);
-	}
 	onMount(async () => {
 		const swiperParams = {
 			breakpoints: {

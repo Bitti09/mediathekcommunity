@@ -1,14 +1,13 @@
 <script>
 	// @ts-nocheck
 	// Modals Utils
-	import { onMount } from 'svelte';
 	import { TabGroup, Tab, TabAnchor, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
-	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
+	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	let myPlaylist = [];
 	let myPlaylistomu = [];
 	function sortepisodes(data2) {
-		console.log(data2);
+		// console.log(data2);
 		if (data2.episode_list) {
 			data2.episode_list.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
 		}
@@ -16,8 +15,8 @@
 	let showvideo = false;
 	export let data;
 	$: data1 = data.article;
-	$: sortepisodes(data1)
-	$: console.log(data.param);
+	$: sortepisodes(data1);
+	// $: console.log(data.param);
 	let tabSet = 0;
 	function playvideo() {
 		seriestype.set('');
@@ -85,7 +84,7 @@
 						label: '360p'
 					});
 				}*/
-				console.log(data1.episode_list[i].streamlink);
+				//console.log(data1.episode_list[i].streamlink);
 				if (data1.episode_list[i].streamlink) {
 					sources.push({
 						src: data1.episode_list[i].streamlink,
@@ -161,19 +160,19 @@
 		{#if showvideo != true}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
 				<img
-					class="rounded-lg max-h-fit mx-auto relative"
+					class="relative mx-auto max-h-fit rounded-lg"
 					src="https://img.mediathek.community/t/p/original{data1.backdrop}"
 					alt="description"
 				/>
 			{:else}
 				<img
-					class="rounded-lg max-h-fit mx-auto relative"
+					class="relative mx-auto max-h-fit rounded-lg"
 					src="https://api.mediathek.community/assets/{data1.heroimage}.jpg"
 					alt="description"
 				/>{/if}
 		{:else}
 			<div class="flex justify-center">
-					<svelte:component this={Videoplayer} /> 
+				<svelte:component this={Videoplayer} />
 			</div>
 		{/if}
 	</div>
@@ -192,12 +191,12 @@
 		<svelte:fragment slot="panel">
 			{#if tabSet === 0}
 				<div class=" shadow-md sm:rounded-lg">
-					<table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+					<table class="w-full table-auto text-left text-sm text-gray-500 dark:text-gray-400">
 						<tbody>
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 w-full lg:w-1/4">
+							<tr class="w-full border-b bg-white dark:border-gray-700 dark:bg-gray-900 lg:w-1/4">
 								<th
 									scope="row"
-									class="w-full px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white lg:w-1/4"
+									class="w-full whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white lg:w-1/4"
 								>
 									Land
 								</th>
@@ -205,10 +204,10 @@
 									{data1.country}
 								</td>
 							</tr>
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 								<th
 									scope="row"
-									class="w-full px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white lg:w-1/4"
+									class="w-full whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white lg:w-1/4"
 								>
 									Sender
 								</th>
@@ -217,10 +216,10 @@
 									{data1.channel}
 								</td>
 							</tr>
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 								<th
 									scope="row"
-									class="w-full px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white lg:w-1/4"
+									class="w-full whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white lg:w-1/4"
 								>
 									Qualität
 								</th>
@@ -241,11 +240,11 @@
 								</td>
 							</tr>
 							-->
-							{#if data1.episode_list}
-								<tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+							{#if data1.episode_list.length > 0}
+								<tr class="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
 									<th
 										scope="row"
-										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+										class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
 									>
 										Staffeln
 									</th>
@@ -253,10 +252,10 @@
 										{data1.episodes || 1}
 									</td>
 								</tr>
-								<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+								<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 									<th
 										scope="row"
-										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+										class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
 									>
 										Folgen
 									</th>
@@ -265,10 +264,10 @@
 									</td>
 								</tr>
 							{/if}
-							<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 								<th
 									scope="row"
-									class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+									class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
 								>
 									Description
 								</th>
@@ -281,7 +280,7 @@
 				</div>
 			{:else if tabSet === 1}
 				<div class="flex justify-center">
-					<button type="button" class="btn variant-filled mt-0" on:click={playvideo}>play</button>
+					<button type="button" class="variant-filled btn mt-0" on:click={playvideo}>play</button>
 				</div>
 			{:else if tabSet === 2}
 				<Accordion>
@@ -292,10 +291,10 @@
 								<svelte:fragment slot="content">
 									<div class="grid grid-cols-4 grid-rows-1 gap-0">
 										<div class="col-span-3">{episode.description}</div>
-										<div class="col-span-1 justify-center items-center flex">
+										<div class="col-span-1 flex items-center justify-center">
 											<button
 												type="button"
-												class="btn variant-filled"
+												class="variant-filled btn"
 												on:click={playepisode(episode, 'noomu')}>Play</button
 											>
 										</div>
@@ -314,10 +313,10 @@
 								<svelte:fragment slot="content">
 									<div class="grid grid-cols-4 grid-rows-1 gap-0">
 										<div class="col-span-3">{episode.description}</div>
-										<div class="col-span-1 justify-center items-center flex">
+										<div class="col-span-1 flex items-center justify-center">
 											<button
 												type="button"
-												class="btn variant-filled"
+												class="variant-filled btn"
 												on:click={playepisode(episode, 'noomu')}>Play</button
 											>
 										</div>
@@ -333,7 +332,7 @@
 {:else}
 	<h1 class="h1">
 		<span
-			class="bg-gradient-to-br from-pink-100 to-red-900 bg-clip-text text-transparent box-decoration-clone"
+			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
 			>No Item(s) found for category:</span
 		>
 		{data.param}
