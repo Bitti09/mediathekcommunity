@@ -37,7 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@directus/sdk": "^16.0.1",
-		"hls.js": "^1.5.8",
+		"hls.js": "^1.5.9",
 		"video.js": "^8.14.0"
 	}
 }
