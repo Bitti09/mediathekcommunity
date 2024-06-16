@@ -84,7 +84,7 @@
 			});
 			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);
-				//player.playList($noomulwwwist); 
+				//player.playList($noomulwwwist);
 			} else if ($seriestype == 'omu') {
 				player.playlist($omulist);
 
@@ -109,7 +109,7 @@
 	});
 </script>
 
-<div id="left_column" style="width: 70%;" class="max-h-fit h-fit overflow-hidden flex items-center">
+<div id="left_column" style="width: 70%;" class="flex h-fit max-h-fit items-center overflow-hidden">
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video
 		id="my-video"

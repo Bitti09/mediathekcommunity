@@ -19,18 +19,18 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="card {currentVariant} flex justify-center items-center">
+<div class="card {currentVariant} flex items-center justify-center">
 	{#if inFuture(carddata.publishdate) == false}
 		<a href="details/{carddata.id}">
 			{#if carddata.poster}
 				<img
-					class="rounded-lg h-64 mx-auto"
+					class="mx-auto h-64 rounded-lg"
 					src="https://img.mediathek.community/t/p/original{carddata.poster}"
 					alt="description"
 				/>
 			{:else}
 				<img
-					class="rounded-lg h-64 object-scale-down"
+					class="h-64 rounded-lg object-scale-down"
 					src="https://img2.mediathek.community/assets/{carddata.coverimage}"
 					alt="description"
 				/>{/if}
@@ -38,13 +38,13 @@
 	{:else if carddata.poster != 'poster'}
 		<div id="text">Coming soon</div>
 		<img
-			class="rounded-lg h-64 mx-auto"
+			class="mx-auto h-64 rounded-lg"
 			src="https://img.mediathek.community/t/p/original{carddata.poster}"
 			alt="description"
 		/>
 	{:else}
 		<img
-			class="rounded-lg h-64 mx-auto"
+			class="mx-auto h-64 rounded-lg"
 			src="https://img2.mediathek.community/assets/{carddata.coverimage}"
 			alt="description"
 		/>{/if}
