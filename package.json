@@ -38,6 +38,6 @@
 	"dependencies": {
 		"@directus/sdk": "^16.1.0",
 		"hls.js": "^1.5.11",
-		"video.js": "^8.14.0"
+		"video.js": "^8.16.0"
 	}
 }
