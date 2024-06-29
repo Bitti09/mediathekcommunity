@@ -56,6 +56,16 @@
 
 {#if data.posts.length > 0}
 	<div>
+		<aside class="alert variant-ghost-error">
+			<!-- Icon -->
+			<!-- Message -->
+			<div class="alert-message">
+				<h3 class="h3">WIP</h3>
+				<p>I'm rebuilding this site with turo as backend</p>
+			</div>
+			<!-- Actions -->
+			<div class="alert-actions">(buttons)</div>
+		</aside>
 		<h1 class="h1 pb-3">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"

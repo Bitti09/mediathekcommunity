@@ -159,6 +159,16 @@
 
 {#if data.posts}
 	<div>
+		<aside class="alert variant-ghost-error">
+			<!-- Icon -->
+			<!-- Message -->
+			<div class="alert-message">
+				<h3 class="h3">WIP</h3>
+				<p>I'm rebuilding this site with turo as backend</p>
+			</div>
+			<!-- Actions -->
+			<div class="alert-actions">(buttons)</div>
+		</aside>
 		{#if showvideo != true}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
 				<img
