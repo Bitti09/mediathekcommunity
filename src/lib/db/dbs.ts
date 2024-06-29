@@ -2,7 +2,7 @@ import { env } from '$env/dynamic/private';
 import { createClient } from '@libsql/client/web';
 import { drizzle } from 'drizzle-orm/libsql';
 const { TURSO_URL, TURSO_AUTH_TOKEN } = env;
-console.log(TURSO_URL);
+console.log(env);
 
 const url = TURSO_URL?.trim();
 if (url === undefined) {
