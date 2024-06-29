@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { createClient } from 'libsql-stateless-easy';
+import { createClient } from '@libsql/client/web';
 import { drizzle } from 'drizzle-orm/libsql';
 const { TURSO_URL, TURSO_AUTH_TOKEN } = env;
 console.log(TURSO_URL);
