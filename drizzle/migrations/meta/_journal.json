@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1719681798186,
+      "tag": "0000_brainy_the_fury",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1719682043776,
+      "tag": "0001_lying_ego",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1719689497078,
+      "tag": "0002_fantastic_next_avengers",
+      "breakpoints": true
+    }
+  ]
+}
