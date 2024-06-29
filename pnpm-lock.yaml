@@ -20,6 +20,9 @@ importers:
       hls.js:
         specifier: ^1.5.11
         version: 1.5.11
+      libsql-stateless-easy:
+        specifier: ^1.6.11
+        version: 1.6.11
       svelte-flag-icons:
         specifier: ^1.0.3
         version: 1.0.3(svelte@4.2.18)
@@ -1771,9 +1774,14 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  libsql-stateless-easy@1.6.11:
+    resolution: {integrity: sha512-H0TQc4hQhV7IvWRG33DVLZYmEH0q3gWMqU33rx1RS1RLtIB6CnfDvShz2oJlVPfZXJCJNT44bXbHYjG4lelDWQ==}
+
+  libsql-stateless@2.8.5:
+    resolution: {integrity: sha512-0chqjAHWq9yAMekNwaX92v8ryh4/uOmc86H2vngngpJEyolXjoiibf2IBa4t2t0EUKy7m1Bm0nncuVaARuXqTQ==}
+
   libsql@0.3.19:
     resolution: {integrity: sha512-Aj5cQ5uk/6fHdmeW0TiXK42FqUlwx7ytmMLPSaUQPin5HKKKuUPD62MAbN4OEweGBBI7q1BekoEN4gPUEL6MZA==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3992,6 +4000,12 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  libsql-stateless-easy@1.6.11:
+    dependencies:
+      libsql-stateless: 2.8.5
+
+  libsql-stateless@2.8.5: {}
 
   libsql@0.3.19:
     dependencies:

@@ -44,6 +44,7 @@
 		"dotenv": "^16.4.5",
 		"drizzle-orm": "^0.31.2",
 		"hls.js": "^1.5.11",
+		"libsql-stateless-easy": "^1.6.11",
 		"svelte-flag-icons": "^1.0.3",
 		"video.js": "^8.12.0"
 	}

@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { createClient, type Client } from '@libsql/client';
+import { createClient } from 'libsql-stateless-easy';
 import { drizzle } from 'drizzle-orm/libsql';
 const { TURSO_URL, TURSO_AUTH_TOKEN } = env;
 const url = TURSO_URL?.trim();
@@ -14,9 +14,7 @@ if (auth_token === undefined) {
 	}
 }
 const client = createClient({
-	url: 'file:./db-file.db',
-	syncUrl: TURSO_URL,
+	url: TURSO_URL,
 	authToken: TURSO_AUTH_TOKEN,
-	syncInterval: 1
 });
 export const db = drizzle(client);
