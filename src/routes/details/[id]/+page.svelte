@@ -1,6 +1,8 @@
 <script>
 	// @ts-nocheck
 	// Modals Utils
+	export let data;
+
 	import { TabGroup, Tab, TabAnchor, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Videoplayer from '$lib/components/Videoplayer.svelte';
 	import { modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
@@ -13,9 +15,9 @@
 		}
 	}
 	let showvideo = false;
-	export let data;
-	$: data1 = data.article;
+	$: data1 = data.posts[0];
 	$: sortepisodes(data1);
+	$: console.log(data1);
 	// $: console.log(data.param);
 	let tabSet = 0;
 	function playvideo() {
@@ -155,7 +157,7 @@
 	}
 </script>
 
-{#if data.article}
+{#if data.posts}
 	<div>
 		{#if showvideo != true}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
@@ -239,8 +241,9 @@
 									{data1.lang}
 								</td>
 							</tr>
-							-->
+							--><!--  
 							{#if data1.episode_list.length > 0}
+							
 								<tr class="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
 									<th
 										scope="row"
@@ -263,7 +266,7 @@
 										{data1.episode_list.length}
 									</td>
 								</tr>
-							{/if}
+							{/if}-->
 							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 								<th
 									scope="row"
@@ -272,7 +275,7 @@
 									Description
 								</th>
 								<td class="px-6 py-4">
-									{data1.overview || data1.episode_list[0].description}
+									{data1.overview}
 								</td>
 							</tr>
 						</tbody>
@@ -282,7 +285,9 @@
 				<div class="flex justify-center">
 					<button type="button" class="variant-filled btn mt-0" on:click={playvideo}>play</button>
 				</div>
+				
 			{:else if tabSet === 2}
+			<!-- 
 				<Accordion>
 					{#each data1.episode_list as episode, index (episode.date_created)}
 						{#if episode.omu == false}
@@ -304,6 +309,7 @@
 						{/if}
 					{/each}
 				</Accordion>
+				-->
 			{:else if tabSet === 3}
 				<Accordion>
 					{#each data1.episode_list as episode, index}
@@ -333,7 +339,7 @@
 	<h1 class="h1">
 		<span
 			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
-			>No Item(s) found for category:</span
+			>No Item(s) found for :</span
 		>
 		{data.param}
 	</h1>

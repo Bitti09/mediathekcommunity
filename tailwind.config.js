@@ -19,7 +19,7 @@ export default {
 	plugins: [
 		// 4. Append the Skeleton plugin (after other plugins)
 		skeleton({
-			themes: { preset: [{ name: 'wintry', enhancements: true }] }
+			themes: { preset: [ "wintry" ] }
 		})
 	]
 };

@@ -5,10 +5,10 @@
 	export let data;
 	let langdata = {};
 	import * as Flag from 'svelte-flag-icons';
-	$: langdata['De'] = data.article.filter((e) => e.country === 'de');
-	$: langdata['Se'] = data.article.filter((e) => e.country === 'se');
-	$: langdata['It'] = data.article.filter((e) => e.country === 'it');
-	$: langdata['Uk'] = data.article.filter((e) => e.country === 'uk');
+	$: langdata['De'] = data.posts.filter((e) => e.country === 'de');
+	$: langdata['Se'] = data.posts.filter((e) => e.country === 'se');
+	$: langdata['It'] = data.posts.filter((e) => e.country === 'it');
+	$: langdata['Uk'] = data.posts.filter((e) => e.country === 'uk');
 	const languages = ['De', 'Se', 'It', 'Uk'];
 	import Card from '$lib/components/Card.svelte';
 	onMount(async () => {
@@ -54,7 +54,7 @@
 	});
 </script>
 
-{#if data.article.length > 0}
+{#if data.posts.length > 0}
 	<div>
 		<h1 class="h1 pb-3">
 			<span
@@ -63,7 +63,7 @@
 			>
 		</h1>
 		<swiper-container init="false" class="'mySwiper2">
-			{#each data.article as name, index}
+			{#each data.posts as name, index}
 				<swiper-slide><Card carddata={name} /></swiper-slide>
 			{/each}
 		</swiper-container>
