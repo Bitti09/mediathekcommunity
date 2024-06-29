@@ -9,13 +9,14 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"start": "node build"
 	},
 	"devDependencies": {
 		"@skeletonlabs/skeleton": "^2.10.0",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
-		"@sveltejs/adapter-auto": "^3.2.2",
 		"@sveltejs/adapter-cloudflare": "^4.4.1",
+		"@sveltejs/adapter-node": "latest",
 		"@sveltejs/kit": "^2.5.16",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@types/eslint": "^8.56.10",
@@ -37,6 +38,9 @@
 	"type": "module",
 	"dependencies": {
 		"@directus/sdk": "^16.1.0",
+		"@sentry/node": "^8.13.0",
+		"@sentry/profiling-node": "^8.13.0",
+		"@sentry/sveltekit": "^8.13.0",
 		"hls.js": "^1.5.11",
 		"video.js": "^8.14.0"
 	}

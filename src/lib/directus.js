@@ -1,5 +1,6 @@
 import { createDirectus, rest, staticToken } from '@directus/sdk';
-import { DIRECTUS_URL, DIRECTUS_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+const { DIRECTUS_URL, DIRECTUS_TOKEN } = env;
 
 // @ts-ignore
 function getDirectusInstance(fetch) {
