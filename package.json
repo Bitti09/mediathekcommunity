@@ -13,27 +13,27 @@
 		"start": "node build"
 	},
 	"devDependencies": {
-		"@skeletonlabs/skeleton": "^2.10.0",
+		"@skeletonlabs/skeleton": "^2.10.1",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
-		"@sveltejs/adapter-cloudflare": "^4.4.1",
+		"@sveltejs/adapter-cloudflare": "^4.6.0",
 		"@sveltejs/adapter-node": "latest",
-		"@sveltejs/kit": "^2.5.16",
+		"@sveltejs/kit": "^2.5.18",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@types/eslint": "^8.56.10",
 		"autoprefixer": "^10.4.19",
-		"eslint": "^9.5.0",
+		"eslint": "^9.6.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.39.4",
+		"eslint-plugin-svelte": "^2.41.0",
 		"postcss": "^8.4.38",
 		"prettier": "^3.3.2",
-		"prettier-plugin-svelte": "^3.2.4",
-		"prettier-plugin-tailwindcss": "^0.6.4",
+		"prettier-plugin-svelte": "^3.2.5",
+		"prettier-plugin-tailwindcss": "^0.6.5",
 		"svelte": "^4.2.18",
-		"svelte-check": "^3.8.0",
+		"svelte-check": "^3.8.4",
 		"svelte-flag-icons": "^1.0.3",
 		"tailwindcss": "^3.4.4",
-		"typescript": "^5.4.5",
-		"vite": "^5.3.1"
+		"typescript": "^5.5.2",
+		"vite": "^5.3.2"
 	},
 	"type": "module",
 	"dependencies": {
@@ -42,6 +42,6 @@
 		"@sentry/profiling-node": "^8.13.0",
 		"@sentry/sveltekit": "^8.13.0",
 		"hls.js": "^1.5.11",
-		"video.js": "^8.14.0"
+		"video.js": "^8.16.1"
 	}
 }
