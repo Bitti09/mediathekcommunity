@@ -2,6 +2,8 @@ import { env } from '$env/dynamic/private';
 import { createClient } from 'libsql-stateless-easy';
 import { drizzle } from 'drizzle-orm/libsql';
 const { TURSO_URL, TURSO_AUTH_TOKEN } = env;
+console.log(TURSO_URL);
+
 const url = TURSO_URL?.trim();
 if (url === undefined) {
 	throw new Error('TURSO_DB_URL is not defined');
