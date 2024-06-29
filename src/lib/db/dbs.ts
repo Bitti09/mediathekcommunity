@@ -16,7 +16,7 @@ if (auth_token === undefined) {
 	}
 }
 const client = createClient({
-	url: TURSO_URL,
-	authToken: TURSO_AUTH_TOKEN,
+	url: url,
+	authToken: auth_token,
 });
 export const db = drizzle(client);
