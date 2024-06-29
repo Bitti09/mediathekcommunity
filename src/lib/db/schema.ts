@@ -13,6 +13,8 @@ export const fooTable = sqliteTable('foo', {
 	country: text('country'),
 	poster: text('poster'),
 	backdrop: text('backdrop'),
+    heroimage: text('heroimage'),
+	coverimage: text('coverimage'),
 	overview: text('overview'),
 	streamlink: text('streamlink'),
 	streamformat: text('streamformat'),
