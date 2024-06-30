@@ -61,7 +61,7 @@
 			<!-- Message -->
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with turo as backend</p>
+				<p>I'm rebuilding this site with turso as backend</p>
 			</div>
 			<!-- Actions -->
 			<div class="alert-actions">(buttons)</div>
