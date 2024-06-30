@@ -21,7 +21,7 @@
 			<ul class="list">
 				<li>
 					<span class="flex-auto">
-						This project uses the TMDB API but is not endorsed or certified by TMDB. - Data provided
+						This project uses the TMDB API but is not endorsed or certified by TMDB. - Data & Images provided
 						by
 						<a
 							target="_blank"

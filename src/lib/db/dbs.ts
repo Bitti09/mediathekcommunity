@@ -1,6 +1,8 @@
 import { env } from '$env/dynamic/private';
 import { createClient } from '@libsql/client/web';
 import { drizzle } from 'drizzle-orm/libsql';
+import * as schema from './schema';
+
 const { TURSO_URL, TURSO_AUTH_TOKEN } = env;
 const url = TURSO_URL?.trim();
 if (url === undefined) {
@@ -17,4 +19,4 @@ const client = createClient({
 	url: url,
 	authToken: auth_token,
 });
-export const db = drizzle(client);
+export const db = drizzle(client, { schema });

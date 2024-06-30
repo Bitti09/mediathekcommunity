@@ -7,6 +7,7 @@
 	import '../videojs/plugins/es/nuevo';
 	import '../videojs/plugins/es/hlsjs.js';
 	import '../videojs/plugins/es/playlist.js';
+	import '../videojs/plugins/es/videojs.hotkeys';
 
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
 	console.log('modalProps');
@@ -26,7 +27,10 @@
 		controls: true,
 		preload: 'auto',
 		playsinline: false,
-		fill: true
+		fill: true,
+		hotkeys: true,
+		resume: true
+
 	};
 	function changevideo(video, type) {
 		if (player != undefined) {
@@ -69,6 +73,7 @@
 				infoTitle: $modalvideo.title
 			};
 			player.nuevo({
+				video_id: $modalvideo.id,
 				playlistUI: true,
 				playlistShow: true,
 				playlistNavigation: true,
@@ -80,7 +85,12 @@
 				zoomMenu: false,
 				theaterButton: false,
 				rateMenu: false,
-				settingsButton: true
+				settingsButton: true,
+				resume: true
+
+			});
+			player.hotkeys({
+				seekStep: 10
 			});
 			if ($seriestype == 'noomu') {
 				player.playlist($noomulist);

@@ -10,8 +10,9 @@
 	let myPlaylistomu = [];
 	function sortepisodes(data2) {
 		// console.log(data2);
-		if (data2.episode_list) {
-			data2.episode_list.sort((a, b) => (a.date_created > b.date_created ? 1 : -1));
+		if (data2.episode) {
+			console.log(data2.episode);
+			//data2.episode.sort((a, b) => (a.episode > b.episode ? 1 : -1));
 		}
 	}
 	let showvideo = false;
@@ -49,48 +50,48 @@
 		myPlaylist = [];
 		myPlaylistomu = [];
 		seriestype.set(type);
-		for (let i = 0; i < data1.episode_list.length; i++) {
-			if (data1.episode_list[i].omu == false) {
+		for (let i = 0; i < data1.episodes.length; i++) {
+			if (data1.episodes[i].omu == false) {
 				let sources = [];
 				/*
-				if (data1.episode_list[i].directlinkfhd) {
+				if (data1.episodes[i].directlinkfhd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkfhd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkfhd,
+						type: data1.episodes[i].format,
 						res: '1080',
 						label: '1080p',
 						default: true
 					});
 				}
-				if (data1.episode_list[i].directlinkhd) {
+				if (data1.episodes[i].directlinkhd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkhd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkhd,
+						type: data1.episodes[i].format,
 						res: '720',
 						label: '720p'
 					});
 				}
-				if (data1.episode_list[i].directlinkmd) {
+				if (data1.episodes[i].directlinkmd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkmd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkmd,
+						type: data1.episodes[i].format,
 						res: '480',
 						label: '480p'
 					});
 				}
-				if (data1.episode_list[i].directlinklq) {
+				if (data1.episodes[i].directlinklq) {
 					sources.push({
-						src: data1.episode_list[i].directlinklq,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinklq,
+						type: data1.episodes[i].format,
 						res: '360',
 						label: '360p'
 					});
 				}*/
-				//console.log(data1.episode_list[i].streamlink);
-				if (data1.episode_list[i].streamlink) {
+				//console.log(data1.episodes[i].streamlink);
+				if (data1.episodes[i].streamlink) {
 					sources.push({
-						src: data1.episode_list[i].streamlink,
-						type: data1.episode_list[i].streamformat,
+						src: data1.episodes[i].streamlink,
+						type: data1.episodes[i].streamformat,
 						default: true
 					});
 				}
@@ -101,50 +102,50 @@
 					poster12 = 'https://img2.mediathek.community/assets/' + data1.heroimage;
 				}
 				myPlaylist.push({
-					title: data1.episode_list[i].name,
-					infoTitle: data1.episode_list[i].name,
+					title: data1.episodes[i].name,
+					infoTitle: data1.episodes[i].name,
 					poster: poster12,
 					thumb: poster12,
 					sources: sources
 				});
 			} else {
 				let sources = [];
-				/*if (data1.episode_list[i].directlinkfhd) {
+				/*if (data1.episodes[i].directlinkfhd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkfhd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkfhd,
+						type: data1.episodes[i].format,
 						res: '1080',
 						label: '1080p',
 						default: true
 					});
 				}
-				if (data1.episode_list[i].directlinkhd) {
+				if (data1.episodes[i].directlinkhd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkhd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkhd,
+						type: data1.episodes[i].format,
 						res: '720',
 						label: '720p'
 					});
 				}
-				if (data1.episode_list[i].directlinkmd) {
+				if (data1.episodes[i].directlinkmd) {
 					sources.push({
-						src: data1.episode_list[i].directlinkmd,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinkmd,
+						type: data1.episodes[i].format,
 						res: '480',
 						label: '480p'
 					});
 				}*/
-				if (data1.episode_list[i].directlinklq) {
+				if (data1.episodes[i].directlinklq) {
 					sources.push({
-						src: data1.episode_list[i].directlinklq,
-						type: data1.episode_list[i].format,
+						src: data1.episodes[i].directlinklq,
+						type: data1.episodes[i].format,
 						res: '360',
 						label: '360p'
 					});
 				}
 				myPlaylistomu.push({
-					title: 'omu' + data1.episode_list[i].Title,
-					infoTitle: data1.episode_list[i].Title,
+					title: 'omu' + data1.episodes[i].Title,
+					infoTitle: data1.episodes[i].Title,
 					poster: 'https://img.mediathek.community/t/p/original/' + data1.backdrop,
 					sources: sources
 				});
@@ -167,7 +168,6 @@
 				<p>I'm rebuilding this site with turo as backend</p>
 			</div>
 			<!-- Actions -->
-			<div class="alert-actions">(buttons)</div>
 		</aside>
 		{#if showvideo != true}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
@@ -251,8 +251,8 @@
 									{data1.lang}
 								</td>
 							</tr>
-							--><!--  
-							{#if data1.episode_list.length > 0}
+							--> 
+							{#if data1.episodes.length > 0}
 							
 								<tr class="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
 									<th
@@ -262,7 +262,7 @@
 										Staffeln
 									</th>
 									<td class="px-6 py-4">
-										{data1.episodes || 1}
+										{data1.episodes.length || 1}
 									</td>
 								</tr>
 								<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
@@ -273,10 +273,10 @@
 										Folgen
 									</th>
 									<td class="px-6 py-4">
-										{data1.episode_list.length}
+										{data1.episodes.length}
 									</td>
 								</tr>
-							{/if}-->
+							{/if}<!-- -->
 							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
 								<th
 									scope="row"
@@ -297,12 +297,12 @@
 				</div>
 				
 			{:else if tabSet === 2}
-			<!-- 
+			
 				<Accordion>
-					{#each data1.episode_list as episode, index (episode.date_created)}
+					{#each data1.episodes as episode, index (episode.id)}
 						{#if episode.omu == false}
 							<AccordionItem>
-								<svelte:fragment slot="summary">{episode.name}</svelte:fragment>
+								<svelte:fragment slot="summary">E:{episode.episode} - {episode.name}</svelte:fragment>
 								<svelte:fragment slot="content">
 									<div class="grid grid-cols-4 grid-rows-1 gap-0">
 										<div class="col-span-3">{episode.description}</div>
@@ -319,10 +319,10 @@
 						{/if}
 					{/each}
 				</Accordion>
-				-->
+				<!-- -->
 			{:else if tabSet === 3}
 				<Accordion>
-					{#each data1.episode_list as episode, index}
+					{#each data1.episodes as episode, index}
 						{#if episode.omu == true}
 							<AccordionItem>
 								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>

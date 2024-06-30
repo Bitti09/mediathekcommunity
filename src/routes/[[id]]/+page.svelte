@@ -64,7 +64,6 @@
 				<p>I'm rebuilding this site with turso as backend</p>
 			</div>
 			<!-- Actions -->
-			<div class="alert-actions">(buttons)</div>
 		</aside>
 		<h1 class="h1 pb-3">
 			<span
@@ -104,6 +103,6 @@
 			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
 			>No Item(s) found for category:</span
 		>
-		{data.param}
+		{data.param || '*'}
 	</h1>
 {/if}
