@@ -1,6 +1,5 @@
 <script lang="ts">
 	// @ts-nocheck
-
 	import { onDestroy, onMount } from 'svelte';
 	import '../videojs/skins/treso/videojs.min.css';
 	import videojs from 'video.js';
@@ -10,19 +9,10 @@
 	import '../videojs/plugins/es/videojs.hotkeys';
 
 	import { modalProps, modalvideo, omulist, noomulist, seriestype } from '$lib/modalPropsStore';
-	console.log('modalProps');
-	console.log($modalProps);
-	console.log('modalvideo');
-	console.log($modalvideo);
-	console.log('omulist');
-	console.log($omulist);
-	console.log('noomulist');
-	console.log($noomulist);
-	console.log('seriestype');
-	console.log($seriestype);
 
 	let videoPlayer;
 	let player;
+
 	const videojsOptions = {
 		controls: true,
 		preload: 'auto',
@@ -30,48 +20,38 @@
 		fill: true,
 		hotkeys: true,
 		resume: true
-
 	};
-	function changevideo(video, type) {
-		if (player != undefined) {
-			if (type == 'noomu') {
-				player.pause();
-				player.currentTime(0);
-				player.playlist.new($noomulist);
-				player.pause();
-			} else if (type == 'omu') {
-				player.pause();
-				player.currentTime(0);
-				player.playlist.new($omulist);
-				player.pause();
-			} else {
-				let video_1 = {
+
+	function changeVideo(video, type) {
+		if (!player) return;
+
+		player.pause();
+		player.currentTime(0);
+		switch (type) {
+			case 'noomu':
+				player.playlist.update($noomulist);
+				break;
+			case 'omu':
+				player.playlist.update($omulist);
+				break;
+			default:
+				const videoSource = {
 					sources: [{ src: $modalvideo.src, type: $modalvideo.type }],
 					poster: $modalvideo.poster,
 					title: $modalvideo.title
 				};
-				player.pause();
 				player.poster(video.poster);
-				player.currentTime(0);
-				player.changeSource(video_1);
-			}
-			//player.play();
+				player.changeSource(videoSource);
+				break;
 		}
 	}
-	$: changevideo($modalvideo, $seriestype);
-	// nuevo plugin options
-	let nuevo_options = { contextMenu: false };
-	onMount(async () => {
-		let videoPlayer1 = document.getElementById('video1');
-		if (videoPlayer != undefined) {
-			//.log('changes' + videoPlayer);
-			player = videojs('my-video', videojsOptions);
-			let video_1 = {
-				sources: { src: $modalvideo.src, type: $modalvideo.type },
-				poster: $modalvideo.poster,
-				title: $modalvideo.title,
-				infoTitle: $modalvideo.title
-			};
+	$: changeVideo($modalvideo, $seriestype);
+
+	onMount(() => {
+		let videoElement = document.getElementById('my-video');
+		if (videoElement) {
+			player = videojs(videoElement, videojsOptions);
+
 			player.nuevo({
 				video_id: $modalvideo.id,
 				playlistUI: true,
@@ -87,31 +67,28 @@
 				rateMenu: false,
 				settingsButton: true,
 				resume: true
+			});
 
-			});
-			player.hotkeys({
-				seekStep: 10
-			});
-			if ($seriestype == 'noomu') {
+			player.hotkeys({ seekStep: 10 });
+
+			if ($seriestype === 'noomu') {
 				player.playlist($noomulist);
-				//player.playList($noomulwwwist);
-			} else if ($seriestype == 'omu') {
+			} else if ($seriestype === 'omu') {
 				player.playlist($omulist);
-
-				//player.playList($omulist);
 			} else {
-				player.src(video_1.sources);
+				player.src([{ src: $modalvideo.src, type: $modalvideo.type }]);
 			}
-			player.on('mode', function (event, mode) {
-				if (mode == 'large') {
-					document.querySelector('#left_column').style.width = '100%';
-				} else if (mode == 'normal') {
-					document.querySelector('#left_column').style.width = '70%';
-				}
+
+			player.on('mode', (event, mode) => {
+				document.querySelector('#left_column').style.width = mode === 'large' ? '100%' : '70%';
 			});
-			player.on('fullscreenchange', (evt, mode) => {});
+
+			player.on('fullscreenchange', (evt, mode) => {
+				// fullscreen change logic goes here if needed
+			});
 		}
 	});
+
 	onDestroy(() => {
 		if (player) {
 			player.dispose();
@@ -119,8 +96,7 @@
 	});
 </script>
 
-<div id="left_column" style="width: 70%;" class="flex h-fit max-h-fit items-center overflow-hidden">
-	<!-- svelte-ignore a11y-media-has-caption -->
+<div id="left_column" class="left-column">
 	<video
 		id="my-video"
 		playsinline
@@ -132,7 +108,14 @@
 
 <style>
 	.overflow-hidden {
-		/* set it to not show scroll bars so 100% will work */
 		overflow: hidden !important;
+	}
+	.left-column {
+		width: 70%;
+		display: flex;
+		height: fit-content;
+		max-height: fit-content;
+		align-items: center;
+		overflow: hidden;
 	}
 </style>
