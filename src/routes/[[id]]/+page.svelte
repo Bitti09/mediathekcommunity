@@ -5,10 +5,14 @@
     import * as Flag from 'svelte-flag-icons';
     import Card from '$lib/components/Card.svelte';
 
+    // Component props
     export let data;
+
+    // Local state
     let langdata = {};
     const languages = ['De', 'Se', 'It', 'Uk'];
 
+    // Reactive statement to filter posts by country
     $: {
         langdata = languages.reduce((acc, lang) => {
             acc[lang] = data.posts.filter((e) => e.country.toLowerCase() === lang.toLowerCase());
@@ -16,6 +20,7 @@
         }, {});
     }
 
+    // OnMount hook to initialize Swiper instances
     onMount(async () => {
         const swiperParams = {
             breakpoints: {
@@ -33,6 +38,7 @@
             }
         };
 
+        // Select all swiper-container elements and initialize Swiper instances
         const swiperEls = document.querySelectorAll('swiper-container');
         swiperEls.forEach(swiperEl => {
             Object.assign(swiperEl, swiperParams);
@@ -43,6 +49,7 @@
 
 {#if data.posts.length > 0}
     <div>
+        <!-- Alert component -->
         <aside class="alert variant-ghost-error">
             <!-- Icon -->
             <!-- Message -->
@@ -52,6 +59,8 @@
             </div>
             <!-- Actions -->
         </aside>
+
+        <!-- Last added section -->
         <h1 class="h1 pb-3">
             <span class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent">
                 Zuletzt hinzugefügt.
@@ -62,6 +71,8 @@
                 <swiper-slide><Card carddata={name} /></swiper-slide>
             {/each}
         </swiper-container>
+
+        <!-- Language-specific sections -->
         {#each languages as lang, index}
             {#if langdata[lang].length > 0}
                 <h1 class="h1 pb-3">
@@ -78,6 +89,7 @@
         {/each}
     </div>
 {:else}
+    <!-- No items found section -->
     <h1 class="h1">
         <span class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent">
             No Item(s) found for category:
