@@ -21,8 +21,8 @@ importers:
         specifier: ^0.31.2
         version: 0.31.2(@cloudflare/workers-types@4.20240620.0)(@libsql/client@0.7.0)
       hls.js:
-        specifier: ^1.5.11
-        version: 1.5.11
+        specifier: ^1.5.12
+        version: 1.5.12
       jose:
         specifier: ^5.6.2
         version: 5.6.2
@@ -1624,8 +1624,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hls.js@1.5.11:
-    resolution: {integrity: sha512-q3We1izi2+qkOO+TvZdHv+dx6aFzdtk3xc1/Qesrvto4thLTT/x/1FK85c5h1qZE4MmMBNgKg+MIW8nxQfxwBw==}
+  hls.js@1.5.12:
+    resolution: {integrity: sha512-QxBMsawjqIPNfgAzaFFVJu0t8OwOyFXK3cuj9MX5L7byZZL+n9PeJXtIMu2FS0026Dt/hBAz9u2sDLZ4bQdv6w==}
 
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
@@ -3836,7 +3836,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hls.js@1.5.11: {}
+  hls.js@1.5.12: {}
 
   ignore@5.3.1: {}
 
