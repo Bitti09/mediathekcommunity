@@ -24,7 +24,6 @@ export const mediathek = sqliteTable('mediathek', {
 	onlineuntil: text('onlineuntil'),
 	created: text('timestamp').default(defaultTimestamp),
     chwarnid: text('chwarnid')
-    .notNull()
     .references(() => channelwarning.id)
 });
 export const episode = sqliteTable('episode', {

@@ -2,7 +2,8 @@ CREATE TABLE `channelwarning` (
 	`id` text PRIMARY KEY DEFAULT (uuid4()) NOT NULL,
 	`channel` text,
 	`description` text,
-	`warntype` text
+	`warntype` text,
+	`title` text
 );
 --> statement-breakpoint
 CREATE TABLE `episode` (
@@ -42,6 +43,6 @@ CREATE TABLE `mediathek` (
 	`quality` text,
 	`onlineuntil` text,
 	`timestamp` text DEFAULT (CURRENT_TIMESTAMP),
-	`chwarnid` text NOT NULL,
+	`chwarnid` text,
 	FOREIGN KEY (`chwarnid`) REFERENCES `channelwarning`(`id`) ON UPDATE no action ON DELETE no action
 );
