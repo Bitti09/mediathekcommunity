@@ -17,6 +17,7 @@
 
 	let showvideo = false;
 	$: data1 = data.posts[0];
+	$: channelinfo = data.posts[0].channelwarning;
 	$: sortepisodes(data1);
 	// $: console.log(data1);
 
@@ -87,7 +88,6 @@
 		showvideo = true;
 	}
 </script>
-
 {#if data.posts}
 	<div>
 		<aside class="alert variant-ghost-error">
@@ -96,6 +96,14 @@
 				<p>I'm rebuilding this site with turo as backend</p>
 			</div>
 		</aside>
+        {#if channelinfo}
+        <aside class="alert variant-ghost-error">
+			<div class="alert-message">
+				<h3 class="h3">{channelinfo.title}</h3>
+				<p>{channelinfo.description}</p>
+			</div>
+		</aside>
+        {/if}
 		{#if !showvideo}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
 				<img

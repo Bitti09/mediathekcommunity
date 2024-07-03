@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "e203b979-3b18-42ae-aa82-ed6195cbccf3",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "4e16c255-c337-4bbf-8f0e-3c1bc5ac8e0e",
+  "prevId": "e203b979-3b18-42ae-aa82-ed6195cbccf3",
   "tables": {
     "channelwarning": {
       "name": "channelwarning",
@@ -31,6 +31,13 @@
         },
         "warntype": {
           "name": "warntype",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
