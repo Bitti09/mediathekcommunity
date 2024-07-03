@@ -33,7 +33,6 @@
 
 	var geo1 = capitalizeFirstLetter(data.geo);
 </script>
-{data.header1}
 {#if data.posts.length > 0}
 	<div>
 		<aside class="alert variant-ghost-error">
@@ -53,7 +52,7 @@
 		<div class="embla" use:emblaCarouselSvelte>
 			<div class="embla__container flex">
 				{#each data.posts as name, index}
-					<div class="embla__slide"><Card carddata={name} /></div>
+					<div class="embla__slide"><Card carddata={name} geo={geo1}/></div>
 				{/each}
 			</div>
 		</div>

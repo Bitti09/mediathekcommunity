@@ -1,7 +1,8 @@
 <script>
 	// @ts-nocheck
+	import * as Flag from 'svelte-flag-icons';
 
-	export let carddata;
+	export let carddata, geo;
 	//console.log(carddata);
 	let currentVariant = 'bg-initial';
 
@@ -19,46 +20,80 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="card {currentVariant} flex items-center justify-center">
-	{#if inFuture(carddata.publishdate) == false}
-		<a href="details/{carddata.id}">
-			{#if carddata.poster}
-				<img
-					class="mx-auto h-64 rounded-lg"
-					src="https://img.mediathek.community/t/p/original{carddata.poster}"
-					alt="description"
-				/>
-			{:else}
-				<img
-					class="h-64 rounded-lg object-scale-down"
-					src="https://img2.mediathek.community/assets/{carddata.coverimage}"
-					alt="description"
-				/>{/if}
-		</a>
-	{:else if carddata.poster != 'poster'}
-		<div id="text">Coming soon</div>
-		<img
-			class="mx-auto h-64 rounded-lg"
-			src="https://img.mediathek.community/t/p/original{carddata.poster}"
-			alt="description"
-		/>
-	{:else}
-		<img
-			class="mx-auto h-64 rounded-lg"
-			src="https://img2.mediathek.community/assets/{carddata.coverimage}"
-			alt="description"
-		/>{/if}
-</div>
+{#if inFuture(carddata.publishdate) == false}
+	{#if carddata.country !== geo}
+		<div class="flex">
+			<div class="relative mx-auto max-w-xl">
+				<div class="absolute inset-0 rounded-md bg-gray-700 opacity-60"></div>
 
-<style>
-	#text {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		font-size: 25px;
-		color: white;
-		transform: translate(-50%, -50%);
-		background-color: rgba(0, 0, 0, 0.863);
-		-ms-transform: translate(-50%, -50%);
-	}
-</style>
+				<figure>
+					{#if carddata.poster}
+						<img
+							class="h-64 rounded-lg"
+							src="https://img.mediathek.community/t/p/original{carddata.poster}"
+							alt="description"
+						/>
+					{:else}
+						<img
+							class="image-full mx-auto h-64 rounded-lg"
+							src="https://img2.mediathek.community/assets/{carddata.coverimage}"
+							alt="description"
+						/>
+					{/if}
+				</figure>
+				<div class="absolute inset-0 flex min-h-full items-center justify-center">
+					<p>
+						<svelte:component
+							this={Flag[carddata.country]}
+							class="mr-1 inline-flex place-self-center"
+							size="30"
+						/> IP wird benötigt
+					</p>
+				</div>
+			</div>
+		</div>
+	{:else}
+		<div class="flex">
+			<a href="details/{carddata.id}">
+				{#if carddata.poster}
+					<img
+						class="image-full mx-auto h-64 rounded-lg"
+						src="https://img.mediathek.community/t/p/original{carddata.poster}"
+						alt="description"
+					/>
+				{:else}
+					<img
+						class="image-full mx-auto h-64 rounded-lg"
+						src="https://img2.mediathek.community/assets/{carddata.coverimage}"
+						alt="description"
+					/>
+				{/if}
+			</a>
+		</div>
+	{/if}
+{:else}
+	<div class="flex">
+		<div class="relative mx-auto max-w-xl">
+			<div class="absolute inset-0 rounded-md bg-gray-700 opacity-60"></div>
+
+			<figure>
+				{#if carddata.poster}
+					<img
+						class="h-64 rounded-lg"
+						src="https://img.mediathek.community/t/p/original{carddata.poster}"
+						alt="description"
+					/>
+				{:else}
+					<img
+						class="image-full mx-auto h-64 rounded-lg"
+						src="https://img2.mediathek.community/assets/{carddata.coverimage}"
+						alt="description"
+					/>
+				{/if}
+			</figure>
+			<div class="absolute inset-0 flex min-h-full items-center justify-center">
+				<p>Coming soon</p>
+			</div>
+		</div>
+	</div>
+{/if}
