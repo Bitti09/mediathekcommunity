@@ -32,7 +32,7 @@
 
 	var geo1 = capitalizeFirstLetter('se');
 </script>
-
+{data.header1}
 {#if data.posts.length > 0}
 	<div>
 		<aside class="alert variant-ghost-error">
