@@ -7,7 +7,9 @@ export const load: PageServerLoad = async ({ request }) => {
 			episodes: true
 		}
 	});
-	var geo = request.headers.get('cf-ipcountry')?.toLowerCase() || 'Se';
+	var geo = request.headers.get('cf-ipcountry')
+		? request.headers.get('cf-ipcountry').toLowerCase()
+		: 'se';
 	console.log(request.headers.get('cf-ipcountry'));
 	return { posts, geo };
 };
