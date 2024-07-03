@@ -6,7 +6,6 @@
 	import Card from '$lib/components/Card.svelte';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 </script>
-
 {#key visible}
 	{#if visible}
 		{#each langlist as lang, index}
@@ -29,7 +28,7 @@
 				</div>
 			</div>
 		{/each}
-	{:else if langdata[geo] > 0}
+	{:else if langdata[geo]}
 		<h1 class="h1 pb-3">
 			<div
 				class="flex items-center place-self-center bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"

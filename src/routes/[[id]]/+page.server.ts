@@ -8,9 +8,9 @@ export const load: PageServerLoad = async ({ request }) => {
 		}
 	});
 	var geo = request.cf
-		? request.cf.country.toLowerCase()
-		: 'se';
-	console.log(request.cf?.country);
-	var  header1 = JSON.stringify(request.cf);
+		? request.cf.country
+		: 'NL';
+	console.log(geo);
+	var  header1 = JSON.stringify(request.cf?.country);
 	return { posts, geo, header1 };
 };

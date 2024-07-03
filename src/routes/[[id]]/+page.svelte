@@ -12,6 +12,7 @@
  	// Component props
 	export let data;
 	function capitalizeFirstLetter(string) {
+		string = string.toLowerCase();
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 	let visible = false;
@@ -30,7 +31,7 @@
 		langlist = Object.keys(langdata);
 	}
 
-	var geo1 = capitalizeFirstLetter('se');
+	var geo1 = capitalizeFirstLetter(data.geo);
 </script>
 {data.header1}
 {#if data.posts.length > 0}
