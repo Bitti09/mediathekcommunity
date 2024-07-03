@@ -16,6 +16,7 @@
 				<a href="/"><strong class="text-xl">Mediathek Community</strong></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
+                Show all lang (TEST):
 				<SlideToggle name="slide" bind:checked={$alllang} />
 			</svelte:fragment>
 		</AppBar>

@@ -32,17 +32,12 @@
 
 {#if data.posts.length > 0}
 	<div>
-		<!-- Alert component -->
-		<aside class="alert variant-ghost-error">
-			<!-- Icon -->
-			<!-- Message -->
-			<div class="alert-message">
-				<h3 class="h3">WIP</h3>
+        <aside class="alert variant-ghost-error">
+            <div class="alert-message">
+                <h3 class="h3">WIP</h3>
 				<p>I'm rebuilding this site with turso as backend</p>
-			</div>
-			<!-- Actions -->
-		</aside>
-
+            </div>
+        </aside>
 		<!-- Last added section -->
 		<h1 class="h1 pb-3">
 			<span
@@ -76,3 +71,13 @@
 		{data.param || '*'}
 	</h1>
 {/if}
+<style scoped>
+	.embla__slide {
+		flex: 0 0 200px !important;
+		min-width: 0;
+	}
+	.embla__container {
+        display: flex;
+		flex-direction: row;
+	}
+</style>
