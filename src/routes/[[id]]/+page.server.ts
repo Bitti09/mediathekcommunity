@@ -7,6 +7,6 @@ export const load: PageServerLoad = async ({request }) => {
             episodes: true
         }
     });
-    console.log(request.headers)
+    console.log(request.headers.get('cf-ipcountry'))
     return { posts };
 };
