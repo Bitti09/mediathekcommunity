@@ -9,9 +9,11 @@
 	import { onMount } from 'svelte';
 	import Card from '$lib/components/Card.svelte';
 	import Slider1 from '$lib/components/Slider1.svelte';
-	import upperFirst from 'lodash-es';
-	// Component props
+ 	// Component props
 	export let data;
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
 	let visible = false;
 	const unsubscribe = alllang.subscribe((current) => {
 		visible = current;
@@ -24,20 +26,21 @@
 	const result = Object.groupBy(data.posts, ({ country }) => country);
 	// Reactive statement to filter posts by country
 	$: {
-		langdata = Object.groupBy(data.posts, ({ country }) => upperFirst(country));
+		langdata = Object.groupBy(data.posts, ({ country }) => capitalizeFirstLetter(country));
 		langlist = Object.keys(langdata);
 	}
 
+	var geo1 = capitalizeFirstLetter('se');
 </script>
 
 {#if data.posts.length > 0}
 	<div>
-        <aside class="alert variant-ghost-error">
-            <div class="alert-message">
-                <h3 class="h3">WIP</h3>
+		<aside class="alert variant-ghost-error">
+			<div class="alert-message">
+				<h3 class="h3">WIP</h3>
 				<p>I'm rebuilding this site with turso as backend</p>
-            </div>
-        </aside>
+			</div>
+		</aside>
 		<!-- Last added section -->
 		<h1 class="h1 pb-3">
 			<span
@@ -49,16 +52,14 @@
 		<div class="embla" use:emblaCarouselSvelte>
 			<div class="embla__container flex">
 				{#each data.posts as name, index}
-                <div class="embla__slide"><Card carddata={name} /></div>
+					<div class="embla__slide"><Card carddata={name} /></div>
 				{/each}
 			</div>
 		</div>
 		<!-- Language-specific sections -->
-         {data.geo}
-			{#key visible}
-				<Slider1 {langlist} {visible} {langdata} {alllang} geo={data.geo}/>
-			{/key}
-
+		{#key visible}
+			<Slider1 {langlist} {visible} {langdata} {alllang} geo={geo1} />
+		{/key}
 	</div>
 {:else}
 	<!-- No items found section -->
@@ -66,18 +67,19 @@
 		<span
 			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
 		>
-			No Item(s) found for category:
+			No Item(s) found for category:ss
 		</span>
 		{data.param || '*'}
 	</h1>
 {/if}
+
 <style scoped>
 	.embla__slide {
 		flex: 0 0 200px !important;
 		min-width: 0;
 	}
 	.embla__container {
-        display: flex;
+		display: flex;
 		flex-direction: row;
 	}
 </style>
