@@ -1,99 +1,78 @@
 <script>
-    // @ts-nocheck
-    // Modals Utils
-    import { onMount } from 'svelte';
-    import * as Flag from 'svelte-flag-icons';
-    import Card from '$lib/components/Card.svelte';
+	// @ts-nocheck
+	// Modals Utils
+	import { alllang } from '../../store.js';
+	import { onDestroy } from 'svelte';
+	import * as Flag from 'svelte-flag-icons';
+	import emblaCarouselSvelte from 'embla-carousel-svelte';
 
-    // Component props
-    export let data;
+	import { onMount } from 'svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Slider1 from '$lib/components/Slider1.svelte';
+	import upperFirst from 'lodash-es';
+	// Component props
+	export let data;
+	let visible = false;
+	const unsubscribe = alllang.subscribe((current) => {
+		visible = current;
+	});
+	onDestroy(unsubscribe);
+	// Local state
+	let langdata = {};
+	let langlist = [];
+	// Group by country
+	const result = Object.groupBy(data.posts, ({ country }) => country);
+	// Reactive statement to filter posts by country
+	$: {
+		langdata = Object.groupBy(data.posts, ({ country }) => upperFirst(country));
+		langlist = Object.keys(langdata);
+	}
 
-    // Local state
-    let langdata = {};
-    const languages = ['De', 'Se', 'It', 'Uk'];
-
-    // Reactive statement to filter posts by country
-    $: {
-        langdata = languages.reduce((acc, lang) => {
-            acc[lang] = data.posts.filter((e) => e.country.toLowerCase() === lang.toLowerCase());
-            return acc;
-        }, {});
-    }
-
-    // OnMount hook to initialize Swiper instances
-    onMount(async () => {
-        const swiperParams = {
-            breakpoints: {
-                0: { slidesPerView: 1, spaceBetween: 1 },
-                490: { slidesPerView: 2, spaceBetween: 1 },
-                960: { slidesPerView: 3, spaceBetween: 1 },
-                1280: { slidesPerView: 4, spaceBetween: 1 },
-                1900: { slidesPerView: 5, spaceBetween: 1 },
-                2300: { slidesPerView: 6, spaceBetween: 1 }
-            },
-            on: {
-                init() {
-                    // ...
-                }
-            }
-        };
-
-        // Select all swiper-container elements and initialize Swiper instances
-        const swiperEls = document.querySelectorAll('swiper-container');
-        swiperEls.forEach(swiperEl => {
-            Object.assign(swiperEl, swiperParams);
-            swiperEl.initialize();
-        });
-    });
 </script>
 
 {#if data.posts.length > 0}
-    <div>
-        <!-- Alert component -->
-        <aside class="alert variant-ghost-error">
-            <!-- Icon -->
-            <!-- Message -->
-            <div class="alert-message">
-                <h3 class="h3">WIP</h3>
-                <p>I'm rebuilding this site with turso as backend</p>
-            </div>
-            <!-- Actions -->
-        </aside>
+	<div>
+		<!-- Alert component -->
+		<aside class="alert variant-ghost-error">
+			<!-- Icon -->
+			<!-- Message -->
+			<div class="alert-message">
+				<h3 class="h3">WIP</h3>
+				<p>I'm rebuilding this site with turso as backend</p>
+			</div>
+			<!-- Actions -->
+		</aside>
 
-        <!-- Last added section -->
-        <h1 class="h1 pb-3">
-            <span class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent">
-                Zuletzt hinzugefügt.
-            </span>
-        </h1>
-        <swiper-container init="false" class="mySwiper2">
-            {#each data.posts as name, index}
-                <swiper-slide><Card carddata={name} /></swiper-slide>
-            {/each}
-        </swiper-container>
+		<!-- Last added section -->
+		<h1 class="h1 pb-3">
+			<span
+				class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"
+			>
+				Zuletzt hinzugefügt.
+			</span>
+		</h1>
+		<div class="embla" use:emblaCarouselSvelte>
+			<div class="embla__container flex">
+				{#each data.posts as name, index}
+                <div class="embla__slide"><Card carddata={name} /></div>
+				{/each}
+			</div>
+		</div>
+		<!-- Language-specific sections -->
+         {data.geo}
+			{#key visible}
+				<Slider1 {langlist} {visible} {langdata} {alllang} geo={data.geo}/>
+			{/key}
 
-        <!-- Language-specific sections -->
-        {#each languages as lang, index}
-            {#if langdata[lang].length > 0}
-                <h1 class="h1 pb-3">
-                    <div class="flex items-center place-self-center bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent">
-                        <svelte:component this={Flag[lang]} class="mr-1 inline-flex place-self-center" size="50" /> Mediatheken
-                    </div>
-                </h1>
-                <swiper-container init="false" class="mySwiper2">
-                    {#each langdata[lang] as name, index}
-                        <swiper-slide><Card carddata={name} /></swiper-slide>
-                    {/each}
-                </swiper-container>
-            {/if}
-        {/each}
-    </div>
+	</div>
 {:else}
-    <!-- No items found section -->
-    <h1 class="h1">
-        <span class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent">
-            No Item(s) found for category:
-        </span>
-        {data.param || '*'}
-    </h1>
+	<!-- No items found section -->
+	<h1 class="h1">
+		<span
+			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
+		>
+			No Item(s) found for category:
+		</span>
+		{data.param || '*'}
+	</h1>
 {/if}
