@@ -13,7 +13,7 @@
 		"start": "node build"
 	},
 	"devDependencies": {
-		"@flydotio/dockerfile": "^0.5.7",
+		"@flydotio/dockerfile": "^0.5.8",
 		"@skeletonlabs/skeleton": "^2.10.1",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
 		"@sveltejs/adapter-cloudflare": "^4.6.0",
