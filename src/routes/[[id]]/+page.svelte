@@ -9,7 +9,7 @@
 	import { onMount } from 'svelte';
 	import Card from '$lib/components/Card.svelte';
 	import Slider1 from '$lib/components/Slider1.svelte';
- 	// Component props
+	// Component props
 	export let data;
 	function capitalizeFirstLetter(string) {
 		string = string.toLowerCase();
@@ -33,12 +33,13 @@
 
 	var geo1 = capitalizeFirstLetter(data.geo);
 </script>
+
 {#if data.posts.length > 0}
 	<div>
 		<aside class="alert variant-ghost-error">
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with turso as backend</p>
+				<p>I'm rebuilding this site with PayloadCMS as backend</p>
 			</div>
 		</aside>
 		<!-- Last added section -->
@@ -52,7 +53,7 @@
 		<div class="embla" use:emblaCarouselSvelte>
 			<div class="embla__container flex">
 				{#each data.posts as name, index}
-					<div class="embla__slide"><Card carddata={name} geo={geo1}/></div>
+					<div class="embla__slide"><Card carddata={name} geo={geo1} /></div>
 				{/each}
 			</div>
 		</div>

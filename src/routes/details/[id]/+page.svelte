@@ -88,22 +88,23 @@
 		showvideo = true;
 	}
 </script>
+
 {#if data.posts}
 	<div>
 		<aside class="alert variant-ghost-error">
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with turo as backend</p>
+				<p>I'm rebuilding this site with PayloadCMS as backend</p>
 			</div>
 		</aside>
-        {#if channelinfo}
-        <aside class="alert variant-ghost-error">
-			<div class="alert-message">
-				<h3 class="h3">{channelinfo.title}</h3>
-				<p>{channelinfo.description}</p>
-			</div>
-		</aside>
-        {/if}
+		{#if channelinfo}
+			<aside class="alert variant-ghost-error">
+				<div class="alert-message">
+					<h3 class="h3">{channelinfo.title}</h3>
+					<p>{channelinfo.description}</p>
+				</div>
+			</aside>
+		{/if}
 		{#if !showvideo}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
 				<img

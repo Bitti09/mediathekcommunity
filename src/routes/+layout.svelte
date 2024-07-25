@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
 	import { alllang } from '../store.js';
-    import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	$: console.log($alllang); 
+	$: console.log($alllang);
 </script>
 
 <!-- App Shell -->
@@ -16,7 +16,7 @@
 				<a href="/"><strong class="text-xl">Mediathek Community</strong></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
-                Show all lang (TEST):
+				Show all lang (TEST):
 				<SlideToggle name="slide" bind:checked={$alllang} />
 			</svelte:fragment>
 		</AppBar>
