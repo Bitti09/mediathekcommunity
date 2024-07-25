@@ -42,7 +42,7 @@
 		"@libsql/client": "^0.7.0",
 		"@payloadcms/db-mongodb": "beta",
 		"@payloadcms/next": "beta",
-		"@payloadcms/plugin-cloud": "beta",
+		"@payloadcms/plugin-cloud": "3.0.0",
 		"@payloadcms/plugin-cloud-storage": "beta",
 		"@payloadcms/richtext-lexical": "beta",
 		"@payloadcms/storage-s3": "beta",
