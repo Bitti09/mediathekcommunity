@@ -94,7 +94,7 @@
 		<aside class="alert variant-ghost-error">
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with PayloadCMS as backend</p>
+				<p>I'm rebuilding this site with PayloadCMS as backend - Currently using: turso</p>
 			</div>
 		</aside>
 		{#if channelinfo}
