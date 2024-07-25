@@ -13,7 +13,6 @@
 		"start": "node build"
 	},
 	"devDependencies": {
-		"@flydotio/dockerfile": "^0.5.8",
 		"@skeletonlabs/skeleton": "^2.10.2",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
 		"@sveltejs/adapter-cloudflare": "^4.7.0",
@@ -40,13 +39,6 @@
 	"type": "module",
 	"dependencies": {
 		"@libsql/client": "^0.7.0",
-		"@payloadcms/db-mongodb": "beta",
-		"@payloadcms/next": "beta",
-		"@payloadcms/plugin-cloud": "beta",
-		"@payloadcms/plugin-cloud-storage": "beta",
-		"@payloadcms/richtext-lexical": "beta",
-		"@payloadcms/storage-s3": "beta",
-		"@teamhanko/hanko-elements": "^0.12.0",
 		"dotenv": "^16.4.5",
 		"drizzle-orm": "^0.32.1",
 		"embla-carousel-svelte": "^8.1.7",
