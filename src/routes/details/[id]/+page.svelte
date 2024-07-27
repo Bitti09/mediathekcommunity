@@ -10,14 +10,14 @@
 	let myPlaylistomu = [];
 
 	function sortepisodes(data2) {
-		if (data2.episode) {
-			console.log(data2.episode);
+		if (data2.episodelist.length > 0) {
+			console.log(data2.episodelist);
 		}
 	}
-
+	console.log(data);
 	let showvideo = false;
-	$: data1 = data.posts[0];
-	$: channelinfo = data.posts[0].channelwarning;
+	$: data1 = data.page;
+	$: channelinfo = data.page.channel;
 	$: sortepisodes(data1);
 	// $: console.log(data1);
 
@@ -43,12 +43,12 @@
 		myPlaylistomu = [];
 		seriestype.set(type);
 
-		data1.episodes.forEach((episode) => {
+		data1.episodelist.forEach((episode) => {
 			let sources = [];
 			if (episode.streamlink) {
 				sources.push({
 					src: episode.streamlink,
-					type: episode.streamformat,
+					type: episode.format,
 					default: true
 				});
 			}
@@ -59,8 +59,8 @@
 
 			if (!episode.omu) {
 				myPlaylist.push({
-					title: episode.name,
-					infoTitle: episode.name,
+					title: episode.title,
+					infoTitle: episode.title,
 					poster: poster12,
 					thumb: poster12,
 					sources: sources
@@ -75,46 +75,47 @@
 					});
 				}
 				myPlaylistomu.push({
-					title: `omu${episode.Title}`,
-					infoTitle: episode.Title,
+					title: `omu${episode.title}`,
+					infoTitle: episode.title,
 					poster: `https://img.mediathek.community/t/p/original/${data1.backdrop}`,
 					sources: sources
 				});
 			}
 		});
-
+		console.log(myPlaylist);
+		console.log(omulist);
 		noomulist.set(myPlaylist);
 		omulist.set(myPlaylistomu);
 		showvideo = true;
 	}
 </script>
 
-{#if data.posts}
+{#if data1}
 	<div>
 		<aside class="alert variant-ghost-error">
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with PayloadCMS as backend - Currently using: turso</p>
+				<p>I'm rebuilding this site with Directus as backend - Currently using: Directus</p>
 			</div>
 		</aside>
-		{#if channelinfo}
+		{#if channelinfo.info}
 			<aside class="alert variant-ghost-error">
 				<div class="alert-message">
-					<h3 class="h3">{channelinfo.title}</h3>
-					<p>{channelinfo.description}</p>
+					<h3 class="h3">{channelinfo.name}</h3>
+					<p>{channelinfo.info}</p>
 				</div>
 			</aside>
 		{/if}
 		{#if !showvideo}
 			{#if data1.backdrop != 'backdrop' && data1.backdrop}
 				<img
-					class="relative mx-auto max-h-fit rounded-lg"
+					class="relative mx-auto rounded-lg"
 					src="https://img.mediathek.community/t/p/original{data1.backdrop}"
 					alt="description"
 				/>
 			{:else}
 				<img
-					class="relative mx-auto max-h-fit rounded-lg"
+					class="relative mx-auto rounded-lg"
 					src="https://api.mediathek.community/assets/{data1.heroimage}.jpg"
 					alt="description"
 				/>
@@ -130,7 +131,7 @@
 		<Tab bind:group={tabSet} name="tab1" value={0}>
 			<span>Details</span>
 		</Tab>
-		{#if data1.category == 'movie'}
+		{#if data1.mediatype == 'movie'}
 			<Tab bind:group={tabSet} name="tab2" value={1}>Links</Tab>
 		{:else}
 			<Tab bind:group={tabSet} name="tab3" value={2}>Episoden</Tab>
@@ -159,7 +160,7 @@
 									Sender
 								</th>
 								<td class="px-6 py-4">
-									{data1.channel}
+									{data1.channel.name}
 								</td>
 							</tr>
 							<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
@@ -173,7 +174,7 @@
 									{data1.quality}
 								</td>
 							</tr>
-							{#if data1.episodes.length > 0}
+							{#if data1.episodelist.length > 0}
 								<tr class="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
 									<th
 										scope="row"
@@ -182,7 +183,7 @@
 										Staffeln
 									</th>
 									<td class="px-6 py-4">
-										{data1.episodes.length || 1}
+										{data1.episodelist.length || 1}
 									</td>
 								</tr>
 								<tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
@@ -193,7 +194,7 @@
 										Folgen
 									</th>
 									<td class="px-6 py-4">
-										{data1.episodes.length}
+										{data1.episodelist.length}
 									</td>
 								</tr>
 							{/if}
@@ -217,15 +218,15 @@
 				</div>
 			{:else if tabSet === 2}
 				<Accordion>
-					{#each data1.episodes as episode, index (episode.id)}
+					{#each data1.episodelist as episode, index (episode.id)}
 						{#if !episode.omu}
 							<AccordionItem>
 								<svelte:fragment slot="summary"
-									>E:{episode.episode} - {episode.name}</svelte:fragment
+									>E: {episode.episode} - {episode.title}</svelte:fragment
 								>
 								<svelte:fragment slot="content">
 									<div class="grid grid-cols-4 grid-rows-1 gap-0">
-										<div class="col-span-3">{episode.description}</div>
+										<div class="col-span-3">{episode.overview}</div>
 										<div class="col-span-1 flex items-center justify-center">
 											<button
 												type="button"
@@ -244,10 +245,12 @@
 					{#each data1.episodes as episode, index}
 						{#if episode.omu}
 							<AccordionItem>
-								<svelte:fragment slot="summary">{episode.Title}</svelte:fragment>
+								<svelte:fragment slot="summary"
+									>E: {episode.episode} - {episode.title}</svelte:fragment
+								>
 								<svelte:fragment slot="content">
 									<div class="grid grid-cols-4 grid-rows-1 gap-0">
-										<div class="col-span-3">{episode.description}</div>
+										<div class="col-span-3">{episode.overview}</div>
 										<div class="col-span-1 flex items-center justify-center">
 											<button
 												type="button"
@@ -273,3 +276,4 @@
 		{data.param}
 	</h1>
 {/if}
+<!---->

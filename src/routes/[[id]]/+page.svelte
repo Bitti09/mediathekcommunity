@@ -12,48 +12,43 @@
 	// Component props
 	/* @type { import('./$houdini').PageData } */
 	export let data;
+	//data.page.channel = data.page.channel[0];
+	console.log(data);
 	let langdata = {};
 	let langlist = [];
 	let visible = false;
 	const unsubscribe = alllang.subscribe((current) => {
 		visible = current;
 	});
-	$: ({ Mediathek } = data); 
-	//console.log(data);
-	function capitalizeFirstLetter(string) {
-		//console.log(string);
-		string = string.toLowerCase();
-		return string.charAt(0).toUpperCase() + string.slice(1);
-	}
-	$: {
-		langdata = Object.groupBy($Mediathek.data.Mediatheks.docs, ({ channel   }) => capitalizeFirstLetter(channel.country));
-		langlist = Object.keys(langdata);
-	}
-	/*
-	console.log(data);
-	
+	const groupByChannelCountry = (array) => {
+		array = array.page;
+		return array.reduce((acc, item) => {
+			const country = item.channel.country;
+			if (!acc[country]) {
+				acc[country] = [];
+			}
+			acc[country].push(item);
+			return acc;
+		}, {});
+	};
+	langdata = groupByChannelCountry(data);
+	langlist = Object.keys(langdata);
 
-	onDestroy(unsubscribe);
-	// Local state
+	console.log(langdata);
+	console.log(Object.keys(langdata));
 
-	// Group by country
-	const result = Object.groupBy(data.posts, ({ country }) => country);
-	// Reactive statement to filter posts by country
-
-
-	var geo1 = capitalizeFirstLetter(data.geo);*/
+	/*var geo1 = capitalizeFirstLetter(data.geo);*/
 </script>
 
- 
-  {#if $Mediathek.data.Mediatheks.docs}
+{#if data.page.length > 0}
 	<div>
 		<aside class="alert variant-ghost-error">
 			<div class="alert-message">
 				<h3 class="h3">WIP</h3>
-				<p>I'm rebuilding this site with PayloadCMS as backend - Currently using: PayloadCMS</p>
+				<p>I'm rebuilding this site with Directus as backend - Currently using: Directus</p>
 			</div>
 		</aside>
-		 
+
 		<h1 class="h1 pb-3">
 			<span
 				class="bg-gradient-to-br from-blue-500 to-cyan-300 box-decoration-clone bg-clip-text text-transparent"
@@ -63,17 +58,17 @@
 		</h1>
 		<div class="embla" use:emblaCarouselSvelte>
 			<div class="embla__container flex">
-				{#each $Mediathek.data.Mediatheks.docs as name, index}
-					<div class="embla__slide"><Card carddata={name} geo="dew" /></div>
+				{#each data.page as name, index}
+					<div class="embla__slide"><Card carddata={name} geo="De" /></div>
 				{/each}
 			</div>
-		</div><!-- 
- 		{#key visible}
-			<Slider1 {langlist} {visible} {langdata} {alllang} geo={"geo1"} />
-		{/key}-->
+		</div>
+		{#key visible}
+			<Slider1 {langlist} {visible} {langdata} {alllang} geo="De" />
+		{/key}
 	</div>
 {:else}
- 	<h1 class="h1">
+	<h1 class="h1">
 		<span
 			class="bg-gradient-to-br from-pink-100 to-red-900 box-decoration-clone bg-clip-text text-transparent"
 		>
@@ -81,8 +76,8 @@
 		</span>
 		{data.param || '*'}
 	</h1>
-{/if}<!--
--->
+{/if}
+
 <style scoped>
 	.embla__slide {
 		flex: 0 0 200px !important;

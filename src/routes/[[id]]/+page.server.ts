@@ -1,11 +1,11 @@
 /** @type {import('./$types').PageLoad} */
 import { error } from '@sveltejs/kit';
 import getDirectusInstance from '$lib/directus';
-import { readItem } from '@directus/sdk';
+import { readItems } from '@directus/sdk';
 export async function load({ fetch, params }) {
 	const directus = getDirectusInstance(fetch);
 	var x = await directus.request(
-		readItem('mediathek', params.id, {
+		readItems('mediathek', {
 			fields: ['*.*'],
 			limit: 4,
 			deep: {

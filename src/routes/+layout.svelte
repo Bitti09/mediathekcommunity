@@ -4,8 +4,7 @@
 	import { SlideToggle } from '@skeletonlabs/skeleton';
 
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	$: console.log($alllang);
-</script>
+ </script>
 
 <!-- App Shell -->
 <AppShell>

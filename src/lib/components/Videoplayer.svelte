@@ -4,7 +4,7 @@
 	import '../videojs/skins/treso/videojs.min.css';
 	import videojs from 'video.js';
 	import '../videojs/plugins/es/nuevo';
-	import '../videojs/plugins/es/hlsjs.js';
+	// import '../videojs/plugins/es/hlsjs.js';
 	import '../videojs/plugins/es/playlist.js';
 	import '../videojs/plugins/es/videojs.hotkeys';
 
@@ -16,10 +16,18 @@
 	const videojsOptions = {
 		controls: true,
 		preload: 'auto',
-		playsinline: false,
+		playsinline: true,
 		fill: true,
 		hotkeys: true,
-		resume: true
+		resume: true,
+		html5: {
+			hlsjsConfig: {
+				debug: false,
+				enableWorker: true,
+				lowLatencyMode: false,
+				backBufferLength: 90
+			}
+		}
 	};
 
 	function changeVideo(video, type) {
@@ -97,6 +105,7 @@
 </script>
 
 <div id="left_column" class="left-column">
+	<!-- svelte-ignore a11y-media-has-caption -->
 	<video
 		id="my-video"
 		playsinline

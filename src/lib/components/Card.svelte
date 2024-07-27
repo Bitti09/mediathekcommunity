@@ -22,7 +22,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 {#if inFuture(carddata.publishdate) == false}
-	{#if carddata.channel.country !== geo}
+<!--  dev only -->>
+	{#if carddata.channel.country !== geo} 
 		<div class="flex">
 			<div class="relative mx-auto max-w-xl">
 				<div class="absolute inset-0 rounded-md bg-gray-700 opacity-60"></div>
