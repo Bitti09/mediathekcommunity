@@ -13,7 +13,7 @@
 	/* @type { import('./$houdini').PageData } */
 	export let data;
 	//data.page.channel = data.page.channel[0];
-	console.log(data);
+	// console.log(data);
 	let langdata = {};
 	let langlist = [];
 	let visible = false;
@@ -34,8 +34,8 @@
 	langdata = groupByChannelCountry(data);
 	langlist = Object.keys(langdata);
 
-	console.log(langdata);
-	console.log(Object.keys(langdata));
+	//console.log(langdata);
+	//console.log(Object.keys(langdata));
 
 	/*var geo1 = capitalizeFirstLetter(data.geo);*/
 </script>

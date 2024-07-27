@@ -11,10 +11,10 @@
 
 	function sortepisodes(data2) {
 		if (data2.episodelist.length > 0) {
-			console.log(data2.episodelist);
+			//console.log(data2.episodelist);
 		}
 	}
-	console.log(data);
+	//console.log(data);
 	let showvideo = false;
 	$: data1 = data.page;
 	$: channelinfo = data.page.channel;
