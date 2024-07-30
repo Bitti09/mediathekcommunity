@@ -46,6 +46,6 @@
         "lodash-es": "^4.17.21",
         "sharp": "^0.33.4",
         "svelte-flag-icons": "^1.0.3",
-        "video.js": "^8.16.1"
+        "video.js": "^8.17.1"
     }
 }
