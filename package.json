@@ -20,7 +20,7 @@
 		"@sveltejs/kit": "^2.5.18",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@types/eslint": "^9.6.0",
-		"@types/node": "^22.0.0",
+		"@types/node": "^22.0.2",
 		"autoprefixer": "^10.4.19",
 		"embla-carousel-svelte": "^8.1.7",
 		"eslint": "^9.8.0",
