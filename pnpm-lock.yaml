@@ -19,8 +19,8 @@ importers:
         specifier: ^0.5.8
         version: 0.5.8
       '@skeletonlabs/skeleton':
-        specifier: 3.0.0-next.2
-        version: 3.0.0-next.2(postcss@8.4.45)(tailwindcss@3.4.10)
+        specifier: 3.0.0-next.4
+        version: 3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.10)
       '@skeletonlabs/skeleton-svelte':
         specifier: 1.0.0-next.4
         version: 1.0.0-next.4(svelte@5.0.0-next.244)
@@ -455,8 +455,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0-next.136
 
-  '@skeletonlabs/skeleton@3.0.0-next.2':
-    resolution: {integrity: sha512-Kw0D0VHOtBrQiwXe3beRnDqQoGW3OjG9zRjZlEVMeWKgWEK8WDZaspnYg8loA44hvddrLuyuS78CKKGlJbth2Q==}
+  '@skeletonlabs/skeleton@3.0.0-next.4':
+    resolution: {integrity: sha512-lkq/xtHrJEmPyrt3aGFfml5e+Ri6qmXfXMYXByEaRpbHMxoRmb1vXHlMoLwf5ptng6UcCl4Yr2TIoXGd9dd/Cw==}
     peerDependencies:
       tailwindcss: '>=3.0.0'
 
@@ -2020,7 +2020,7 @@ snapshots:
     dependencies:
       svelte: 5.0.0-next.244
 
-  '@skeletonlabs/skeleton@3.0.0-next.2(postcss@8.4.45)(tailwindcss@3.4.10)':
+  '@skeletonlabs/skeleton@3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.10)':
     dependencies:
       postcss-js: 4.0.1(postcss@8.4.45)
       postcss-selector-parser: 6.1.2
