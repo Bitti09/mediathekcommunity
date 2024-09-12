@@ -12,8 +12,8 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
       lucide-svelte:
-        specifier: ^0.427.0
-        version: 0.427.0(svelte@5.0.0-next.244)
+        specifier: ^0.440.0
+        version: 0.440.0(svelte@5.0.0-next.244)
     devDependencies:
       '@flydotio/dockerfile':
         specifier: ^0.5.8
@@ -1176,8 +1176,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-svelte@0.427.0:
-    resolution: {integrity: sha512-l0IJqYVBTxMkJPvZqyIMyVFlbZ18Mjg0n6p7Zo9bSQNvsmeviTyOxYmYdp/G5gXcSHaOGL6YoQW7fmbFklbW/w==}
+  lucide-svelte@0.440.0:
+    resolution: {integrity: sha512-ROM+AbSCvM7b2qt47Raoc/B3LyJWfrePdRiW91jlKdMVBnwCcR8+lqpDpJ09vM75wMKqf+4Hxb9GQRRgRAK1Hg==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -2922,7 +2922,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-svelte@0.427.0(svelte@5.0.0-next.244):
+  lucide-svelte@0.440.0(svelte@5.0.0-next.244):
     dependencies:
       svelte: 5.0.0-next.244
 
