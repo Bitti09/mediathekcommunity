@@ -24,7 +24,7 @@
 		"embla-carousel-svelte": "^8.2.1",
 		"eslint": "^9.10.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.43.0",
+		"eslint-plugin-svelte": "^2.44.0",
 		"globals": "^15.9.0",
 		"postcss": "^8.4.45",
 		"prettier": "^3.3.3",
