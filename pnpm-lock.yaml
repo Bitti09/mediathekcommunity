@@ -38,7 +38,7 @@ importers:
         version: 0.5.8
       '@skeletonlabs/skeleton':
         specifier: 3.0.0-next.4
-        version: 3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.10)
+        version: 3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.12)
       '@skeletonlabs/skeleton-svelte':
         specifier: 1.0.0-next.7
         version: 1.0.0-next.7(svelte@5.0.0-next.244)
@@ -97,8 +97,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(svelte@5.0.0-next.244)
       tailwindcss:
-        specifier: ^3.4.10
-        version: 3.4.10
+        specifier: ^3.4.12
+        version: 3.4.12
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -2037,8 +2037,8 @@ packages:
     resolution: {integrity: sha512-whSOcKdpuAFd5xD9J2EhuHeRs4J4nHis6NSUKRXpC3HQoCmsoKhyIldMjiv6QFkQpe6QMsid8lwvgLXkZTSC/A==}
     engines: {node: '>=18'}
 
-  tailwindcss@3.4.10:
-    resolution: {integrity: sha512-KWZkVPm7yJRhdu4SRSl9d4AK2wM3a50UsvgHZO7xY77NQr2V+fIrEuoDGQcbvswWvFGbS2f6e+jC/6WJm1Dl0w==}
+  tailwindcss@3.4.12:
+    resolution: {integrity: sha512-Htf/gHj2+soPb9UayUNci/Ja3d8pTmu9ONTfh4QY8r3MATTZOzmv6UYWF7ZwikEIC8okpfqmGqrmDehua8mF8w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -2642,11 +2642,11 @@ snapshots:
       '@zag-js/tabs': 0.65.1
       svelte: 5.0.0-next.244
 
-  '@skeletonlabs/skeleton@3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.10)':
+  '@skeletonlabs/skeleton@3.0.0-next.4(postcss@8.4.45)(tailwindcss@3.4.12)':
     dependencies:
       postcss-js: 4.0.1(postcss@8.4.45)
       postcss-selector-parser: 6.1.2
-      tailwindcss: 3.4.10
+      tailwindcss: 3.4.12
     transitivePeerDependencies:
       - postcss
 
@@ -4042,7 +4042,7 @@ snapshots:
       magic-string: 0.30.11
       zimmerframe: 1.1.2
 
-  tailwindcss@3.4.10:
+  tailwindcss@3.4.12:
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
