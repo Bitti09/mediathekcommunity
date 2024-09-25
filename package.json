@@ -19,7 +19,7 @@
 		"@sveltejs/kit": "^2.5.28",
 		"@sveltejs/vite-plugin-svelte": "next",
 		"@types/eslint": "^9.6.1",
-		"@types/node": "^22.6.1",
+		"@types/node": "^22.7.0",
 		"autoprefixer": "^10.4.20",
 		"embla-carousel-svelte": "^8.3.0",
 		"eslint": "^9.11.1",
