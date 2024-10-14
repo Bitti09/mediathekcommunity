@@ -97,8 +97,8 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5(picomatch@2.3.1)(svelte@5.0.0-next.264)(typescript@5.6.3)
       svelte-flags:
-        specifier: 2.0.0-next.4
-        version: 2.0.0-next.4(svelte@5.0.0-next.264)
+        specifier: 2.0.0-next.5
+        version: 2.0.0-next.5(svelte@5.0.0-next.264)
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13
@@ -1622,8 +1622,8 @@ packages:
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
 
-  svelte-flags@2.0.0-next.4:
-    resolution: {integrity: sha512-Wz0Bn24n5IuxfjiPzWJidXDJ6889ZB5YDhfvnQ+oPYZODZH7b3AA5pwp5OaiESJTsqv/uym06G7QT/h1CyiJSg==}
+  svelte-flags@2.0.0-next.5:
+    resolution: {integrity: sha512-OP11i5AP9RDSQ/zEqUvegd0PjxsUtKhVyX2ONhFFbE3romKlSpkt0m7u1aFpbHQnfM3buj5UbSuyf0pTtMLWCQ==}
     engines: {node: '>=18.0.0', npm: '>=7.0.0'}
     peerDependencies:
       svelte: ^5.0.0 || ^5.0.0-next.1
@@ -3256,7 +3256,7 @@ snapshots:
     dependencies:
       svelte: 5.0.0-next.264
 
-  svelte-flags@2.0.0-next.4(svelte@5.0.0-next.264):
+  svelte-flags@2.0.0-next.5(svelte@5.0.0-next.264):
     dependencies:
       svelte: 5.0.0-next.264
 
